@@ -8,15 +8,15 @@
             <form action="{{ url_for('new') }}" method="POST">
                 <div class="form-poster-field-url">
                     <div class="control is-expanded">
-                        <input type="text" value="{{ source_url }}" readonly>
+                        <input type="text" value="{{ form.source_url.data }}" readonly>
                     </div>
                 </div>
 
-                {{ forms.input('Title') }}
-                {{ forms.input('Authors') }}
-                {{ forms.textarea('Abstract') }}
-                {{ forms.input('Download URL', '', 'Link to your poster as a PDF or image file.') }}
-                {{ forms.input('Presented at') }}
+                {{ forms.input('Title', form.title) }}
+                {{ forms.input('Authors', form.authors) }}
+                {{ forms.textarea('Abstract', form.abstract) }}
+                {{ forms.input('Download URL', form.download_url, 'Link to your poster as a PDF or image file.') }}
+                {{ forms.input('Presented at', form.presented_at) }}
 
                 <div class="field is-horizontal">
                     <div class="field-label">

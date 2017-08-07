@@ -1,4 +1,4 @@
-{% macro input(name, value='', help='') -%}
+{% macro input(name, field, help='') -%}
 <div class="field is-horizontal">
     <div class="field-label is-normal">
         <label>{{ name }}</label>
@@ -6,7 +6,7 @@
     <div class="field-body">
         <div class="field">
             <div class="control">
-                <input name="{{ name|replace(' ', '_')|lower }}" value="{{ value }}" type="text">
+                <input name="{{ name|replace(' ', '_')|lower }}" value="{{ field.data }}" type="text">
             </div>
             {% if help %}<p class="help">{{ help }}</p>{% endif %}
         </div>
@@ -14,7 +14,7 @@
 </div>
 {%- endmacro %}
 
-{% macro textarea(name, value='') -%}
+{% macro textarea(name, field) -%}
 <div class="field is-horizontal">
     <div class="field-label is-normal">
         <label>{{ name }}</label>
@@ -22,7 +22,7 @@
     <div class="field-body">
         <div class="field">
             <div class="control">
-                <textarea name="{{ name|replace(' ', '_')|lower }}">{{ value }}</textarea>
+                <textarea name="{{ name|replace(' ', '_')|lower }}">{{ field.data }}</textarea>
             </div>
         </div>
     </div>

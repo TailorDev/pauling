@@ -7,18 +7,30 @@
     @extend .is-two-thirds;
     @extend .is-narrow;
 
+    label,
+    input,
+    .select,
+    textarea,
+    .is-static,
+    button {
+        @extend .is-medium;
+    }
+
+    label {
+        @extend .label;
+    }
+
+    input{
+        @extend .input;
+    }
+
+    textarea {
+        @extend .textarea;
+    }
+
     &-field-url {
         @extend .field;
         @extend .has-addons;
-
-        input,
-        button {
-            @extend .is-medium;
-        }
-
-        input{
-            @extend .input;
-        }
 
         button {
             @extend .button;

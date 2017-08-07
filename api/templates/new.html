@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% import "forms.html" as forms %}
 
 {% block content %}
 <div class="index">
@@ -8,6 +9,27 @@
                 <div class="form-poster-field-url">
                     <div class="control is-expanded">
                         <input type="text" value="{{ source_url }}" readonly>
+                    </div>
+                </div>
+
+                {{ forms.input('Title') }}
+                {{ forms.input('Authors') }}
+                {{ forms.textarea('Abstract') }}
+                {{ forms.input('Download URL', '', 'Link to your poster as a PDF or image file.') }}
+                {{ forms.input('Presented at') }}
+
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary">
+                                    Generate your QR code
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

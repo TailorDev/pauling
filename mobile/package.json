@@ -12,7 +12,8 @@
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.12",
-		"react-native": "0.47.1"
+		"react-native": "0.47.1",
+		"react-native-config": "^0.6.0"
 	},
 	"devDependencies": {
 		"babel-eslint": "^7.2.3",

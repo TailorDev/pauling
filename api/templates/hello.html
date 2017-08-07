@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="section">
+    <div class="container">
+        {% if name %}
+        <h1>Hello {{ name }}!</h1>
+        {% else %}
+        <h1>Hello, World!</h1>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

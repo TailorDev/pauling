@@ -1,0 +1,36 @@
+{
+	"name": "pauling",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"android": "react-native run-android --no-packager && node node_modules/react-native/local-cli/cli.js start --port 8081",
+		"flow": "node_modules/.bin/flow",
+		"ios": "react-native run-ios --no-packager && node node_modules/react-native/local-cli/cli.js start --port 8082",
+		"lint": "eslint src/",
+		"prepare:minor": "npm version minor -m \":rocket: Prepare %s release\"",
+		"prepare:patch": "npm version patch -m \":rocket: Prepare %s release\"",
+		"prettier": "prettier --write --single-quote --trailing-comma es5 --parser flow \"src/**/*.js\"",
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"test": "jest",
+		"version": "./scripts/npm-version-ios"
+	},
+	"dependencies": {
+		"react": "16.0.0-alpha.12",
+		"react-native": "0.47.1",
+		"react-native-config": "^0.6.0"
+	},
+	"devDependencies": {
+		"babel-eslint": "^7.2.3",
+		"babel-jest": "20.0.3",
+		"babel-preset-react-native": "2.1.0",
+		"eslint": "^4.4.0",
+		"eslint-plugin-react": "^7.1.0",
+		"flow-bin": "0.49.1",
+		"jest": "20.0.4",
+		"prettier": "^1.5.3",
+		"react-test-renderer": "16.0.0-alpha.12"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}

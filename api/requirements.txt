@@ -7,3 +7,4 @@ SQLAlchemy==1.1.13
 psycopg2==2.7.3
 flask-heroku==0.1.9
 Flask-Migrate==2.1.0
+gunicorn==19.7.1

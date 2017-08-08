@@ -3,6 +3,7 @@ from os import environ
 
 import qrcode
 import qrcode.image.svg
+from PIL import Image, ImageDraw, ImageFont, ImageColor
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    send_file, session, url_for)
 from flask_heroku import Heroku
@@ -77,7 +78,13 @@ def get_poster(id):
 def poster_qrcode_png(id):
     p = Poster.query.get_or_404(id)
     buf = BytesIO()
-    img = qrcode.make(url_for('get_poster', id=p.id, _external=True))
+    qr = qrcode.QRCode(border=6)
+    qr.add_data(url_for('get_poster', id=p.id, _external=True))
+    img = qr.make_image()
+    img_draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype('Lato-Medium.ttf', 24)
+    img_draw.text((70, 3), 'Want this poster on your phone?', font=font)
+    img_draw.text((53, 450), 'Use the Pauling app on Android/iOS', font=font)
     img.save(buf)
     buf.seek(0)
     return send_file(buf, mimetype='image/png')
@@ -86,10 +93,9 @@ def poster_qrcode_png(id):
 def poster_qrcode_svg(id):
     p = Poster.query.get_or_404(id)
     buf = BytesIO()
-    img = qrcode.make(
-        url_for('get_poster', id=p.id, _external=True),
-        image_factory=qrcode.image.svg.SvgPathImage,
-    )
+    qr = qrcode.QRCode(border=6)
+    qr.add_data(url_for('get_poster', id=p.id, _external=True))
+    img = qr.make_image(image_factory=qrcode.image.svg.SvgPathImage)
     img.save(buf)
     buf.seek(0)
     return send_file(buf, mimetype='image/svg+xml')

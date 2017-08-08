@@ -1,9 +1,9 @@
-from ..figshare import extract_data
+import json
+import pathlib
 
 import pytest
-import pathlib
-import json
 
+from ..figshare import extract_data
 
 FIXTURES_DIR = '{}/fixtures'.format(pathlib.Path(__file__).parent)
 

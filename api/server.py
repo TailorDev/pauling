@@ -1,15 +1,15 @@
-from flask import (
-    Flask, render_template, session, redirect, url_for, request, jsonify, flash
-)
 from os import environ
-from flask_heroku import Heroku
-from flask_migrate import Migrate
-from flask_mail import Mail, Message
-from forms import NewLinkForm, PosterForm, EmailForm
-from providers import extract_data
-from database import db
-from models import *
 
+from flask import (Flask, flash, jsonify, redirect, render_template, request,
+                   session, url_for)
+
+from database import db
+from flask_heroku import Heroku
+from flask_mail import Mail, Message
+from flask_migrate import Migrate
+from forms import EmailForm, NewLinkForm, PosterForm
+from models import Poster
+from providers import extract_data
 
 app = Flask(__name__)
 # config

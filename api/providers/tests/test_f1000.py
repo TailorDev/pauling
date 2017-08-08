@@ -1,8 +1,8 @@
-from ..f1000 import extract_data
-
-import pytest
 import pathlib
 
+import pytest
+
+from ..f1000 import extract_data
 
 FIXTURES_DIR = '{}/fixtures'.format(pathlib.Path(__file__).parent)
 

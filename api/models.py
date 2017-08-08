@@ -1,9 +1,9 @@
-from sqlalchemy import Column, Text, String, DateTime, text
-from sqlalchemy.dialects.postgresql import UUID
-from database import db
-
 import datetime
 import uuid
+
+from database import db
+from sqlalchemy import Column, DateTime, String, Text, text
+from sqlalchemy.dialects.postgresql import UUID
 
 
 class Poster(db.Model):

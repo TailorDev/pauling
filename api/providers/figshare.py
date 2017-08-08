@@ -1,6 +1,5 @@
 from jinja2.filters import do_striptags
 
-
 FIGSHARE_URL_PATTERN = 'https://figshare.com/.+/(\d+)'
 FIGSHARE_API_URL = 'https://api.figshare.com/v2/articles'
 

@@ -1,8 +1,7 @@
-from bs4 import BeautifulSoup
-from jinja2.filters import do_striptags
-
 import re
 
+from bs4 import BeautifulSoup
+from jinja2.filters import do_striptags
 
 F1000_URL_PATTERN = 'https://f1000research.com/posters/.+'
 

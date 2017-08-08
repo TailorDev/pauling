@@ -5,6 +5,10 @@ RUN_FLASK=FLASK_APP=server.py \
 	  FLASK_DEBUG=1 \
 	  SECRET_KEY=Secr3tK3yF0rD3v \
 	  DATABASE_URL=postgres://pauling:paulingpassword@127.0.0.1:15432/pauling \
+	  MAILGUN_SMTP_SERVER=127.0.0.1 \
+	  MAILGUN_SMTP_PORT=15025 \
+	  MAILGUN_SMTP_LOGIN='' \
+	  MAILGUN_SMTP_PASSWORD='' \
 	  flask
 
 default: help

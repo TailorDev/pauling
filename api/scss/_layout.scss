@@ -9,6 +9,11 @@ body {
     padding-top: 1rem;
 }
 
+// re-align FA icon in help text (form)
+.help .fa {
+    vertical-align: initial;
+}
+
 .main-content {
     flex: 1;
 }

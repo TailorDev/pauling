@@ -1,0 +1,29 @@
+.publish-poster {
+    @extend .section;
+
+    .card {
+        &-content {
+            text-align: center;
+        }
+
+        .qrcode {
+            margin: auto;
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    form {
+        margin-top: 2.5em;
+        text-align: center;
+    }
+
+    @media (min-width : 768px) {
+        form {
+            .control:first-child {
+                width: 50%;
+            }
+
+        }
+    }
+}

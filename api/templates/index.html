@@ -21,6 +21,10 @@
                         </button>
                     </div>
                 </div>
+                <p class="help">
+                    <i class="fa fa-info-circle"></i> Want to try but no poster? You can test with this one maybe:
+                    <a id="try-link" href="https://figshare.com/articles/Recognising_influence_Helping_authors_of_non-traditional_research_outputs_evidence_the_reach_and_potential_impacts_of_their_work/4245068">Recognising influence: Helping authors of non-traditional research outputs evidence the reach and potential impacts of their work</a>.
+                </p>
             </form>
         </div>
     </div>
@@ -36,6 +40,11 @@ $btn.addEventListener('click', function () {
     } else {
         $btn.className += ' is-loading';
     }
+});
+var $try = document.getElementById('try-link');
+$try.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('input[name="source_url"]').value = $try.href;
 });
 </script>
 {% endblock %}

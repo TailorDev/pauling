@@ -1,13 +1,16 @@
+from io import BytesIO
 from os import environ
 
+import qrcode
+import qrcode.image.svg
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
-                   session, url_for)
-
-from database import db
-from emails import EMAIL_PUBLISH_TITLE, EMAIL_PUBLISH_PLAIN_TEXT
+                   send_file, session, url_for)
 from flask_heroku import Heroku
 from flask_mail import Mail, Message
 from flask_migrate import Migrate
+
+from database import db
+from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from forms import EmailForm, NewLinkForm, PosterForm
 from models import Poster
 from providers import extract_data
@@ -69,6 +72,27 @@ def get_poster(id):
     if request.headers.get('accept') == 'application/json':
         return jsonify(poster.serialize())
     return render_template('get_poster.html', poster=poster)
+
+@app.route('/posters/<id>.png', methods=['GET'])
+def poster_qrcode_png(id):
+    p = Poster.query.get_or_404(id)
+    buf = BytesIO()
+    img = qrcode.make(url_for('get_poster', id=p.id, _external=True))
+    img.save(buf)
+    buf.seek(0)
+    return send_file(buf, mimetype='image/png')
+
+@app.route('/posters/<id>.svg', methods=['GET'])
+def poster_qrcode_svg(id):
+    p = Poster.query.get_or_404(id)
+    buf = BytesIO()
+    img = qrcode.make(
+        url_for('get_poster', id=p.id, _external=True),
+        image_factory=qrcode.image.svg.SvgPathImage,
+    )
+    img.save(buf)
+    buf.seek(0)
+    return send_file(buf, mimetype='image/svg+xml')
 
 @app.route('/admin/posters/<id_admin>/publish', methods=['GET', 'POST'])
 def publish_poster(id_admin):

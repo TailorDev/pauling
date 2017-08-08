@@ -15,18 +15,40 @@
     </div>
 </section>
 
-<section class="section">
+<section class="publish-poster">
     <div class="content-wrapper">
         <div class="column is-two-thirds content">
-            <h2>Congratulations!</h2>
+            <h1>Congratulations!</h1>
 
             <p>You will find your QR code below:</p>
 
+            <div class="columns">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="qrcode" src="{{ url_for('poster_qrcode_svg', id=poster.id) }}">
+                        </div>
+                        <footer class="card-footer">
+                            <a class="card-footer-item" href="{{ url_for('poster_qrcode_svg', id=poster.id) }}">Download as SVG</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="qrcode" src="{{ url_for('poster_qrcode_png', id=poster.id) }}">
+                        </div>
+                        <footer class="card-footer">
+                            <a class="card-footer-item" href="{{ url_for('poster_qrcode_png', id=poster.id) }}">Download as PNG</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
             <p>
-                A "home" for your poster has been created and you can view it
+                The QR code redirects to a page of your poster that has been automatically created and you can view it
                 <a href="{{ url_for('get_poster', id=poster.id) }}">here</a>.
-                The URL to this page (below) is public and permanent. Feel free
-                to share it with everyone:
+                The link to this page (below) is public and permanent. Feel free to share it with everyone:
             </p>
 
             <div class="field has-addons">
@@ -50,12 +72,14 @@
             <p>
                 You can edit the information for this poster at any time
                 <a href="{{ url_for('edit_poster', id_admin=poster.id_admin) }}">here</a>.
+                Be sure to bookmark this link somewhere as it is the unique way to update the
+                information of your poster on Pauling.
             </p>
         </div>
     </div>
 </section>
 
-<section class="section">
+<section class="publish-poster">
     <div class="content-wrapper">
         <div class="column is-two-thirds content">
             {% if not poster.email %}
@@ -66,7 +90,7 @@
             <form method="POST">
                 {{ form.csrf_token }}
 
-                <div class="field has-addons">
+                <div class="field has-addons has-addons-centered">
                     <div class="control has-icons-left">
                         <input name="email" class="input is-medium" type="email" placeholder="Enter your email here">
                         <span class="icon is-left">
@@ -78,7 +102,7 @@
                     </div>
                     <div class="control">
                         <button class="button is-medium {% if form.email.errors %}is-danger{% else %}is-primary{% endif %}">
-                            Submit
+                            Send
                         </button>
                     </div>
                 </div>

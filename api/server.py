@@ -2,10 +2,17 @@ from flask import Flask, render_template, session, redirect, url_for, request, j
 from os import environ
 from forms import NewLinkForm, NewPosterForm
 from providers import extract_data
+from flask_sqlalchemy import SQLAlchemy
+from flask_heroku import Heroku
+from flask_migrate import Migrate
 
 
 app = Flask(__name__)
-app.secret_key = environ.get('FLASK_SECRET_KEY')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+heroku = Heroku(app)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

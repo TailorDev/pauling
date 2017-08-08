@@ -1,17 +1,20 @@
 from flask import Flask, render_template, session, redirect, url_for, request, jsonify
 from os import environ
-from forms import NewLinkForm, NewPosterForm
-from providers import extract_data
-from flask_sqlalchemy import SQLAlchemy
 from flask_heroku import Heroku
 from flask_migrate import Migrate
+from forms import NewLinkForm, NewPosterForm
+from providers import extract_data
+from database import db
+from models import *
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+# config
 heroku = Heroku(app)
-db = SQLAlchemy(app)
+app.secret_key = environ.get('SECRET_KEY')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# database
+db.init_app(app)
 migrate = Migrate(app, db)
 
 @app.route('/', methods=['GET', 'POST'])

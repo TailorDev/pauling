@@ -1,14 +1,16 @@
 {% extends "layout.html" %}
-{% import "forms.html" as forms %}
+{% import "_forms.html" as forms %}
 
 {% block content %}
-<div class="index">
+<div class="section">
     <div class="columns is-centered">
         <div class="form-poster">
-            <form action="{{ url_for('new') }}" method="POST">
+            <form action="{{ url_for('new_poster') }}" method="POST">
+                {{ form.csrf_token }}
+
                 <div class="form-poster-field-url">
                     <div class="control is-expanded">
-                        <input type="text" value="{{ form.source_url.data }}" readonly>
+                        <input type="text" value="{{ source_url }}" readonly>
                     </div>
                 </div>
 

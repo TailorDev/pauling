@@ -4,10 +4,10 @@ from wtforms.fields.html5 import URLField
 from wtforms.validators import InputRequired, URL
 
 
-class NewForm(FlaskForm):
+class NewLinkForm(FlaskForm):
     source_url = URLField('source_url', validators=[InputRequired(), URL()])
 
-class EntryForm(NewForm):
+class NewPosterForm(FlaskForm):
     title = StringField('title', validators=[])
     authors = StringField('authors', validators=[])
     abstract = TextAreaField('abstract', validators=[])

@@ -23,6 +23,30 @@
             <p>You will find your QR code below:</p>
 
             <p>
+                A "home" for your poster has been created and you can view it
+                <a href="{{ url_for('get_poster', id=poster.id) }}">here</a>.
+                The URL to this page (below) is public and permanent. Feel free
+                to share it with everyone:
+            </p>
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input id="public-url" class="input" type="text" value="{{ url_for('get_poster', id=poster.id, _external=True) }}">
+                </div>
+                <div class="control">
+                    <button class="button clipboard" data-clipboard-target="#public-url">
+                        <i class="fa fa-clipboard"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="content-wrapper">
+        <div class="column is-two-thirds content">
+            <h3>Admin area</h3>
+            <p>
                 You can edit the information for this poster at any time
                 <a href="{{ url_for('edit_poster', id_admin=poster.id_admin) }}">here</a>.
                 <strong>This link will only be displayed once</strong>.
@@ -43,4 +67,14 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/clipboard.min.js') }}"></script>
+<script>
+    var clipboard = new Clipboard('.clipboard');
+    clipboard.on('success', function (e) {
+        alert('Copied!');
+    });
+</script>
 {% endblock %}

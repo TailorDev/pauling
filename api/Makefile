@@ -1,4 +1,5 @@
 CSS_DIR=static/css
+JS_DIR=static/js
 SASS_INCLUDE_PATH=node_modules/bulma/
 RUN_FLASK=FLASK_APP=server.py \
 	  FLASK_DEBUG=1 \
@@ -7,6 +8,10 @@ RUN_FLASK=FLASK_APP=server.py \
 	  flask
 
 default: help
+
+copy-js:
+	cp node_modules/clipboard/dist/clipboard.min.js $(JS_DIR)
+.PHONY: copy-js
 
 watch-css: ## continuously build CSS
 	@nodemon -e scss -x 'make build-css'

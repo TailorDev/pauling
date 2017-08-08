@@ -2,6 +2,7 @@
 
 {% block content %}
 <section class="poster">
+    {% if poster.title %}
     <div class="title-and-authors">
         <div class="columns is-centered">
             <div class="column is-three-quarters">
@@ -14,15 +15,21 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <div class="preview">
         <div class="columns is-centered">
             <div class="column is-three-quarters">
+                {% if poster.download_url.endswith('.png') %}
+                <img src="{{ poster.download_url }}" alt="{{ poster.title }}">
+                {% else %}
                 <iframe src="http://docs.google.com/gview?url={{ poster.download_url }}&embedded=true" frameborder="0"></iframe>
+                {% endif %}
             </div>
         </div>
     </div>
 
+    {% if poster.abstract %}
     <div class="abstract">
         <div class="columns is-centered">
             <div class="column is-three-quarters">
@@ -33,5 +40,6 @@
             </div>
         </div>
     </div>
+    {% endif %}
 </section>
 {% endblock %}

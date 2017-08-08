@@ -57,9 +57,9 @@ def new_poster():
 
     return render_template('new_edit_poster.html', is_edit=False, form=form)
 
-@app.route('/posters/<uuid>', methods=['GET'])
-def get_poster(uuid):
-    poster = Poster.query.get_or_404(uuid)
+@app.route('/posters/<id>', methods=['GET'])
+def get_poster(id):
+    poster = Poster.query.get_or_404(id)
     if request.headers.get('accept') == 'application/json':
         return jsonify(poster.serialize())
     return render_template('get_poster.html', poster=poster)

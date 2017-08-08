@@ -16,9 +16,14 @@
     form {
         margin-top: 2.5em;
         text-align: center;
+    }
 
-        .control:first-child {
-            width: 50%;
+    @media (min-width : 768px) {
+        form {
+            .control:first-child {
+                width: 50%;
+            }
+
         }
     }
 }

@@ -43,7 +43,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <button class="button is-primary">
+                                <button id="btn-submit" class="button is-primary">
                                     {% if is_edit %}
                                     Update
                                     {% else %}
@@ -58,4 +58,17 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block js %}
+<script>
+var $btn = document.getElementById('btn-submit');
+$btn.addEventListener('click', function () {
+    if ($btn.classList) {
+        $btn.classList.add('is-loading');
+    } else {
+        $btn.className += ' is-loading';
+    }
+});
+</script>
 {% endblock %}

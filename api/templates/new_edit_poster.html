@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% import "_forms.html" as forms %}
+
+{% block content %}
+{% if not is_edit %}
+<section class="steps-wrapper">
+    <div class="content-wrapper">
+        <div class="steps">
+            <div class="steps-list">
+                <h4><strike>1. Paste the link to your poster on F1000, Figshare, etc.</strike></h4>
+                <h4>2. Verify the information below and generate your QR code</h4>
+                <h4 class="next-step">3. Add the QR code to your poster and print it</h4>
+
+                <progress class="progress is-primary" value="66" max="100">66%</progress>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="form-wrapper">
+    <div class="content-wrapper">
+        <div class="poster-form">
+            {% if is_edit %}
+            <div class="notification is-warning">
+                <strong>Important:</strong> Do not share the URL to this
+                "admin" page with people you do not know.
+            </div>
+            <form action="" method="POST">
+            {% else %}
+            <form action="{{ url_for('new_poster') }}" method="POST">
+            {% endif %}
+                {{ form.csrf_token }}
+
+                {{ forms.input('Title', form.title) }}
+                {{ forms.input('Authors', form.authors) }}
+                {{ forms.textarea('Abstract', form.abstract) }}
+                {{ forms.input('Download URL', form.download_url, 'Link to your poster as a PDF or image file.') }}
+                {{ forms.input('Presented at', form.presented_at) }}
+
+                <div class="field is-horizontal">
+                    <div class="field-label"></div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary">
+                                    {% if is_edit %}
+                                    Update
+                                    {% else %}
+                                    Generate your QR code
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -4,8 +4,18 @@ body {
     flex-direction: column;
 }
 
+// fix bulma padding-top (a bit too much)
+.section {
+    padding-top: 1rem;
+}
+
 .main-content {
     flex: 1;
+}
+
+.content-wrapper {
+    @extend .columns;
+    @extend .is-centered;
 }
 
 .footer {

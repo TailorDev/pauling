@@ -1,0 +1,20 @@
+.steps-wrapper,
+.form-wrapper {
+    @extend .section;
+}
+
+.steps-wrapper {
+    .steps {
+        @extend .column;
+        @extend .is-two-thirds;
+
+        &-list {
+            @extend .box;
+            @extend .content;
+
+            .next-step {
+                color: $grey-light;
+            }
+        }
+    }
+}

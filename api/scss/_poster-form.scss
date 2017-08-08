@@ -1,0 +1,35 @@
+.poster-form {
+    @extend .column;
+    @extend .is-two-thirds;
+
+    label,
+    input,
+    .select,
+    textarea,
+    .is-static,
+    button {
+        @extend .is-medium;
+    }
+
+    label {
+        @extend .label;
+    }
+
+    input{
+        @extend .input;
+    }
+
+    textarea {
+        @extend .textarea;
+    }
+
+    &-field-url {
+        @extend .field;
+        @extend .has-addons;
+
+        button {
+            @extend .button;
+            @extend .is-primary;
+        }
+    }
+}

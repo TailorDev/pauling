@@ -1,2 +1,11 @@
 Flask==0.12.2
 Flask-WTF==0.14.2
+requests==2.9.1
+beautifulsoup4==4.6.0
+lxml==3.8.0
+SQLAlchemy==1.1.13
+psycopg2==2.7.3
+flask-heroku==0.1.9
+Flask-Migrate==2.1.0
+gunicorn==19.7.1
+Flask-Mail==0.9.1

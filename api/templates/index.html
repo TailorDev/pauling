@@ -2,20 +2,23 @@
 
 {% block content %}
 <div class="index">
-    <div class="columns is-centered">
-        <div class="form-poster">
-            <form action="/" method="POST">
+    <div class="content-wrapper">
+        <div class="poster-form">
+            <form action="{{ url_for('index') }}" method="POST">
                 {{ form.csrf_token }}
 
-                <div class="form-poster-field-url">
-                    <div class="control is-expanded{% if form.source_url.errors %} is-danger{% endif %}">
-                        <input name="source_url" type="text" placeholder="Link to your poster on F1000, Figshare, etc.">
+                <div class="poster-form-field-url">
+                    <div class="control is-expanded">
+                        <input{% if form.source_url.errors %} class="is-danger"{% endif %}
+                            name="source_url" type="text" placeholder="Paste the link to your poster on F1000, Figshare, etc.">
                         {% for error in form.source_url.errors %}
                         <p class="help is-danger">{{ error }}</p>
                         {% endfor %}
                     </div>
                     <div class="control">
-                        <button>Submit</button>
+                        <button{% if form.source_url.errors %} class="is-danger"{% endif %}>
+                            Submit
+                        </button>
                     </div>
                 </div>
             </form>

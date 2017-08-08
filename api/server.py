@@ -4,6 +4,7 @@ from flask import (
 from os import environ
 from flask_heroku import Heroku
 from flask_migrate import Migrate
+from flask_mail import Mail, Message
 from forms import NewLinkForm, PosterForm, EmailForm
 from providers import extract_data
 from database import db
@@ -15,9 +16,12 @@ app = Flask(__name__)
 heroku = Heroku(app)
 app.secret_key = environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['MAIL_SUPPRESS_SEND'] = app.debug
 # database
 db.init_app(app)
 migrate = Migrate(app, db)
+# emails
+mail = Mail(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -73,6 +77,13 @@ def publish_poster(id_admin):
         db.session.add(p)
         db.session.commit()
         flash('Information successfully updated! You should receive an email soon.')
+        msg = Message(
+            '[Pauling] Hello from your friends atTailorDev',
+            sender='hello@tailordev.fr',
+            recipients=[p.email],
+            body='You secret URL is: {}'.format(url_for('edit_poster', id_admin=id_admin, _external=True))
+        )
+        mail.send(msg)
         return redirect(url_for('publish_poster', id_admin=p.id_admin))
     return render_template('publish_poster.html', form=form, poster=p)
 

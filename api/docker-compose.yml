@@ -9,3 +9,9 @@ services:
       POSTGRES_PASSWORD: paulingpassword
     ports:
       - 127.0.0.1:15432:5432
+
+  mailer:
+    image: tophfr/mailcatcher:0.6.5
+    ports:
+      - 127.0.0.1:15080:80
+      - 127.0.0.1:15025:25

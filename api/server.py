@@ -4,6 +4,7 @@ from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    session, url_for)
 
 from database import db
+from emails import EMAIL_PUBLISH_TITLE, EMAIL_PUBLISH_PLAIN_TEXT
 from flask_heroku import Heroku
 from flask_mail import Mail, Message
 from flask_migrate import Migrate
@@ -16,7 +17,8 @@ app = Flask(__name__)
 heroku = Heroku(app)
 app.secret_key = environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['MAIL_SUPPRESS_SEND'] = app.debug
+app.config['MAIL_USE_TLS'] = not app.debug
+app.config['MAIL_PORT'] = environ.get('MAILGUN_SMTP_PORT', 25)
 # database
 db.init_app(app)
 migrate = Migrate(app, db)
@@ -77,11 +79,16 @@ def publish_poster(id_admin):
         db.session.add(p)
         db.session.commit()
         flash('Information successfully updated! You should receive an email soon.')
+        vars = {
+            'poster': p,
+            'public_url': url_for('get_poster', id=p.id, _external=True),
+            'admin_url': url_for('edit_poster', id_admin=id_admin, _external=True),
+        }
         msg = Message(
-            '[Pauling] Hello from your friends atTailorDev',
+            EMAIL_PUBLISH_TITLE,
             sender='hello@tailordev.fr',
             recipients=[p.email],
-            body='You secret URL is: {}'.format(url_for('edit_poster', id_admin=id_admin, _external=True))
+            body=EMAIL_PUBLISH_PLAIN_TEXT.format(**vars)
         )
         mail.send(msg)
         return redirect(url_for('publish_poster', id_admin=p.id_admin))

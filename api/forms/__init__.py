@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
-from wtforms.fields.html5 import URLField
-from wtforms.validators import InputRequired, URL
+from wtforms.fields.html5 import URLField, EmailField
+from wtforms.validators import InputRequired, URL, Regexp
 
 
 class NewLinkForm(FlaskForm):
@@ -13,3 +13,9 @@ class PosterForm(FlaskForm):
     abstract = TextAreaField('abstract', validators=[])
     download_url = URLField('download_url', validators=[InputRequired(), URL()])
     presented_at = StringField('presented_at', validators=[])
+
+class EmailForm(FlaskForm):
+    email = EmailField('email', validators=[
+        InputRequired(),
+        Regexp('.+@.+', message='We are not too strict with emails, but at least put the "@" sign...'),
+    ])

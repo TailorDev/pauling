@@ -49,21 +49,35 @@
             <p>
                 You can edit the information for this poster at any time
                 <a href="{{ url_for('edit_poster', id_admin=poster.id_admin) }}">here</a>.
-                <strong>This link will only be displayed once</strong>.
-                You can enter your email below to receive these information by email:
             </p>
+            {% if not poster.email %}
+            <p>
+                Enter your email below to receive these information by email:
+            </p>
+            <form method="POST">
+                {{ form.csrf_token }}
 
-            <div class="field has-addons">
-                <p class="control has-icons-left">
-                    <input class="input is-medium" type="email" placeholder="Enter your email here">
-                    <span class="icon is-left">
-                        <i class="fa fa-envelope"></i>
-                    </span>
-                </p>
-                <div class="control">
-                    <button class="button is-medium is-primary">Submit</button>
+                <div class="field has-addons">
+                    <div class="control has-icons-left">
+                        <input name="email" class="input is-medium" type="email" placeholder="Enter your email here">
+                        <span class="icon is-left">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                        {% for error in form.email.errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="control">
+                        <button class="button is-medium {% if form.email.errors %}is-danger{% else %}is-primary{% endif %}">
+                            Submit
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
+            {% else %}
+            You should receive emails at: <code>{{ poster.email }}</code>.
+            Wrong email? Please <a href="mailto:support@tailordev.fr">contact us</a>.
+            {% endif %}
         </div>
     </div>
 </section>

@@ -4,7 +4,7 @@ from flask import (
 from os import environ
 from flask_heroku import Heroku
 from flask_migrate import Migrate
-from forms import NewLinkForm, PosterForm
+from forms import NewLinkForm, PosterForm, EmailForm
 from providers import extract_data
 from database import db
 from models import *
@@ -64,10 +64,17 @@ def get_poster(id):
         return jsonify(poster.serialize())
     return render_template('get_poster.html', poster=poster)
 
-@app.route('/posters/<id_admin>/publish', methods=['GET'])
+@app.route('/admin/posters/<id_admin>/publish', methods=['GET', 'POST'])
 def publish_poster(id_admin):
     p = Poster.query.filter_by(id_admin=id_admin).first_or_404()
-    return render_template('publish_poster.html', poster=p)
+    form = EmailForm()
+    if form.validate_on_submit():
+        p.email = form.email.data
+        db.session.add(p)
+        db.session.commit()
+        flash('Information successfully updated! You should receive an email soon.')
+        return redirect(url_for('publish_poster', id_admin=p.id_admin))
+    return render_template('publish_poster.html', form=form, poster=p)
 
 @app.route('/admin/posters/<id_admin>/edit', methods=['GET', 'POST'])
 def edit_poster(id_admin):

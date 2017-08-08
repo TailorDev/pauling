@@ -18,6 +18,7 @@ class Poster(db.Model):
     presented_at = Column(String(200))
     created_at = Column('create_date', DateTime, default=datetime.datetime.now())
     id_admin = Column(UUID(as_uuid=True), unique=True, nullable=False)
+    email = Column(String(50))
 
     def __init__(self, title, authors, abstract, source_url, download_url, presented_at):
         self.id = uuid.uuid4()

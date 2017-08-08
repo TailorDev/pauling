@@ -15,12 +15,35 @@
     </div>
 </section>
 
-<section class="section">
+<section class="publish-poster">
     <div class="content-wrapper">
         <div class="column is-two-thirds content">
-            <h2>Congratulations!</h2>
+            <h1>Congratulations!</h1>
 
             <p>You will find your QR code below:</p>
+
+            <div class="columns">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="qrcode" src="{{ url_for('poster_qrcode_svg', id=poster.id) }}">
+                        </div>
+                        <footer class="card-footer">
+                            <a class="card-footer-item" href="{{ url_for('poster_qrcode_svg', id=poster.id) }}">Download as SVG</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="qrcode" src="{{ url_for('poster_qrcode_png', id=poster.id) }}">
+                        </div>
+                        <footer class="card-footer">
+                            <a class="card-footer-item" href="{{ url_for('poster_qrcode_png', id=poster.id) }}">Download as PNG</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
 
             <p>
                 A "home" for your poster has been created and you can view it

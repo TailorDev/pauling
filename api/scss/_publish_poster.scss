@@ -1,0 +1,15 @@
+.publish-poster {
+    @extend .section;
+
+    .card {
+        &-content {
+            text-align: center;
+        }
+
+        .qrcode {
+            margin: auto;
+            width: 200px;
+            height: 200px;
+        }
+    }
+}

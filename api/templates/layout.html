@@ -17,6 +17,20 @@
             </div>
         </header>
 
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <section class="notifications">
+            <div class="container is-fullhd">
+                {% for message in messages %}
+                <div class="notification">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+        {% endwith %}
+
         <section class="main-content">
             {% block content %}{% endblock %}
         </section>

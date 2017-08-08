@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="steps-wrapper">
+    <div class="content-wrapper">
+        <div class="steps">
+            <div class="steps-list">
+                <h4><strike>1. Paste the link to your poster on F1000, Figshare, etc.</strike></h4>
+                <h4><strike>2. Verify the information below and generate your QR code</strike></h4>
+                <h4>3. Add the QR code to your poster and print it</h4>
+
+                <progress class="progress is-primary" value="100" max="100">100%</progress>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="content-wrapper">
+        <div class="column is-two-thirds content">
+            <h2>Congratulations!</h2>
+
+            <p>You will find your QR code below:</p>
+
+            <p>
+                You can edit the information for this poster at any time
+                <a href="{{ url_for('edit_poster', id_admin=poster.id_admin) }}">here</a>.
+                <strong>This link will only be displayed once</strong>.
+                You can enter your email below to receive these information by email:
+            </p>
+
+            <div class="field has-addons">
+                <p class="control has-icons-left">
+                    <input class="input is-medium" type="email" placeholder="Enter your email here">
+                    <span class="icon is-left">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                </p>
+                <div class="control">
+                    <button class="button is-medium is-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

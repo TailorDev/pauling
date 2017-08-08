@@ -17,6 +17,7 @@ class Poster(db.Model):
     download_url = Column(String(400), nullable=False)
     presented_at = Column(String(200))
     created_at = Column('create_date', DateTime, default=datetime.datetime.now())
+    id_admin = Column(UUID(as_uuid=True), unique=True, nullable=False)
 
     def __init__(self, title, authors, abstract, source_url, download_url, presented_at):
         self.id = uuid.uuid4()
@@ -26,6 +27,7 @@ class Poster(db.Model):
         self.source_url = source_url
         self.download_url = download_url
         self.presented_at = presented_at
+        self.id_admin = uuid.uuid4()
 
     def __repr__(self):
         return '<User {}>'.format(str(self.id))

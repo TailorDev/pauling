@@ -1,8 +1,10 @@
-from flask import Flask, render_template, session, redirect, url_for, request, jsonify
+from flask import (
+    Flask, render_template, session, redirect, url_for, request, jsonify, flash
+)
 from os import environ
 from flask_heroku import Heroku
 from flask_migrate import Migrate
-from forms import NewLinkForm, NewPosterForm
+from forms import NewLinkForm, PosterForm
 from providers import extract_data
 from database import db
 from models import *
@@ -26,7 +28,7 @@ def index():
     session.pop('source_url', None)
     return render_template('index.html', form=form)
 
-@app.route('/new', methods=['GET', 'POST'])
+@app.route('/posters/new', methods=['GET', 'POST'])
 def new_poster():
     source_url = session.get('source_url')
     context = {
@@ -42,7 +44,7 @@ def new_poster():
             return redirect(url_for('index'))
         context.update(extract_data(source_url))
 
-    form = NewPosterForm(**context)
+    form = PosterForm(**context)
     if form.validate_on_submit():
         p = Poster(
             form.title.data, form.authors.data, form.abstract.data,
@@ -50,9 +52,9 @@ def new_poster():
         )
         db.session.add(p)
         db.session.commit()
-        return redirect(url_for('get_poster', uuid=p.id))
+        return redirect(url_for('publish_poster', id_admin=p.id_admin))
 
-    return render_template('new_poster.html', source_url=source_url, form=form)
+    return render_template('new_edit_poster.html', is_edit=False, form=form)
 
 @app.route('/posters/<uuid>', methods=['GET'])
 def get_poster(uuid):
@@ -60,3 +62,21 @@ def get_poster(uuid):
     if request.headers.get('accept') == 'application/json':
         return jsonify(poster.serialize())
     return render_template('get_poster.html', poster=poster)
+
+@app.route('/posters/<id_admin>/publish', methods=['GET'])
+def publish_poster(id_admin):
+    p = Poster.query.filter_by(id_admin=id_admin).first_or_404()
+    return render_template('publish_poster.html', poster=p)
+
+@app.route('/admin/posters/<id_admin>/edit', methods=['GET', 'POST'])
+def edit_poster(id_admin):
+    p = Poster.query.filter_by(id_admin=id_admin).first_or_404()
+    form = PosterForm(obj=p)
+    if form.validate_on_submit():
+        # TODO: make sure it is mass-assignment proof
+        form.populate_obj(p)
+        db.session.add(p)
+        db.session.commit()
+        flash('Information successfully updated!')
+        return redirect(url_for('edit_poster', id_admin=p.id_admin))
+    return render_template('new_edit_poster.html', is_edit=True, form=form)

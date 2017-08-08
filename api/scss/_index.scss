@@ -1,0 +1,28 @@
+.index {
+    @extend .section;
+}
+
+.form-poster {
+    @extend .column;
+    @extend .is-two-thirds;
+    @extend .is-narrow;
+
+    &-field-url {
+        @extend .field;
+        @extend .has-addons;
+
+        input,
+        button {
+            @extend .is-medium;
+        }
+
+        input{
+            @extend .input;
+        }
+
+        button {
+            @extend .button;
+            @extend .is-primary;
+        }
+    }
+}

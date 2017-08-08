@@ -16,7 +16,7 @@ dev: ; ${MAKE} -j2 watch-css run-dev
 .PHONY: dev
 
 run-dev: ## start the API in development mode
-	@FLASK_APP=server.py FLASK_DEBUG=1 flask run
+	@FLASK_APP=server.py FLASK_DEBUG=1 FLASK_SECRET_KEY=Secr3tK3yF0rD3v flask run
 .PHONY: run-dev
 
 help:

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="index">
+    <div class="columns is-centered">
+        <div class="form-poster">
+            <form action="{{ url_for('new') }}" method="POST">
+                <div class="form-poster-field-url">
+                    <div class="control is-expanded">
+                        <input type="text" value="{{ source_url }}" readonly>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

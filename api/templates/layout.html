@@ -5,8 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Pauling{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <a href="/"><h1 class="title">Pauling</h1></a>
+                    <h2 class="subtitle">Spread the word about your scientific poster.</h2>
+                </div>
+            </div>
+        </header>
+
+        <section class="main-content">
+            {% block content %}{% endblock %}
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                        <strong>Pauling</strong> by <a href="https://tailordev.fr/">TailorDev</a>.
+                        The source code is licensed under <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+                    </p>
+                    <p>
+                        <a class="icon" href="https://github.com/TailorDev/pauling">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

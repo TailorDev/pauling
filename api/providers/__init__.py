@@ -15,4 +15,6 @@ def extract_data(source_url):
     if m:
         r = requests.get(source_url)
         return f1000_extract_data(r.text)
-    return None
+    return {
+        'download_url': source_url,
+    }

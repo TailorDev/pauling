@@ -52,6 +52,7 @@ def new_poster():
         )
         db.session.add(p)
         db.session.commit()
+        flash('Information successfully saved!')
         return redirect(url_for('publish_poster', id_admin=p.id_admin))
 
     return render_template('new_edit_poster.html', is_edit=False, form=form)

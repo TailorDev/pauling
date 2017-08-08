@@ -1,0 +1,87 @@
+{
+    "authors": [
+        {
+            "full_name": "Nicole Cloonan",
+            "id": 4074952,
+            "is_active": true,
+            "orcid_id": "0000-0001-7802-6647",
+            "url_name": "Nicole_Cloonan"
+        }
+    ],
+    "categories": [
+        {
+            "id": 14,
+            "parent_id": 48,
+            "title": "Molecular Biology"
+        },
+        {
+            "id": 125,
+            "parent_id": 48,
+            "title": "Bioinformatics"
+        },
+        {
+            "id": 13,
+            "parent_id": 48,
+            "title": "Genetics"
+        },
+        {
+            "id": 158,
+            "parent_id": 48,
+            "title": "Biological Techniques"
+        }
+    ],
+    "citation": "Cloonan, Nicole (2014): Imperfect centered sites - a new mode of miRNA binding. figshare.\n 10.6084/m9.figshare.1198155.v1\n Retrieved: 10:19, Aug 08, 2017 (GMT)",
+    "confidential_reason": "",
+    "created_date": "2014-10-09T04:22:53Z",
+    "custom_fields": [],
+    "defined_type": 5,
+    "description": "<p>It is thought that interactions between miRNAs and mRNAs occur using the seed region at the 5' end of the miRNA. Our study demonstrates that imperfect sites in the center of the miRNA are not only very common, they are functional too.</p>",
+    "doi": "10.6084/m9.figshare.1198155.v1",
+    "embargo_date": null,
+    "embargo_reason": "",
+    "embargo_type": null,
+    "figshare_url": "https://figshare.com/articles/Imperfect_centered_sites_a_new_mode_of_miRNA_binding/1198155",
+    "files": [
+        {
+            "download_url": "https://ndownloader.figshare.com/files/1710259",
+            "id": 1710259,
+            "is_link_only": false,
+            "name": "QIMR_AI_Poster_CenteredSites.pdf",
+            "size": 5902329
+        }
+    ],
+    "funding": "",
+    "group_id": 1452,
+    "has_linked_file": false,
+    "id": 1198155,
+    "is_active": true,
+    "is_confidential": false,
+    "is_embargoed": false,
+    "is_metadata_record": false,
+    "is_public": true,
+    "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "value": 1
+    },
+    "metadata_reason": "",
+    "modified_date": "2016-01-19T09:04:15Z",
+    "published_date": "2014-10-09T04:22:53Z",
+    "references": [],
+    "size": 0,
+    "status": "public",
+    "tags": [
+        "mirna",
+        "centered sites",
+        "seed sites",
+        "BLI"
+    ],
+    "thumb": "https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/1710259/thumb.png",
+    "title": "Imperfect centered sites - a new mode of miRNA binding",
+    "url": "https://api.figshare.com/v2/articles/1198155",
+    "url_private_api": "https://api.figshare.com/v2/account/articles/1198155",
+    "url_private_html": "https://figshare.com/account/articles/1198155",
+    "url_public_api": "https://api.figshare.com/v2/articles/1198155",
+    "url_public_html": "https://figshare.com/articles/Imperfect_centered_sites_a_new_mode_of_miRNA_binding/1198155",
+    "version": 1
+}

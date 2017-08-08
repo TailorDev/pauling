@@ -1,12 +1,7 @@
-from flask import Flask, render_template, session, redirect, url_for, request
+from flask import Flask, render_template, session, redirect, url_for, request, jsonify
 from os import environ
 from forms import NewForm, EntryForm
-from jinja2.filters import do_striptags
-from bs4 import BeautifulSoup
-
-import requests
-import json
-import re
+from providers import extract_data
 
 
 app = Flask(__name__)
@@ -36,29 +31,7 @@ def new():
         if not source_url:
             return redirect(url_for('index'))
 
-        m = re.match('https://figshare.com/.+/(\d+)', source_url)
-        if m:
-            r = requests.get('https://api.figshare.com/v2/articles/{}'.format(m.group(1)))
-            data = r.json()
-            context.update({
-                'title': data.get('title'),
-                'authors': ', '.join([a.get('full_name') for a in data.get('authors')]),
-                'abstract': do_striptags(data.get('description')),
-                'download_url': data.get('files')[0].get('download_url') if len(data.get('files')) else '',
-            })
-
-        m = re.match('https://f1000research.com/posters/.+', source_url)
-        if m:
-            r = requests.get(source_url)
-            s = BeautifulSoup(r.text, 'lxml')
-            context.update({
-                'title': s.find(class_='asset-title').text.strip(),
-                'authors': re.sub('\s+', ' ', s.find(class_='asset-authors').text).strip(),
-                'abstract': do_striptags(s.find(id='summary-text-field').get('value')),
-                'download_url': s.find('a', class_='download').get('data-url'),
-                'presented_at': re.sub('\s+', ' ', s.find(class_='asset-subcontainer__content--conf').text).strip(),
-            })
-
+        context.update(extract_data(source_url))
         form = EntryForm(**context)
     else:
         form = EntryForm()

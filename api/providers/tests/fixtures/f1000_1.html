@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title></title>
+  <meta charset="utf-8" />
+  <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>-->
+  <!--<meta lang="$locale">-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!-- This is commented out to fix display problems on mobile devices.
+    We may use it again once we implement a responsive design that supports native device resolutions.
+    <meta name="viewport" content="width=device-width"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="keywords" content="F1000, F1000Research, Faculty of 1000, Open Access, publishing platform, post-publication peer review, rapid publication, fast publication, science publishing, Science, Medicine, Biology, life sciences, peer review, publishing, research articles, negative results, null results, open data, open science, open peer review, replication studies, sound science, cell biology, ecology, neuroscience, physiology, genetics, immunology, health, oncology, anesthesiology, emergency medicine" />
+  <link rel="alternate" title="Recent articles published in F1000Research" href="/rss" type="application/rss+xml" />
+  <meta name="citation_title" content="&lt;p&gt;A Ruby API for the Ensembl database&lt;/p&gt;" />
+  <meta name="citation_journal_title" content="F1000Research" />
+  <meta name="citation_authors" content="Strozzi, Francesco; Aerts, Jan" />
+  <meta name="citation_author" content="Francesco Strozzi" />
+  <meta name="citation_author" content="Jan Aerts" />
+  <meta name="citation_date" content="2011/09/06" />
+  <meta name="citation_volume" content="2" />
+  <meta name="citation_publication_number" content="1326" />
+  <meta name="citation_version_number" content="1" />
+  <meta name="citation_doi" content="10.7490/f1000research.2064.1" />
+  <meta name="DC.identifier" content="doi:10.7490/f1000research.2064.1" />
+  <meta name="og:title" content="Poster: A Ruby API for the Ensembl database has been published by F1000Research." />
+  <meta name="og:description" content="Read this work by Aerts J, at F1000Research." />
+  <link href="/img/favicon-research.ico" rel="shortcut icon" type="image/ico" />
+  <link href="/img/favicon-research.ico" rel="icon" type="image/ico" />
+  <link rel="stylesheet" href="/1500553711601/css/mdl/material-design-lite.min.css" type="text/css" media="all" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="/1500553711601/css/F1000Research.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/F1000ResearchFontIcons/F1000ResearchFontIcons.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/F1000ResearchFontIcons/animation.css" type="text/css" media="all" />
+  <!--[if IE 7]><link rel="stylesheet" href="/css/F1000ResearchFontIcons/F1000ResearchFontIcons-ie7.css" media="all" /><![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
+  <script type="text/javascript" src="/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script type="text/javascript" src="/js/vendor/underscore-1.4.2.js"></script>
+  <script type="text/javascript" src="/js/plugins.js"></script>
+  <script type="text/javascript" src="/js/app/research.js"></script>
+  <script type="text/javascript" src="/js/app/research.ui.js"></script>
+  <script type="text/javascript" src="/js/app/login.js"></script>
+  <script type="text/javascript" src="/js/app/main.js"></script>
+  <script type="text/javascript" src="/js/app/js-date-format.min.js"></script>
+  <script type="text/javascript" src="/js/app/search.js"></script>
+  <script type="text/javascript" src="/js/app/cookies_warning.js"></script>
+  <script type="text/javascript" src="/js/mdl/mdl.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/javascript" src="/js/asset/asset_mobile.js"></script>
+  <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid=ra-503e5e99593dc42c"></script>
+  <script type="text/javascript" src="/js/article/article_metrics.js"></script>
+  <script type="text/javascript">
+        if (window.location.hash == '#_=_'){
+            window.location = window.location.href.split('#')[0]
+        }
+    </script>
+  <script>(function() {
+      var _fbq = window._fbq || (window._fbq = []);
+      if (!_fbq.loaded) {
+        var fbds = document.createElement('script');
+        fbds.async = true;
+        fbds.src = '//connect.facebook.net/en_US/fbds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(fbds, s);
+        _fbq.loaded = true;
+      }
+      _fbq.push(['addPixelId', '1641728616063202']);
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', 'PixelInitialized', {}]);
+    </script>
+  <noscript></noscript>
+ </head>
+ <body id="" class="o-page no-js  ">
+  <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1641728616063202&amp;ev=PixelInitialized" />
+  <!--[if lt IE 7]>      <body id="" class="no-js  lt-ie10 lt-ie9 lt-ie8 lt-ie7 "> <![endif]-->
+  <!--[if IE 7]>         <body id="" class="no-js  lt-ie10 lt-ie9 lt-ie8 "> <![endif]-->
+  <!--[if IE 8]>         <body id="" class="no-js  lt-ie10 lt-ie9 "> <![endif]-->
+  <!--[if IE 9]>         <body id="" class="no-js  lt-ie10 "> <![endif]-->
+  <!--[if gt IE 9]><!-->
+  <!--<![endif]-->
+  <div id="notify-container"></div>
+  <div id="pageWarning"></div>
+  <div id="pageMessage"></div>
+  <div id="pageFooterMessage"></div>
+  <div id="f1r-ga-data" name="f1r-ga-data" class="f1r-ga-data" data-user-registered="false" data-user-module="" data-current-path="" data-location="">
+  </div>
+  <div class="header-wrapper ">
+   <div class="header-row row hide-resp-header  research-layout">
+    <div class="network-header">
+     <ul>
+      <li><a class="heading14 top" href="http://f1000.com/prime" target="_blank">F1000Prime</a></li>
+      <li><a class="heading14 top" href="http://f1000.com/work" target="_blank">F1000Workspace</a></li>
+     </ul>
+    </div>
+   </div>
+   <div class="header-row-container">
+    <div class="research-layout">
+     <div id="responsive-background-mask" class="f1r-background-mask bgblack"></div>
+    </div>
+    <div>
+     <div id="the-responsive-header" class="the-responsive-header">
+      <span class="f1r-icon icon-26_search responsive-nav-search" title="Search"></span>
+      <span class="f1r-icon icon-75_drag_tile responsive-nav-control" title="Show options"></span>
+      <span class="f1r-icon icon-4_close_small responsive-nav-close" title="Hide options"></span>
+     </div>
+     <div class="the-responsive-menu-wrapper no-type-list">
+      <div class="the-responsive-menu-item">
+       <a id="browse" href="/browse" class="">Browse</a>
+      </div>
+      <div class="the-responsive-menu-item">
+       <a id="browse-articles" href="/subjects" class="">Subjects</a>
+      </div>
+      <div class="the-responsive-menu-item">
+       <a id="browse-channels" href="/gateways" class="">Gateways</a>
+      </div>
+      <hr class="responsive-menu-delimiter above-button" />
+      <a class="research-layout submit-an-article " href="/for-authors/publish-your-research" data-f1r-ga-helper="Submit Your Research"> <button class="primary extra-padding white-bg orange-text"> Submit your research </button> </a>
+      <hr class="responsive-menu-delimiter below-button" />
+      <div class="the-responsive-menu-item with-dropdown">
+       <a href="#" class="dropdown-for-responsive-menu "><span class="f1r-icon icon-10_less_small"></span><span class="f1r-icon icon-14_more_small"></span> How to Publish</a>
+       <div class="responsive-dropdown-menu-content" style="display: none;">
+        <a href="/for-authors/publish-your-research" data-f1r-ga-helper="Submit Your Research">Submit your Research</a>
+        <a href="/for-authors/my-submissions">Submissions</a>
+        <a href="/for-authors/posters-and-slides-guidelines">Posters and Slides Guidelines</a>
+        <a href="/for-authors/article-guidelines">Article Guidelines</a>
+        <a href="/for-authors/data-guidelines">Data Guidelines</a>
+        <a href="/for-authors/article-processing-charges">Article Processing Charges</a>
+        <a href="/for-authors/tips-for-finding-referees">Finding Article Referees</a>
+       </div>
+      </div>
+      <div class="the-responsive-menu-item with-dropdown">
+       <a href="#" class="dropdown-for-responsive-menu "><span class="f1r-icon icon-10_less_small"></span><span class="f1r-icon icon-14_more_small"></span> About</a>
+       <div class="responsive-dropdown-menu-content" style="display: none;">
+        <a href="/about">How it Works</a>
+        <a href="/for-referees/guidelines">For Referees</a>
+        <a href="/advisors">Our Advisors</a>
+        <a href="/about/policies">Policies</a>
+        <a href="/glossary">Glossary</a>
+        <a href="/faqs">FAQs</a>
+        <a href="/contact">Contact</a>
+       </div>
+      </div>
+      <div class="the-responsive-menu-item">
+       <a href="http://blog.f1000research.com">Blog</a>
+      </div>
+      <hr class="responsive-menu-delimiter" />
+      <div class="the-responsive-menu-item with-dropdown">
+       <a href="#" class="dropdown-for-responsive-menu "><span class="f1r-icon icon-10_less_small"></span><span class="f1r-icon icon-14_more_small"></span> My Research</a>
+       <div class="responsive-dropdown-menu-content" style="display: none;">
+        <a href="/my/submissions">Submissions</a>
+        <a href="/my/email-alerts">Tracking and Alerts</a>
+        <a href="/my/user-details">My Details</a>
+       </div>
+      </div>
+      <div class="the-responsive-menu-item">
+       <a href="/login?originalPath=/posters/2064" id="login-https" class="most-important">Sign In</a>
+      </div>
+     </div>
+    </div>
+    <div class="clearfix"></div>
+    <script>
+$(document).ready(function () {
+    // Set Header To Be Sticky When Scrolling
+    var stickyHeading = $(".header-row-container"),
+        stickyPoint = 1,
+        stickyScreenWidth = 810,
+        menuWidthAdjust = 301,
+        headerHeightAdjust = 25;
+    $(window).on("scroll", function(e) {
+        var m = $(this).scrollTop(),
+            screenWidth = $(window).outerWidth(true);
+        if (screenWidth <= stickyScreenWidth) {
+            if (m >= stickyPoint) {
+                stickyHeading.addClass("sticky-header-row");
+                $(".responsive-language-bar").hide();
+            } else {
+                stickyHeading.removeClass("sticky-header-row");
+                $(".responsive-language-bar").show();
+            }
+        }
+    }).on("resize", function (e) {
+        if ($(window).outerWidth(true) > stickyScreenWidth) {
+            stickyHeading.removeClass("sticky-header-row");
+            $(".responsive-language-bar").hide();
+        } else {
+            $(".responsive-language-bar").css({ "display": "" });
+        }
+    });
+
+    $("#HOLDsearchForm .f1r-icon.icon-4_close_small").on("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $("#searchForm").closest(".top-search-form-wrapper").slideUp(250);
+        $(".responsive-nav-search").removeClass("open-search");
+        $(".header-wrapper").animate({ "height": "-=" + headerHeightAdjust + "px" }, 200);
+    });
+    $(".responsive-nav-search").on("click", function (e) {
+        e.preventDefault();
+        var theContainer = $(this).closest(".header-row-container").find(".the-menu"),
+            theFormWrapper = $("#searchForm").closest(".top-search-form-wrapper"),
+            theSearchField = $("#header-search-input"),
+            theMenu = $(".the-responsive-menu-wrapper");
+        if (theFormWrapper.is(":visible")) {
+            $(this).removeClass("open-search");
+            theContainer.removeClass("open");
+            theFormWrapper.slideUp(250);
+            $(".header-wrapper").animate({ "height": "-=" + headerHeightAdjust + "px" }, 200);
+        } else {
+            $(this).addClass("open-search");
+            theContainer.addClass("open");
+            if (theMenu.is(":visible")) {
+                $(".responsive-nav-close").click();
+            }
+            $(".header-wrapper").animate({ "height": "+=" + headerHeightAdjust + "px" }, 200);
+            theFormWrapper.slideDown(250);
+            theSearchField.focus();
+        }
+    });
+    $(".responsive-nav-control").on("click", function () {
+        var searchBar = $(".header-row-container").find(".the-menu"),
+            theFormWrapper = $("#searchForm").closest(".top-search-form-wrapper"),
+            leftPosition = $(window).outerWidth(true) + 1;
+        if (theFormWrapper.is(":visible")) {
+            $(".responsive-nav-search").removeClass("open-search");
+            searchBar.removeClass("open");
+            theFormWrapper.slideUp(250);
+            $(".header-wrapper").animate({ "height": "-=" + headerHeightAdjust + "px" }, 200);
+        }
+        $(".the-responsive-menu-wrapper").css({ "left": leftPosition + "px" });
+        $(".the-responsive-menu-wrapper").show().animate({ "left": "-=" + menuWidthAdjust + "px", "opacity": 1 }, 500);
+        $("#responsive-background-mask").fadeIn(500);
+        $(this).fadeOut(250, function () { $(".responsive-nav-close").fadeIn(250); });
+    });
+    $(".responsive-nav-close").on("click", function () {
+        $(".the-responsive-menu-wrapper").animate({ "left": "+=" + menuWidthAdjust + "px", "opacity": 0.4 }, 500, function () {
+            $(".the-responsive-menu-wrapper").hide();
+        });
+        $("#responsive-background-mask").fadeOut(500);
+        $(this).fadeOut(250, function () { $(".responsive-nav-control").fadeIn(250); });
+    });
+    $(".dropdown-for-responsive-menu").on("click", function (e) {
+        e.preventDefault();
+        var theContainer = $(this).closest(".the-responsive-menu-item"),
+            theContent = theContainer.find(".responsive-dropdown-menu-content");
+        if ($(this).hasClass("open")) {
+            $(this).removeClass("open");
+            theContent.slideUp(500);
+        } else {
+            $(this).addClass("open");
+            theContent.slideDown(500);
+        }
+    });
+});
+</script>
+    <div class="header-row row main-header-info ">
+     <a href="/" class="f1000-research-logo has-divider">F1000Research</a>
+     <a class="submit-an-article " href="/for-authors/publish-your-research" data-f1r-ga-helper="Submit Your Research"><span class="f1r-icon icon-30_upload_file"></span>Submit your research</a>
+     <div class="top-search-form-wrapper">
+      <form id="searchForm" class="header-search-form" action="/search">
+       <label class="f1r-icon icon-26_search header-search-icon" for="header-search-input"></label>
+       <input name="q" id="header-search-input" type="text" class="top-search smaller check-xss" placeholder="Search" />
+       <a href="#" class="f1r-icon icon-4_close_small is-hidden" id="header-search-close"></a>
+      </form>
+     </div>
+    </div>
+    <div class="header-row row the-menu ">
+     <div class="navigation-menu">
+      <ul class="nav-list">
+       <li class="browse"><a id="browse" href="/browse">Browse</a></li>
+       <li><a id="browse-articles" href="/subjects">Subjects</a></li>
+       <li><a id="browse-articles" href="/gateways">Gateways</a></li>
+       <li class="li-dropdown-wrapper "> <a href="#" class="dropdown-for-authors dropdown-trigger">How to Publish <span class="f1r-icon icon-14_more_small"></span></a>
+        <div class="dropdown-menu-container navigation-dropdown is-hidden">
+         <ul class="dropdown-links">
+          <li><a href="/for-authors/publish-your-research" data-f1r-ga-helper="Submit Your Research">Submit your Research</a></li>
+          <li><a href="/for-authors/my-submissions">Submissions</a></li>
+          <li><a href="/for-authors/article-guidelines">Article Guidelines</a></li>
+          <li><a href="/for-authors/posters-and-slides-guidelines">Posters and Slides Guidelines</a></li>
+          <li><a href="/for-authors/data-guidelines">Data Guidelines</a></li>
+          <li><a href="/for-authors/article-processing-charges">Article Processing Charges</a></li>
+          <li><a href="/for-authors/tips-for-finding-referees">Finding Article Referees</a></li>
+         </ul>
+        </div> </li>
+       <li class="li-dropdown-wrapper "> <a href="#" class="dropdown-for-about dropdown-trigger">About <span class="f1r-icon icon-14_more_small"></span></a>
+        <div class="dropdown-menu-container navigation-dropdown is-hidden">
+         <ul class="dropdown-links">
+          <li><a href="/about">How it Works</a></li>
+          <li><a href="/for-referees/guidelines">For Referees</a></li>
+          <li><a href="/advisors">Our Advisors</a></li>
+          <li><a href="/about/policies">Policies</a></li>
+          <li><a href="/glossary">Glossary</a></li>
+          <li><a href="/faqs">FAQs</a></li>
+          <li><a href="/contact">Contact</a></li>
+         </ul>
+        </div> </li>
+       <li><a href="http://blog.f1000research.com">Blog</a></li>
+      </ul>
+      <div class="user-navigation">
+       <ul class="nav-list float-left">
+        <li class="li-dropdown-wrapper "> <a href="#" class="dropdown-for-myresearch dropdown-trigger">My Research <span class="f1r-icon icon-14_more_small"></span></a>
+         <div class="dropdown-menu-container navigation-dropdown myresearch-dropdown is-hidden">
+          <ul class="dropdown-links">
+           <li><a href="/login?originalPath=/my/submissions">Submissions</a></li>
+           <li><a href="/login?originalPath=/my/email-alerts">Tracking and Alerts</a></li>
+           <li><a href="/login?originalPath=/my/user-details">My Details</a></li>
+          </ul>
+         </div> </li>
+       </ul>
+       <a href="/login?originalPath=/posters/2064" id="login-https" class="most-important">Sign In</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="content-wrapper o-page__main row ">
+   <div id="highlight-area" class="content">
+    <div class="research-layout channels-layout">
+     <div class="channel-view-container asset-detail-page POSTER">
+      <div class="channel-view-content">
+       <div id="asset-metadata" class="hidden">
+        <input type="hidden" name="assetId" value="2064" />
+        <input type="hidden" name="assetTitle" value="&lt;p&gt;A Ruby API for the Ensembl database&lt;/p&gt;" />
+        <input type="hidden" name="assetType" value="POSTER" />
+        <input type="hidden" name="assetChannel" value="" />
+        <input type="hidden" name="assetThumbnailPath" value="https://d1hiluowqo0t4b.cloudfront.net/posters/thumbnails/f1000research-92434.JPG" />
+       </div>
+       <div class="asset-display-container">
+        <div style="display: none;">
+         DOI: 10.7490/f1000research.2064.1
+        </div>
+        <div class="asset-resp-container">
+         <div class="margin-bottom-30">
+          <div class="asset-top-description">
+           <span class="asset-type-heading POSTER"> <span class="f1r_icon icon-80_poster poster-icon"></span> Poster </span>
+           <div class="asset-info-badge-rounded float-right">
+            NOT PEER REVIEWED
+           </div>
+           <div class="clearfix"></div>
+          </div>
+          <div id="pdf-object-container" class="f1r-file-viewer" style="display: none; height: 550px;" data-url="https://d1hiluowqo0t4b.cloudfront.net/posters/docs/2064"></div>
+         </div>
+         <!-- small screen only - re-ordered from desktop right bar -->
+         <!-- ASSETS (posters, slides etc)- metrics data - Mobile -->
+         <!-- small screen only: tool box -  tabs -->
+         <div class="article-toolbox-wrapper-mobile asset-options-row-mobile">
+          <!-- downloads tab -->
+          <div class="article-tools-icon-mobile" data-section="download">
+           <span class="f1r-icon icon-76_download_file white"></span>
+          </div>
+          <!-- metrics tab -->
+          <div class="article-tools-icon-mobile mobile-metrics article-metrics-wrapper metrics-icon-wrapper" data-section="metrics" data-id="2064" data-downloads="11" data-views="96" data-recommended="">
+           <span class="f1r-icon icon-89_metrics white"></span>
+          </div>
+          <div class="article-tools-divider-mobile"></div>
+          <!-- cite tab -->
+          <div class="article-tools-icon-mobile" data-section="cite">
+           <span class="f1r-icon icon-82_quote white"></span>
+          </div>
+          <!-- share tab -->
+          <div class="article-tools-icon-mobile article-tools-icon-mobile--end" data-section="share">
+           <span class="f1r-icon icon-34_share white"></span>
+          </div>
+          <div class="article-tools-icon-mobile--spacer"></div>
+          <span class="article-toolbox-stretch"></span>
+         </div>
+         <!-- small screen only: tool box - tab contents -->
+         <div class="article-toolbox-content-mobile asset-options-row-mobile">
+          <div class="toolbox-section download">
+           <div class="toolbox-section-heading">
+            Download
+           </div>
+           <div class="toolbox-section-content">
+            <a href="#" data-url="https://d1hiluowqo0t4b.cloudfront.net/posters/docs/2064" target="_blank" class="js-download no-decoration" data-f1r-ga-helper="Download Poster" data-f1r-ga-detail="$gaTitle" title="Download PDF -  (925.93 KB)"> <span class="f1r-icon icon-102_download_pdf toolbox-section-icon"></span> </a>
+           </div>
+          </div>
+          <div class="toolbox-section metrics">
+           <div class="toolbox-section-heading no-top-border">
+            metrics
+           </div>
+           <div class="toolbox-section-divider"></div>
+           <div class="toolbox-section-colsplit">
+            <div class="toolbox-section-heading">
+             VIEWS
+            </div>
+            <div class="toolbox-section-count">
+             96
+            </div>
+           </div>
+           <div class="toolbox-section-option-divider metrics">
+            &nbsp;
+           </div>
+           <div class="toolbox-section-colsplit">
+            <div class="toolbox-section-heading">
+             downloads
+            </div>
+            <div class="toolbox-section-count">
+             11
+            </div>
+           </div>
+           <span class="metrics-details-container metrics-details-container--assets">
+            <div class="toolbox-section-divider"></div>
+            <div class="toolbox-section-content altmetric-section">
+             <div class="altmetrics-image"></div>
+             <div class="altmetrics-more-link">
+              <a href="" target="_blank" class="f1r-standard-link">SEE MORE DETAILS</a>
+             </div>
+             <div class="altmetric-mobile-column-counts"></div>
+             <div class="altmetric-mobile-column-readers"></div>
+            </div> </span>
+          </div>
+          <div class="toolbox-section cite">
+           <div class="toolbox-section-heading no-top-border">
+            CITE
+           </div>
+           <div class="toolbox-section-divider"></div>
+           <div class="toolbox-section-heading">
+             How to cite this poster:
+           </div>
+           <div id="citation-copy-mobile" class="toolbox-section-content text-content heading9 small">
+             Strozzi F and Aerts J. A Ruby API for the Ensembl database. F1000Posters 2011,
+            <b>2</b>:1326 (poster)
+           </div>
+           <div class="toolbox-section-divider"></div>
+          </div>
+          <div class="toolbox-section share">
+           <div class="toolbox-section-heading no-top-border">
+            Share
+           </div>
+           <div class="toolbox-section-divider"></div>
+           <div class="toolbox-section-content">
+            <div>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-email-mobile" title="Email this article"></a>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-twitter" title="Share on Twitter"></a>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-facebook" title="Share on Facebook"></a>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-googleplus" title="Share on Google+"></a>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-linkedin" title="Share on Linkedin"></a>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-delicious" title="Share on Delicious"></a>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-reddit" title="Share on Reddit"></a>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-citeulike" title="Share on CiteUlike"></a>
+             <a target="_blank" class="f1r-shares-icon-square f1r-shares-mendelay" title="Share on Mendelay"></a>
+             <div class="email-article-wrapper email-article-version-container">
+              <div class="toolbox-section-divider"></div>
+              <form action="/posters/2064" method="POST" class="recommend-version-form-mobile research-layout">
+               <p>All fields are required.</p>
+               <input type="hidden" name="assetId" value="2064" />
+               <input id="nameInput" class="form-input-field reg-form" value="" name="senderName" type="text" placeholder="Your name" />
+               <input class="form-input-field reg-form margin-top" value="" name="senderEmail" type="email" placeholder="Your email address" />
+               <textarea class="form-textarea-field reg-form margin-top" name="recipientEmails" placeholder="Recipient email address(es) (comma delimited)"></textarea>
+               <input class="form-input-field reg-form margin-top" name="subject" type="text" value="Interesting poster on F1000Research" placeholder="Subject" />
+               <textarea name="message" class="form-textarea-field reg-form margin-top">I thought this poster from F1000Research (https://f1000research.com) would be of interest to you.</textarea>
+               <div class="captcha-helper">
+                <img id="captchaImageMobile" name="captchaImageForgottenPassword" alt="captcha-code" height="24" src="/jcaptcha?0.10819621550380154" width="80" style="-moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px;" />
+                <input id="getNewChallengeButtonMobile" name="getNewChallengeButtonMobile" value="" type="button" class="forgot-password-reset " />
+               </div>
+               <input id="captchaForgotPasswordMobile" type="text" class="form-input-field half-width smaller captcha-number margin-top float-right" name="captcha" style="margin-right: 2px;" placeholder="Enter captcha" />
+               <div class="clearfix"></div>
+               <p>A full citation will be automatically included.</p>
+               <p><img class="ticker-email-article-details hidden" src="/img/ticker.gif" alt="loading" /></p>
+               <button class="secondary orange margin-bottom">SEND EMAIL</button>
+              </form>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <!-- end of small screen only -->
+         <div class="asset-details-container asset-details-container-large asset-title POSTER">
+          <h2> <p>A Ruby API for the Ensembl database</p> </h2>
+         </div>
+         <div class="asset-details-container asset-details-container-large">
+          <div class="asset-details POSTER">
+           <div class="asset-detail-content">
+            <div class="asset-authors">
+              Francesco Strozzi,
+             <a href="mailto:jan.aerts@esat.kuleuven.be" title="Send email"><span class="f1r-icon icon-6_email orange"></span><span class="author" style="padding-left: 25px;">Jan Aerts</span></a>
+             <sup>1</sup>
+            </div>
+            <div class="asset-published-date">
+              Published 06 Sep 2011
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="asset-subcontainer asset-subcontainer--large asset-subcontainer--border asset-subcontainer--border-top is-open">
+          <div class="asset-subcontainer__title">
+           Author Affiliations
+          </div>
+          <div class="asset-subcontainer__content">
+           <div class="author-affiliations">
+            <sup>1</sup> Faculty of Engineering - ESAT/SCD, Leuven University, Belgium
+            <br />
+           </div>
+           <div class="copyright margin-top asset-subcontainer__content--small">
+            <span class="copywrite-icon float-left" style="pointer-events: none"> <span class="f1r-icon icon-100_open_access"></span> </span>
+            <span class="icon-text float-left copyright"> Copyright &copy; 2017 Strozzi F and Aerts J. This is an open access work distributed under the terms of the <a class="copyrights-link" href="http://creativecommons.org/licenses/by-nc/3.0/" target="_blank">Creative Commons Attribution License</a>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited. </span>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="cf asset-details-container sidecol POSTER">
+         <div class="asset-options POSTER">
+          <!-- ASSETS (posters, slides etc)- metrics data - Desktop -->
+          <div class="assets-metrics asset-options-row divider">
+           <ul class="hlist hlist-metrics">
+            <li class="hlist-item hlist-item-metrics"> <span class="article-metrics-wrapper asset-metrics-wrapper" data-id="2064" data-downloads="11" data-views="96" data-recommended=""><span class="metrics-on-browse article-metrics-icon f1r-icon icon-89_metrics" title="Metrics" data-id="2064"></span> <span class="article-metrics-text">Metrics</span></span> </li>
+            <li class="hlist-item hlist-item-metrics">96 Views</li>
+            <li class="hlist-item hlist-item-metrics">11 Downloads</li>
+           </ul>
+          </div>
+          <div class="clearfix"></div>
+          <div class="asset-options-row margin-bottom">
+           <div class="info-options-link POSTER">
+            <a href="#" data-url="https://d1hiluowqo0t4b.cloudfront.net/posters/docs/2064" target="_blank" title="Download" class="js-download info-button-link download" data-f1r-ga-helper="Download Poster" data-f1r-ga-detail="$gaTitle"> <span class="f1r-icon icon-76_download_file white bigger"></span>
+             <div class="info-options-textgroup">
+              <span class="info-button-text">DOWNLOAD FULL PDF</span>
+              <span class="info-button-filesize"> 925.93 KB</span>
+             </div> </a>
+           </div>
+          </div>
+          <div class="asset-options-row">
+           <div class="info-options-link margin-right share">
+            <a href="#" class="info-button-link share__button" id="shares2064"> <span class="f1r-icon icon-34_share white bigger"></span> <span class="info-button-text">SHARE</span> </a>
+           </div>
+           <div class="info-options-link cite-container">
+            <a href="#" id="cite-this" class="info-button-link cite-this-link" data-f1r-ga-helper="Cite Poster" data-f1r-ga-detail="A Ruby API for the Ensembl database"> <span class="f1r-icon icon-82_quote"></span> <span class="info-button-text cite-this-link">CITE</span> </a>
+           </div>
+           <div class="share__content ">
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-email" title="Email this article"></a>
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-twitter" title="Share on Twitter"></a>
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-facebook" title="Share on Facebook"></a>
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-googleplus" title="Share on Google+"></a>
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-linkedin" title="Share on Linkedin"></a>
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-delicious" title="Share on Delicious"></a>
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-reddit" title="Share on Reddit"></a>
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-citeulike" title="Share on CiteUlike"></a>
+            <a target="_blank" class="f1r-shares-icon-square f1r-shares-mendelay" title="Share on Mendelay"></a>
+            <div data-test="false" class="email-article-wrapper email-article-version-container">
+             <div class="toolbox-section-divider"></div>
+             <form action="/posters/2064" method="POST" class="recommend-version-form-mobile research-layout">
+              <p>All fields are required.</p>
+              <input type="hidden" name="assetId" value="2064" />
+              <input id="nameInput" class="form-input-field reg-form" value="" name="senderName" type="text" placeholder="Your name" />
+              <input class="form-input-field reg-form margin-top" value="" name="senderEmail" type="email" placeholder="Your email address" />
+              <textarea class="form-textarea-field reg-form margin-top" name="recipientEmails" placeholder="Recipient email address(es) (comma delimited)"></textarea>
+              <input class="form-input-field reg-form margin-top" name="subject" type="text" value="Interesting poster on F1000Research" placeholder="Subject" />
+              <textarea name="message" class="form-textarea-field reg-form margin-top">I thought this poster from F1000Research (https://f1000research.com) would be of interest to you.</textarea>
+              <div class="captcha-helper">
+               <img id="captchaImageMobile" name="captchaImageForgottenPassword" alt="captcha-code" height="24" src="/jcaptcha?0.10819621550380154" width="80" style="-moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px;" />
+               <input id="getNewChallengeButtonMobile" name="getNewChallengeButtonMobile" value="" type="button" class="forgot-password-reset " />
+              </div>
+              <input id="captchaForgotPasswordMobile" type="text" class="form-input-field half-width smaller captcha-number margin-top float-right" name="captcha" style="margin-right: 2px;" placeholder="Enter captcha" />
+              <div class="clearfix"></div>
+              <p>A full citation will be automatically included.</p>
+              <p><img class="ticker-email-article-details hidden" src="/img/ticker.gif" alt="loading" /></p>
+              <button class="secondary orange margin-bottom">SEND EMAIL</button>
+             </form>
+            </div>
+           </div>
+          </div>
+          <!-- HIDDEN MODAL FOR CITE ARTICLE -->
+          <div id="cite-asset-popup" class="popup-window-wrapper" style="display: none;">
+           <div class="cite-popup-background"></div>
+           <div class="popup-window cite-this-asset">
+            <div class="popup-window-title small">
+              How to cite this poster:
+            </div>
+            <div id="cite-this-article-text" class="margin-bottom">
+              Strozzi F and Aerts J. A Ruby API for the Ensembl database. F1000Posters 2011,
+             <b>2</b>:1326 (poster)
+            </div>
+            <div class="float-left">
+             <span class="citation-copied-message type1">Copied OK</span>
+            </div>
+            <div class="float-right">
+             <button class="general-white-orange-button close-cite-popup">Close</button>
+            </div>
+           </div>
+          </div>
+          <!-- END HIDDEN MODAL FOR CITE ARTICLE -->
+          <div class="clearfix"></div>
+          <div class="asset-subcontainer asset-subcontainer--border-top asset-subcontainer--sidebar">
+           <div class="asset-subcontainer__title asset-subcontainer__title--sidebar">
+             Part of the following:
+           </div>
+           <div class="asset-subcontainer__content asset-subcontainer__content--sidebar">
+            <div class="asset-channels-box margin-top margin-bottom-20">
+             <div class="related-channel-wrapper asset-page">
+              <a href="/gateways/ISCB" class="no-decoration related-channel-link"> <img class="related__image" src="https://f1000researchdata.s3.amazonaws.com/thumbnails/0e25bc1d-191a-4b77-8271-02fc8a14526c_collection.thumbnail" /> <span class="logo-text POSTER">International Society for Computational Biology Community Journal</span> </a>
+              <div class="no-decoration">
+               <a href="/gateways/ISCB?selectedDomain=articles" class="small-link"> 29 articles </a>
+               <a href="/gateways/ISCB?selectedDomain=posters" class="small-link"> 874 posters </a>
+               <a href="/gateways/ISCB?selectedDomain=slides" class="small-link"> 175 slides </a>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="asset-subcontainer asset-subcontainer--sidebar is-open">
+           <div class="asset-subcontainer__title asset-subcontainer__title--sidebar">
+             Browse by related topics
+           </div>
+           <div class="asset-subcontainer__content--sidebar">
+            <a class="" href="/subjects/387?subtopics=221" title="Browse by related topic">Bioinformatics</a>
+            <a class="" href="/subjects/387?subtopics=200" title="Browse by related topic">Genomics</a>
+           </div>
+          </div>
+         </div>
+         <script src="/js/vendor/ZeroClipboard.min.js"></script>
+         <script>
+    ZeroClipboard.config({ swfPath: "/js/ZeroClipboard.swf" });
+    var clientZC = new ZeroClipboard($(".copy-cite-article-version"));
+    clientZC.on("ready", function(event) {
+        clientZC.on("copy", function(event) {
+            var clipboard = event.clipboardData,
+                theCitationText = $(event.relatedTarget).text(),
+                theCitationHTML = $(event.relatedTarget).html();
+            clipboard.setData("text/plain", $.trim(theCitationText));
+            clipboard.setData("text/html", theCitationHTML);
+        });
+        clientZC.on("aftercopy", function(event) {
+            //console.log("Copied text to clipboard: " + event.data["text/plain"]);
+            var messageContainer = $(".citation-copied-message");
+            messageContainer.fadeIn(200, function () {
+                setTimeout(function () { messageContainer.fadeOut(500); }, 2000);
+            });
+        });
+
+    });
+    clientZC.on("error", function(event) {
+        //console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
+        ZeroClipboard.destroy();
+    });
+</script>
+         <script type="text/javascript">
+
+
+
+// mobile metrics - article include
+
+
+// metrics include
+
+
+var lTitle = "A Ruby API for the Ensembl database".replace("'", '');
+var linkedInUrl = "http://www.linkedin.com/shareArticle?url=https://f1000research.com/posters/2064" + "&title=" + encodeURIComponent(lTitle) + "&summary=" + encodeURIComponent('Read the article by ');
+
+var googlePlusUrl = "http://plus.google.com/share?url=https://f1000research.com/posters/2064";
+
+var citeulikeUrl = "http://www.citeulike.org/posturl?url=https://f1000research.com/posters/2064&title=" + encodeURIComponent(lTitle);
+
+var deliciousUrl = "https://del.icio.us/post?url=https://f1000research.com/posters/2064&title=" + encodeURIComponent(lTitle);
+
+var redditUrl = "http://reddit.com/submit?url=https://f1000research.com/posters/2064" + "&title=" + encodeURIComponent(lTitle);
+
+    linkedInUrl += encodeURIComponent("Strozzi F and Aerts J");
+
+var offsetTop = /chrome/i.test( navigator.userAgent ) ? 4 : -10; // Adjust for Chrome
+
+var addthis_config = {
+        ui_offset_top: offsetTop,
+        //ui_offset_left: 2,
+        //ui_click: true,
+        services_compact : "facebook,twitter,www.linkedin.com,plus.google.com,www.mendeley.com,www.citeulike.org,del.icio.us, reddit.com",
+        services_expanded : "facebook,twitter,www.linkedin.com,plus.google.com,www.mendeley.com,www.citeulike.org,del.icio.us, reddit.com",
+        services_custom : [
+            {
+                name: "LinkedIn",
+                url:  linkedInUrl,
+                icon:"/img/icon/linkedin-icon.jpg"
+            },
+            {
+                name: "Mendeley",
+                url:  "http://www.mendeley.com/import/?url=https://f1000research.com/posters/2064",
+                icon:"/img/icon/mendeley-icon.jpg"
+            },
+            {
+                name: "Google+",
+                url:  googlePlusUrl,
+                icon:"/img/icon/google-plus-icon.jpg"
+            },
+            {
+                name: "citeulike",
+                url:  citeulikeUrl,
+                icon:"/img/icon/citeulike-icon.png"
+            },
+            {
+                name: "Delicious",
+                url:  deliciousUrl,
+                icon:"/img/icon/delicious-icon.gif"
+            },
+            {
+                name: "Reddit",
+                url:  redditUrl,
+                icon:"/img/icon/reddit-icon.png"
+            },
+        ]
+    };
+
+var addthis_share = {
+        url: "https://f1000research.com/posters/2064",
+        templates : {
+            twitter : "A Ruby API for the Ensembl database. Poster in @F1000research, https://f1000research.com/posters/2064"
+        }
+    };
+
+if (typeof(addthis) != "undefined"){
+    addthis.addEventListener('addthis.ready', checkCount);
+    addthis.addEventListener('addthis.menu.share', checkCount);
+}
+
+// ADD SHARING FOR MOBILE TOOLBOX
+$(".f1r-shares-twitter").attr("href", "https://twitter.com/intent/tweet?text=" + addthis_share.templates.twitter);
+$(".f1r-shares-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + addthis_share.url);
+$(".f1r-shares-googleplus").attr("href", addthis_config.services_custom[2].url);
+$(".f1r-shares-linkedin").attr("href", addthis_config.services_custom[0].url);
+$(".f1r-shares-delicious").attr("href", addthis_config.services_custom[4].url);
+$(".f1r-shares-reddit").attr("href", addthis_config.services_custom[5].url);
+$(".f1r-shares-citeulike").attr("href", addthis_config.services_custom[3].url);
+$(".f1r-shares-mendelay").attr("href", addthis_config.services_custom[1].url);
+
+function checkCount(){
+    setTimeout(function(){
+        $(".addthis_button_expanded").each(function(){
+            var count = $(this).text();
+            if (count !== "" && count != "0")
+                $(this).removeClass("is-hidden");
+            else
+                $(this).addClass("is-hidden");
+        });
+    }, 1000);
+}
+
+$(document).ready(function () {
+    function getArticlePublicationInfo(data) {
+        var infoHTML = data.journal + " " + data.publishedDate;
+        if ((data.journalVolume != "" && data.journalVolume != null) ||
+            (data.journalIssue != "" && data.journalIssue != null)) {
+                infoHTML += ", " + data.journalVolume;
+            if (data.journalIssue != "" && data.journalIssue != null) {
+                infoHTML += "(" + data.journalIssue + ")";
+            }
+        }
+        if (data.pageNumbers != "" && data.pageNumbers != null) {
+            infoHTML += "; " + data.pageNumbers;
+        }
+        return infoHTML;
+    }
+
+    //SHARE
+    $('.share__button').click(function(e){
+        e.preventDefault();
+
+        var $content = $('.share__content');
+        $content.slideToggle(300);
+    });
+
+    $('.f1r-shares-email').click(function(){
+        var $email = $('.email-article-wrapper');
+        $email.slideToggle(300);
+    });
+
+    var relatedArticles = {
+        getData: function(container, theID) {
+            var theURL = "https://" + location.host + "/externalArticle/validate/?id=" + theID;
+            $.ajax({
+                url: theURL,
+                type: "GET",
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    if (data.errorMessage === "errorMessage") {
+                        container.remove();
+                    } else {
+                        relatedArticles.displayData(container, data);
+                    }
+                },
+                error: function (event, request, settings) { container.remove(); }
+            });
+        },
+        displayData: function(container, data) {
+            var theLink = container.find(".related-article__link"),
+                theNewLink = "",
+                theInfoWrapper = container.find(".related-article__info"),
+                infoHTML = getArticlePublicationInfo(data),
+                theAuthors = container.find(".related-article__list"),
+                authorArray = data.authors.split(","),
+                maxAuthors = 5,
+                i = 0,
+                authorString = "";
+                        if (authorArray.length > maxAuthors) {
+                for (i = 0; i < maxAuthors; i++) {
+                    if (authorString !== "") { authorString += ", "; }
+                    authorString += "<span class=\"author-listing-formatted\">" + authorArray[i] + "</span>";
+                }
+                authorString += " <span class=\"author-listing-formatted\"><em>et al.</em></span>";
+            } else {
+                authorString = data.authors;
+            }
+            switch (data.type) {
+                case "PUBMED":
+                    theNewLink = "<a href='http://www.ncbi.nlm.nih.gov/pubmed/" + data.id + "' " +
+                                "target='_blank' title='Click to open this article in a new window.' " +
+                                "class='related-article__link'>" + data.title + "</a>";
+                    break;
+                case "DOI":
+                    theNewLink = "<a href='http://dx.doi.org/" + data.id + "' " +
+                                "target='_blank' title='Click to open this article in a new window.' " +
+                                "class='related-article__link'>" + data.title + "</a>";
+                    break;
+                default:
+                    theNewLink = data.title;
+                    break;
+            }
+            theLink.replaceWith(theNewLink);
+            theInfoWrapper.html(infoHTML);
+            theAuthors.html(authorString);
+        }
+    }
+
+    // asset citation
+    $(".cite-this-link").on("click", function(e) {
+        e.preventDefault();
+        $("#cite-asset-popup").fadeIn(200);
+    });
+    $(".cite-popup-background, .close-cite-popup").on("click", function() {
+        $("#cite-asset-popup").fadeOut(200);
+    });
+
+    $(".related-article").each(function (idx, el) {
+        var theID = $(this).attr("data-relatedID") || "";
+        if (theID !== "") { relatedArticles.getData($(this), theID); }
+    });
+
+    /* BIND SECTION CONTROL FOR MOBILES */
+    $(".sidebar-heading-wrapper").on("click", function (e) {
+        e.preventDefault();
+        var isMobileSection = $(this).find(".section-control").size() > 0 ? true : false,
+            icons = $(this).find(".f1r-icon"),
+            heading = $(this).find(".sidebar-heading"),
+            content = $(this).next();
+        if (isMobileSection) {
+            content.slideToggle(500, function () { content.toggleClass("section-is-open"); });
+            heading.toggleClass("section-is-open");
+            icons.toggleClass("is-hidden");
+        }
+    });
+
+    /* Metrics */
+    $(document).on("mouseup", function(e) {
+        var metricsContainer = $(".article-metrics-popover-wrapper");
+        if (!metricsContainer.is(e.target) && metricsContainer.has(e.target).length === 0) {
+            $(".article-metrics-close-button").click();
+        }
+    });
+
+   $(".metrics-on-browse").attachArticleMetrics('2064', {
+        articleMetricsView: true,
+        asset: true /* asset flag */
+    });
+
+});
+</script>
+        </div>
+        <div class="asset-details-container asset-details-container-mobile asset-title POSTER">
+         <div class="asset-published-date">
+           Published 06 Sep 2011
+         </div>
+         <h2> <p>A Ruby API for the Ensembl database</p> [version 1; not peer reviewed] </h2>
+        </div>
+        <div class="asset-details-container asset-details-container-mobile">
+         <div class="asset-details POSTER">
+          <div class="asset-detail-content">
+           <div class="asset-authors">
+             Francesco Strozzi,
+            <a href="mailto:jan.aerts@esat.kuleuven.be" title="Send email"><span class="f1r-icon icon-6_email orange"></span><span class="author" style="padding-left: 25px;">Jan Aerts</span></a>
+            <sup>1</sup>
+           </div>
+          </div>
+         </div>
+        </div>
+        <!-- for mobile -->
+        <div class="asset-subcontainer asset-subcontainer--small asset-subcontainer--border asset-subcontainer--border-top is-open">
+         <div class="asset-subcontainer__title">
+          Author Affiliations
+         </div>
+         <div class="asset-subcontainer__content">
+          <div class="author-affiliations">
+           <sup>1</sup> Faculty of Engineering - ESAT/SCD, Leuven University, Belgium
+           <br />
+          </div>
+         </div>
+        </div>
+        <div class="asset-resp-container">
+         <div class="asset-subcontainer asset-subcontainer--border is-open">
+          <div class="asset-subcontainer__title">
+           Presented at
+          </div>
+          <div class="asset-subcontainer__content asset-subcontainer__content--conf">
+            ISMB/ECCB 2011
+          </div>
+         </div>
+         <div class="abstract abstract--nobg">
+          <div class="abstract__title abstract__title--noborder">
+           Abstract
+          </div>
+          <div class="abstract__content">
+           <input id="summary-text-field" type="hidden" value="The Ensembl database makes genomic features available via its Genome Browser. It is also possible to access the underlying data through a Perl API for advanced querying.
+We have developed a full-featured Ruby API to the Ensembl databases, providing the same functionality as the Perl interface with additional features.
+
+&lt;p&gt;&lt;i&gt;Main conclusion&lt;/i&gt;: A single Ruby API is used to access different releases of the Ensembl databases and is also able to query multi-species databases.&lt;p&gt; &lt;/p&gt;" />
+          </div>
+         </div>
+         <div class="asset-subcontainer asset-subcontainer--border asset-subcontainer--border-top is-open">
+          <div class="asset-subcontainer__title">
+           Competing Interests
+          </div>
+          <div class="asset-subcontainer__content asset-subcontainer__content--small">
+           <p>No relevant conflicts of interest declared.</p>
+          </div>
+         </div>
+         <div class="asset-details-container POSTER asset-comments">
+          <div id="asset-comments-section" class="asset-details asset-comments POSTER co">
+           <div class="cf margin-bottom-20">
+            <div class="asset-comments__title">
+             Comments
+            </div>
+            <div class="asset-comments__counter info-box">
+             0 Comments
+            </div>
+            <div class="asset-comments__action">
+             <span class="login-row"> <a href="/login?originalPath=/posters/2064&amp;scrollTo=asset-comments-section" class="f1r-standard-link no-decoration">SIGN IN</a> OR <a href="/register?originalPath=/posters/2064&amp;scrollTo=asset-comments-section" class="f1r-standard-link no-decoration">REGISTER</a> TO ADD YOUR COMMENT. </span>
+            </div>
+           </div>
+           <div id="asset-new-comment" class="is-hidden asset-new-comment padding-20">
+             Your comment will automatically be labelled
+            <span class="bold">AUTHOR</span> if you are one of the authors of this article.
+            <p> User comments must be in English, comprehensible and relevant to the article under discussion. We reserve the right to remove any comments that we consider to be inappropriate, offensive or otherwise in breach of the <a href="#" class="f1r-standard-link comments-tandc">User Comment Terms and Conditions</a>. Commenters must not use a comment for personal attacks. When criticisms of the article are based on unpublished data, the data should be made available. </p>
+            <div class="margin-bottom-20">
+             <div class="form-check-box">
+              <input type="checkbox" id="acceptedTermsAndConditions" name="acceptedTermsAndConditions" class="is-hidden" value="false" />
+             </div> I accept the
+             <a href="#" class="f1r-standard-link comments-tandc">User Comment Terms and Conditions</a>
+            </div>
+            <div class="form-error-text utac margin-top" style="display: none;"></div>
+            <div class="margin-top margin-bottom-20 assetpage-new-comment-container">
+             <textarea id="user-comment-field" name="user-comment-field" class="form-textarea-field user-comment-field margin-bottom"></textarea>
+             <div class="form-error-text ucf margin-top" style="display: none;"></div>
+            </div>
+            <div class="comment-competing-interests-wrapper">
+             <div class="comment-competing-interests-heading heading8 uppercase">
+              Competing Interests
+             </div>
+             <div class="comment-competing-interests">
+              Please disclose any
+              <a href="#" class="f1r-standard-link conflicts-interests">competing interests</a> that might be construed to influence your judgment of the article's or referee response's validity or importance.
+             </div>
+            </div>
+            <textarea id="competing-interests" name="competing-interests" class="heading10 form-textarea-field competing-interests margin-bottom-20 check-xss"></textarea>
+            <div style="text-align: right;">
+             <button type="button" class="tertiary no-fill orange-text-and-border extra-right-margin hide-new-comment">CANCEL</button>
+             <button type="button" class="tertiary orange post-new-comment-button">POST</button>
+            </div>
+            <div class="form-error-text comment-post-error margin-top" style="display: none;"></div>
+           </div>
+           <div class="modal-window-wrapper is-hidden research-layout">
+            <div id="comment-terms-and-conditions" class="modal-window scroller-layout terms-and-coditions-modal">
+             <div class="close-modal-button">
+              <span class="f1r-icon icon-4_close_small with-hover" title="Close"></span>
+             </div>
+             <div class="modal-heading heading3">
+              User Comment Terms and Conditions
+             </div>
+             <div class="modal-info-row heading9 small">
+               Use of this website is subject to the F1000
+              <a href="/about/legal/termsandconditions" target="_blank" class="f1r-standard-link">General terms and conditions</a>.
+             </div>
+             <div class="modal-info-row heading9 small">
+               Submission of user comments to this website is subject to additional Terms and Conditions. By clicking &quot;I accept the User Comment Terms and Conditions&quot; you agree to be bound by these conditions every time you submit a comment.
+             </div>
+             <div class="modal-scroller-heading heading5">
+              Terms relating to user comments
+             </div>
+             <div class="modal-scroller">
+              <ol class="numbered-list no-padding">
+               <li value="1" class="standard-padding"> This Agreement shall begin on the date hereof. </li>
+               <li class="standard-padding"> Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data ('Comments') in areas of the website. F1000 does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of F1000, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws F1000 shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. </li>
+               <li class="standard-padding"> F1000 reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions. </li>
+               <li class="standard-padding">You warrant and represent that:
+                <ol class="numbered-list no-padding">
+                 <li class="standard-padding"> You are entitled to post the Comments on the website and have all necessary licenses and consents to do so; </li>
+                 <li class="standard-padding"> the Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party; </li>
+                 <li class="standard-padding"> the Comments do not contain any defamatory, libellous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy; </li>
+                 <li class="standard-padding"> the Comments do not contain any contaminating or destructive features or devices such as viruses, time bombs or coding designed to interrupt, destroy or limit the functionality of this website or any of this website's user's computer equipment or software; and </li>
+                 <li class="standard-padding"> the Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity. </li>
+                </ol> </li>
+               <li class="standard-padding"> You hereby grant to F1000 a non-exclusive royalty-free licence to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media. </li>
+               <li class="standard-padding"> You hereby agree to indemnify and keep indemnified F1000, its affiliates, contractors and agents from and against any and all losses (including without limitation direct, indirect and consequential loss), costs, claims, damages or expenses of whatever nature and howsoever caused arising directly or indirectly from any breach of these Terms and Conditions or arising from the Comments posted on this website or content contained in any email sent using the facilities provided by the website by you including without limitation as a result of any infringement of any intellectual property or other proprietary rights, libel, defamation, obscenity or the Comments being otherwise unlawful. </li>
+              </ol>
+             </div>
+            </div>
+           </div>
+           <div class="modal-window-wrapper is-hidden research-layout">
+            <div id="comment-competing-interests" class="modal-window scroller-layout">
+             <div class="close-modal-button">
+              <span class="f1r-icon icon-4_close_small with-hover" title="Close"></span>
+             </div>
+             <div class="modal-heading heading3">
+              Competing Interests Policy
+             </div>
+             <div class="modal-info-row heading9 small">
+               Provide sufficient details of any financial or non-financial competing interests to enable users to assess whether your comments might lead a reasonable person to question your impartiality. Consider the following examples, but note that this is not an exhaustive list:
+             </div>
+             <div class="modal-scroller">
+              <div class="heading5">
+               Examples of 'Non-Financial Competing Interests'
+              </div>
+              <ol class="numbered-list no-padding">
+               <li class="standard-padding">Within the past 4 years, you have held joint grants, published or collaborated with any of the authors of the selected paper.</li>
+               <li class="standard-padding">You have a close personal relationship (e.g. parent, spouse, sibling, or domestic partner) with any of the authors.</li>
+               <li class="standard-padding">You are a close professional associate of any of the authors (e.g. scientific mentor, recent student).</li>
+               <li class="standard-padding">You work at the same institute as any of the authors.</li>
+               <li class="standard-padding">You hope/expect to benefit (e.g. favour or employment) as a result of your submission.</li>
+               <li class="standard-padding">You are an Editor for the journal in which the article is published.</li>
+              </ol>
+              <div class="heading5 padding-top">
+               Examples of 'Financial Competing Interests'
+              </div>
+              <ol class="numbered-list no-padding">
+               <li class="standard-padding">You expect to receive, or in the past 4 years have received, any of the following from any commercial organisation that may gain financially from your submission: a salary, fees, funding, reimbursements.</li>
+               <li class="standard-padding">You expect to receive, or in the past 4 years have received, shared grant support or other funding with any of the authors.</li>
+               <li class="standard-padding">You hold, or are currently applying for, any patents or significant stocks/shares relating to the subject matter of the paper you are commenting on.</li>
+              </ol>
+             </div>
+            </div>
+           </div>
+           <div id="comment-editor-wrapper" class="is-hidden padding-20" style="background-color: #eee; border: 1px solid #c3c3c3; width: 610px;">
+            <div class="margin-top margin-bottom-20 assetpage-new-comment-container">
+             <textarea id="edit-a-comment" name="edit-a-comment" class="form-textarea-field user-comment-field margin-bottom check-xss"></textarea>
+             <div class="form-error-text editor-ucf margin-top" style="display: none;"></div>
+            </div>
+            <div class="comment-competing-interests-wrapper">
+             <div class="comment-competing-interests-heading heading8 uppercase">
+              Competing Interests
+             </div>
+             <div class="comment-competing-interests">
+              Please disclose any
+              <a href="#" class="f1r-standard-link conflicts-interests">competing interests</a> that might be construed to influence your judgment of the article's or referee response's validity or importance.
+             </div>
+            </div>
+            <textarea id="competing-interests-edit" name="competing-interests-edit" class="heading10 form-textarea-field competing-interests margin-bottom-20 check-xss" style="width: 590px;"></textarea>
+            <div style="text-align: right;">
+             <button type="button" class="tertiary no-fill orange-text-and-border extra-right-margin hide-edit-comment">CANCEL</button>
+             <button type="button" class="tertiary orange post-edit-comment-button">POST</button>
+            </div>
+            <div class="form-error-text editor-comment-post-error margin-top" style="display: none;"></div>
+           </div>
+          </div>
+          <script src="/js/asset/asset_comments.js"></script>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div id="headerbar-template" class="research-layout" style="display:none;position:fixed;top:0;right:0;height:25px;opacity:0.5;margin-right:20px;">
+       <button class="primary orange white-text extra-padding with-hover" id="close-full-screen">CLOSE</button>
+      </div>
+      <div id="fs-frame" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background-color:#ddd;z-index:1000;">
+       <div class="float-right">
+        <button class="secondary orange white-text with-hover" id="close-full-screen-frame">CLOSE</button>
+       </div>
+       <iframe src="" frameborder="0" allowtransparency="true" allowfullscreen="true" width="100%" height="97%"></iframe>
+      </div>
+      <script type="text/javascript" src="/js/vendor/pdfobject.min.js"></script>
+      <style>
+    #pdf-object-container object {
+        width: 100%;
+    }
+</style>
+      <script>
+$(document).ready(function() {
+    $('.asset-subcontainer__title').click(function(){
+        $(this).parent().toggleClass('is-open');
+    })
+
+    if ($("#assetPreview").size() > 0 && $("#assetPreview").val() === "true") {
+        var newCommentHTML = "<span class=\"float-right add-preview-comment\" style=\"border: 1px solid #f2673c; border-radius: 2px; color: #f2673c; padding: 4px 8px;\" title='Links on the preview page are for display purposes only.'>ADD YOUR COMMENT</span>";
+        $(".asset-display-container a").each(function(idx, el) {
+            var elClasses = $(el).attr("class") ? $(el).attr("class") : '';
+            if(elClasses.indexOf('js-download') > -1){
+                elClasses = elClasses.split('js-download')[1].trim();
+            }
+            $(el).replaceWith("<span class='is-preview-link "+ elClasses +"' title='Links on the preview page are for display purposes only.'>" + $(el).html() + "</span>");
+        });
+        $(".asset-display-container button.add-new-comment").replaceWith(newCommentHTML);
+    }
+});
+</script>
+     </div>
+    </div>
+    <div id="titleforpage" style="display: none;">
+      A Ruby API for the Ensembl database - F1000Research
+    </div>
+    <div class="padding-top-20">
+     &nbsp;
+    </div>
+    <!-- SCRIPTS FOR THE MESSENGER DISPLAY -->
+    <script src="/js/app/messenger.js"></script>
+    <!-- SCRIPTS FOR THE UI/FORM FIELD HELPERS -->
+    <script src="/js/app/research.helpers.js"></script>
+    <!-- SCRIPTS FOR THE EMBEDDED FILE VIEWER -->
+    <script src="/js/app/research.viewer.js"></script>
+    <!-- SCRIPTS FOR THE VIDEOS -->
+    <script src="/js/app/research.videos.js" type="text/javascript"></script>
+    <!-- SCRIPTS FOR THE TEXT EDITOR -->
+    <script src="/js/ckeditor/ckeditor.js"></script>
+    <script src="/js/ckeditor/adapters/jquery.js"></script>
+    <script src="/js/app/text_editor_controller.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        var pageTitle = escape("A Ruby API for the Ensembl database"),
+            pageTitle = pageTitle.replace(/%0A/g, "").trim(),
+            gaAction = "Posters Page: " + unescape(pageTitle),
+            gaCat = "F1000Research";
+        if (gaCat === "") {
+            gaCat = $("body").hasClass("wellcome-brand") ? "Wellcome Open Research" : "F1000Research";
+        }
+        GAHelper.track({category: gaCat, action: gaAction, label: "pageviews"});
+    });
+</script>
+    <script type="text/javascript">
+
+    var share = $(".add-this-button"),
+        linkedInUrl = "http://www.linkedin.com/shareArticle?url=" + share.attr("url") +
+                      "&title=" + encodeURIComponent(share.attr("title")) +
+                      "&summary=" + encodeURIComponent('Read the article by '),
+        googlePlusUrl = "http://plus.google.com/share?url=" + share.attr("url"),
+        citeulikeUrl = "http://www.citeulike.org/posturl?url=" + share.attr("url")+ "&title=" + encodeURIComponent(share.attr("title")),
+        deliciousUrl = "https://del.icio.us/post?url=" + share.attr("url")+ "&title=" + encodeURIComponent(share.attr("title")),
+        redditUrl = "http://reddit.com/submit?url=" + share.attr("url") +
+                    "&title=" + encodeURIComponent(share.attr("title")),
+        mendeleyUrl = "http://www.mendeley.com/import/?url=" + share.attr("urlMendeley");
+        if (share.attr("authors") !== "") { linkedInUrl += encodeURIComponent(share.attr("authors")); }
+
+    var addthis_config = {
+        services_compact : "facebook,twitter,linkedin,googleplus,mendeley,citeulike,delicious,reddit",
+        services_expanded : "facebook,twitter,linkedin,googleplus,mendeley,citeulike,delicious,reddit",
+        services_custom : [
+            { name: "LinkedIn", url: linkedInUrl, icon: "/img/icon/linkedin-icon.jpg" },
+            { name: "Mendeley", url: mendeleyUrl, icon:"/img/icon/mendeley-icon.jpg" },
+            { name: "Google+", url: googlePlusUrl, icon:"/img/icon/google-plus-icon.jpg" },
+            { name: "CiteULike", url: citeulikeUrl, icon:"/img/icon/citeulike-icon.png" },
+            { name: "Delicious", url: deliciousUrl, icon:"/img/icon/delicious-icon.gif" },
+            { name: "Reddit", url: redditUrl, icon: "/img/icon/reddit-icon.png" }
+        ]
+    };
+
+    var addthis_share = {
+        url : share.attr("articleURL"),
+        templates : { twitter : share.attr("titleTwitter") + " " + share.attr("url") }
+    };
+
+$(document).ready(function() {
+
+    R.helpers.initialize({ "backToTop": true }); // Initialize the helper functions
+
+    var pageTitle = $("#titleforpage").text() || "";
+    if (pageTitle === "") { pageTitle = "F1000Research"; }
+    document.title = pageTitle;
+
+    $("body").on("click", "#at_hover a", function(e) {
+        var updateShareCountURL = "/assets/share/" + $("#asset-metadata input[name='assetId']").val() + "?type=" + e.target.innerHTML;
+        $.get(updateShareCountURL);
+    });
+
+    $("body").on("click", ".article-metrics-wrapper:not(.js-is-preview)", function (e) {
+        var pdfWrapper = $("#pdf-object-container"),
+            ieDivWidth = pdfWrapper.outerWidth(),
+            ieDivHeight = pdfWrapper.outerHeight(),
+            ieDiv = $("<div></div>", {
+                "class": "js-replace-iframe-ie",
+                "css": {
+                    "width": ieDivWidth + "px",
+                    "height": ieDivHeight + "px",
+                    "background-color": "rgba(0, 0, 0, 0.3)"
+                }
+            });
+        if ($(".is-iebrowser").size()) {
+            pdfWrapper.hide();
+            ieDiv.insertAfter(pdfWrapper);
+        }
+    });
+});
+</script>
+   </div>
+  </div>
+  <div class="footer-wrapper">
+   <div class="footer row">
+    <div class="product-columns clearfix">
+     <div class="product-column left-column">
+      <div class="product-column-header header-logo"></div>
+      <div class="product-column-content main-text">
+        An open research publishing platform for life scientists that offers immediate publication and transparent peer review.
+      </div>
+      <div class="products-social-links">
+       <span class="products-social-heading">Follow us</span>
+       <a href="https://www.facebook.com/F1000Research" target="_blank" class="f1r-icon icon-55_footer_facebook"></a>
+       <a href="https://www.linkedin.com/company/faculty-of-1000-ltd" target="_blank" class="f1r-icon icon-56_footer_linkedin"></a>
+       <a href="https://twitter.com/#!/F1000Research" target="_blank" class="f1r-icon icon-56_footer_twitter"></a>
+       <a href="http://www.youtube.com/user/F1000research" target="_blank" class="f1r-icon icon-57_footer_youtube"></a>
+      </div>
+      <div class="responsive-footer-items">
+       <div class="network-header">
+        <a class="prime" href="http://f1000.com/prime" target="_blank"></a>
+        <a class="workspace" href="http://f1000.com/work" target="_blank"></a>
+       </div>
+      </div>
+     </div>
+     <div class="product-column right-column">
+      <div class="product-column-header"></div>
+      <div class="product-column-content clearfix">
+       <div class="product-nav-column hide-resp-footer">
+        <ul>
+         <li><a href="/browse">Browse</a></li>
+         <li><a href="/subjects">Subjects</a></li>
+         <li><a href="/gateways">Gateways</a></li>
+        </ul>
+       </div>
+       <div class="product-nav-column hide-resp-footer">
+        <ul>
+         <li><a href="/about">How it Works</a></li>
+         <li><a href="http://blog.f1000research.com/">Blog</a></li>
+         <li><a href="/contact">Contact</a></li>
+        </ul>
+       </div>
+       <a class="publish-your-research hide-resp-footer" href="/for-authors/publish-your-research" data-f1r-ga-helper="Submit Your Research">Submit your research</a>
+       <div class="responsive-footer-items">
+        <div class="product-nav-column">
+         <ul>
+          <li class="padding-right-20"><a href="/">Home</a></li>
+          <span class="divider">|</span>
+          <li class="padding-left-20"><a href="/contact">Contact</a></li>
+         </ul>
+        </div>
+        <a class="publish-your-research" href="/for-authors/publish-your-research" data-f1r-ga-helper="Submit Your Research">Submit your research</a>
+       </div>
+      </div>
+      <div class="products-copyright">
+       &copy; 2012-2017 F1000 Research Ltd. ISSN 2046-1402 |
+       <a href="/about/legal" class="copyrightLegal">Legal</a> | Partner of
+       <a target="_blank" href="http://www.who.int/hinari/en/">HINARI</a> •
+       <a target="_blank" href="http://crossref.org/">CrossRef</a> •
+       <a target="_blank" href="http://about.orcid.org/">ORCID</a> •
+       <a target="_blank" href="http://www.biosharing.org">BioSharing</a>
+      </div>
+     </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="cookie-warning-space"></div>
+   </div>
+  </div>
+  <div class="cookie-warning">
+   <div class="instruction">
+    The
+    <em>F1000Research</em> website uses cookies. By continuing to browse the site, you are agreeing to our use of cookies.
+    <a href="/about/legal/privacypolicy#use-of-cookies">Find out more &raquo;</a>
+   </div>
+   <div class="close-button"></div>
+  </div>
+  <script>
+        R.templateTests.simpleTemplate = R.template('<p class="$variable.one">$text</p><p class="${variable.two}">$text</p><p class="$!variable.three">$text</p><p class="$!{variable.four}">$text</p><p class="${selector}.five">$text</p>');
+        R.templateTests.runTests();
+
+        $(function(){R.ui.dropdowns('.dropdown-for-authors, .dropdown-for-about, .dropdown-for-myresearch');});
+        // $(function(){R.ui.dropdowns('.dropdown-for-referees');});
+
+        $(document).ready(function () {
+            if ($(".cookie-warning").is(":visible")) {
+                $(".sticky").css("margin-bottom", "35px");
+                $(".devices").addClass("devices-and-cookie-warning");
+            }
+            $(".cookie-warning .close-button").click(function (e) {
+                $(".devices").removeClass("devices-and-cookie-warning");
+                $(".sticky").css("margin-bottom", "0");
+            });
+
+            $("#tweeter-feed .tweet-message").each(function (i, message) {
+                var self = $(message);
+                self.html(linkify(self.html()));
+            });
+
+            $(".partner").on("mouseenter mouseleave", function() {
+                $(this).find(".gray-scale, .colour").toggleClass("is-hidden");
+            });
+        });
+
+    </script>
+  <div class="sign-in-popup">
+   <!-- <a href="#" class="sign-in shadow">Sign in <span class="sign-in-image-active"></span></a> -->
+   <a href="#" class="sign-in ${locale}">Sign In <span class="arrow-closed sign-in-arrow-padding arrow-opened"></span></a>
+   <div class="sign-in-form">
+    <form action="https://f1000research.com/j_spring_oauth_security_check" id="googleOAuth" method="post" target="_top">
+     <input class="target-field" type="hidden" name="target" value="/posters/2064" />
+     <input id="google-remember-me" name="_spring_security_oauth_remember_me" type="hidden" value="true" />
+     <input id="system" name="system" type="hidden" value="GOOGLE" />
+    </form>
+    <form action="https://f1000research.com/j_spring_oauth_security_check" id="facebookOAuth" method="post" target="_top">
+     <input class="target-field" type="hidden" name="target" value="/posters/2064" />
+     <input id="facebook-remember-me" name="_spring_security_oauth_remember_me" type="hidden" value="true" />
+     <input id="system" name="system" type="hidden" value="FACEBOOK" />
+    </form>
+    <form action="https://f1000research.com/j_spring_oauth_security_check" id="orcidOAuth" method="post" target="_top">
+     <input class="target-field" type="hidden" name="target" value="/posters/2064" />
+     <input id="orcid-remember-me" name="_spring_security_oauth_remember_me" type="hidden" value="true" />
+     <input id="system" name="system" type="hidden" value="ORCID" />
+    </form>
+    <form id="sign-in-form" class="login-container" action="https://f1000research.com/j_spring_security_check" method="post" name="f">
+     <div id="sign-in-form-gfb-popup"></div>
+     <input class="target-field" type="hidden" name="target" value="/posters/2064" />
+     <input type="text" name="j_username" id="signin-email-box" class="sign-in-input" placeholder="Email address" />
+     <input type="password" name="j_password" id="signin-password-box" class="sign-in-input" placeholder="Password" />
+     <div class="sign-in-remember">
+      <div class="checkbox-wrapper">
+       <input type="checkbox" id="remember-me" name="_spring_security_remember_me" class="checkbox is-hidden" />
+      </div>
+      <span class="checkbox-label">Remember me</span>
+     </div>
+     <a href="#" class="sign-in-link" id="forgot-password-link">Forgotten your password?</a>
+     <div class="sign-in-button-container margin-top margin-left-20 margin-bottom">
+      <button type="submit" id="sign-in-button" class="sign-in-buttons general-white-orange-button">Sign In</button>
+      <button type="button" id="sign-in-cancel" class="sign-in-buttons sign-in-cancel-button margin-left">Cancel</button>
+      <div class="clearfix"></div>
+     </div>
+     <div class="sign-in-error">
+      Email or password not correct. Please try again
+     </div>
+     <div class="sign-in-loading">
+      Please wait...
+     </div>
+    </form>
+    <div class="forgot-password-container">
+     <script type="text/javascript">
+	$(function(){
+		// Note: All the setup needs to run against a name attribute and *not* the id due the clonish
+		// nature of facebox...
+		$("input[id=getNewChallengeButton]").click(function(){
+			captchaHelper.setNewChallengeImage();
+		});
+		$("a[id=googleSignInButton]").click(function(event){
+            event.preventDefault();
+            $("input[id=oAuthSystem]").val("GOOGLE");
+            $("form[id=oAuthForm]").submit();
+        });
+        $("a[id=facebookSignInButton]").click(function(event){
+            event.preventDefault();
+            $("input[id=oAuthSystem]").val("FACEBOOK");
+            $("form[id=oAuthForm]").submit();
+        });
+        $("a[id=orcidSignInButton]").click(function(event){
+            event.preventDefault();
+            $("input[id=oAuthSystem]").val("ORCID");
+            $("form[id=oAuthForm]").submit();
+        });
+	});
+</script>
+     <span class="text first"> If you've forgotten your password, please enter your email address below and we'll send you instructions on how to reset your password. <p>The email address should be the one you originally registered with F1000.</p> </span>
+     <input name="email" class="sign-in-input" id="email-forgot-password" type="text" placeholder="Email address" />
+     <div class="forgot-password-email-error">
+       Email address not valid, please try again
+     </div>
+     <div class="forgot-password-google-email-error">
+      <p>You registered with F1000 via Google, so we cannot reset your password.</p>
+      <p>To sign in, please click <a href="#" id="googleSignInButton">here</a>.</p>
+      <p>If you still need help with your Google account password, please click <a href="https://www.google.com/accounts/recovery">here</a>.</p>
+     </div>
+     <div class="forgot-password-facebook-email-error">
+      <p>You registered with F1000 via Facebook, so we cannot reset your password.</p>
+      <p>To sign in, please click <a href="#" id="facebookSignInButton">here</a>.</p>
+      <p>If you still need help with your Facebook account password, please click <a href="https://www.facebook.com/recover/initiate">here</a>.</p>
+     </div>
+     <div class="clearfix"></div>
+     <div class="forgot-password-captcha-error">
+       Code not correct, please try again
+     </div>
+     <div class="clearfix"></div>
+     <div class="sign-in-button-container margin-left-20 margin-bottom">
+      <button type="button" id="sign-in-reset-password" class="sign-in-buttons general-white-orange-button">Reset password</button>
+      <button type="button" id="forgot-password-cancel" class="sign-in-buttons sign-in-cancel-button margin-left">Cancel</button>
+      <div class="clearfix"></div>
+     </div>
+     <span class="text last"> Email <a href="mailto:"></a> for further assistance. </span>
+     <form action="https://f1000research.com/j_spring_oauth_security_check" id="oAuthForm" method="post" target="_top">
+      <input class="target-field" type="hidden" name="target" value="/posters/2064" />
+      <input id="oAuthSystem" name="system" type="hidden" />
+     </form>
+     <div class="forgot-password-server-error">
+      Server error, please try again.
+     </div>
+     <div class="sign-in-success">
+      <p>We have sent an email to <span id="email-value"></span>, please follow the instructions to reset your password.</p>
+      <p>If you don't receive this email, please check your spam filters and/or contact .</p>
+     </div>
+     <div class="sign-in-loading">
+      Please wait...
+     </div>
+    </div>
+    <div class="sign-in-form-register-section">
+     <div class="sign-in-button-container margin-left-20 margin-bottom">
+      <a href="/register" title="Register"><button type="button" id="sign-in-register-button" class="sign-in-buttons general-white-orange-button">Register</button></a>
+      <div class="clearfix"></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script type="text/javascript">
+$(document).ready(function () {
+
+    signIn.createSignInAsRow($("#sign-in-form-gfb-popup"));
+
+    $(".target-field").each(function () {
+        var uris = $(this).val().split("/");
+        if (uris.pop() === "login") {
+        	$(this).val(uris.toString().replace(",","/"));
+        }
+    });
+});
+</script>
+  <script type="text/javascript">
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-5646075-11', 'auto');
+            ga('require', 'displayfeatures');
+            ga('send', 'pageview');
+        </script>
+  <!-- <script type="text/javascript" src="/js/app/sticky-footer.js"></script> -->
+  <script type="text/javascript" src="/js/app/research.analytics.js"></script>
+ </body>
+</html>

@@ -1,17 +1,16 @@
-import qrcode
-import qrcode.image.svg
-
 from io import BytesIO
 from os import environ
 
+import qrcode
+import qrcode.image.svg
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
-                   session, send_file, url_for)
-
-from database import db
-from emails import EMAIL_PUBLISH_TITLE, EMAIL_PUBLISH_PLAIN_TEXT
+                   send_file, session, url_for)
 from flask_heroku import Heroku
 from flask_mail import Mail, Message
 from flask_migrate import Migrate
+
+from database import db
+from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from forms import EmailForm, NewLinkForm, PosterForm
 from models import Poster
 from providers import extract_data

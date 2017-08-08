@@ -12,4 +12,13 @@
             height: 200px;
         }
     }
+
+    form {
+        margin-top: 2.5em;
+        text-align: center;
+
+        .control:first-child {
+            width: 50%;
+        }
+    }
 }

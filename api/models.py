@@ -29,3 +29,15 @@ class Poster(db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(str(self.id))
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'authors': self.authors,
+            'abstract': self.abstract,
+            'source_url': self.source_url,
+            'download_url': self.download_url,
+            'presented_at': self.presented_at,
+            'created_at': self.created_at.isoformat(),
+        }

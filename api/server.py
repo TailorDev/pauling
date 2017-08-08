@@ -44,15 +44,19 @@ def new_poster():
 
     form = NewPosterForm(**context)
     if form.validate_on_submit():
-        # TODO: persist poster in db
-        # redirect to /posters/<uuid>
-        return "QR CODE"
+        p = Poster(
+            form.title.data, form.authors.data, form.abstract.data,
+            source_url, form.download_url.data, form.presented_at.data
+        )
+        db.session.add(p)
+        db.session.commit()
+        return redirect(url_for('get_poster', uuid=p.id))
 
     return render_template('new_poster.html', source_url=source_url, form=form)
 
 @app.route('/posters/<uuid>', methods=['GET'])
 def get_poster(uuid):
-    poster = { 'uuid': uuid }
+    poster = Poster.query.get_or_404(uuid)
     if request.headers.get('accept') == 'application/json':
-        return jsonify(poster)
+        return jsonify(poster.serialize())
     return render_template('get_poster.html', poster=poster)

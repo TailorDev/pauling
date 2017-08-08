@@ -3,7 +3,19 @@
 {% block content %}
 <div class="section">
     <div class="columns is-centered">
-        QR CODE
+        <div class="column">
+            <div class="box">
+                <div class="content">
+                    <h2 class="title">{{ poster.title }}</h2>
+                    <p class="subtitle">{{ poster.authors }}</p>
+                    <p>{{ poster.abstract }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+
+            QR CODE
+        </div>
     </div>
 </div>
 {% endblock %}

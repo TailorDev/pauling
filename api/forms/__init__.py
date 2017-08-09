@@ -8,7 +8,7 @@ class NewLinkForm(FlaskForm):
     source_url = URLField('source_url', validators=[InputRequired(), URL()])
 
 class PosterForm(FlaskForm):
-    title = StringField('title', validators=[])
+    title = StringField('title', validators=[InputRequired()])
     authors = StringField('authors', validators=[])
     abstract = TextAreaField('abstract', validators=[])
     download_url = URLField('download_url', validators=[InputRequired(), URL()])

@@ -11,7 +11,7 @@ class NewLinkForm(FlaskForm):
 class UploadForm(FlaskForm):
     file = FileField(validators=[
         FileRequired(),
-        FileAllowed(['jpg', 'png', 'pdf'], 'Only JPEG, PNG and PDF are supported')
+        FileAllowed(['jpg', 'png', 'pdf'], 'Only JPG, PNG and PDF files are supported')
     ])
 
 class PosterForm(FlaskForm):

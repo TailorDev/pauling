@@ -52,3 +52,9 @@ class Poster(db.Model):
 
     def admin_url(self, absolute=False):
         return url_for('edit_poster', id_admin=self.id_admin, _external=absolute)
+
+    def qrcode_svg_url(self, absolute=False):
+        return url_for('poster_qrcode_svg', id=self.id, _external=absolute)
+
+    def qrcode_png_url(self, absolute=False):
+        return url_for('poster_qrcode_png', id=self.id, _external=absolute)

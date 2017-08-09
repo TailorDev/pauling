@@ -95,6 +95,8 @@ def publish_poster(id_admin):
             'poster': p,
             'public_url': p.public_url(absolute=True),
             'admin_url': p.admin_url(absolute=True),
+            'png_url': p.qrcode_png_url(absolute=True),
+            'svg_url': p.qrcode_svg_url(absolute=True),
         }
         msg = Message(
             EMAIL_PUBLISH_TITLE,

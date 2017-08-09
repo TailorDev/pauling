@@ -1,0 +1,50 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/pauling
+    docker:
+      - image: python:3.6.0
+        environment:
+          FLASK_CONFIG: testing
+          DATABASE_URL: postgresql://ubuntu@localhost/circle_test?sslmode=disable
+      - image: postgres:9.6-alpine
+        environment:
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: circle_test
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+      - run:
+          name: Install Python deps in a venv
+          working_directory: ~/pauling/api
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements-dev.txt
+      - save_cache:
+          key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+          paths:
+            - "venv"
+      - run:
+          name: Run py.test
+          working_directory: ~/pauling/api
+          command: |
+            . venv/bin/activate
+            py.test --junitxml=/reports/pytest/pytest-report.xml
+      - store_test_results:
+          path: /reports
+      - run:
+          name: Setup Heroku deployment
+          command: bash .circleci/heroku-setup.sh
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:T2bQRNgGRXJm0ko8chtHswXMTP6ObmDBhVXuD34qMV4"
+      - deploy:
+          name: Deploy master to Heroku
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              make deploy-api
+              heroku run FLASK_APP=server.py flask db upgrade
+            fi

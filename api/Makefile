@@ -13,7 +13,7 @@ RUN_FLASK=FLASK_APP=server.py \
 
 default: help
 
-copy-js:
+copy-js: ## copy JS dependencies to JS_DIR
 	cp node_modules/clipboard/dist/clipboard.min.js $(JS_DIR)
 .PHONY: copy-js
 

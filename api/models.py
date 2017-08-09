@@ -12,7 +12,7 @@ class Poster(db.Model):
     __tablename__ = 'posters'
 
     id = Column(UUID(as_uuid=True), primary_key=True)
-    title = Column(String(400))
+    title = Column(String(400), nullable=False, default='Untitled')
     authors = Column(Text)
     abstract = Column(Text)
     source_url = Column(String(400), nullable=False)

@@ -1,8 +1,5 @@
-from io import BytesIO
 from os import environ
 
-import qrcode
-import qrcode.image.svg
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    send_file, session, url_for)
 from flask_heroku import Heroku
@@ -12,6 +9,7 @@ from flask_migrate import Migrate
 from database import db
 from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from forms import EmailForm, NewLinkForm, PosterForm
+from qr import make_png, make_svg
 from models import Poster
 from providers import extract_data
 
@@ -22,6 +20,7 @@ app.secret_key = environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_USE_TLS'] = not app.debug
 app.config['MAIL_PORT'] = environ.get('MAILGUN_SMTP_PORT', 25)
+app.config['MAIL_FROM'] = environ.get('MAIL_FROM', 'hello@tailordev.fr')
 # database
 db.init_app(app)
 migrate = Migrate(app, db)
@@ -76,23 +75,12 @@ def get_poster(id):
 @app.route('/posters/<id>.png', methods=['GET'])
 def poster_qrcode_png(id):
     p = Poster.query.get_or_404(id)
-    buf = BytesIO()
-    img = qrcode.make(url_for('get_poster', id=p.id, _external=True))
-    img.save(buf)
-    buf.seek(0)
-    return send_file(buf, mimetype='image/png')
+    return send_file(make_png(p), mimetype='image/png')
 
 @app.route('/posters/<id>.svg', methods=['GET'])
 def poster_qrcode_svg(id):
     p = Poster.query.get_or_404(id)
-    buf = BytesIO()
-    img = qrcode.make(
-        url_for('get_poster', id=p.id, _external=True),
-        image_factory=qrcode.image.svg.SvgPathImage,
-    )
-    img.save(buf)
-    buf.seek(0)
-    return send_file(buf, mimetype='image/svg+xml')
+    return send_file(make_svg(p), mimetype='image/svg+xml')
 
 @app.route('/admin/posters/<id_admin>/publish', methods=['GET', 'POST'])
 def publish_poster(id_admin):
@@ -105,12 +93,12 @@ def publish_poster(id_admin):
         flash('Information successfully updated! You should receive an email soon.')
         vars = {
             'poster': p,
-            'public_url': url_for('get_poster', id=p.id, _external=True),
-            'admin_url': url_for('edit_poster', id_admin=id_admin, _external=True),
+            'public_url': p.public_url(absolute=True),
+            'admin_url': p.admin_url(absolute=True),
         }
         msg = Message(
             EMAIL_PUBLISH_TITLE,
-            sender='hello@tailordev.fr',
+            sender=app.config['MAIL_FROM'],
             recipients=[p.email],
             body=EMAIL_PUBLISH_PLAIN_TEXT.format(**vars)
         )
@@ -128,5 +116,5 @@ def edit_poster(id_admin):
         db.session.add(p)
         db.session.commit()
         flash('Information successfully updated!')
-        return redirect(url_for('edit_poster', id_admin=p.id_admin))
+        return redirect(p.admin_url())
     return render_template('new_edit_poster.html', is_edit=True, form=form)

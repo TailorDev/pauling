@@ -7,7 +7,11 @@
     <div class="content-wrapper">
         <div class="steps">
             <div class="steps-list">
+                {% if form.download_url.data.startswith('https://res.cloudinary.com/tailordev') %}
+                <h4><strike>1. Upload your poster</strike></h4>
+                {% else %}
                 <h4><strike>1. Paste the link to your poster on F1000, Figshare, etc.</strike></h4>
+                {% endif %}
                 <h4>2. Verify the information below and generate your QR code</h4>
                 <h4 class="next-step">3. Add the QR code to your poster and print it</h4>
 

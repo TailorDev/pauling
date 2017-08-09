@@ -1,16 +1,25 @@
 EMAIL_PUBLISH_TITLE = 'Hello from Pauling'
 EMAIL_PUBLISH_PLAIN_TEXT = """Hello,
 
-You receive this email because you have asked Pauling to do so :)
+Thanks for promoting your poster with Pauling!
 
-You can find the page of your poster at: {public_url}.
+Be sure to add the QR code to your poster before printing it:
 
-Your QR code redirects to this page. The users of the Pauling mobile
-application can directly download your poster in high definition and have
-access to the information you supplied. This should boost your research!
+- PNG file: {png_url}
+- SVG file: {svg_url}
 
-You can edit these information at any time by using the following *private* link: {admin_url}.
+We have created a *public* page for your poster and you can view it at:
+{public_url}.
+
+Your QR code redirects to this page. The users of the Pauling iPhone/Android
+application can directly view your poster in high definition and have access to
+the information you supplied. This should boost your research!
+
+You can edit these information at any time by using the following *private* link:
+{admin_url}.
 
 Cheers,
 Your friends at TailorDev (https://tailordev.fr/)
+
+PS: You receive this email because you have asked Pauling to do so :)
 """

@@ -10,9 +10,9 @@ from flask_migrate import Migrate
 from database import db
 from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from forms import EmailForm, NewLinkForm, PosterForm, UploadForm
-from qr import make_png, make_svg
 from models import Poster
 from providers import extract_data
+from qr import make_png, make_svg
 
 app = Flask(__name__)
 # config
@@ -84,12 +84,12 @@ def get_poster(id):
     return render_template('get_poster.html', poster=poster)
 
 @app.route('/posters/<id>.png', methods=['GET'])
-def poster_qrcode_png(id):
+def get_qrcode_png(id):
     p = Poster.query.get_or_404(id)
     return send_file(make_png(p), mimetype='image/png')
 
 @app.route('/posters/<id>.svg', methods=['GET'])
-def poster_qrcode_svg(id):
+def get_qrcode_svg(id):
     p = Poster.query.get_or_404(id)
     return send_file(make_svg(p), mimetype='image/svg+xml')
 

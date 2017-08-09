@@ -1,6 +1,7 @@
 import datetime
 import uuid
 
+from flask import url_for
 from sqlalchemy import Column, DateTime, String, Text, text
 from sqlalchemy.dialects.postgresql import UUID
 
@@ -45,3 +46,9 @@ class Poster(db.Model):
             'presented_at': self.presented_at,
             'created_at': self.created_at.isoformat(),
         }
+
+    def public_url(self, absolute=False):
+        return url_for('get_poster', id=self.id, _external=absolute)
+
+    def admin_url(self, absolute=False):
+        return url_for('edit_poster', id_admin=self.id_admin, _external=absolute)

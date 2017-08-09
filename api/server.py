@@ -79,7 +79,7 @@ def poster_qrcode_png(id):
     p = Poster.query.get_or_404(id)
     buf = BytesIO()
     qr = qrcode.QRCode(border=6)
-    qr.add_data(url_for('get_poster', id=p.id, _external=True))
+    qr.add_data(p.public_url(absolute=True))
     img = qr.make_image()
     img_draw = ImageDraw.Draw(img)
     font = ImageFont.truetype('Lato-Medium.ttf', 24)
@@ -94,7 +94,7 @@ def poster_qrcode_svg(id):
     p = Poster.query.get_or_404(id)
     buf = BytesIO()
     qr = qrcode.QRCode(border=6)
-    qr.add_data(url_for('get_poster', id=p.id, _external=True))
+    qr.add_data(p.public_url(absolute=True))
     img = qr.make_image(image_factory=qrcode.image.svg.SvgPathImage)
     img.save(buf)
     buf.seek(0)
@@ -111,8 +111,8 @@ def publish_poster(id_admin):
         flash('Information successfully updated! You should receive an email soon.')
         vars = {
             'poster': p,
-            'public_url': url_for('get_poster', id=p.id, _external=True),
-            'admin_url': url_for('edit_poster', id_admin=id_admin, _external=True),
+            'public_url': p.public_url(absolute=True),
+            'admin_url': p.admin_url(absolute=True),
         }
         msg = Message(
             EMAIL_PUBLISH_TITLE,
@@ -134,5 +134,5 @@ def edit_poster(id_admin):
         db.session.add(p)
         db.session.commit()
         flash('Information successfully updated!')
-        return redirect(url_for('edit_poster', id_admin=p.id_admin))
+        return redirect(p.admin_url())
     return render_template('new_edit_poster.html', is_edit=True, form=form)

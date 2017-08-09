@@ -47,13 +47,13 @@
 
             <p>
                 The QR code redirects to a page of your poster that has been automatically created and you can view it
-                <a href="{{ url_for('get_poster', id=poster.id) }}">here</a>.
+                <a href="{{ poster.public_url() }}">here</a>.
                 The link to this page (below) is public and permanent. Feel free to share it with everyone:
             </p>
 
             <div class="field has-addons">
                 <div class="control is-expanded">
-                    <input id="public-url" class="input" type="text" value="{{ url_for('get_poster', id=poster.id, _external=True) }}">
+                    <input id="public-url" class="input" type="text" value="{{ poster.public_url(absolute=True) }}">
                 </div>
                 <div class="control">
                     <button class="button clipboard" data-clipboard-target="#public-url">
@@ -71,7 +71,7 @@
             <h3>Admin area</h3>
             <p>
                 You can edit the information for this poster at any time
-                <a href="{{ url_for('edit_poster', id_admin=poster.id_admin) }}">here</a>.
+                <a href="{{ poster.admin_url() }}">here</a>.
                 Be sure to bookmark this link somewhere as it is the unique way to update the
                 information of your poster on Pauling.
             </p>

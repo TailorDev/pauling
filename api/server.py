@@ -9,7 +9,7 @@ from flask_migrate import Migrate
 from database import db
 from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from forms import EmailForm, NewLinkForm, PosterForm
-from images import make_png, make_svg
+from qr import make_png, make_svg
 from models import Poster
 from providers import extract_data
 

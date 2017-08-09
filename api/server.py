@@ -69,7 +69,7 @@ def new_poster():
 def get_poster(id):
     poster = Poster.query.get_or_404(id)
     if request.headers.get('accept') == 'application/json':
-        return jsonify(poster.serialize())
+        return jsonify({ 'poster': poster.serialize() })
     return render_template('get_poster.html', poster=poster)
 
 @app.route('/posters/<id>.png', methods=['GET'])

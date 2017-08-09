@@ -92,14 +92,14 @@ def publish_poster(id_admin):
         db.session.commit()
         flash('Information successfully updated! You should receive an email soon.')
         vars = {
-            'poster': p,
+            'title': p.title,
             'public_url': p.public_url(absolute=True),
             'admin_url': p.admin_url(absolute=True),
             'png_url': p.qrcode_png_url(absolute=True),
             'svg_url': p.qrcode_svg_url(absolute=True),
         }
         msg = Message(
-            EMAIL_PUBLISH_TITLE,
+            EMAIL_PUBLISH_TITLE.format(**vars),
             sender=app.config['MAIL_FROM'],
             recipients=[p.email],
             body=EMAIL_PUBLISH_PLAIN_TEXT.format(**vars)

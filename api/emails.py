@@ -1,12 +1,12 @@
-EMAIL_PUBLISH_TITLE = 'Hello from Pauling'
+EMAIL_PUBLISH_TITLE = '[Pauling] Information for your poster "{title}"'
 EMAIL_PUBLISH_PLAIN_TEXT = """Hello,
 
-Thanks for promoting your poster with Pauling!
+Thanks for promoting your poster "{title}" with Pauling!
 
 Be sure to add the QR code to your poster before printing it:
 
-- PNG file: {png_url}
-- SVG file: {svg_url}
+- Download the PNG version: {png_url}
+- Download the SVG version: {svg_url}
 
 We have created a *public* page for your poster and you can view it at:
 {public_url}.

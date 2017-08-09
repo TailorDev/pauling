@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 
+{% block title %}
+{{ poster.title }} | {{ super() }}
+{% endblock %}
+
 {% block content %}
 <section class="poster">
-    {% if poster.title %}
     <div class="title-and-authors">
         <div class="columns is-centered">
             <div class="column is-three-quarters">
@@ -15,7 +18,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
 
     <div class="preview">
         <div class="columns is-centered">

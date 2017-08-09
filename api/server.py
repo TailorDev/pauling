@@ -20,6 +20,7 @@ app.secret_key = environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_USE_TLS'] = not app.debug
 app.config['MAIL_PORT'] = environ.get('MAILGUN_SMTP_PORT', 25)
+app.config['MAIL_FROM'] = environ.get('MAIL_FROM', 'hello@tailordev.fr')
 # database
 db.init_app(app)
 migrate = Migrate(app, db)
@@ -97,7 +98,7 @@ def publish_poster(id_admin):
         }
         msg = Message(
             EMAIL_PUBLISH_TITLE,
-            sender='hello@tailordev.fr',
+            sender=app.config['MAIL_FROM'],
             recipients=[p.email],
             body=EMAIL_PUBLISH_PLAIN_TEXT.format(**vars)
         )

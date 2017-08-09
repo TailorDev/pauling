@@ -11,3 +11,4 @@ gunicorn==19.7.1
 Flask-Mail==0.9.1
 qrcode==5.3
 Pillow==4.2.1
+cloudinary==1.8.0

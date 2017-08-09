@@ -1,9 +1,5 @@
-from io import BytesIO
 from os import environ
 
-import qrcode
-import qrcode.image.svg
-from PIL import Image, ImageDraw, ImageFont, ImageColor
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    send_file, session, url_for)
 from flask_heroku import Heroku
@@ -13,6 +9,7 @@ from flask_migrate import Migrate
 from database import db
 from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from forms import EmailForm, NewLinkForm, PosterForm
+from images import make_png, make_svg
 from models import Poster
 from providers import extract_data
 
@@ -77,28 +74,12 @@ def get_poster(id):
 @app.route('/posters/<id>.png', methods=['GET'])
 def poster_qrcode_png(id):
     p = Poster.query.get_or_404(id)
-    buf = BytesIO()
-    qr = qrcode.QRCode(border=6)
-    qr.add_data(p.public_url(absolute=True))
-    img = qr.make_image()
-    img_draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype('Lato-Medium.ttf', 24)
-    img_draw.text((70, 3), 'Want this poster on your phone?', font=font)
-    img_draw.text((53, 450), 'Use the Pauling app on Android/iOS', font=font)
-    img.save(buf)
-    buf.seek(0)
-    return send_file(buf, mimetype='image/png')
+    return send_file(make_png(p), mimetype='image/png')
 
 @app.route('/posters/<id>.svg', methods=['GET'])
 def poster_qrcode_svg(id):
     p = Poster.query.get_or_404(id)
-    buf = BytesIO()
-    qr = qrcode.QRCode(border=6)
-    qr.add_data(p.public_url(absolute=True))
-    img = qr.make_image(image_factory=qrcode.image.svg.SvgPathImage)
-    img.save(buf)
-    buf.seek(0)
-    return send_file(buf, mimetype='image/svg+xml')
+    return send_file(make_svg(p), mimetype='image/svg+xml')
 
 @app.route('/admin/posters/<id_admin>/publish', methods=['GET', 'POST'])
 def publish_poster(id_admin):

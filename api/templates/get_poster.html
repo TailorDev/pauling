@@ -22,7 +22,7 @@
     <div class="preview">
         <div class="columns is-centered">
             <div class="column is-three-quarters">
-                {% if poster.download_url.endswith('.png') %}
+                {% if poster.download_url.endswith('.png') or poster.download_url.endswith('.jpg') %}
                 <img src="{{ poster.download_url }}" alt="{{ poster.title }}">
                 {% else %}
                 <iframe src="http://docs.google.com/gview?url={{ poster.download_url }}&embedded=true" frameborder="0"></iframe>

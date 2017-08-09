@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms import StringField, TextAreaField
 from wtforms.fields.html5 import URLField, EmailField
 from wtforms.validators import InputRequired, URL, Regexp
@@ -6,6 +7,12 @@ from wtforms.validators import InputRequired, URL, Regexp
 
 class NewLinkForm(FlaskForm):
     source_url = URLField('source_url', validators=[InputRequired(), URL()])
+
+class UploadForm(FlaskForm):
+    file = FileField(validators=[
+        FileRequired(),
+        FileAllowed(['jpg', 'png', 'pdf'], 'Only JPEG, PNG and PDF are supported')
+    ])
 
 class PosterForm(FlaskForm):
     title = StringField('title', validators=[InputRequired()])

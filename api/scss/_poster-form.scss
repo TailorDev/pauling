@@ -11,11 +11,11 @@
         @extend .is-medium;
     }
 
-    label {
+    label:not(.file-label) {
         @extend .label;
     }
 
-    input{
+    input:not([type='file']) {
         @extend .input;
     }
 

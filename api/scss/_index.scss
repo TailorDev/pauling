@@ -4,4 +4,43 @@
     .poster-form {
         padding-top: 8%;
     }
+
+    #upload-form {
+        .file {
+            @extend .is-centered;
+        }
+
+        .help {
+            text-align: center;
+        }
+    }
+
+    .title-with-lines {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        width: 20%;
+        margin: 3rem auto 2rem;
+
+        color: $primary;
+
+        &:before,
+        &:after {
+            background-color: $primary;
+            content: '\a0';
+            flex-grow: 1;
+            height: 1px;
+            position: relative;
+            top: 0.7em;
+        }
+
+        &:before {
+            margin-right: 10px;
+        }
+
+        &:after {
+            margin-left: 10px;
+        }
+    }
 }

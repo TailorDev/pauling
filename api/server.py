@@ -1,5 +1,6 @@
 from os import environ
 
+from cloudinary.uploader import upload as cloudinary_upload
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    send_file, session, url_for)
 from flask_heroku import Heroku
@@ -8,7 +9,7 @@ from flask_migrate import Migrate
 
 from database import db
 from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
-from forms import EmailForm, NewLinkForm, PosterForm
+from forms import EmailForm, NewLinkForm, PosterForm, UploadForm
 from qr import make_png, make_svg
 from models import Poster
 from providers import extract_data
@@ -34,13 +35,23 @@ def index():
         session['source_url'] = form.source_url.data
         return redirect(url_for('new_poster'))
     session.pop('source_url', None)
-    return render_template('index.html', form=form)
+    return render_template('index.html', form=form, upload_form=UploadForm())
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    form = UploadForm()
+    if form.validate_on_submit():
+        upload_result = cloudinary_upload(form.file.data)
+        session['source_url'] = upload_result['secure_url']
+        flash('Your poster has been successfully uploaded!')
+        return redirect(url_for('new_poster'))
+    return render_template('index.html', form=NewLinkForm(), upload_form=form)
 
 @app.route('/posters/new', methods=['GET', 'POST'])
 def new_poster():
     source_url = session.get('source_url')
     context = {
-        'title': '',
+        'title': 'Untitled',
         'authors': '',
         'abstract': '',
         'download_url': '',

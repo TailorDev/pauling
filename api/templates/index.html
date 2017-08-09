@@ -26,6 +26,31 @@
                     <a id="try-link" href="https://figshare.com/articles/The_Value_Proposition_of_Libraries_in_Research_Information_Management/5267872">The Value Proposition of Libraries in Research Information Management</a>.
                 </p>
             </form>
+
+            <div class="title-with-lines">OR</div>
+
+            <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                {{ upload_form.csrf_token }}
+
+                <div class="field">
+                    <div class="file is-small{% if upload_form.file.errors %} is-danger{% endif %}">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="file">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fa fa-upload"></i>
+                                </span>
+                                <span class="file-label label-text">
+                                    Upload your poster here
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                    {% for error in upload_form.file.errors %}
+                    <p class="help is-danger">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -35,16 +60,24 @@
 <script>
 var $btn = document.getElementById('btn-submit');
 $btn.addEventListener('click', function () {
-    if ($btn.classList) {
-        $btn.classList.add('is-loading');
+    if (this.classList) {
+        this.classList.add('is-loading');
     } else {
-        $btn.className += ' is-loading';
+        this.className += ' is-loading';
     }
 });
 var $try = document.getElementById('try-link');
 $try.addEventListener('click', function (e) {
     e.preventDefault();
-    document.querySelector('input[name="source_url"]').value = $try.href;
+    document.querySelector('input[name="source_url"]').value = this.href;
+});
+var $file = document.querySelector('input[type="file"]');
+$file.addEventListener('change', function() {
+    if (this.files.length > 0) {
+        var $form = document.getElementById('upload-form');
+        $form.querySelector('.label-text').textContent = 'Uploading...'
+        $form.submit();
+    }
 });
 </script>
 {% endblock %}

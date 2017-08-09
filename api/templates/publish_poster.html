@@ -26,20 +26,20 @@
                 <div class="column">
                     <div class="card">
                         <div class="card-content">
-                            <img class="qrcode" src="{{ url_for('poster_qrcode_svg', id=poster.id) }}">
+                            <img class="qrcode" src="{{ poster.qrcode_svg_url() }}">
                         </div>
                         <footer class="card-footer">
-                            <a class="card-footer-item" href="{{ url_for('poster_qrcode_svg', id=poster.id) }}">Download as SVG</a>
+                            <a class="card-footer-item" href="{{ poster.qrcode_svg_url() }}">Download as SVG</a>
                         </footer>
                     </div>
                 </div>
                 <div class="column">
                     <div class="card">
                         <div class="card-content">
-                            <img class="qrcode" src="{{ url_for('poster_qrcode_png', id=poster.id) }}">
+                            <img class="qrcode" src="{{ poster.qrcode_png_url() }}">
                         </div>
                         <footer class="card-footer">
-                            <a class="card-footer-item" href="{{ url_for('poster_qrcode_png', id=poster.id) }}">Download as PNG</a>
+                            <a class="card-footer-item" href="{{ poster.qrcode_png_url() }}">Download as PNG</a>
                         </footer>
                     </div>
                 </div>

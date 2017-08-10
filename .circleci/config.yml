@@ -7,6 +7,9 @@ jobs:
         environment:
           FLASK_CONFIG: testing
           DATABASE_URL: postgresql://ubuntu@localhost/circle_test?sslmode=disable
+          SECRET_KEY: 'secretkey'
+          CLOUDINARY_URL: ''
+          CLOUDINARY_BASE_URL: 'https://res.cloudinary.com/tailordev'
       - image: postgres:9.6-alpine
         environment:
           POSTGRES_USER: ubuntu
@@ -17,32 +20,27 @@ jobs:
       - restore_cache:
           key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
       - run:
-          name: Install Python deps in a venv
+          name: make bootstrap
           working_directory: ~/pauling/api
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements-dev.txt
+          command: make bootstrap
       - save_cache:
           key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
           paths:
             - "venv"
       - run:
-          name: Run py.test
+          name: make test-ci
           working_directory: ~/pauling/api
-          command: |
-            . venv/bin/activate
-            py.test --junitxml=/reports/pytest/pytest-report.xml
+          command: make test-ci
       - store_test_results:
           path: /reports
       - run:
-          name: Setup Heroku deployment
+          name: setup Heroku deployment
           command: bash .circleci/heroku-setup.sh
       - add_ssh_keys:
           fingerprints:
             - "SHA256:T2bQRNgGRXJm0ko8chtHswXMTP6ObmDBhVXuD34qMV4"
       - deploy:
-          name: Deploy master to Heroku
+          name: deploy master to Heroku
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               make deploy-api

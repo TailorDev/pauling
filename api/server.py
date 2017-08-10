@@ -75,8 +75,12 @@ def new_poster():
     form = PosterForm(**context)
     if form.validate_on_submit():
         p = Poster(
-            form.title.data, form.authors.data, form.abstract.data,
-            source_url, form.download_url.data, form.presented_at.data
+            title=form.title.data,
+            authors=form.authors.data,
+            abstract=form.abstract.data,
+            source_url=source_url,
+            download_url=form.download_url.data,
+            presented_at=form.presented_at.data,
         )
         db.session.add(p)
         db.session.commit()

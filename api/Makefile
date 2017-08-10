@@ -17,7 +17,7 @@ default: help
 
 bootstrap: venv ## install the project dependencies
 	@$(PIP) install -r requirements-dev.txt
-	@yarn install --dev
+	@if [ -z "$$CI" ]; then yarn install --dev; fi
 .PHONY: bootstrap
 
 venv:  ## create the python virtual env
@@ -55,6 +55,14 @@ flask-db-migrate: ## run flask db migrate
 flask-db-upgrade: ## run flask db upgrade
 	@$(RUN_FLASK) db upgrade
 .PHONY: flask-db-upgrade
+
+test: ## run the test suite
+	@. $(VENV_PATH)/bin/activate && py.test
+.PHONY: test
+
+test-ci: ## run the test suite on Circle CI
+	@. $(VENV_PATH)/bin/activate && py.test --junitxml=/reports/pytest/pytest-report.xml
+.PHONY: test-ci
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

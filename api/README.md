@@ -28,16 +28,16 @@ CLOUDINARY_URL      = 'cloudinary://user:pass@account'
 CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/account'
 ```
 
-3. Apply the database migrations:
-
-```
-$ make flask-db-upgrade
-```
-
-4. Finally, you can run the application in development mode:
+3. Start the application in development mode:
 
 ```
 $ make dev
+```
+
+4. Last but not least, apply the database migrations:
+
+```
+$ make flask-db-upgrade
 ```
 
 You can now browse the application at: http://127.0.0.1:5000/.

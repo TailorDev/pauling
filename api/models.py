@@ -24,7 +24,8 @@ class Poster(db.Model):
     id_admin = Column(UUID(as_uuid=True), unique=True, nullable=False)
     email = Column(String(50))
 
-    def __init__(self, title, authors, abstract, source_url, download_url, presented_at):
+    def __init__(self, title, source_url, download_url, authors=None,
+            abstract=None, presented_at=None):
         self.id = uuid.uuid4()
         self.title = title
         self.authors = authors

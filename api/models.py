@@ -1,13 +1,13 @@
 import datetime
 import uuid
-
 from os import environ
-from flask import url_for, current_app as app
 
-from sqlalchemy import Column, DateTime, String, Text, text
-from sqlalchemy.dialects.postgresql import UUID
+from flask import current_app as app
+from flask import url_for
 
 from database import db
+from sqlalchemy import Column, DateTime, String, Text, text
+from sqlalchemy.dialects.postgresql import UUID
 
 
 class Poster(db.Model):
@@ -47,6 +47,7 @@ class Poster(db.Model):
             'download_url': self.download_url,
             'presented_at': self.presented_at,
             'created_at': self.created_at.isoformat(),
+            'thumbnail_url': self.thumbnail_url(),
         }
 
     def public_url(self, absolute=False):
@@ -69,3 +70,10 @@ class Poster(db.Model):
         if self.is_image() or self.download_url.startswith(cloudinary):
             return self.download_url
         return '{}/image/fetch/{}'.format(cloudinary, self.download_url)
+
+    def thumbnail_url(self):
+        cloudinary = app.config['CLOUDINARY_BASE_URL']
+        transformations = 'c_thumb,w_370,h_200,f_png'
+        if self.download_url.startswith(cloudinary):
+            return self.download_url.replace('/upload/', '/upload/{}/'.format(transformations))
+        return '{}/image/fetch/{}/{}'.format(cloudinary, transformations, self.download_url)

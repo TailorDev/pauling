@@ -1,14 +1,15 @@
 from os import environ
 
-from cloudinary.uploader import upload as cloudinary_upload
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    send_file, session, url_for)
+
+import cloudinary
+from cloudinary.uploader import upload as cloudinary_upload
+from database import db
+from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from flask_heroku import Heroku
 from flask_mail import Mail, Message
 from flask_migrate import Migrate
-
-from database import db
-from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from forms import EmailForm, NewLinkForm, PosterForm, UploadForm
 from models import Poster
 from providers import extract_data
@@ -25,6 +26,9 @@ app.config['CLOUDINARY_URL'] = environ.get('CLOUDINARY_URL')
 app.config['CLOUDINARY_BASE_URL'] = environ.get('CLOUDINARY_BASE_URL')
 try:
     app.config.from_object('local_settings')
+    # this is required to use pycloudinary
+    environ['CLOUDINARY_URL'] = app.config['CLOUDINARY_URL']
+    cloudinary.reset_config()
 except ImportError:
     pass
 # database

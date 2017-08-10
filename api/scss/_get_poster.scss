@@ -7,7 +7,7 @@
         @extend .section;
 
         iframe {
-            height: 100vh;
+            min-height: 550px;
             width: 100%;
         }
     }

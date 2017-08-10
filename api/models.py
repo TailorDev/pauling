@@ -54,7 +54,15 @@ class Poster(db.Model):
         return url_for('edit_poster', id_admin=self.id_admin, _external=absolute)
 
     def qrcode_svg_url(self, absolute=False):
-        return url_for('poster_qrcode_svg', id=self.id, _external=absolute)
+        return url_for('get_qrcode_svg', id=self.id, _external=absolute)
 
     def qrcode_png_url(self, absolute=False):
-        return url_for('poster_qrcode_png', id=self.id, _external=absolute)
+        return url_for('get_qrcode_png', id=self.id, _external=absolute)
+
+    def is_image(self):
+        return self.download_url.endswith('.png') or self.download_url.endswith('.jpg')
+
+    def viewable_download_url(self):
+        if self.is_image() or self.download_url.startswith('https://res.cloudinary.com/tailordev'):
+            return self.download_url
+        return 'http://res.cloudinary.com/tailordev/image/fetch/{}'.format(self.download_url)

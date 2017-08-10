@@ -21,6 +21,8 @@ app.secret_key = environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_PORT'] = environ.get('MAILGUN_SMTP_PORT', 25)
 app.config['MAIL_FROM'] = environ.get('MAIL_FROM', 'hello@tailordev.fr')
+app.config['CLOUDINARY_URL'] = environ.get('CLOUDINARY_URL')
+app.config['CLOUDINARY_BASE_URL'] = environ.get('CLOUDINARY_BASE_URL')
 try:
     app.config.from_object('local_settings')
 except ImportError:

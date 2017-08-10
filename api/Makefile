@@ -1,17 +1,27 @@
-CSS_DIR=static/css
-JS_DIR=static/js
-SASS_INCLUDE_PATH=node_modules/bulma/
-RUN_FLASK=FLASK_APP=server.py \
-	  FLASK_DEBUG=1 \
-	  SECRET_KEY=Secr3tK3yF0rD3v \
-	  DATABASE_URL=postgres://pauling:paulingpassword@127.0.0.1:15432/pauling \
-	  MAILGUN_SMTP_SERVER=127.0.0.1 \
-	  MAILGUN_SMTP_PORT=15025 \
-	  MAILGUN_SMTP_LOGIN='' \
-	  MAILGUN_SMTP_PASSWORD='' \
-	  flask
+# Assets
+CSS_DIR           = static/css
+JS_DIR            = static/js
+SASS_INCLUDE_PATH = node_modules/bulma/
+# Python
+VENV_NAME = venv
+VENV_PATH = $(shell pwd)/$(VENV_NAME)
+PIP       = $(VENV_PATH)/bin/pip
+PYTHON    = $(VENV_PATH)/bin/python
+# Flask
+RUN_FLASK = . $(VENV_PATH)/bin/activate && \
+			FLASK_APP=server.py \
+			DATABASE_URL=postgres://pauling:paulingpassword@127.0.0.1:15432/pauling \
+			flask
 
 default: help
+
+bootstrap: venv ## install the project dependencies
+	@$(PIP) install -r requirements-dev.txt
+	@yarn install --dev
+.PHONY: bootstrap
+
+venv:  ## create the python virtual env
+	@python3 -m venv $(VENV_NAME)
 
 copy-js: ## copy JS dependencies to JS_DIR
 	cp node_modules/clipboard/dist/clipboard.min.js $(JS_DIR)

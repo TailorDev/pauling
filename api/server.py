@@ -19,9 +19,12 @@ app = Flask(__name__)
 heroku = Heroku(app)
 app.secret_key = environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['MAIL_USE_TLS'] = not app.debug
 app.config['MAIL_PORT'] = environ.get('MAILGUN_SMTP_PORT', 25)
 app.config['MAIL_FROM'] = environ.get('MAIL_FROM', 'hello@tailordev.fr')
+try:
+    app.config.from_object('local_settings')
+except ImportError:
+    pass
 # database
 db.init_app(app)
 migrate = Migrate(app, db)

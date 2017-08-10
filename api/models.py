@@ -1,7 +1,9 @@
 import datetime
 import uuid
 
-from flask import url_for
+from os import environ
+from flask import url_for, current_app as app
+
 from sqlalchemy import Column, DateTime, String, Text, text
 from sqlalchemy.dialects.postgresql import UUID
 
@@ -63,6 +65,7 @@ class Poster(db.Model):
         return self.download_url.endswith('.png') or self.download_url.endswith('.jpg')
 
     def viewable_download_url(self):
-        if self.is_image() or self.download_url.startswith('https://res.cloudinary.com/tailordev'):
+        cloudinary = app.config['CLOUDINARY_BASE_URL']
+        if self.is_image() or self.download_url.startswith(cloudinary):
             return self.download_url
-        return 'http://res.cloudinary.com/tailordev/image/fetch/{}'.format(self.download_url)
+        return '{}/image/fetch/{}'.format(cloudinary, self.download_url)

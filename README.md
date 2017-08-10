@@ -1,7 +1,12 @@
-Pauling API
-===========
+Pauling
+=======
+
+[![CircleCI](https://circleci.com/gh/TailorDev/pauling/tree/master.svg?style=svg&circle-token=9df05dcadb0db10e2a6385385cbb62e1500a0e9f)](https://circleci.com/gh/TailorDev/pauling/tree/master)
+
 
 ## Installation
+
+### API (web app)
 
 1. Install the project dependencies:
 

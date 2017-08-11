@@ -10,6 +10,7 @@ from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
 from flask_heroku import Heroku
 from flask_mail import Mail, Message
 from flask_migrate import Migrate
+from flask_uuid import FlaskUUID
 from forms import EmailForm, NewLinkForm, PosterForm, UploadForm
 from models import Poster
 from providers import extract_data
@@ -36,6 +37,8 @@ db.init_app(app)
 migrate = Migrate(app, db)
 # emails
 mail = Mail(app)
+# converters
+FlaskUUID(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -89,24 +92,24 @@ def new_poster():
 
     return render_template('new_edit_poster.html', is_edit=False, form=form)
 
-@app.route('/posters/<id>', methods=['GET'])
+@app.route('/posters/<uuid:id>', methods=['GET'])
 def get_poster(id):
     poster = Poster.query.get_or_404(id)
     if request.headers.get('accept') == 'application/json':
         return jsonify({ 'poster': poster.serialize() })
     return render_template('get_poster.html', poster=poster)
 
-@app.route('/posters/<id>.png', methods=['GET'])
+@app.route('/posters/<uuid:id>.png', methods=['GET'])
 def get_qrcode_png(id):
     p = Poster.query.get_or_404(id)
     return send_file(make_png(p), mimetype='image/png')
 
-@app.route('/posters/<id>.svg', methods=['GET'])
+@app.route('/posters/<uuid:id>.svg', methods=['GET'])
 def get_qrcode_svg(id):
     p = Poster.query.get_or_404(id)
     return send_file(make_svg(p), mimetype='image/svg+xml')
 
-@app.route('/admin/posters/<id_admin>/publish', methods=['GET', 'POST'])
+@app.route('/admin/posters/<uuid:id_admin>/publish', methods=['GET', 'POST'])
 def publish_poster(id_admin):
     p = Poster.query.filter_by(id_admin=id_admin).first_or_404()
     form = EmailForm()
@@ -132,7 +135,7 @@ def publish_poster(id_admin):
         return redirect(url_for('publish_poster', id_admin=p.id_admin))
     return render_template('publish_poster.html', form=form, poster=p)
 
-@app.route('/admin/posters/<id_admin>/edit', methods=['GET', 'POST'])
+@app.route('/admin/posters/<uuid:id_admin>/edit', methods=['GET', 'POST'])
 def edit_poster(id_admin):
     p = Poster.query.filter_by(id_admin=id_admin).first_or_404()
     form = PosterForm(obj=p)

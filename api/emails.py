@@ -11,5 +11,6 @@ def send_admin_info(poster, sender):
         sender=sender,
         recipients=[poster.email],
         body=render_template('emails/admin_info.txt', poster=poster),
+        html=render_template('emails/admin_info.html', subject=subject, poster=poster),
     )
     mail.send(msg)

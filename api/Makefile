@@ -59,10 +59,12 @@ flask-db-upgrade: ## run flask db upgrade
 
 test: ## run the test suite
 	@. $(VENV_PATH)/bin/activate && py.test
+	@. $(VENV_PATH)/bin/activate && flake8
 .PHONY: test
 
 test-ci: ## run the test suite on Circle CI
 	@. $(VENV_PATH)/bin/activate && py.test --junitxml=/reports/pytest/pytest-report.xml
+	@. $(VENV_PATH)/bin/activate && flake8
 .PHONY: test-ci
 
 email: ## create email templates from MJML

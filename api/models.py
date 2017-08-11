@@ -1,12 +1,11 @@
 import datetime
 import uuid
-from os import environ
 
 from flask import current_app as app
 from flask import url_for
 
 from database import db
-from sqlalchemy import Column, DateTime, String, Text, text
+from sqlalchemy import Column, DateTime, String, Text
 from sqlalchemy.dialects.postgresql import UUID
 
 
@@ -25,7 +24,7 @@ class Poster(db.Model):
     email = Column(String(50))
 
     def __init__(self, title, source_url, download_url, authors=None,
-            abstract=None, presented_at=None):
+                 abstract=None, presented_at=None):
         self.id = uuid.uuid4()
         self.title = title
         self.authors = authors

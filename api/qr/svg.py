@@ -8,6 +8,7 @@ import qrcode.image.svg
 
 img_dir = os.path.dirname(os.path.abspath(__file__))
 
+
 def make_svg(poster):
     qr = qrcode.QRCode()
     qr.add_data(poster.public_url(absolute=True))

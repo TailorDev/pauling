@@ -39,6 +39,7 @@ mail.init_app(app)
 # converters
 FlaskUUID(app)
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = NewLinkForm()
@@ -47,6 +48,7 @@ def index():
         return redirect(url_for('new_poster'))
     session.pop('source_url', None)
     return render_template('index.html', form=form, upload_form=UploadForm())
+
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -57,6 +59,7 @@ def upload():
         flash('Your poster has been successfully uploaded!')
         return redirect(url_for('new_poster'))
     return render_template('index.html', form=NewLinkForm(), upload_form=form)
+
 
 @app.route('/posters/new', methods=['GET', 'POST'])
 def new_poster():
@@ -91,22 +94,26 @@ def new_poster():
 
     return render_template('new_edit_poster.html', is_edit=False, form=form)
 
+
 @app.route('/posters/<uuid:id>', methods=['GET'])
 def get_poster(id):
     poster = Poster.query.get_or_404(id)
     if request.headers.get('accept') == 'application/json':
-        return jsonify({ 'poster': poster.serialize() })
+        return jsonify({'poster': poster.serialize()})
     return render_template('get_poster.html', poster=poster)
+
 
 @app.route('/posters/<uuid:id>.png', methods=['GET'])
 def get_qrcode_png(id):
     p = Poster.query.get_or_404(id)
     return send_file(make_png(p), mimetype='image/png')
 
+
 @app.route('/posters/<uuid:id>.svg', methods=['GET'])
 def get_qrcode_svg(id):
     p = Poster.query.get_or_404(id)
     return send_file(make_svg(p), mimetype='image/svg+xml')
+
 
 @app.route('/admin/posters/<uuid:id_admin>/publish', methods=['GET', 'POST'])
 def publish_poster(id_admin):
@@ -121,6 +128,7 @@ def publish_poster(id_admin):
         return redirect(url_for('publish_poster', id_admin=p.id_admin))
     return render_template('publish_poster.html', form=form, poster=p)
 
+
 @app.route('/admin/posters/<uuid:id_admin>/edit', methods=['GET', 'POST'])
 def edit_poster(id_admin):
     p = Poster.query.filter_by(id_admin=id_admin).first_or_404()
@@ -134,9 +142,11 @@ def edit_poster(id_admin):
         return redirect(p.admin_url())
     return render_template('new_edit_poster.html', is_edit=True, form=form)
 
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('error.html', title='Page Not Found', status=404), 404
+
 
 @app.errorhandler(500)
 def internal_server_error(e):

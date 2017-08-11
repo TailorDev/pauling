@@ -65,6 +65,10 @@ test-ci: ## run the test suite on Circle CI
 	@. $(VENV_PATH)/bin/activate && py.test --junitxml=/reports/pytest/pytest-report.xml
 .PHONY: test-ci
 
+email: ## create email templates from MJML
+	@./node_modules/.bin/mjml templates/emails/template-admin_info.mjml -o templates/emails/admin_info.html
+.PHONY: email
+
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 .PHONY: help

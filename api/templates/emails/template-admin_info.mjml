@@ -2,8 +2,8 @@
   <mj-head>
     <mj-title>{{ subject }}</mj-title>
     <mj-attributes>
-    <mj-all font-family="BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif" />
-    <mj-class name="title" text-transform="uppercase" align="center" font-size="20" />
+      <mj-all font-family="BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif" />
+      <mj-class name="title" text-transform="uppercase" align="center" font-size="20" />
       <mj-class name="content" align="center" font-size="14" />
     </mj-attributes>
   </mj-head>
@@ -11,8 +11,11 @@
     <mj-container background-color="#fff">
       <mj-section>
         <mj-column>
-          <mj-text font-size="30" font-weight="600">
+          <mj-text font-size="30" font-weight="600" padding-bottom="0">
             Pauling
+          </mj-text>
+          <mj-text font-size="12" padding-top="0">
+            by TailorDev
           </mj-text>
         </mj-column>
       </mj-section>
@@ -27,15 +30,15 @@
 
       <mj-section background-color="#fff">
         <mj-column>
-          <mj-text mj-class="content">
-            Your QR code redirects to this page. The users of the Pauling
-            iPhone/Android application can directly view your poster in high
-            definition and have access to the information you supplied. This
-            should boost your research!
+          <mj-text mj-class="title">
+            Your poster is online
           </mj-text>
           <mj-button href="{{ poster.public_url(absolute=True) }}">
             View your poster
           </mj-button>
+          <mj-text mj-class="content">
+            Your QR code (cf. below) redirects to this page. The users of the Pauling iPhone/Android application can directly view your poster in high definition and have access to the information you supplied. This should boost your research!
+          </mj-text>
         </mj-column>
       </mj-section>
 
@@ -50,10 +53,7 @@
       <mj-section background-color="#f3f3f3">
         <mj-column>
           <mj-text mj-class="content">
-            Be sure to add the QR code to your poster before printing it so
-            that people can get it via the Pauling mobile application or a
-            simple web browser. You can download your QR code as a PNG or SVG
-            file:
+            Be sure to add the QR code to your poster before printing it so that people can get it via the Pauling mobile application or a simple web browser. You can download your QR code as a PNG or SVG file:
           </mj-text>
         </mj-column>
       </mj-section>
@@ -86,7 +86,7 @@
             You can edit these information at any time by using the following *private* link:
           </mj-text>
           <mj-button href="{{ poster.admin_url(absolute=True) }}">
-            Edit your poster
+            Edit your poster information
           </mj-button>
         </mj-column>
       </mj-section>
@@ -96,6 +96,7 @@
           <mj-text align="center">
             PS: You receive this email because you have asked Pauling to do so :)
           </mj-text>
+          <mj-social padding-bottom="0" twitter-content="@_TailorDev" twitter-icon-color="#000000" color="#000000" mode="vertical" display="twitter:url" twitter-href="https://twitter.com/_TailorDev" />
           <mj-text align="center" padding-top="0" font-size="10px">
             TailorDev SAS – Pépinière d'entreprises Pascalis, 10 Allée Evariste Galois – 63000 Clermont-Ferrand – France
           </mj-text>

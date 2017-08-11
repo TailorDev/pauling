@@ -5,6 +5,7 @@ from jinja2.filters import do_striptags
 
 F1000_URL_PATTERN = 'https://f1000research.com/posters/.+'
 
+
 def extract_data(data):
     s = BeautifulSoup(data, 'lxml')
     title_el = s.find(class_='asset-title')

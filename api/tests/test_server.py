@@ -1,5 +1,4 @@
 import unittest
-import uuid
 from os import environ
 
 from models import Poster

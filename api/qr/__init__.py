@@ -1,2 +1,2 @@
-from .svg import make_svg
-from .png import make_png
+from .svg import make_svg  # noqa
+from .png import make_png  # noqa

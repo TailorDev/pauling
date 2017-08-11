@@ -8,11 +8,13 @@ from wtforms.validators import InputRequired, URL, Regexp
 class NewLinkForm(FlaskForm):
     source_url = URLField('source_url', validators=[InputRequired(), URL()])
 
+
 class UploadForm(FlaskForm):
     file = FileField(validators=[
         FileRequired(),
         FileAllowed(['jpg', 'png', 'pdf'], 'Only JPG, PNG and PDF files are supported')
     ])
+
 
 class PosterForm(FlaskForm):
     title = StringField('title', validators=[InputRequired()])
@@ -20,6 +22,7 @@ class PosterForm(FlaskForm):
     abstract = TextAreaField('abstract', validators=[])
     download_url = URLField('download_url', validators=[InputRequired(), URL()])
     presented_at = StringField('presented_at', validators=[])
+
 
 class EmailForm(FlaskForm):
     email = EmailField('email', validators=[

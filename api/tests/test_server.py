@@ -59,3 +59,8 @@ class TestCase(unittest.TestCase):
             db.session.commit()
             r = self.client.get('/posters/{}.svg'.format(p.id))
         assert r.status_code == 200
+
+    def test_get_poster_with_invalid_id(self):
+        r = self.client.get('/posters/{}'.format('invalid-uuid'))
+        assert r.status_code == 404
+        assert b'Go to Home' in r.data

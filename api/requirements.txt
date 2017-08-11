@@ -12,3 +12,4 @@ Flask-Mail==0.9.1
 qrcode==5.3
 Pillow==4.2.1
 cloudinary==1.8.0
+Flask-UUID==0.2

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{ title }} | {{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter" style="text-align: center">
+        <h1 class="title is-1">{{ title }}</h1>
+        <div class="content">
+            {% if status == 500 %}
+            <p>
+                Don't worry, we got a message here at TailorDev and we are working on it!
+            </p>
+            {% endif %}
+            <p>
+                <a href="{{ url_for('index') }}" class="button is-primary">Go to Home</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

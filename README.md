@@ -18,8 +18,7 @@ $ make boostrap
 
 ``` py
 # flask
-FLASK_DEBUG = True
-SECRET_KEY  = 'Secr3tK3yF0rD3v'
+SECRET_KEY = 'Secr3tK3yF0rD3v'
 
 # mailer
 MAIL_SERVER   = '127.0.0.1'

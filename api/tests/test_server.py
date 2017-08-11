@@ -63,3 +63,4 @@ class TestCase(unittest.TestCase):
     def test_get_poster_with_invalid_id(self):
         r = self.client.get('/posters/{}'.format('invalid-uuid'))
         assert r.status_code == 404
+        assert b'Go to Home' in r.data

@@ -9,6 +9,7 @@ PIP       = $(VENV_PATH)/bin/pip
 PYTHON    = $(VENV_PATH)/bin/python
 # Flask
 RUN_FLASK = . $(VENV_PATH)/bin/activate && \
+			FLASK_DEBUG=True \
 			FLASK_APP=server.py \
 			DATABASE_URL=postgres://pauling:paulingpassword@127.0.0.1:15432/pauling \
 			flask

@@ -133,3 +133,12 @@ def edit_poster(id_admin):
         flash('Information successfully updated!')
         return redirect(p.admin_url())
     return render_template('new_edit_poster.html', is_edit=True, form=form)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('error.html', title='Page Not Found', status=404), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    db.session.rollback()
+    return render_template('error.html', title='Ooops. An error has occured', status=500), 500

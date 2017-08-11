@@ -1,0 +1,23 @@
+Hello,
+
+Thanks for promoting your poster "{{ poster.title }}" with Pauling!
+
+Be sure to add the QR code to your poster before printing it:
+
+- Download the PNG version: {{ poster.qrcode_png_url(absolute=True) }}
+- Download the SVG version: {{ poster.qrcode_svg_url(absolute=True) }}
+
+We have created a *public* page for your poster and you can view it at:
+{{ poster.public_url(absolute=True) }}.
+
+Your QR code redirects to this page. The users of the Pauling iPhone/Android
+application can directly view your poster in high definition and have access to
+the information you supplied. This should boost your research!
+
+You can edit these information at any time by using the following *private* link:
+{{ poster.admin_url(absolute=True) }}.
+
+Cheers,
+Your friends at TailorDev (https://tailordev.fr/)
+
+PS: You receive this email because you have asked Pauling to do so :)

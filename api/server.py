@@ -1,16 +1,15 @@
 from os import environ
 
-from flask import (Flask, flash, jsonify, redirect, render_template, request,
-                   send_file, session, url_for)
-
 import cloudinary
 from cloudinary.uploader import upload as cloudinary_upload
-from database import db
-from emails import EMAIL_PUBLISH_PLAIN_TEXT, EMAIL_PUBLISH_TITLE
+from flask import (Flask, flash, jsonify, redirect, render_template, request,
+                   send_file, session, url_for)
 from flask_heroku import Heroku
-from flask_mail import Mail, Message
 from flask_migrate import Migrate
 from flask_uuid import FlaskUUID
+
+from database import db
+from emails import mail, send_admin_info
 from forms import EmailForm, NewLinkForm, PosterForm, UploadForm
 from models import Poster
 from providers import extract_data
@@ -36,7 +35,7 @@ except ImportError:
 db.init_app(app)
 migrate = Migrate(app, db)
 # emails
-mail = Mail(app)
+mail.init_app(app)
 # converters
 FlaskUUID(app)
 
@@ -117,21 +116,8 @@ def publish_poster(id_admin):
         p.email = form.email.data
         db.session.add(p)
         db.session.commit()
+        send_admin_info(p, sender=app.config['MAIL_FROM'])
         flash('Information successfully updated! You should receive an email soon.')
-        vars = {
-            'title': p.title,
-            'public_url': p.public_url(absolute=True),
-            'admin_url': p.admin_url(absolute=True),
-            'png_url': p.qrcode_png_url(absolute=True),
-            'svg_url': p.qrcode_svg_url(absolute=True),
-        }
-        msg = Message(
-            EMAIL_PUBLISH_TITLE.format(**vars),
-            sender=app.config['MAIL_FROM'],
-            recipients=[p.email],
-            body=EMAIL_PUBLISH_PLAIN_TEXT.format(**vars)
-        )
-        mail.send(msg)
         return redirect(url_for('publish_poster', id_admin=p.id_admin))
     return render_template('publish_poster.html', form=form, poster=p)
 

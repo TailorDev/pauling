@@ -2,55 +2,57 @@
 
 {% block content %}
 <div class="index">
-    <div class="content-wrapper">
-        <div class="poster-form">
-            <form action="{{ url_for('index') }}" method="POST">
-                {{ form.csrf_token }}
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="poster-form">
+                <form action="{{ url_for('index') }}" method="POST">
+                    {{ form.csrf_token }}
 
-                <div class="poster-form-field-url">
-                    <div class="control is-expanded">
-                        <input{% if form.source_url.errors %} class="is-danger"{% endif %}
-                            name="source_url" type="text" placeholder="Paste the link to your poster on F1000, Figshare, etc.">
-                        {% for error in form.source_url.errors %}
+                    <div class="poster-form-field-url">
+                        <div class="control is-expanded">
+                            <input{% if form.source_url.errors %} class="is-danger"{% endif %}
+                                name="source_url" type="text" placeholder="Paste the link to your poster on F1000, Figshare, etc.">
+                            {% for error in form.source_url.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="control">
+                            <button id="btn-submit" {% if form.source_url.errors %} class="is-danger"{% endif %}>
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                    <p class="help">
+                        <i class="fa fa-info-circle"></i> Want to try but no poster? You can test with this one maybe:
+                        <a id="try-link" href="https://figshare.com/articles/The_Value_Proposition_of_Libraries_in_Research_Information_Management/5267872">The Value Proposition of Libraries in Research Information Management</a>.
+                    </p>
+                </form>
+
+                <div class="title-with-lines">OR</div>
+
+                <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                    {{ upload_form.csrf_token }}
+
+                    <div class="field">
+                        <div class="file is-small{% if upload_form.file.errors %} is-danger{% endif %}">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="file">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fa fa-upload"></i>
+                                    </span>
+                                    <span class="file-label label-text">
+                                        Upload your poster here
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                        {% for error in upload_form.file.errors %}
                         <p class="help is-danger">{{ error }}</p>
                         {% endfor %}
                     </div>
-                    <div class="control">
-                        <button id="btn-submit" {% if form.source_url.errors %} class="is-danger"{% endif %}>
-                            Submit
-                        </button>
-                    </div>
-                </div>
-                <p class="help">
-                    <i class="fa fa-info-circle"></i> Want to try but no poster? You can test with this one maybe:
-                    <a id="try-link" href="https://figshare.com/articles/The_Value_Proposition_of_Libraries_in_Research_Information_Management/5267872">The Value Proposition of Libraries in Research Information Management</a>.
-                </p>
-            </form>
-
-            <div class="title-with-lines">OR</div>
-
-            <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-                {{ upload_form.csrf_token }}
-
-                <div class="field">
-                    <div class="file is-small{% if upload_form.file.errors %} is-danger{% endif %}">
-                        <label class="file-label">
-                            <input class="file-input" type="file" name="file">
-                            <span class="file-cta">
-                                <span class="file-icon">
-                                    <i class="fa fa-upload"></i>
-                                </span>
-                                <span class="file-label label-text">
-                                    Upload your poster here
-                                </span>
-                            </span>
-                        </label>
-                    </div>
-                    {% for error in upload_form.file.errors %}
-                    <p class="help is-danger">{{ error }}</p>
-                    {% endfor %}
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

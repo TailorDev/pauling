@@ -32,4 +32,10 @@
             @extend .is-primary;
         }
     }
+
+    @media (max-width : 768px) {
+        button {
+            width: 100%;
+        }
+    }
 }

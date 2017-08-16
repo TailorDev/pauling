@@ -1,3 +1,5 @@
+/* @flow */
+
 // Styles
 export const colors = {
   textPrimaryColor: '#333',

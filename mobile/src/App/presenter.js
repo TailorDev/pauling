@@ -1,34 +1,27 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Body, Button, Container, Content, Left, Header, Icon, Right, Text, Title } from 'native-base';
 
-const App = () => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>Welcome to React Native!</Text>
-    <Text style={styles.instructions}>This is huge!</Text>
-    <Text style={styles.instructions}>
-      Press Cmd+R to reload,{'\n'}
-      Cmd+D or shake for dev menu
-    </Text>
-  </View>
-);
+import PosterCardList from '../PosterCardList';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <Container
+        style={{
+          backgroundColor: '#efefef'
+        }}
+      >
+        <Header>
+          <Left />
+          <Body>
+            <Title>Posters</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+          <PosterCardList />
+        </Content>
+      </Container>
+    );
+  }
+}

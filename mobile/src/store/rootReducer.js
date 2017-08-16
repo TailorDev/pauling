@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import posters from '../PosterCardList/reducer';
+import app from '../App/reducer';
 
 export default combineReducers({
-  posters,
+  app,
 });

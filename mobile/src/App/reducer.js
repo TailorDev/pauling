@@ -11,14 +11,14 @@ type State = {
 const initialState: State = {
   posters: [
     {
-      key: 'uuid-01',
+      key: '5ef45c84-84b7-4f7c-9b53-336970cd5759',
       title: 'Imperfect centered sites - a new mode of miRNA binding',
       thumbnailUrl: 'https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/1710259/thumb.png',
       authors: 'Nicole Cloonan',
       savedAt: Moment()
     },
     {
-      key: 'uuid-02',
+      key: '2579ef1b-8266-4363-9ab3-2448eef068c2',
       title: 'The Value Proposition of Libraries in Research Information Management',
       thumbnailUrl: 'https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9011278/thumb.png',
       authors: 'Rebecca Bryant, Holly Mercer',

@@ -17,9 +17,9 @@ import Moment from 'moment';
 import styles from './styles';
 
 type Props = {
-  title: String,
-  authors: String,
-  thumbnailUrl: String,
+  title: string,
+  authors: string,
+  thumbnailUrl: string,
   savedAt: Moment,
 };
 

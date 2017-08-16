@@ -3,22 +3,13 @@ import React, { Component } from 'react';
 import { Body, Button, Container, Content, Left, Header, Icon, Right, Text, Title } from 'native-base';
 
 import PosterCardList from '../PosterCardList';
+import styles from './styles';
 
-export default class App extends Component {
+
+class App extends Component {
   render() {
     return (
-      <Container
-        style={{
-          backgroundColor: '#f5f5f5'
-        }}
-      >
-        <Header>
-          <Left />
-          <Body>
-            <Title>Posters</Title>
-          </Body>
-          <Right />
-        </Header>
+      <Container style={styles.App}>
         <Content>
           <PosterCardList />
         </Content>
@@ -26,3 +17,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;

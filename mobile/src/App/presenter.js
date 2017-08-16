@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <Container
         style={{
-          backgroundColor: '#efefef'
+          backgroundColor: '#f5f5f5'
         }}
       >
         <Header>

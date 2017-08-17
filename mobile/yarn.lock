@@ -3703,6 +3703,12 @@ react-devtools-core@2.3.1:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-camera@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-0.10.0.tgz#5d973c9a8aab95f68aede395ba310eae0c3cecdd"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-config@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.6.0.tgz#0f71631ab5ac4b568637dcb8e9f6ab85ffb380ed"
@@ -3762,6 +3768,10 @@ react-native-pdf@^1.2.8:
 react-native-splash-screen@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.0.0.tgz#44ac95f84b9bf58d800af1ab9ff52093fa3efcb9"
+
+react-native-qrcode-scanner@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/react-native-qrcode-scanner/-/react-native-qrcode-scanner-0.0.14.tgz#09371c6033c0be64804ccfac242be41a7783a207"
 
 react-native-tab-view@^0.0.65:
   version "0.0.65"

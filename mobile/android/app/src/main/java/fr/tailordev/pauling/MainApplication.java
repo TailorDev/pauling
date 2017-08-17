@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import org.wonday.pdf.RCTPdfView;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new SplashScreenReactPackage(),
+            new RCTCameraPackage(),
             new RNFetchBlobPackage(),
             new RCTPdfView(),
             new ReactNativeConfigPackage()

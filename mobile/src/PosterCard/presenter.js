@@ -10,9 +10,10 @@ import { dateTimeFormat } from '../settings';
 
 
 class PosterCard extends Component {
+
   props: {
+    ...Poster,
     navigation: Navigation,
-    ...Poster
   };
 
   constructor(props: Object) {

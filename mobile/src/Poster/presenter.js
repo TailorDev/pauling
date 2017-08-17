@@ -8,17 +8,16 @@ import { dateTimeFormat } from '../settings';
 import type {
   Navigation,
   NavigationOptions,
-  Poster as PosterType
 } from '../types';
 
 
 class Poster extends Component {
+
   props: {
     navigation: Navigation,
-    ...PosterType,
   };
 
-  static navigationOptions = ({navigation, screenProps}): NavigationOptions => ({
+  static navigationOptions = ({navigation}): NavigationOptions => ({
     title: navigation.state.params.title,
   });
 
@@ -31,7 +30,7 @@ class Poster extends Component {
           source={{ uri: params.thumbnailUrl }}
           style={styles.Thumbnail}
         />
-        <View style={styles.PosterInfos}>
+        <View style={styles.Infos}>
           <Text style={styles.Title}>
             {params.title}
           </Text>

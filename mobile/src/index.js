@@ -1,6 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+// $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
 import { StackNavigator } from 'react-navigation';
 
 import './ReactotronConfig';

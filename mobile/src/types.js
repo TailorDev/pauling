@@ -4,8 +4,6 @@ import Moment from 'moment';
 export type Navigation = {
   navigate: Function,
   state: Object,
-  addListener: Function,
-  removeListener: Function,
 };
 
 export type NavigationOptions = {

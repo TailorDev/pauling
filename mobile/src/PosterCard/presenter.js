@@ -29,22 +29,24 @@ class PosterCard extends Component {
   }
 
   render() {
+    const props = this.props;
+
     return (
       <TouchableOpacity onPress={this.onPress}>
         <View style={styles.PosterCard}>
           <Image
-            source={{ uri: this.props.thumbnailUrl }}
+            source={{ uri: props.thumbnailUrl }}
             style={styles.PosterThumbnail}
           />
           <View style={styles.PosterInfos}>
             <Text style={styles.PosterTitle}>
-              {this.props.title}
+              {props.title}
             </Text>
             <Text style={styles.PosterAuthors}>
-              {this.props.authors}
+              {props.authors}
             </Text>
             <Text style={styles.PosterSavedAt}>
-              Saved: {this.props.savedAt.format(dateTimeFormat)}
+              Saved: {props.savedAt ? props.savedAt.format(dateTimeFormat) : ''}
             </Text>
           </View>
         </View>

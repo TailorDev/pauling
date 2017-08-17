@@ -13,7 +13,7 @@ class App extends Component {
     navigation: Navigation,
   };
 
-  static navigationOptions: NavigationOptions = ({navigation, screenProps}) => ({
+  static navigationOptions = ({navigation, screenProps}): NavigationOptions => ({
     title: 'Pauling collection',
   });
 

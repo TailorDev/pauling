@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Body, Button, Container, Content, Left, Header, Icon, Right, Text, Title } from 'native-base';
+import { Container, Content } from 'native-base';
 
 import PosterCardList from '../PosterCardList';
 import styles from './styles';

@@ -1,18 +1,8 @@
 /* @flow */
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Image, View } from 'react-native';
-import {
-  Card,
-  CardItem,
-  Thumbnail,
-  Text,
-  Button,
-  Icon,
-  Left,
-  Body,
-  Right,
-} from 'native-base';
+import { Text } from 'native-base';
 import Moment from 'moment';
 import styles from './styles';
 

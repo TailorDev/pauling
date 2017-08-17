@@ -1,7 +1,6 @@
 /* @flow */
-import React, { Component } from 'react';
+import React from 'react';
 import { FlatList } from 'react-native';
-import Moment from 'moment';
 
 import type { Poster } from '../types';
 import PosterCard from '../PosterCard';

@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 
-import { Image, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Text } from 'native-base';
 import Pdf from 'react-native-pdf';
 
@@ -10,16 +10,23 @@ import { dateTimeFormat } from '../settings';
 import type {
   Navigation,
   NavigationOptions,
+  Poster as PosterType
 } from '../types';
 
 type Props = {
-  navigation: Navigation,
   ...PosterType,
-}
-
-
+  navigation: Navigation,
+};
 
 class Poster extends Component {
+
+  props: Props;
+
+  state : {
+    loading: boolean,
+  };
+
+  pdf: any;
 
   static navigationOptions = ({navigation}): NavigationOptions => ({
     title: navigation.state.params.title,
@@ -32,12 +39,6 @@ class Poster extends Component {
       loading: true
     };
     this.pdf = null;
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.title !== this.props.title)
-      return false;
-    return true
   }
 
   render() {

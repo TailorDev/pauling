@@ -8,3 +8,6 @@ export const colors = {
   textPrimaryColor: '#333',
   textSecondaryColor: '#999',
 };
+
+// Time
+export const dateTimeFormat = 'YYYY/MM/DD, HH:mm a';

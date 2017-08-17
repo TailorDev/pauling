@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { StackNavigator } from 'react-navigation';
 
+import './ReactotronConfig';
 import configureStore from './store/configureStore';
 import AppScreen from './App';
 import PosterScreen from './Poster';

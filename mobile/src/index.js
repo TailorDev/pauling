@@ -5,10 +5,12 @@ import { StackNavigator } from 'react-navigation';
 
 import configureStore from './store/configureStore';
 import AppScreen from './App';
+import PosterScreen from './Poster';
 
 
 const Routes = StackNavigator({
   App: { screen: AppScreen },
+  Poster: { screen: PosterScreen }
 });
 
 const store = configureStore();

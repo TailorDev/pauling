@@ -1,5 +1,5 @@
 /* @flow */
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { colors } from '../settings';
 
 
@@ -10,8 +10,13 @@ export default StyleSheet.create({
     height: '100%',
     backgroundColor: colors.cardBackgroundColor,
   },
-  Thumbnail: {
-    height: 400,
+  Loading: {
+    padding: 40,
+    textAlign: 'center',
+    color: colors.textSecondaryColor,
+  },
+  Pdf: {
+    height: Dimensions.get('window').height * 0.7,
     width: '100%',
     flex: 1,
   },

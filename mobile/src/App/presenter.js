@@ -8,11 +8,14 @@ import type { Navigation, NavigationOptions } from '../types';
 
 
 class App extends Component {
-  navigationOptions: NavigationOptions;
 
   props: {
-    navigation: Navigation,  
+    navigation: Navigation,
   };
+
+  static navigationOptions: NavigationOptions = ({navigation, screenProps}) => ({
+    title: 'Pauling collection',
+  });
 
   render() {
     return (

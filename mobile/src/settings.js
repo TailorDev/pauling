@@ -6,7 +6,7 @@ export const colors = {
   cardBackgroundColor: '#fff',
   cardShadowColor: '#333',
   textPrimaryColor: '#333',
-  textSecondaryColor: '#999',
+  textSecondaryColor: '#777',
 };
 
 // Time

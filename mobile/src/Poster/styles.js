@@ -4,38 +4,33 @@ import { colors } from '../settings';
 
 
 export default StyleSheet.create({
-  PosterCard: {
+  Poster: {
     flex: 1,
-    flexDirection: 'row',
-    marginBottom: 20,
+    flexDirection: 'column',
+    height: '100%',
     backgroundColor: colors.cardBackgroundColor,
-    shadowColor: colors.cardShadowColor,
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowRadius: 2,
-    shadowOpacity: 0.2
   },
-  PosterThumbnail: {
-    height: 200,
-    width: '50%',
-  },
-  PosterInfos: {
-    width: '50%',
+  Thumbnail: {
+    height: 400,
+    width: '100%',
     flex: 1,
   },
-  PosterTitle: {
+  Infos: {
+    flex: 1,
+  },
+  Title: {
     padding: 10,
     fontSize: 15,
   },
-  PosterAuthors: {
+  Authors: {
     paddingLeft: 10,
+    paddingRight: 10,
     fontSize: 12,
     color: colors.textSecondaryColor,
   },
-  PosterSavedAt: {
+  SavedAt: {
     paddingTop: 15,
+    paddingRight: 10,
     paddingLeft: 10,
     color: colors.textSecondaryColor,
     fontSize: 9,

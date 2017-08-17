@@ -4,12 +4,14 @@ import { Container, Content } from 'native-base';
 
 import PosterCardList from '../PosterCardList';
 import styles from './styles';
-import type { Navigation } from '../types';
+import type { Navigation, NavigationOptions } from '../types';
 
 
 class App extends Component {
+  navigationOptions: NavigationOptions;
+
   props: {
-    navigation: Navigation,
+    navigation: Navigation,  
   };
 
   render() {

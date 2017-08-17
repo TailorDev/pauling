@@ -5,12 +5,15 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { Text } from 'native-base';
 
 import styles from './styles';
-import type { Poster } from '../types';
+import type { Navigation, Poster } from '../types';
 import { dateTimeFormat } from '../settings';
 
 
 class PosterCard extends Component {
-  props: Poster;
+  props: {
+    navigation: Navigation,
+    ...Poster
+  };
 
   constructor(props: Object) {
     super(props);

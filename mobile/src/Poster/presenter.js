@@ -5,11 +5,16 @@ import { Image, View } from 'react-native';
 import { Text } from 'native-base';
 import styles from './styles';
 import { dateTimeFormat } from '../settings';
-import type { Navigation, Poster as PosterType } from '../types';
+import type {
+  Navigation,
+  NavigationOptions,
+  Poster as PosterType
+} from '../types';
 
 
 type Props = {
   navigation: Navigation,
+  navigationOptions: NavigationOptions,
   ...PosterType,
 }
 

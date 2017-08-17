@@ -35,7 +35,24 @@ jobs:
           working_directory: ~/pauling/mobile
           command: npm run flow
 
-  build:
+  build_api:
+    working_directory: ~/pauling
+    docker:
+      - image: python:3.6.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+      - run:
+          name: make bootstrap
+          working_directory: ~/pauling/api
+          command: make bootstrap
+      - save_cache:
+          key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+          paths:
+            - ~/pauling/api/venv
+
+  test_api:
     working_directory: ~/pauling
     docker:
       - image: python:3.6.0
@@ -55,19 +72,18 @@ jobs:
       - restore_cache:
           key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
       - run:
-          name: make bootstrap
-          working_directory: ~/pauling/api
-          command: make bootstrap
-      - save_cache:
-          key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
-          paths:
-            - "venv"
-      - run:
           name: make test-ci
           working_directory: ~/pauling/api
           command: make test-ci
       - store_test_results:
           path: /reports
+
+  deploy_api:
+    working_directory: ~/pauling
+    docker:
+      - image: python:3.6.0
+    steps:
+      - checkout
       - run:
           name: setup Heroku deployment
           command: bash .circleci/heroku-setup.sh
@@ -84,12 +100,18 @@ jobs:
 
 workflows:
   version: 2
-  build_and_lint_mobile:
+  mobile:
     jobs:
       - build_mobile
       - lint_mobile:
           requires:
             - build_mobile
-  build_and_deploy_api:
+  api:
     jobs:
-      - build
+      - build_api
+      - test_api:
+          requires:
+            - build_api
+      - deploy_api:
+          requires:
+            - test_api

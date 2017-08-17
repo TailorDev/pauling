@@ -1,21 +1,35 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Container, Content } from 'native-base';
+import { Button, Container, Content, Icon, Fab } from 'native-base';
 
 import PosterCardList from '../PosterCardList';
-import styles from './styles';
 import type { Navigation, NavigationOptions } from '../types';
+import { colors } from '../settings';
+import styles from './styles';
 
+type Props = {
+  navigation: Navigation,
+}
 
 class App extends Component {
 
-  props: {
-    navigation: Navigation,
-  };
+  props: Props;
+
+  state: {
+    active: boolean,
+  }
 
   static navigationOptions = (): NavigationOptions => ({
     title: 'Pauling collection',
   });
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      active: false
+    };
+  }
 
   render() {
     return (
@@ -23,6 +37,28 @@ class App extends Component {
         <Content>
           <PosterCardList navigation={this.props.navigation} />
         </Content>
+        <Fab
+          active={this.state.active}
+          direction="up"
+          style={styles.Fab}
+          position="bottomRight"
+          onPress={() => this.setState({ active: !this.state.active })}
+        >
+          <Icon
+            name="ios-add"
+            ios="ios-add"
+            android="md-add"
+          />
+          <Button
+            style={{backgroundColor: colors.secondaryColor}}
+          >
+            <Icon
+              name="ios-qr-scanner"
+              ios="ios-qr-scanner"
+              android="md-qr-scanner"
+            />
+          </Button>
+        </Fab>
       </Container>
     );
   }

@@ -3769,10 +3769,6 @@ react-native-splash-screen@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.0.0.tgz#44ac95f84b9bf58d800af1ab9ff52093fa3efcb9"
 
-react-native-qrcode-scanner@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/react-native-qrcode-scanner/-/react-native-qrcode-scanner-0.0.14.tgz#09371c6033c0be64804ccfac242be41a7783a207"
-
 react-native-tab-view@^0.0.65:
   version "0.0.65"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.65.tgz#b685ea3081ff7c96486cd997361026c407302c59"

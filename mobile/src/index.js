@@ -1,42 +1,28 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
+/* @flow */
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+// $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
+import { StackNavigator } from 'react-navigation';
+
+import './ReactotronConfig';
+import configureStore from './store/configureStore';
+import AppScreen from './App';
+import PosterScreen from './Poster';
+
+
+const Routes = StackNavigator({
+  App: { screen: AppScreen },
+  Poster: { screen: PosterScreen }
+});
+
+const store = configureStore();
 
 export default class Pauling extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>Woohoo! Damned. Foo. Bar.</Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});

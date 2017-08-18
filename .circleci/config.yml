@@ -1,6 +1,58 @@
 version: 2
 jobs:
-  build:
+
+  build_mobile:
+    working_directory: ~/pauling
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: mobile-deps-{{ .Branch }}-{{ checksum "mobile/yarn.lock" }}
+      - run:
+          name: install dependencies
+          working_directory: ~/pauling/mobile
+          command: yarn install
+      - save_cache:
+          key: mobile-deps-{{ .Branch }}-{{ checksum "mobile/yarn.lock" }}
+          paths:
+              - ~/pauling/mobile/node_modules
+
+  lint_mobile:
+    working_directory: ~/pauling
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: mobile-deps-{{ .Branch }}-{{ checksum "mobile/yarn.lock" }}
+      - run:
+          name: lint code
+          working_directory: ~/pauling/mobile
+          command: npm run lint
+      - run:
+          name: static type check
+          working_directory: ~/pauling/mobile
+          command: npm run flow
+
+  build_api:
+    working_directory: ~/pauling
+    docker:
+      - image: python:3.6.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+      - run:
+          name: make bootstrap
+          working_directory: ~/pauling/api
+          command: make bootstrap
+      - save_cache:
+          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+          paths:
+            - ~/pauling/api/venv
+
+  test_api:
     working_directory: ~/pauling
     docker:
       - image: python:3.6.0
@@ -18,21 +70,20 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
-      - run:
-          name: make bootstrap
-          working_directory: ~/pauling/api
-          command: make bootstrap
-      - save_cache:
-          key: deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
-          paths:
-            - "venv"
+          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
       - run:
           name: make test-ci
           working_directory: ~/pauling/api
           command: make test-ci
       - store_test_results:
           path: /reports
+
+  deploy_api:
+    working_directory: ~/pauling
+    docker:
+      - image: python:3.6.0
+    steps:
+      - checkout
       - run:
           name: setup Heroku deployment
           command: bash .circleci/heroku-setup.sh
@@ -46,3 +97,21 @@ jobs:
               make deploy-api
               heroku run FLASK_APP=server.py flask db upgrade
             fi
+
+workflows:
+  version: 2
+  mobile:
+    jobs:
+      - build_mobile
+      - lint_mobile:
+          requires:
+            - build_mobile
+  api:
+    jobs:
+      - build_api
+      - test_api:
+          requires:
+            - build_api
+      - deploy_api:
+          requires:
+            - test_api

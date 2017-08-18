@@ -15,5 +15,6 @@ export type Poster = {
   title: string,
   authors: string,
   thumbnailUrl: string,
+  PDFUrl: string,
   savedAt: Moment,
 }

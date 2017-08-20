@@ -1,4 +1,4 @@
-package com.pauling;
+package fr.tailordev.pauling;
 
 import android.app.Application;
 

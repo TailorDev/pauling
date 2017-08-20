@@ -1,4 +1,4 @@
-package com.pauling;
+package fr.tailordev.pauling;
 
 import com.facebook.react.ReactActivity;
 

@@ -14,7 +14,9 @@ import type {
   // Poster as PosterType
 } from '../types';
 
-type Props = {};
+type Props = {
+  onValidPaulingQRCodeRead: Function,
+};
 
 
 class QRScan extends Component {
@@ -48,8 +50,7 @@ class QRScan extends Component {
       this.setState({
         hasReadValidQR: true,
       });
-      // TODO
-      // Dispatch here
+      this.props.onValidPaulingQRCodeRead(paulingUrl);
     } else {
       Toast.show({
         text: 'Invalid QR code. Please try again.',

@@ -41,7 +41,8 @@
 		"prettier": "^1.5.3",
 		"react-test-renderer": "16.0.0-alpha.12",
 		"reactotron-react-native": "^1.12.2",
-		"reactotron-redux": "^1.12.2"
+		"reactotron-redux": "^1.12.2",
+		"redux-logger": "^3.0.6"
 	},
 	"jest": {
 		"preset": "react-native"

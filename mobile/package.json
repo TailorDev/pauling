@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"android": "react-native run-android --no-packager && node node_modules/react-native/local-cli/cli.js start --port 8081",
+		"android-shake": "adb shell input keyevent 82",
 		"flow": "node_modules/.bin/flow",
 		"ios": "react-native run-ios --no-packager && node node_modules/react-native/local-cli/cli.js start --port 8082",
 		"lint": "eslint src/",

@@ -36,7 +36,7 @@ class PosterCard extends Component {
       <TouchableOpacity onPress={this.onPress}>
         <View style={styles.PosterCard}>
           <Image
-            source={{ uri: props.thumbnailUrl }}
+            source={{ uri: props.thumbnail_url }}
             style={styles.PosterThumbnail}
           />
           <View style={styles.PosterInfos}>
@@ -47,7 +47,7 @@ class PosterCard extends Component {
               {props.authors}
             </Text>
             <Text style={styles.PosterSavedAt}>
-              Saved: {props.savedAt ? props.savedAt.format(dateTimeFormat) : ''}
+              Saved: {props.saved_at ? props.saved_at.format(dateTimeFormat) : ''}
             </Text>
           </View>
         </View>

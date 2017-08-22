@@ -43,7 +43,7 @@ class Poster extends Component {
 
   render() {
     const { params } = this.props.navigation.state;
-    const PdfUri = {uri: params.PDFUrl, cache: true};
+    const PdfUri = {uri: params.download_url, cache: true};
 
     return (
       <ScrollView style={styles.Poster}>
@@ -69,7 +69,7 @@ class Poster extends Component {
             {params.authors}
           </Text>
           <Text style={styles.SavedAt}>
-            Saved: {params.savedAt ? params.savedAt.format(dateTimeFormat): ''}
+            Saved: {params.saved_at ? params.saved_at.format(dateTimeFormat): ''}
           </Text>
         </View>
       </ScrollView>

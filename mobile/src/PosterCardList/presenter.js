@@ -14,6 +14,7 @@ type Props = {
 const PosterCardList = ({ navigation, posters }: Props) =>
   <FlatList
     data={posters}
+    keyExtractor={(item) => item.id}
     renderItem={({item}) => <PosterCard {...item} navigation={navigation}/>}
   />;
 

@@ -9,6 +9,7 @@ export const colors = {
   secondaryColor: '#2e354f',
   textPrimaryColor: '#333',
   textSecondaryColor: '#777',
+  textAltPrimaryColor: '#fff',
 };
 
 // Time

@@ -51,6 +51,7 @@ class App extends Component {
           />
           <Button
             style={{backgroundColor: colors.secondaryColor}}
+            onPress={() => this.props.navigation.navigate('QRScan')}
           >
             <Icon
               name="ios-qr-scanner"

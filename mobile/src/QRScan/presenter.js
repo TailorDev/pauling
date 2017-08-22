@@ -37,12 +37,12 @@ class QRScan extends Component {
     this.onBarCodeRead = this.onBarCodeRead.bind(this);
   }
 
-  isValidPaulingUrl(url) {
+  isValidPaulingUrl(url) { // eslint-disable-line
     // TODO
     return true;
   }
 
-  onBarCodeRead(data, bound) {
+  onBarCodeRead(data) {
 
     const paulingUrl = data.data;
 

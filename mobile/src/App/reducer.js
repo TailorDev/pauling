@@ -2,25 +2,13 @@
 import Moment from 'moment';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { Toast } from 'native-base';
-import type { Action, ThunkAction, Poster } from '../types';
+import type { ThunkAction, Poster } from '../types';
 
 // State
 type State = {
   isFetchingPosterData: boolean,
   posters: Array<Poster>,
 }
-
-// id
-// title
-// thumbnail_url
-// download_url
-// authors
-//
-// abstract
-// presented_at
-// source_url
-// created_at
-// saved_at
 
 const initialState: State = {
   isFetchingPosterData: false,
@@ -72,7 +60,7 @@ export function fetchPosterData(paulingPosterUrl): ThunkAction {
           buttonText: 'Okay'
         });
       })
-      .catch((errorMessage, statusCode) => {
+      .catch((errorMessage, statusCode) => { // eslint-disable-line
         dispatch({ type: FETCH_POSTER_DATA_FAILED });
         const message = 'Cannot fetch poster data. Please try again later.';
         Toast.show({
@@ -80,7 +68,9 @@ export function fetchPosterData(paulingPosterUrl): ThunkAction {
           position: 'bottom',
           buttonText: 'Okay'
         });
-        console.error(message, errorMessage, statusCode);
+        // TODO
+        // Log error
+        // console.error(message, errorMessage, statusCode);
       });
   };
 }

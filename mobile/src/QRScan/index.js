@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { fetchPosterData } from '../App/reducer';
 import QRScan from './presenter';
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return {};
-};
+}
 
 function mapDispatchToProps(dispatch) {
   return {

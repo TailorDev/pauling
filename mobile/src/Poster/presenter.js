@@ -76,7 +76,7 @@ class Poster extends Component {
             {params.abstract}
           </Text>
           <Text style={styles.SavedAt}>
-            Saved: {params.saved_at.format(dateTimeFormat)}
+            Saved: {params.saved_at}
           </Text>
         </ScrollView>
       </View>

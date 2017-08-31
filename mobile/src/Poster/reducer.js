@@ -1,5 +1,4 @@
 /* @flow */
-import Moment from 'moment';
 import type { Poster } from '../types';
 
 // State

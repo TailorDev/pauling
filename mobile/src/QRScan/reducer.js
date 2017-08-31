@@ -1,5 +1,4 @@
 /* @flow */
-import Moment from 'moment';
 // $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
 import { NavigationActions } from 'react-navigation';
 import Reactotron from 'reactotron-react-native';
@@ -36,10 +35,12 @@ export function fetchPosterData(paulingPosterUrl: string): ThunkAction {
         Accept: 'application/json',
       })
       .then((response) => {
+        const now = Date.now();
+        const saved_at = now.toLocaleString();
         const data = response.json();
         const poster = Object.assign(
           data.poster,
-          {saved_at: Moment()}
+          {saved_at}
         );
 
         dispatch({ type: FETCH_POSTER_DATA_SUCCEEDED });

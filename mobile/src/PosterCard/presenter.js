@@ -43,7 +43,7 @@ class PosterCard extends Component {
               {props.authors}
             </Text>
             <Text style={styles.PosterSavedAt}>
-              Saved: {props.saved_at ? props.saved_at.format(dateTimeFormat) : ''}
+              Saved: {props.saved_at}
             </Text>
           </View>
         </View>

@@ -1,6 +1,7 @@
 /* @flow */
 import Moment from 'moment';
-import { NavigationActions } from 'react-navigation'
+// $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
+import { NavigationActions } from 'react-navigation';
 import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { Toast } from 'native-base';
@@ -24,7 +25,7 @@ const FETCH_POSTER_DATA_FAILED = 'pauling/poster/FETCH_DATA_POSTER_FAILED';
 
 
 // Action Creators
-export function fetchPosterData(paulingPosterUrl): ThunkAction {
+export function fetchPosterData(paulingPosterUrl: string): ThunkAction {
   return (dispatch: Function) => {
     dispatch({ type: FETCH_POSTER_DATA_STARTED });
 

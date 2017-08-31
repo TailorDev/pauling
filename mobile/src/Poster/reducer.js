@@ -33,7 +33,7 @@ const ADD_POSTER = 'pauling/poster/ADD_POSTER';
 
 
 // Action Creators
-export function addPoster(poster) {
+export function addPoster(poster: Poster) {
   return { type: ADD_POSTER, poster };
 }
 

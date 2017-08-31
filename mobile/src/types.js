@@ -20,10 +20,10 @@ export type NavigationOptions = {
 }
 
 export type Poster = {
-  key: string,
+  id: string,
   title: string,
+  thumbnail_url: string,
+  download_url: string,
   authors: string,
-  thumbnailUrl: string,
-  PDFUrl: string,
-  savedAt: Moment,
+  saved_at: Moment,
 }

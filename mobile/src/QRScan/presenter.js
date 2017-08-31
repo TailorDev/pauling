@@ -1,6 +1,5 @@
 /* @flow */
 import React, { Component } from 'react';
-
 import { View } from 'react-native';
 import { Spinner, Text, Toast } from 'native-base';
 import Camera from 'react-native-camera';
@@ -18,10 +17,19 @@ type Props = {
   onValidPaulingQRCodeRead: Function,
 };
 
+type State = {
+  hasReadValidQR: boolean,
+}
+
+type BarCodeData = {
+  data: string,
+  type: string,
+};
+
 
 class QRScan extends Component {
 
-  props: Props;
+  state: State;
 
   static navigationOptions = (): NavigationOptions => ({
     title: 'New poster',
@@ -34,15 +42,15 @@ class QRScan extends Component {
       hasReadValidQR: false,
     };
 
-    this.onBarCodeRead = this.onBarCodeRead.bind(this);
+    (this: any).onBarCodeRead = this.onBarCodeRead.bind(this);
   }
 
-  isValidPaulingUrl(url) { // eslint-disable-line
+  isValidPaulingUrl(url: string) { // eslint-disable-line
     // TODO
     return true;
   }
 
-  onBarCodeRead(data) {
+  onBarCodeRead(data: BarCodeData) {
 
     const paulingUrl = data.data;
 
@@ -65,12 +73,9 @@ class QRScan extends Component {
       <View style={styles.QRScan}>
         {
           this.state.hasReadValidQR ?
-            <Fetching paulingUrl={this.state.paulingUrl} />
+            <Fetching />
             :
             <Camera
-              ref={(cam) => {
-                this.camera = cam;
-              }}
               style={styles.Preview}
               aspect={Camera.constants.Aspect.fill}
               onBarCodeRead={this.onBarCodeRead}

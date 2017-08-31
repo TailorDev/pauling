@@ -7,11 +7,7 @@ import Camera from 'react-native-camera';
 import { colors } from '../settings';
 import Fetching from './Fetching';
 import styles from './styles';
-import type {
-  // Navigation,
-  NavigationOptions,
-  // Poster as PosterType
-} from '../types';
+import type { NavigationOptions } from '../types';
 
 type Props = {
   onValidPaulingQRCodeRead: Function,

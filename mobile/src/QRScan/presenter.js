@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Spinner, Text, Toast } from 'native-base';
 import Camera from 'react-native-camera';
+import Config from 'react-native-config';
+import Reactotron from 'reactotron-react-native';
 
 import { colors } from '../settings';
 import Fetching from './Fetching';
@@ -40,9 +42,18 @@ class QRScan extends Component {
     };
   }
 
-  isValidPaulingUrl(url: string) { // eslint-disable-line
-    // TODO
-    return true;
+  isValidPaulingUrl(url: string) {
+    // Url segments
+    const apiServerUrl = Config.API_SERVER_URL || 'http://pauling.lelab.tailordev.fr';
+    const endpoint = 'posters';
+    const uuidPattern = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
+    const pattern = `${apiServerUrl}/${endpoint}/${uuidPattern}`;
+
+    // Build the regex
+    const re = RegExp(pattern);
+
+    // Test the url
+    return re.test(url);
   }
 
   onBarCodeRead = (data: BarCodeData) => {
@@ -58,7 +69,7 @@ class QRScan extends Component {
       Toast.show({
         text: 'Invalid QR code. Please try again.',
         position: 'bottom',
-        buttonText: 'Okay'
+        buttonText: 'Dismiss'
       });
     }
   }

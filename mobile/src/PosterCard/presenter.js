@@ -8,21 +8,17 @@ import styles from './styles';
 import type { Navigation, Poster } from '../types';
 import { dateTimeFormat } from '../settings';
 
+type Props = {
+  ...Poster,
+  navigation: Navigation,
+};
+
 
 class PosterCard extends Component {
 
-  props: {
-    ...Poster,
-    navigation: Navigation,
-  };
+  props: Props;
 
-  constructor(props: Object) {
-    super(props);
-
-    (this: any).onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+  onPress = () => {
     const { navigate } = this.props.navigation;
     const currentPoster = {...this.props};
 

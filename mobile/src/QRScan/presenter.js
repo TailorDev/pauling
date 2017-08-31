@@ -29,6 +29,7 @@ type BarCodeData = {
 
 class QRScan extends Component {
 
+  props: Props;
   state: State;
 
   static navigationOptions = (): NavigationOptions => ({
@@ -41,8 +42,6 @@ class QRScan extends Component {
     this.state = {
       hasReadValidQR: false,
     };
-
-    (this: any).onBarCodeRead = this.onBarCodeRead.bind(this);
   }
 
   isValidPaulingUrl(url: string) { // eslint-disable-line
@@ -50,7 +49,7 @@ class QRScan extends Component {
     return true;
   }
 
-  onBarCodeRead(data: BarCodeData) {
+  onBarCodeRead = (data: BarCodeData) => {
 
     const paulingUrl = data.data;
 

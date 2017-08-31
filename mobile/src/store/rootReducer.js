@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import app from '../App/reducer';
+import scan from '../QRScan/reducer';
+import poster from '../Poster/reducer';
 
 export default combineReducers({
-  app,
+  scan,
+  poster,
 });

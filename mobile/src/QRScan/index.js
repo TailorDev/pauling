@@ -1,11 +1,14 @@
 /* @flow */
 import { connect } from 'react-redux';
 
-import { fetchPosterData } from '../App/reducer';
+import { fetchPosterData } from './reducer';
 import QRScan from './presenter';
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  const scan = state.scan;
+  return {
+    isFetchingPosterData: scan.isFetchingPosterData
+  };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -6,7 +6,6 @@ import { Text } from 'native-base';
 
 import styles from './styles';
 import type { Navigation, Poster } from '../types';
-import { dateTimeFormat } from '../settings';
 
 type Props = {
   ...Poster,

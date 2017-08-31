@@ -4,7 +4,6 @@ import { View } from 'react-native';
 import { Spinner, Text, Toast } from 'native-base';
 import Camera from 'react-native-camera';
 import Config from 'react-native-config';
-import Reactotron from 'reactotron-react-native';
 
 import { colors } from '../settings';
 import Fetching from './Fetching';

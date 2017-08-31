@@ -6,7 +6,6 @@ import { Text } from 'native-base';
 import Pdf from 'react-native-pdf';
 
 import styles from './styles';
-import { dateTimeFormat } from '../settings';
 import type {
   Navigation,
   NavigationOptions,

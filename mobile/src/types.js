@@ -1,6 +1,4 @@
 /* @flow */
-import Moment from 'moment';
-
 // Taken from: https://github.com/fbsamples/f8app
 export type Action = Object;
 export type Dispatch = (
@@ -26,5 +24,5 @@ export type Poster = {
   download_url: string,
   authors: string,
   abstract: string,
-  saved_at: Moment,
+  saved_at: string,
 }

@@ -28,6 +28,15 @@ class ActionMenu extends Component {
     };
   }
 
+  onMenuPress = () => {
+    this.setState({ active: !this.state.active })
+  }
+
+  onScanIconPress = () => {
+    this.setState({ active: false });
+    this.props.navigation.navigate('QRScan');
+  }
+
   render() {
     return (
       <Fab
@@ -35,7 +44,7 @@ class ActionMenu extends Component {
         direction="up"
         style={styles.Fab}
         position="bottomRight"
-        onPress={() => this.setState({ active: !this.state.active })}
+        onPress={this.onMenuPress}
       >
         <Icon
           name="ios-add"
@@ -44,7 +53,7 @@ class ActionMenu extends Component {
         />
         <Button
           style={{backgroundColor: colors.secondaryColor}}
-          onPress={() => this.props.navigation.navigate('QRScan')}
+          onPress={this.onScanIconPress}
         >
           <Icon
             name="ios-qr-scanner"

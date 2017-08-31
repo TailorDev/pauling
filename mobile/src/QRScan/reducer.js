@@ -35,12 +35,12 @@ export function fetchPosterData(paulingPosterUrl: string): ThunkAction {
         Accept: 'application/json',
       })
       .then((response) => {
-        const now = Date.now();
+        var now = new Date();
         const saved_at = now.toLocaleString();
         const data = response.json();
         const poster = Object.assign(
           data.poster,
-          {saved_at}
+          { saved_at }
         );
 
         dispatch({ type: FETCH_POSTER_DATA_SUCCEEDED });

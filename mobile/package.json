@@ -12,6 +12,7 @@
 		"prepare:patch": "npm version patch -m \":rocket: Prepare %s release\"",
 		"prettier": "prettier --write --single-quote --trailing-comma es5 --parser flow \"src/**/*.js\"",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"tethered-mode": "adb reverse tcp:9090 tcp:9090",
 		"test": "jest",
 		"version": "./scripts/npm-version-ios"
 	},

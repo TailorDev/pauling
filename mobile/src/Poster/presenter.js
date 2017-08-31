@@ -18,14 +18,14 @@ type Props = {
   navigation: Navigation,
 };
 
+type State = {
+  loading: boolean,
+}
+
 class Poster extends Component {
 
   props: Props;
-
-  state : {
-    loading: boolean,
-  };
-
+  state : State;
   pdf: any;
 
   static navigationOptions = ({navigation}): NavigationOptions => ({
@@ -39,6 +39,10 @@ class Poster extends Component {
       loading: true
     };
     this.pdf = null;
+  }
+
+  onPDFLoaded = () => {
+    this.setState({loading: false})
   }
 
   render() {
@@ -58,7 +62,7 @@ class Poster extends Component {
         <Pdf
           ref={(pdf)=>{this.pdf = pdf;}}
           source={PdfUri}
-          onLoadComplete={() => {this.setState({loading: false})}}
+          onLoadComplete={this.onPDFLoaded}
           style={styles.Pdf}
         />
         <View style={styles.Infos}>

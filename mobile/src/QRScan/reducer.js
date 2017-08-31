@@ -1,8 +1,10 @@
 /* @flow */
 import Moment from 'moment';
+import { NavigationActions } from 'react-navigation'
 import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { Toast } from 'native-base';
+
 import type { ThunkAction } from '../types';
 import { addPoster } from '../Poster/reducer';
 
@@ -42,11 +44,13 @@ export function fetchPosterData(paulingPosterUrl): ThunkAction {
         dispatch({ type: FETCH_POSTER_DATA_SUCCEEDED });
         dispatch(addPoster(poster));
 
-        Toast.show({
-          text: 'Poster added with success!',
-          position: 'bottom',
-          buttonText: 'Okay'
-        });
+        Reactotron.log('New poster fetched & added!');
+
+        // Show the poster
+        dispatch(NavigationActions.navigate({
+          routeName: 'Poster',
+          params: poster
+        }));
       })
       .catch((errorMessage, statusCode) => {
         dispatch({ type: FETCH_POSTER_DATA_FAILED });

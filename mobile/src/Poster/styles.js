@@ -7,7 +7,6 @@ export default StyleSheet.create({
   Poster: {
     flex: 1,
     flexDirection: 'column',
-    height: '100%',
     backgroundColor: colors.cardBackgroundColor,
   },
   Loading: {
@@ -16,26 +15,25 @@ export default StyleSheet.create({
     color: colors.textSecondaryColor,
   },
   Pdf: {
-    height: Dimensions.get('window').height * 0.7,
-    width: '100%',
-    flex: 1,
+    flex: 3,
   },
   Infos: {
     flex: 1,
   },
   Title: {
     padding: 10,
-    fontSize: 15,
+    fontSize: 17,
+    fontWeight: 'bold',
   },
   Authors: {
     paddingLeft: 10,
     paddingRight: 10,
-    fontSize: 13,
-    color: colors.textSecondaryColor,
+    fontSize: 14,
   },
   Abstract: {
     padding: 10,
-    fontSize: 11
+    fontSize: 13,
+    textAlign: 'justify',
   },
   SavedAt: {
     paddingTop: 15,

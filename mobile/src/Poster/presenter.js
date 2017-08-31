@@ -50,7 +50,7 @@ class Poster extends Component {
     const PdfUri = {uri: params.download_url, cache: true};
 
     return (
-      <ScrollView style={styles.Poster}>
+      <View style={styles.Poster}>
         {
           this.state.loading ?
             <View>
@@ -65,7 +65,7 @@ class Poster extends Component {
           onLoadComplete={this.onPDFLoaded}
           style={styles.Pdf}
         />
-        <View style={styles.Infos}>
+        <ScrollView style={styles.Infos}>
           <Text style={styles.Title}>
             {params.title}
           </Text>
@@ -78,8 +78,8 @@ class Poster extends Component {
           <Text style={styles.SavedAt}>
             Saved: {params.saved_at.format(dateTimeFormat)}
           </Text>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }

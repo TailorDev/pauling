@@ -1,6 +1,5 @@
 /* @flow */
 import Moment from 'moment';
-import Reactotron from 'reactotron-react-native';
 import type { Poster } from '../types';
 
 // State

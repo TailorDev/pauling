@@ -1,5 +1,4 @@
 /* @flow */
-import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import AppNavigator from './presenter';
 

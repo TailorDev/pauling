@@ -4,7 +4,7 @@ import { FlatList } from 'react-native';
 
 import type { Navigation, Poster } from '../types';
 import PosterCard from '../PosterCard';
-
+import Empty from './Empty';
 
 type Props = {
   navigation: Navigation,
@@ -16,6 +16,7 @@ const PosterCardList = ({ navigation, posters }: Props) =>
     data={posters}
     keyExtractor={(item) => item.id}
     renderItem={({item}) => <PosterCard {...item} navigation={navigation}/>}
+    ListEmptyComponent={Empty}
   />;
 
 export default PosterCardList;

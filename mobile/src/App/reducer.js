@@ -52,8 +52,14 @@ export function fetchPosterData(paulingPosterUrl): ThunkAction {
       })
       .then((response) => {
         const data = response.json();
+        const poster = Object.assign(
+          data.poster,
+          {saved_at: Moment()}
+        );
+
         dispatch({ type: FETCH_POSTER_DATA_SUCCEEDED });
-        dispatch(addPoster(data.poster));
+        dispatch(addPoster(poster));
+
         Toast.show({
           text: 'Poster added with success!',
           position: 'bottom',

@@ -15,6 +15,7 @@ const initialState: State = {
       thumbnail_url: 'https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/1710259/thumb.png',
       download_url: 'https://ndownloader.figshare.com/files/1710259',
       authors: 'Nicole Cloonan',
+      abstract: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do …',
       saved_at: Moment()
     },
     {
@@ -23,6 +24,7 @@ const initialState: State = {
       thumbnail_url: 'https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9011278/thumb.png',
       download_url: 'https://ndownloader.figshare.com/files/9011278',
       authors: 'Rebecca Bryant, Holly Mercer',
+      abstract: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do …',
       saved_at: Moment()
     },
   ],

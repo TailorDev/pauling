@@ -25,5 +25,6 @@ export type Poster = {
   thumbnail_url: string,
   download_url: string,
   authors: string,
+  abstract: string,
   saved_at: Moment,
 }

@@ -30,13 +30,18 @@ export default StyleSheet.create({
   Authors: {
     paddingLeft: 10,
     paddingRight: 10,
-    fontSize: 12,
+    fontSize: 13,
     color: colors.textSecondaryColor,
+  },
+  Abstract: {
+    padding: 10,
+    fontSize: 11
   },
   SavedAt: {
     paddingTop: 15,
     paddingRight: 10,
     paddingLeft: 10,
+    paddingBottom: 15,
     color: colors.textSecondaryColor,
     fontSize: 9,
   }

@@ -1,5 +1,6 @@
 /* @flow */
 import Moment from 'moment';
+import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { Toast } from 'native-base';
 import type { ThunkAction, Poster } from '../types';
@@ -66,17 +67,16 @@ export function fetchPosterData(paulingPosterUrl): ThunkAction {
           buttonText: 'Okay'
         });
       })
-      .catch((errorMessage, statusCode) => { // eslint-disable-line
+      .catch((errorMessage, statusCode) => {
         dispatch({ type: FETCH_POSTER_DATA_FAILED });
         const message = 'Cannot fetch poster data. Please try again later.';
         Toast.show({
           text: message,
           position: 'bottom',
-          buttonText: 'Okay'
+          buttonText: 'Dismiss'
         });
-        // TODO
-        // Log error
-        // console.error(message, errorMessage, statusCode);
+        Reactotron.error(message);
+        Reactotron.log({errorMessage, statusCode});
       });
   };
 }

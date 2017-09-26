@@ -13,7 +13,7 @@
 		"prettier": "prettier --write --single-quote --trailing-comma es5 --parser flow \"src/**/*.js\"",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"tethered-mode": "adb reverse tcp:9090 tcp:9090",
-		"test": "jest",
+		"test": "jest --forceExit",
 		"version": "./scripts/npm-version-ios"
 	},
 	"dependencies": {
@@ -47,6 +47,9 @@
 		"redux-logger": "^3.0.6"
 	},
 	"jest": {
-		"preset": "react-native"
+		"preset": "react-native",
+		"transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation|native-base|@shoutem)"
+		]
 	}
 }

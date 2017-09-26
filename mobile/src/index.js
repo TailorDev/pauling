@@ -8,8 +8,8 @@ import './ReactotronConfig';
 import configureStore from './store/configureStore';
 import AppNavigator from './AppNavigator';
 
-const store = configureStore();
 
+const store = configureStore();
 
 export default class Pauling extends Component {
 

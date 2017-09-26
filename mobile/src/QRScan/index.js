@@ -5,6 +5,7 @@ import { NavigationActions } from 'react-navigation';
 import { fetchPosterData } from './reducer';
 import QRScan from './presenter';
 
+
 function mapStateToProps(state) {
   const scan = state.scan;
   return {

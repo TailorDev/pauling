@@ -7,11 +7,11 @@ import { Text } from 'native-base';
 import styles from './styles';
 import type { Navigation, Poster } from '../types';
 
+
 type Props = {
   ...Poster,
   navigation: Navigation,
 };
-
 
 class PosterCard extends Component {
 

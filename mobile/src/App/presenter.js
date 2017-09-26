@@ -7,6 +7,7 @@ import PosterCardList from '../PosterCardList';
 import type { Navigation, NavigationOptions } from '../types';
 import styles from './styles';
 
+
 type Props = {
   navigation: Navigation
 }

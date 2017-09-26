@@ -9,6 +9,7 @@ import { colors } from '../settings';
 import styles from './styles';
 import type { NavigationOptions } from '../types';
 
+
 type Props = {
   onValidPaulingQRCodeRead: Function,
 };
@@ -21,7 +22,6 @@ type BarCodeData = {
   data: string,
   type: string,
 };
-
 
 class QRScan extends Component {
 

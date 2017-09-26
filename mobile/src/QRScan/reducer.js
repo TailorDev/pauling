@@ -8,6 +8,7 @@ import { Toast } from 'native-base';
 import type { ThunkAction } from '../types';
 import { addPoster } from '../Poster/reducer';
 
+
 // State
 type State = {
   isFetchingPosterData: boolean,
@@ -21,7 +22,6 @@ const initialState: State = {
 const FETCH_POSTER_DATA_STARTED = 'pauling/poster/FETCH_POSTER_DATA_STARTED';
 const FETCH_POSTER_DATA_SUCCEEDED = 'pauling/poster/FETCH_POSTER_DATA_SUCCEEDED';
 const FETCH_POSTER_DATA_FAILED = 'pauling/poster/FETCH_DATA_POSTER_FAILED';
-
 
 // Action Creators
 export function fetchPosterData(paulingPosterUrl: string): ThunkAction {
@@ -71,25 +71,21 @@ export function fetchPosterData(paulingPosterUrl: string): ThunkAction {
 // Reducer
 export default function reducer(state: Object = initialState, action: Object = {}) {
   switch (action.type) {
-
     case FETCH_POSTER_DATA_STARTED:
       return {
         ...state,
         isFetchingPosterData: true,
       };
-
     case FETCH_POSTER_DATA_SUCCEEDED:
       return {
         ...state,
         isFetchingPosterData: false,
       };
-
     case FETCH_POSTER_DATA_FAILED:
       return {
         ...state,
         isFetchingPosterData: false,
       };
-
     default:
       return state;
   }

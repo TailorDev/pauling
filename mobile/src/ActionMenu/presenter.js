@@ -6,6 +6,7 @@ import type { Navigation } from '../types';
 import { colors } from '../settings';
 import styles from './styles';
 
+
 type Props = {
   navigation: Navigation,
 }
@@ -13,7 +14,6 @@ type Props = {
 type State = {
   active: boolean,
 }
-
 
 class ActionMenu extends Component {
 

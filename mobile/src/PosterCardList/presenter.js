@@ -8,6 +8,7 @@ import PosterCard from '../PosterCard';
 import Empty from './Empty';
 import Fetching from './Fetching';
 
+
 type Props = {
   isFetchingPosterData: boolean,
   navigation: Navigation,

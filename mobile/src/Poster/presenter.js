@@ -12,6 +12,7 @@ import type {
   Poster as PosterType
 } from '../types';
 
+
 type Props = {
   ...PosterType,
   navigation: Navigation,

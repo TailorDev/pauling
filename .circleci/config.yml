@@ -35,6 +35,19 @@ jobs:
           working_directory: ~/pauling/mobile
           command: npm run flow
 
+  test_mobile:
+    working_directory: ~/pauling
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: mobile-deps-{{ .Branch }}-{{ checksum "mobile/yarn.lock" }}
+      - run:
+          name: test app
+          working_directory: ~/pauling/mobile
+          command: npm run test
+
   build_api:
     working_directory: ~/pauling
     docker:
@@ -104,6 +117,9 @@ workflows:
     jobs:
       - build_mobile
       - lint_mobile:
+          requires:
+            - build_mobile
+      - test_mobile:
           requires:
             - build_mobile
   api:

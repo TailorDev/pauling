@@ -59,10 +59,9 @@ class QRScan extends Component {
     const paulingUrl = data.data;
 
     if(this.isValidPaulingUrl(paulingUrl)) {
-      this.setState({
-        hasReadValidQR: true,
+      this.setState({ hasReadValidQR: true }, () => {
+        this.props.onValidPaulingQRCodeRead(paulingUrl);
       });
-      this.props.onValidPaulingQRCodeRead(paulingUrl);
     } else {
       Toast.show({
         text: 'Invalid QR code. Please try again.',

@@ -33,8 +33,9 @@ class ActionMenu extends Component {
   }
 
   onScanIconPress = () => {
-    this.setState({ active: false });
-    this.props.navigation.navigate('QRScan');
+    this.setState({ active: false }, () => {
+      this.props.navigation.navigate('QRScan');
+    });
   }
 
   render() {

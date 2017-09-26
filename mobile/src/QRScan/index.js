@@ -1,5 +1,6 @@
 /* @flow */
 import { connect } from 'react-redux';
+// $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
 import { NavigationActions } from 'react-navigation';
 
 import { fetchPosterData } from './reducer';

@@ -5,7 +5,7 @@ import { Spinner, Text, Toast } from 'native-base';
 import Camera from 'react-native-camera';
 import Config from 'react-native-config';
 
-import { colors } from '../settings';
+import { colors, defaultApiServerUrl } from '../settings';
 import styles from './styles';
 import type { NavigationOptions } from '../types';
 
@@ -42,7 +42,7 @@ class QRScan extends Component {
 
   isValidPaulingUrl(url: string) {
     // Url segments
-    const apiServerUrl = Config.API_SERVER_URL || 'http://pauling.lelab.tailordev.fr';
+    const apiServerUrl = Config.API_SERVER_URL || defaultApiServerUrl;
     const endpoint = 'posters';
     const uuidPattern = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
     const pattern = `${apiServerUrl}/${endpoint}/${uuidPattern}`;

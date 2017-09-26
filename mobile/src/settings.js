@@ -14,3 +14,6 @@ export const colors = {
 
 // Time
 export const dateTimeFormat = 'YYYY/MM/DD, HH:mm a';
+
+// API
+export const defaultApiServerUrl = 'http://pauling.lelab.tailordev.fr';

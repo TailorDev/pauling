@@ -6,7 +6,6 @@ import Camera from 'react-native-camera';
 import Config from 'react-native-config';
 
 import { colors } from '../settings';
-import Fetching from './Fetching';
 import styles from './styles';
 import type { NavigationOptions } from '../types';
 
@@ -76,22 +75,17 @@ class QRScan extends Component {
   render() {
     return (
       <View style={styles.QRScan}>
-        {
-          this.state.hasReadValidQR ?
-            <Fetching />
-            :
-            <Camera
-              style={styles.Preview}
-              aspect={Camera.constants.Aspect.fill}
-              onBarCodeRead={this.onBarCodeRead}
-              barCodeTypes={['qr']}
-            >
-              <Spinner color={colors.primaryColor} />
-              <Text style={styles.Processing}>
-                Waiting for a Pauling QR code…
-              </Text>
-            </Camera>
-        }
+        <Camera
+          style={styles.Preview}
+          aspect={Camera.constants.Aspect.fill}
+          onBarCodeRead={this.onBarCodeRead}
+          barCodeTypes={['qr']}
+        >
+          <Spinner color={colors.primaryColor} />
+          <Text style={styles.Processing}>
+            Waiting for a Pauling QR code…
+          </Text>
+        </Camera>
       </View>
     );
   }

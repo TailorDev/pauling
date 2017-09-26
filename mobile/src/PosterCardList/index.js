@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import PosterCardList from './presenter';
 
 const mapStateToProps = state => {
-  const { poster } = state;
+  const { posters, isFetchingPosterData } = state.poster;
 
   return {
-    posters: poster.posters,
+    isFetchingPosterData,
+    posters,
   };
 };
 

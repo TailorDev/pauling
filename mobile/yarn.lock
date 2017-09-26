@@ -3759,6 +3759,10 @@ react-native-pdf@^1.2.8:
     prop-types "^15.5.10"
     react-native-fetch-blob "^0.10.5"
 
+react-native-splash-screen@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.0.0.tgz#44ac95f84b9bf58d800af1ab9ff52093fa3efcb9"
+
 react-native-tab-view@^0.0.65:
   version "0.0.65"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.65.tgz#b685ea3081ff7c96486cd997361026c407302c59"

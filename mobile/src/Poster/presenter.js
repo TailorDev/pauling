@@ -6,26 +6,26 @@ import { Text } from 'native-base';
 import Pdf from 'react-native-pdf';
 
 import styles from './styles';
-import { dateTimeFormat } from '../settings';
 import type {
   Navigation,
   NavigationOptions,
   Poster as PosterType
 } from '../types';
 
+
 type Props = {
   ...PosterType,
   navigation: Navigation,
 };
 
+type State = {
+  loading: boolean,
+}
+
 class Poster extends Component {
 
   props: Props;
-
-  state : {
-    loading: boolean,
-  };
-
+  state : State;
   pdf: any;
 
   static navigationOptions = ({navigation}): NavigationOptions => ({
@@ -41,12 +41,16 @@ class Poster extends Component {
     this.pdf = null;
   }
 
+  onPDFLoaded = () => {
+    this.setState({loading: false})
+  }
+
   render() {
     const { params } = this.props.navigation.state;
-    const PdfUri = {uri: params.PDFUrl, cache: true};
+    const PdfUri = {uri: params.download_url, cache: true};
 
     return (
-      <ScrollView style={styles.Poster}>
+      <View style={styles.Poster}>
         {
           this.state.loading ?
             <View>
@@ -58,21 +62,24 @@ class Poster extends Component {
         <Pdf
           ref={(pdf)=>{this.pdf = pdf;}}
           source={PdfUri}
-          onLoadComplete={() => {this.setState({loading: false})}}
+          onLoadComplete={this.onPDFLoaded}
           style={styles.Pdf}
         />
-        <View style={styles.Infos}>
+        <ScrollView style={styles.Infos}>
           <Text style={styles.Title}>
             {params.title}
           </Text>
           <Text style={styles.Authors}>
             {params.authors}
           </Text>
-          <Text style={styles.SavedAt}>
-            Saved: {params.savedAt ? params.savedAt.format(dateTimeFormat): ''}
+          <Text style={styles.Abstract}>
+            {params.abstract}
           </Text>
-        </View>
-      </ScrollView>
+          <Text style={styles.SavedAt}>
+            Saved: {params.saved_at}
+          </Text>
+        </ScrollView>
+      </View>
     );
   }
 }

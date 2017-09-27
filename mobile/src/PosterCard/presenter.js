@@ -6,23 +6,18 @@ import { Text } from 'native-base';
 
 import styles from './styles';
 import type { Navigation, Poster } from '../types';
-import { dateTimeFormat } from '../settings';
 
+
+type Props = {
+  ...Poster,
+  navigation: Navigation,
+};
 
 class PosterCard extends Component {
 
-  props: {
-    ...Poster,
-    navigation: Navigation,
-  };
+  props: Props;
 
-  constructor(props: Object) {
-    super(props);
-
-    (this: any).onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+  onPress = () => {
     const { navigate } = this.props.navigation;
     const currentPoster = {...this.props};
 
@@ -36,7 +31,7 @@ class PosterCard extends Component {
       <TouchableOpacity onPress={this.onPress}>
         <View style={styles.PosterCard}>
           <Image
-            source={{ uri: props.thumbnailUrl }}
+            source={{ uri: props.thumbnail_url }}
             style={styles.PosterThumbnail}
           />
           <View style={styles.PosterInfos}>
@@ -47,7 +42,7 @@ class PosterCard extends Component {
               {props.authors}
             </Text>
             <Text style={styles.PosterSavedAt}>
-              Saved: {props.savedAt ? props.savedAt.format(dateTimeFormat) : ''}
+              Saved: {props.saved_at}
             </Text>
           </View>
         </View>

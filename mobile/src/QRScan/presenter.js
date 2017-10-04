@@ -45,7 +45,7 @@ class QRScan extends Component {
     const apiServerUrl = Config.API_SERVER_URL || defaultApiServerUrl;
     const endpoint = 'posters';
     const uuidPattern = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
-    const pattern = `${apiServerUrl}/${endpoint}/${uuidPattern}`;
+    const pattern = `https?://${apiServerUrl}/${endpoint}/${uuidPattern}`;
 
     // Build the regex
     const re = RegExp(pattern);

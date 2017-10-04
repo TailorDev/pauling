@@ -86,6 +86,17 @@ $ emulator @Nexus_5X_API_25_x86
 $ make dev
 ```
 
+#### Sketch file
+
+We use [Git LFS](https://git-lfs.github.com/) to track the Sketch files so that
+the size of the repository does not get to big too fast. Be sure to have it
+installed :) You can retrieve the files (if you do not have them) by fetching
+them:
+
+```
+$ git lfs fetch
+```
+
 ## Contributing
 
 Please, see the [CONTRIBUTING](CONTRIBUTING.md) file.

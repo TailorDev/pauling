@@ -1,6 +1,6 @@
 {
   "name": "pauling",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android --no-packager && node node_modules/react-native/local-cli/cli.js start --port 8081",

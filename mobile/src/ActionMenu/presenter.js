@@ -2,17 +2,17 @@
 import React, { Component } from 'react';
 import { Button, Icon, Fab } from 'native-base';
 
-import type { Navigation } from '../types';
-import { colors } from '../settings';
+import { colors } from 'settings';
 import styles from './styles';
+import type { Navigation } from 'types';
 
-type Props = {
+type Props = {|
   navigation: Navigation,
-};
+|};
 
-type State = {
+type State = {|
   active: boolean,
-};
+|};
 
 class ActionMenu extends Component {
   props: Props;

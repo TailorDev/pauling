@@ -5,22 +5,22 @@ import { Spinner, Text, Toast } from 'native-base';
 import Camera from 'react-native-camera';
 import Config from 'react-native-config';
 
-import { colors, defaultApiServerUrl } from '../settings';
+import { colors, defaultApiServerUrl } from 'settings';
 import styles from './styles';
-import type { NavigationOptions } from '../types';
+import type { NavigationOptions } from 'types';
 
-type Props = {
+type Props = {|
   onValidPaulingQRCodeRead: Function,
-};
+|};
 
-type State = {
+type State = {|
   hasReadValidQR: boolean,
-};
+|};
 
-type BarCodeData = {
+type BarCodeData = {|
   data: string,
   type: string,
-};
+|};
 
 class QRScan extends Component {
   props: Props;

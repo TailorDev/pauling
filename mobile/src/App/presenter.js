@@ -2,18 +2,18 @@
 import React, { Component } from 'react';
 import { Container, Content } from 'native-base';
 
-import ActionMenu from '../ActionMenu';
-import PosterCardList from '../PosterCardList';
-import type { Navigation, NavigationOptions } from '../types';
+import ActionMenu from 'ActionMenu';
+import PosterCardList from 'PosterCardList';
 import styles from './styles';
+import type { Navigation, NavigationOptions } from 'types';
 
-type Props = {
+type Props = {|
   navigation: Navigation,
-};
+|};
 
-type State = {
+type State = {|
   active: boolean,
-};
+|};
 
 class App extends Component {
   props: Props;

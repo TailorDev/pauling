@@ -1,5 +1,4 @@
 /* @flow */
-
 // Styles
 export const colors = {
   appBackgroundColor: '#f5f5f5',

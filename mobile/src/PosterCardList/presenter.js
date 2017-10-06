@@ -3,16 +3,16 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import { Text } from 'native-base';
 
-import type { Navigation, Poster } from '../types';
-import PosterCard from '../PosterCard';
+import PosterCard from 'PosterCard';
 import Empty from './Empty';
 import Fetching from './Fetching';
+import type { Navigation, Poster } from 'types';
 
-type Props = {
+type Props = {|
   isFetchingPosterData: boolean,
   navigation: Navigation,
   posters: Array<Poster>,
-};
+|};
 
 const PosterCardList = (props: Props) =>
   <View>

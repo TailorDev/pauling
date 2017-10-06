@@ -1,6 +1,5 @@
 /* @flow */
 import React, { Component } from 'react';
-
 import { ScrollView, View } from 'react-native';
 import { Text } from 'native-base';
 import Pdf from 'react-native-pdf';
@@ -10,16 +9,16 @@ import type {
   Navigation,
   NavigationOptions,
   Poster as PosterType,
-} from '../types';
+} from 'types';
 
-type Props = {
+type Props = {|
   ...PosterType,
   navigation: Navigation,
-};
+|};
 
-type State = {
+type State = {|
   loading: boolean,
-};
+|};
 
 class Poster extends Component {
   props: Props;

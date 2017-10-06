@@ -16,6 +16,7 @@
         "no-console": 1,
     },
     "globals": {
+        "global": false,
         "Promise": false,
         "__DEV__": false
     }

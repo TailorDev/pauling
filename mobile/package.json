@@ -64,13 +64,12 @@
     "react-test-renderer": "16.0.0-alpha.12",
     "reactotron-react-native": "^1.12.3",
     "reactotron-redux": "^1.12.2",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "sinon": "^4.0.1"
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": [
-      "<rootDir>/tests/setup.js"
-    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/tests/setup.js",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation|native-base|@shoutem)"
     ]

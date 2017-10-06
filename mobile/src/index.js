@@ -8,20 +8,27 @@ import 'app/ReactotronConfig.js';
 import configureStore from 'app/store/configureStore';
 import AppNavigator from 'app/AppNavigator';
 
+type Props = {|
+  store?: any,
+|};
+
 type State = {|
   loading: boolean,
   store: any,
 |};
 
 export default class Pauling extends Component {
+  props: Props;
   state: State;
 
-  constructor() {
-    super();
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
-      loading: true,
-      store: configureStore(() => this.setState({ loading: false })),
+      loading: props.store ? false : true,
+      store: props.store ? props.store : configureStore(
+        () => this.setState({ loading: false })
+      ),
     };
   }
 

@@ -9,6 +9,7 @@ jest.mock('react-native-splash-screen', () => ({
 }));
 
 it('renders correctly', () => {
-  const wrapper = shallow(<Pauling />);
+  const fakeStore = {};
+  const wrapper = shallow(<Pauling store={fakeStore} />);
   expect(wrapper.find(Root)).toHaveLength(1);
 });

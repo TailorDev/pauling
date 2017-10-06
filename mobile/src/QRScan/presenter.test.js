@@ -13,8 +13,14 @@ jest.mock('react-native-camera', () => {
   return FakeComponent;
 });
 
+jest.mock('react-native-config', () => {
+  return {
+    API_SERVER_URL: 'pauling.lelab.tailordev.fr',
+  };
+});
+
 it('validates Pauling URLs', () => {
-  const wrapper = shallow(<QRScan onValidPaulingQRCodeRead={jest.fn()} />);
+  const wrapper = shallow(<QRScan onBarCodeRead={jest.fn()} />);
 
   const instance = wrapper.instance();
   expect(instance.isValidPaulingUrl('')).toEqual(false);

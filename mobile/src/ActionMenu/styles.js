@@ -5,6 +5,7 @@ import { colors } from 'app/settings';
 
 export default StyleSheet.create({
   Fab: {
-    backgroundColor: colors.primaryColor,
+    color: colors.textAltPrimaryColor,
+    backgroundColor: colors.secondaryColor,
   },
 });

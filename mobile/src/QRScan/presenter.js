@@ -59,7 +59,7 @@ class QRScan extends Component {
           <Spinner color={colors.primaryColor} />
 
           <Text style={styles.Processing}>
-            Scan a Pauling QR code to add it.
+            {'Scan a Pauling QR code to add it'.toUpperCase()}
           </Text>
         </Camera>
       </View>

@@ -15,7 +15,9 @@ export default StyleSheet.create({
   Processing: {
     flex: 0,
     width: '100%',
-    padding: 10,
+    padding: 20,
+    fontSize: 11,
+    textAlign: 'center',
     color: colors.textAltPrimaryColor,
     backgroundColor: colors.secondaryColor,
   },

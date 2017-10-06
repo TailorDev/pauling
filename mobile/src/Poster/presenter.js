@@ -59,43 +59,42 @@ class Poster extends Component {
             }}
           />
 
-        {activeTab === TAB_INFO && (
-          <ScrollView style={styles.Infos}>
-            <Text style={styles.Title}>
-              {poster.title}
-            </Text>
-            <Text style={styles.Authors}>
-              {poster.authors}
-            </Text>
-            <Text style={styles.Abstract}>
-              {poster.abstract}
-            </Text>
-            <Text style={styles.SavedAt}>
-              Saved on {poster.saved_at}
-            </Text>
-          </ScrollView>
-        )}
-      </Content>
+          {activeTab === TAB_INFO &&
+            <ScrollView style={styles.Infos}>
+              <Text style={styles.Title}>
+                {poster.title}
+              </Text>
+              <Text style={styles.Authors}>
+                {poster.authors}
+              </Text>
+              <Text style={styles.Abstract}>
+                {poster.abstract}
+              </Text>
+              <Text style={styles.SavedAt}>
+                Saved on {poster.saved_at}
+              </Text>
+            </ScrollView>}
+        </Content>
 
-      <Footer>
-        <FooterTab>
-          <Button
-            active={activeTab === TAB_PDF}
-            style={styles.FooterButton}
-            onPress={() => this.setState({ activeTab: TAB_PDF })}
-          >
-            <Text>Poster</Text>
-          </Button>
-          <Button
-            active={activeTab === TAB_INFO}
-            style={styles.FooterButton}
-            onPress={() => this.setState({ activeTab: TAB_INFO })}
-          >
-            <Text>More info</Text>
-          </Button>
-        </FooterTab>
-      </Footer>
-    </Container>
+        <Footer>
+          <FooterTab>
+            <Button
+              active={activeTab === TAB_PDF}
+              style={styles.FooterButton}
+              onPress={() => this.setState({ activeTab: TAB_PDF })}
+            >
+              <Text>Poster</Text>
+            </Button>
+            <Button
+              active={activeTab === TAB_INFO}
+              style={styles.FooterButton}
+              onPress={() => this.setState({ activeTab: TAB_INFO })}
+            >
+              <Text>More info</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
+      </Container>
     );
   }
 }

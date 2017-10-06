@@ -11,8 +11,8 @@ const Empty = () =>
       Hi! I am Pauling, nice to meet you.
     </Text>
     <Text style={styles.Message}>
-      You can add a poster to your collection by scanning a Pauling QR code.
-      Use the button below to open your camera and follow the instructions.
+      You can add a poster to your collection by scanning a Pauling QR code. Use
+      the button below to open your camera and follow the instructions.
     </Text>
   </View>;
 

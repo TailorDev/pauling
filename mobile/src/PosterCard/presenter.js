@@ -16,7 +16,7 @@ class PosterCard extends Component {
 
   onPress = () => {
     this.props.navigation.navigate('Poster', this.props.poster);
-  }
+  };
 
   render() {
     const { poster } = this.props;
@@ -29,16 +29,10 @@ class PosterCard extends Component {
             style={styles.PosterThumbnail}
           />
           <View style={styles.PosterInfos}>
-            <Text
-              style={styles.PosterTitle}
-              numberOfLines={6}
-            >
+            <Text style={styles.PosterTitle} numberOfLines={6}>
               {poster.title}
             </Text>
-            <Text
-              style={styles.PosterAuthors}
-              numberOfLines={2}
-            >
+            <Text style={styles.PosterAuthors} numberOfLines={2}>
               {poster.authors}
             </Text>
             <Text style={styles.PosterSavedAt}>

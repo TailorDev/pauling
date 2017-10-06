@@ -51,24 +51,25 @@ export const fetchPosterData = (paulingPosterUrl: string): ThunkAction => {
   return (dispatch: Dispatch) => {
     dispatch(fetchPosterStarted());
 
-    RNFetchBlob.fetch(
-      'GET', paulingPosterUrl, {
-        Accept: 'application/json',
-      })
+    RNFetchBlob.fetch('GET', paulingPosterUrl, {
+      Accept: 'application/json',
+    })
       .then(response => response.json())
       .then(jsonData => {
         const poster = {
           ...jsonData.poster,
-          saved_at: (new Date()).toLocaleString(),
+          saved_at: new Date().toLocaleString(),
         };
 
         dispatch(addPoster(poster));
         Reactotron.log({ message: 'addPoster', poster });
 
-        dispatch(NavigationActions.navigate({
-          routeName: 'Poster',
-          params: poster,
-        }));
+        dispatch(
+          NavigationActions.navigate({
+            routeName: 'Poster',
+            params: poster,
+          })
+        );
       })
       .catch((errorMessage, statusCode) => {
         dispatch(fetchPosterFailed());

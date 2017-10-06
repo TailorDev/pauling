@@ -11,7 +11,7 @@ import configureStore from 'app/store/configureStore';
 import { createFakePoster } from 'tests/helper';
 
 describe(__filename, () => {
-  const getNavigation = (params) => ({
+  const getNavigation = params => ({
     state: { params },
   });
 

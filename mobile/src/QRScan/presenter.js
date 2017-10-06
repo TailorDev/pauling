@@ -28,9 +28,9 @@ class QRScan extends Component {
   isValidPaulingUrl(url: string): boolean {
     const uuid = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
 
-    return (new RegExp(
-      `https?://${Config.API_SERVER_URL}/posters/${uuid}`
-    )).test(url);
+    return new RegExp(`https?://${Config.API_SERVER_URL}/posters/${uuid}`).test(
+      url
+    );
   }
 
   onBarCodeRead = (data: BarCodeData) => {

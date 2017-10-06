@@ -10,8 +10,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  Fetching: {
-  },
+  Fetching: {},
   FetchingMessage: {
     color: colors.textSecondaryColor,
     paddingLeft: 20,

@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       dispatch(fetchPosterData(paulingUrl));
     },
   };
-}
+};
 
 export default connect(null, mapDispatchToProps)(QRScan);

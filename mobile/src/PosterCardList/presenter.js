@@ -19,13 +19,8 @@ class PosterCardList extends React.Component {
   props: Props;
 
   renderItem = (item: { item: Poster }) => {
-    return (
-      <PosterCard
-        poster={item.item}
-        navigation={this.props.navigation}
-      />
-    );
-  }
+    return <PosterCard poster={item.item} navigation={this.props.navigation} />;
+  };
 
   render() {
     const { errored, loading, posters } = this.props;
@@ -34,7 +29,7 @@ class PosterCardList extends React.Component {
       Toast.show({
         text: 'Failed to load the poster. Please try again later.',
         position: 'bottom',
-        buttonText: 'Dismiss'
+        buttonText: 'Dismiss',
       });
     }
 
@@ -42,16 +37,14 @@ class PosterCardList extends React.Component {
 
     return (
       <View>
-        {isFetching ? (
-          <Fetching />
-        ) : (
-          <FlatList
-            data={posters}
-            keyExtractor={item => item.id}
-            renderItem={this.renderItem}
-            ListEmptyComponent={Empty}
-          />
-        )}
+        {isFetching
+          ? <Fetching />
+          : <FlatList
+              data={posters}
+              keyExtractor={item => item.id}
+              renderItem={this.renderItem}
+              ListEmptyComponent={Empty}
+            />}
       </View>
     );
   }

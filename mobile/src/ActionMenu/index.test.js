@@ -12,11 +12,7 @@ describe(__filename, () => {
 
   it('navigates to QRScan screen on press', () => {
     const navigate = sinon.stub();
-    const wrapper = shallow(
-      <ActionMenu
-        navigation={{ navigate }}
-      />
-    );
+    const wrapper = shallow(<ActionMenu navigation={{ navigate }} />);
 
     wrapper.simulate('press');
 

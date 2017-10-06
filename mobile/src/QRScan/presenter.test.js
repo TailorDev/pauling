@@ -1,41 +1,25 @@
-import 'react-native';
 import React from 'react';
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 import QRScan from './presenter';
 
 
 jest.mock('react-native-camera', () => {
-  const React = require('react');
+  const FakeComponent = () => null;
 
-  class Camera extends React.Component {
-    static constants = {
-      Aspect: {},
-      BarCodeType: {},
-      Type: {},
-      CaptureMode: {},
-      CaptureTarget: {},
-      CaptureQuality: {},
-      Orientation: {},
-      FlashMode: {},
-      TorchMode: {},
-    }
+  FakeComponent.constants = {
+    Aspect: {},
+  };
 
-    render() {
-      return null;
-    }
-  }
-
-  return Camera;
+  return FakeComponent;
 });
 
-it('renders correctly', () => {
-  const tree = renderer.create(
+it('validates Pauling URLs', () => {
+  const wrapper = shallow(
     <QRScan onValidPaulingQRCodeRead={jest.fn()} />
   );
 
-  const instance = tree.getInstance();
+  const instance = wrapper.instance();
   expect(instance.isValidPaulingUrl('')).toEqual(false);
   expect(instance.isValidPaulingUrl(
     'https://pauling.lelab.tailordev.fr/posters/987b0371-ea96-46c1-a77c-04ff279c0b3a'

@@ -31,7 +31,7 @@
     }
   },
   "dependencies": {
-    "native-base": "^2.3.1",
+    "native-base": "^2.3.2",
     "react": "16.0.0-alpha.12",
     "react-native": "0.47.1",
     "react-native-camera": "^0.10.0",

@@ -9,7 +9,7 @@ import type { Dispatch } from 'app/types';
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    onValidPaulingQRCodeRead: paulingUrl => {
+    onQRCodeRead: paulingUrl => {
       dispatch(NavigationActions.back());
       dispatch(fetchPosterData(paulingUrl));
     },

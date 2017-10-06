@@ -8,9 +8,10 @@ import styles from './styles';
 const Fetching = () =>
   <View style={styles.Fetching}>
     <Text style={styles.FetchingMessage}>
-      Collecting poster from Pauling database…
+      Fetching the poster from Pauling, this should not take too long (in
+      theory).
     </Text>
-    <Spinner color={colors.textAltPrimaryColor} />
+    <Spinner color={colors.textSecondaryColor} />
   </View>;
 
 export default Fetching;

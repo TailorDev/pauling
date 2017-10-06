@@ -32,14 +32,20 @@ class PosterCard extends Component {
             style={styles.PosterThumbnail}
           />
           <View style={styles.PosterInfos}>
-            <Text style={styles.PosterTitle}>
+            <Text
+              style={styles.PosterTitle}
+              numberOfLines={6}
+            >
               {props.title}
             </Text>
-            <Text style={styles.PosterAuthors}>
+            <Text
+              style={styles.PosterAuthors}
+              numberOfLines={2}
+            >
               {props.authors}
             </Text>
             <Text style={styles.PosterSavedAt}>
-              Saved: {props.saved_at}
+              Saved on {props.saved_at}
             </Text>
           </View>
         </View>

@@ -19,14 +19,4 @@ export default StyleSheet.create({
     color: colors.textAltPrimaryColor,
     backgroundColor: colors.secondaryColor,
   },
-  Fetching: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.secondaryColor,
-  },
-  FetchingMessage: {
-    textAlign: 'center',
-    color: colors.textAltPrimaryColor,
-  },
 });

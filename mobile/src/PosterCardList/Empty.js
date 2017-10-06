@@ -7,8 +7,12 @@ import styles from './styles';
 const Empty = () =>
   <View style={styles.Empty}>
     <Icon name="md-qr-scanner" style={styles.MessageIcon} />
+    <Text style={styles.WelcomeMessage}>
+      Hi! I'm Pauling, nice to meet you.
+    </Text>
     <Text style={styles.Message}>
-      Scan a Pauling QR code to add a first poster to your collection
+      You can add a poster to your collection by scanning a Pauling QR code.
+      Use the button below to open your camera and follow the instructions.
     </Text>
   </View>;
 

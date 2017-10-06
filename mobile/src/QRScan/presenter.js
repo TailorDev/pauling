@@ -62,7 +62,7 @@ class QRScan extends Component {
       });
     } else {
       Toast.show({
-        text: 'Invalid QR code. Please try again.',
+        text: 'Invalid QR code, please try again.',
         position: 'bottom',
         buttonText: 'Dismiss',
       });
@@ -79,7 +79,9 @@ class QRScan extends Component {
           barCodeTypes={['qr']}
         >
           <Spinner color={colors.primaryColor} />
-          <Text style={styles.Processing}>Waiting for a Pauling QR code…</Text>
+          <Text style={styles.Processing}>
+            Scan a Pauling QR code to add it.
+          </Text>
         </Camera>
       </View>
     );

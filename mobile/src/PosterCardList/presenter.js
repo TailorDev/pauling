@@ -16,14 +16,17 @@ type Props = {|
 
 const PosterCardList = (props: Props) =>
   <View>
-    {props.isFetchingPosterData ? <Fetching /> : <Text />}
-    <FlatList
-      data={props.posters}
-      keyExtractor={item => item.id}
-      renderItem={({ item }) =>
-        <PosterCard {...item} navigation={props.navigation} />}
-      ListEmptyComponent={Empty}
-    />
+    {props.isFetchingPosterData ? (
+      <Fetching />
+    ) : (
+      <FlatList
+        data={props.posters}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) =>
+            <PosterCard {...item} navigation={props.navigation} />}
+        ListEmptyComponent={Empty}
+      />
+    )}
   </View>;
 
 export default PosterCardList;

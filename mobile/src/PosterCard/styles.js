@@ -7,6 +7,7 @@ export default StyleSheet.create({
   PosterCard: {
     flex: 1,
     flexDirection: 'row',
+    height: 190,
     marginBottom: 20,
     backgroundColor: colors.cardBackgroundColor,
     shadowColor: colors.cardShadowColor,
@@ -18,7 +19,6 @@ export default StyleSheet.create({
     shadowOpacity: 0.2,
   },
   PosterThumbnail: {
-    height: 200,
     width: '50%',
   },
   PosterInfos: {
@@ -38,6 +38,6 @@ export default StyleSheet.create({
     paddingTop: 15,
     paddingLeft: 10,
     color: colors.textSecondaryColor,
-    fontSize: 9,
+    fontSize: 10,
   },
 });

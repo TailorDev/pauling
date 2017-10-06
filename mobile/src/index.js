@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Root } from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
 
-import 'app/ReactotronConfig';
+import 'app/ReactotronConfig.js';
 import configureStore from 'app/store/configureStore';
 import AppNavigator from 'app/AppNavigator';
 

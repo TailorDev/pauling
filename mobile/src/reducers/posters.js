@@ -20,8 +20,6 @@ const initialState: State = {
 const ADD_POSTER: 'ADD_POSTER' = 'ADD_POSTER';
 const FETCH_POSTER_DATA_STARTED: 'FETCH_POSTER_DATA_STARTED' =
   'FETCH_POSTER_DATA_STARTED';
-const FETCH_POSTER_DATA_SUCCEEDED: 'FETCH_POSTER_DATA_SUCCEEDED' =
-  'FETCH_POSTER_DATA_SUCCEEDED';
 const FETCH_POSTER_DATA_FAILED: 'FETCH_POSTER_DATA_FAILED' =
   'FETCH_POSTER_DATA_FAILED';
 
@@ -30,35 +28,40 @@ type AddPosterAction = {|
   poster: Poster,
 |};
 
-export const addPoster = (poster: Poster): AddPosterAction => {
+const addPoster = (poster: Poster): AddPosterAction => {
   return { type: ADD_POSTER, poster };
 };
 
+type StartFetchingPosterAction = {|
+  type: typeof FETCH_POSTER_DATA_STARTED,
+|};
+
+const startFetchingPoster = (): StartFetchingPosterAction => ({
+  type: FETCH_POSTER_DATA_STARTED,
+});
+
 export const fetchPosterData = (paulingPosterUrl: string): ThunkAction => {
   return (dispatch: Dispatch) => {
-    dispatch({ type: FETCH_POSTER_DATA_STARTED });
+    dispatch(startFetchingPoster());
 
-    RNFetchBlob.fetch('GET', paulingPosterUrl, {
-      Accept: 'application/json',
-    })
-      .then(response => {
-        var now = new Date();
-        const saved_at = now.toLocaleString();
-        const data = response.json();
-        const poster = Object.assign(data.poster, { saved_at });
+    RNFetchBlob.fetch(
+      'GET', paulingPosterUrl, {
+        Accept: 'application/json',
+      })
+      .then(response => response.json())
+      .then(jsonData => {
+        const poster = {
+          ...jsonData.poster,
+          saved_at: (new Date()).toLocaleString(),
+        };
 
-        dispatch({ type: FETCH_POSTER_DATA_SUCCEEDED });
         dispatch(addPoster(poster));
+        Reactotron.log('New poster fetched and added!', { poster });
 
-        Reactotron.log('New poster fetched & added!');
-
-        // Show the poster
-        dispatch(
-          NavigationActions.navigate({
-            routeName: 'Poster',
-            params: poster,
-          })
-        );
+        dispatch(NavigationActions.navigate({
+          routeName: 'Poster',
+          params: poster,
+        }));
       })
       .catch((errorMessage, statusCode) => {
         dispatch({ type: FETCH_POSTER_DATA_FAILED });
@@ -76,8 +79,7 @@ export const fetchPosterData = (paulingPosterUrl: string): ThunkAction => {
 
 export type Action =
   | AddPosterAction
-  | {| type: typeof FETCH_POSTER_DATA_STARTED |}
-  | {| type: typeof FETCH_POSTER_DATA_SUCCEEDED |}
+  | StartFetchingPosterAction
   | {| type: typeof FETCH_POSTER_DATA_FAILED |};
 
 export default function reducer(state: State = initialState, action: Action) {
@@ -85,23 +87,22 @@ export default function reducer(state: State = initialState, action: Action) {
     case ADD_POSTER:
       return {
         ...state,
+        isFetchingPosterData: false,
         posters: state.posters.concat([action.poster]),
       };
+
     case FETCH_POSTER_DATA_STARTED:
       return {
         ...state,
         isFetchingPosterData: true,
       };
-    case FETCH_POSTER_DATA_SUCCEEDED:
-      return {
-        ...state,
-        isFetchingPosterData: false,
-      };
+
     case FETCH_POSTER_DATA_FAILED:
       return {
         ...state,
         isFetchingPosterData: false,
       };
+
     default:
       return state;
   }

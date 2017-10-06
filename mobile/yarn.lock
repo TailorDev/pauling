@@ -4426,9 +4426,9 @@ reactotron-core-client@^1.12.2:
     ramda "^0.24.1"
     ramdasauce "^2.0.0"
 
-reactotron-react-native@^1.12.2:
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/reactotron-react-native/-/reactotron-react-native-1.12.2.tgz#5fc7f9d651a39ec91ee2810a7d3e2f49c81e0243"
+reactotron-react-native@^1.12.3:
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/reactotron-react-native/-/reactotron-react-native-1.12.3.tgz#5e66c7a12b84e23ad4f236441085da283589e1a2"
   dependencies:
     json-stringify-safe "^5.0.1"
     mitt "^1.1.2"

@@ -20,7 +20,7 @@ class App extends Component {
   state: State;
 
   static navigationOptions = (): NavigationOptions => ({
-    title: 'Pauling collection',
+    title: 'Your Pauling collection',
   });
 
   constructor(props: Props) {

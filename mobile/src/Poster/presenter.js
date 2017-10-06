@@ -23,7 +23,6 @@ type State = {|
 class Poster extends Component {
   props: Props;
   state: State;
-  pdf: any;
 
   static navigationOptions = ({ navigation }): NavigationOptions => ({
     title: navigation.state.params.title,
@@ -35,7 +34,6 @@ class Poster extends Component {
     this.state = {
       loading: true,
     };
-    this.pdf = null;
   }
 
   onPDFLoaded = () => {
@@ -48,19 +46,20 @@ class Poster extends Component {
 
     return (
       <View style={styles.Poster}>
-        {this.state.loading
-          ? <View>
-              <Text style={styles.Loading}>Loading your poster</Text>
-            </View>
-          : null}
+        {this.state.loading ? (
+          <View>
+            <Text style={styles.Loading}>
+              Loading your poster
+            </Text>
+          </View>
+        ) : null}
+
         <Pdf
-          ref={pdf => {
-            this.pdf = pdf;
-          }}
           source={PdfUri}
           onLoadComplete={this.onPDFLoaded}
           style={styles.Pdf}
         />
+
         <ScrollView style={styles.Infos}>
           <Text style={styles.Title}>
             {params.title}

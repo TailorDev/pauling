@@ -7,13 +7,11 @@ import QRScan from './presenter';
 import { fetchPosterData } from 'app/reducers/posters';
 import type { Dispatch, State } from 'app/types';
 
-function mapStateToProps(state: State) {
-  return {
-    isFetchingPosterData: state.posters.isFetchingPosterData,
-  };
+const mapStateToProps = (state: State) => {
+  return {};
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     onValidPaulingQRCodeRead: paulingUrl => {
       dispatch(NavigationActions.back());

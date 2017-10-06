@@ -16,13 +16,13 @@ if (__DEV__) {
   middlewares.push(logger);
 }
 
-export default function configureStore() {
+export default function configureStore(onComplete: Function) {
   const store = createPaulingStore(
     rootReducer,
     compose(applyMiddleware(...middlewares), autoRehydrate())
   );
 
-  persistStore(store, { storage: AsyncStorage });
+  persistStore(store, { storage: AsyncStorage }, onComplete);
 
   return store;
 }

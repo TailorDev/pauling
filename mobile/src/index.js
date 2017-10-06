@@ -8,17 +8,33 @@ import 'app/ReactotronConfig.js';
 import configureStore from 'app/store/configureStore';
 import AppNavigator from 'app/AppNavigator';
 
-const store = configureStore();
+type State = {|
+  loading: boolean,
+  store: any,
+|};
 
 export default class Pauling extends Component {
-  componentDidMount() {
-    SplashScreen.hide();
+  state: State;
+
+  constructor() {
+    super();
+
+    this.state = {
+      loading: true,
+      store: configureStore(() => this.setState({ loading: false })),
+    };
   }
 
   render() {
+    if (this.state.loading) {
+      return null;
+    }
+
+    SplashScreen.hide();
+
     return (
       <Root>
-        <Provider store={store}>
+        <Provider store={this.state.store}>
           <AppNavigator />
         </Provider>
       </Root>

@@ -11,4 +11,4 @@ export default function reducer(state: State = initialState, action: Action) {
   const nextState = BaseAppNavigator.router.getStateForAction(action, state);
 
   return nextState || state;
-};
+}

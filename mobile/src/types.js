@@ -23,7 +23,10 @@ export type PromiseAction = Promise<Action>;
 
 export type Navigation = {
   navigate: Function,
-  state: Object,
+  state: {
+    index: number,
+    params: Object,
+  },
 };
 
 export type NavigationOptions = {

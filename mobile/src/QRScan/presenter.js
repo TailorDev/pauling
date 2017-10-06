@@ -5,71 +5,47 @@ import { Spinner, Text, Toast } from 'native-base';
 import Camera from 'react-native-camera';
 import Config from 'react-native-config';
 
-import { colors, defaultApiServerUrl } from '../settings';
+import { colors } from 'app/settings';
 import styles from './styles';
-import type { NavigationOptions } from '../types';
+import type { NavigationOptions } from 'app/types';
 
+type Props = {|
+  onQRCodeRead: Function,
+|};
 
-type Props = {
-  onValidPaulingQRCodeRead: Function,
-};
-
-type State = {
-  hasReadValidQR: boolean,
-}
-
-type BarCodeData = {
+type BarCodeData = {|
   data: string,
   type: string,
-};
+|};
 
 class QRScan extends Component {
-
   props: Props;
-  state: State;
 
   static navigationOptions = (): NavigationOptions => ({
     title: 'New poster',
   });
 
-  constructor(props: Props) {
-    super(props);
+  isValidPaulingUrl(url: string): boolean {
+    const uuid = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
 
-    this.state = {
-      hasReadValidQR: false,
-    };
-  }
-
-  isValidPaulingUrl(url: string) {
-    // Url segments
-    const apiServerUrl = Config.API_SERVER_URL || defaultApiServerUrl;
-    const endpoint = 'posters';
-    const uuidPattern = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
-    const pattern = `https?://${apiServerUrl}/${endpoint}/${uuidPattern}`;
-
-    // Build the regex
-    const re = RegExp(pattern);
-
-    // Test the url
-    return re.test(url);
+    return new RegExp(`https?://${Config.API_SERVER_URL}/posters/${uuid}`).test(
+      url
+    );
   }
 
   onBarCodeRead = (data: BarCodeData) => {
+    const url = data.data;
 
-    const paulingUrl = data.data;
-
-    if(this.isValidPaulingUrl(paulingUrl)) {
-      this.setState({ hasReadValidQR: true }, () => {
-        this.props.onValidPaulingQRCodeRead(paulingUrl);
-      });
+    if (this.isValidPaulingUrl(url)) {
+      this.props.onQRCodeRead(url);
     } else {
       Toast.show({
-        text: 'Invalid QR code. Please try again.',
+        text: 'Invalid QR code, please try again.',
         position: 'bottom',
-        buttonText: 'Dismiss'
+        buttonText: 'Dismiss',
       });
     }
-  }
+  };
 
   render() {
     return (
@@ -81,8 +57,9 @@ class QRScan extends Component {
           barCodeTypes={['qr']}
         >
           <Spinner color={colors.primaryColor} />
+
           <Text style={styles.Processing}>
-            Waiting for a Pauling QR code…
+            {'Scan a Pauling QR code to add it'.toUpperCase()}
           </Text>
         </Camera>
       </View>

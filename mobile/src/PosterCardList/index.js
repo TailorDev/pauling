@@ -2,13 +2,14 @@
 import { connect } from 'react-redux';
 
 import PosterCardList from './presenter';
+import type { State } from 'app/types';
 
-
-const mapStateToProps = state => {
-  const { posters, isFetchingPosterData } = state.poster;
+const mapStateToProps = (state: State) => {
+  const { errored, loading, posters } = state.posters;
 
   return {
-    isFetchingPosterData,
+    errored,
+    loading,
     posters,
   };
 };

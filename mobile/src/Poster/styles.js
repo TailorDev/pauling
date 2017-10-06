@@ -1,24 +1,29 @@
 /* @flow */
-import { StyleSheet } from 'react-native';
-import { colors } from '../settings';
+import { Dimensions, StyleSheet } from 'react-native';
 
+import { colors } from 'app/settings';
 
 export default StyleSheet.create({
   Poster: {
     flex: 1,
-    flexDirection: 'column',
     backgroundColor: colors.cardBackgroundColor,
   },
-  Loading: {
+  LoadingText: {
+    flex: 1,
     padding: 40,
     textAlign: 'center',
     color: colors.textSecondaryColor,
   },
   Pdf: {
-    flex: 3,
+    flex: 1,
+    // Remove offset due to the navigation bar and footer menu.
+    height: Dimensions.get('window').height - 120,
   },
   Infos: {
     flex: 1,
+  },
+  FooterButton: {
+    backgroundColor: colors.secondaryColor,
   },
   Title: {
     padding: 10,
@@ -42,5 +47,5 @@ export default StyleSheet.create({
     paddingBottom: 15,
     color: colors.textSecondaryColor,
     fontSize: 9,
-  }
+  },
 });

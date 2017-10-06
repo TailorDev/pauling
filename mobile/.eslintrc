@@ -2,7 +2,8 @@
     "parser": "babel-eslint",
     "env": {
         "browser": true,
-        "jest/globals": true
+        "jest/globals": true,
+        "node": true
     },
     "plugins": [
         "react",
@@ -16,7 +17,9 @@
         "no-console": 1,
     },
     "globals": {
+        "global": false,
         "Promise": false,
-        "__DEV__": false
+        "__DEV__": false,
+        "sinon": true
     }
 }

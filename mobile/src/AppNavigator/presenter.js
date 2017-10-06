@@ -1,12 +1,17 @@
 /* @flow */
 import React from 'react';
-// $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
-import { addNavigationHelpers, StackNavigator } from 'react-navigation';
-import type { Navigation } from '../types';
-import AppScreen from '../App';
-import PosterScreen from '../Poster';
-import QRScanScreen from '../QRScan';
+import { BackHandler } from 'react-native';
+import {
+  addNavigationHelpers,
+  NavigationActions,
+  StackNavigator,
+  // $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
+} from 'react-navigation';
 
+import AppScreen from 'app/App';
+import PosterScreen from 'app/Poster';
+import QRScanScreen from 'app/QRScan';
+import type { Dispatch, Navigation } from 'app/types';
 
 export const BaseAppNavigator = StackNavigator({
   App: { screen: AppScreen },
@@ -14,19 +19,46 @@ export const BaseAppNavigator = StackNavigator({
   QRScan: { screen: QRScanScreen },
 });
 
-type Props = {
-  dispatch: Function,
-  nav: Navigation,
-};
+type Props = {|
+  dispatch: Dispatch,
+  navigationState: Navigation,
+|};
 
-const AppNavigator = (props: Props) =>
-  <BaseAppNavigator
-    navigation={
-      addNavigationHelpers({
-        dispatch: props.dispatch,
-        state: props.nav,
-      })
+class AppNavigator extends React.Component {
+  props: Props;
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+  }
+
+  onBackPress = () => {
+    const { dispatch, navigationState } = this.props;
+
+    if (navigationState.index === 0) {
+      return false;
     }
-  />;
+
+    dispatch(NavigationActions.back());
+
+    return true;
+  };
+
+  render() {
+    const { dispatch, navigationState } = this.props;
+
+    return (
+      <BaseAppNavigator
+        navigation={addNavigationHelpers({
+          dispatch,
+          state: navigationState,
+        })}
+      />
+    );
+  }
+}
 
 export default AppNavigator;

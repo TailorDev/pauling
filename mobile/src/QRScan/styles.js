@@ -1,7 +1,7 @@
 /* @flow */
 import { StyleSheet } from 'react-native';
-import { colors } from '../settings';
 
+import { colors } from 'app/settings';
 
 export default StyleSheet.create({
   QRScan: {
@@ -15,18 +15,10 @@ export default StyleSheet.create({
   Processing: {
     flex: 0,
     width: '100%',
-    padding: 10,
-    color: colors.textAltPrimaryColor,
-    backgroundColor: colors.secondaryColor,
-  },
-  Fetching: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.secondaryColor,
-  },
-  FetchingMessage: {
+    padding: 20,
+    fontSize: 11,
     textAlign: 'center',
     color: colors.textAltPrimaryColor,
-  }
+    backgroundColor: colors.secondaryColor,
+  },
 });

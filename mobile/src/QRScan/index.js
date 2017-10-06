@@ -3,24 +3,17 @@ import { connect } from 'react-redux';
 // $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
 import { NavigationActions } from 'react-navigation';
 
-import { fetchPosterData } from './reducer';
 import QRScan from './presenter';
+import { fetchPosterData } from 'app/reducers/posters';
+import type { Dispatch } from 'app/types';
 
-
-function mapStateToProps(state) {
-  const scan = state.scan;
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    isFetchingPosterData: scan.isFetchingPosterData
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    onValidPaulingQRCodeRead: (paulingUrl) => {
+    onQRCodeRead: paulingUrl => {
       dispatch(NavigationActions.back());
       dispatch(fetchPosterData(paulingUrl));
     },
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(QRScan);
+export default connect(null, mapDispatchToProps)(QRScan);

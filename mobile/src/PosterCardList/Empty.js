@@ -1,21 +1,19 @@
 import React from 'react';
-
 import { View } from 'react-native';
 import { Icon, Text } from 'native-base';
 
 import styles from './styles';
 
-
-const Empty = () => (
+const Empty = () =>
   <View style={styles.Empty}>
-    <Icon
-      name="md-qr-scanner"
-      style={styles.MessageIcon}
-    />
-    <Text style={styles.Message}>
-      Scan a Pauling QR code to add a first poster to your collection
+    <Icon name="md-qr-scanner" style={styles.MessageIcon} />
+    <Text style={styles.WelcomeMessage}>
+      Hi! I am Pauling, nice to meet you.
     </Text>
-  </View>
-);
+    <Text style={styles.Message}>
+      You can add a poster to your collection by scanning a Pauling QR code. Use
+      the button below to open your camera and follow the instructions.
+    </Text>
+  </View>;
 
 export default Empty;

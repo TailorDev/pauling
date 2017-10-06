@@ -1,5 +1,4 @@
 /* @flow */
-
 // Styles
 export const colors = {
   appBackgroundColor: '#f5f5f5',
@@ -14,6 +13,3 @@ export const colors = {
 
 // Time
 export const dateTimeFormat = 'YYYY/MM/DD, HH:mm a';
-
-// API
-export const defaultApiServerUrl = 'pauling.lelab.tailordev.fr';

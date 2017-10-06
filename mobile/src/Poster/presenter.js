@@ -9,7 +9,7 @@ import type {
   Navigation,
   NavigationOptions,
   Poster as PosterType,
-} from 'types';
+} from 'app/types';
 
 type Props = {|
   ...PosterType,

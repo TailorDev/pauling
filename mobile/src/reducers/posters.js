@@ -5,7 +5,7 @@ import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { Toast } from 'native-base';
 
-import type { Dispatch, Poster, ThunkAction } from 'types';
+import type { Dispatch, Poster, ThunkAction } from 'app/types';
 
 export type State = {|
   isFetchingPosterData: boolean,

@@ -4,7 +4,7 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { Text } from 'native-base';
 
 import styles from './styles';
-import type { Navigation, Poster } from 'types';
+import type { Navigation, Poster } from 'app/types';
 
 type Props = {|
   ...Poster,

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 
 import QRScan from './presenter';
-import { fetchPosterData } from 'reducers/posters';
-import type { Dispatch, State } from 'types';
+import { fetchPosterData } from 'app/reducers/posters';
+import type { Dispatch, State } from 'app/types';
 
 function mapStateToProps(state: State) {
   return {

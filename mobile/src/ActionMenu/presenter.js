@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { Button, Icon, Fab } from 'native-base';
 
-import { colors } from 'settings';
+import { colors } from 'app/settings';
 import styles from './styles';
-import type { Navigation } from 'types';
+import type { Navigation } from 'app/types';
 
 type Props = {|
   navigation: Navigation,

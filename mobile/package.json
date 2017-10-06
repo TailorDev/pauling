@@ -1,33 +1,33 @@
 {
   "name": "pauling",
   "version": "1.0.0",
-  "private": true,
+  "license": "MIT",
   "scripts": {
-    "android": "better-npm-run android",
+    "android": "better-npm-run android && better-npm-run start --port 8081",
     "android-shake": "adb shell input keyevent 82",
-    "flow": "node_modules/.bin/flow",
-    "ios": "better-npm-run ios",
+    "flow": "flow",
+    "ios": "better-npm-run ios && better-npm-run start --port 8082",
     "lint": "eslint .",
     "prepare:minor": "npm version minor -m ':rocket: Prepare %s release'",
     "prepare:patch": "npm version patch -m ':rocket: Prepare %s release'",
     "prettier": "prettier --write --single-quote --trailing-comma es5 --parser flow 'src/**/*.js'",
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "better-npm-run start",
     "tethered-mode": "adb reverse tcp:9090 tcp:9090",
-    "test": "node_modules/.bin/jest --forceExit",
+    "test": "jest --forceExit",
     "version": "./scripts/npm-version-ios"
   },
   "betterScripts": {
+    "start": {
+      "command": "node node_modules/react-native/local-cli/cli.js start",
+      "env": {}
+    },
     "android": {
-      "command": "react-native run-android --no-packager && node node_modules/react-native/local-cli/cli.js start --port 8081",
-      "env": {
-        "NODE_PATH": "./:./src"
-      }
+      "command": "react-native run-android --no-packager",
+      "env": {}
     },
     "ios": {
-      "command": "react-native run-ios --no-packager && node node_modules/react-native/local-cli/cli.js start --port 8082",
-      "env": {
-        "NODE_PATH": "./:./src"
-      }
+      "command": "react-native run-ios --no-packager",
+      "env": {}
     }
   },
   "dependencies": {
@@ -51,7 +51,6 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-react-native": "2.1.0",
     "better-npm-run": "^0.1.0",
-    "cross-env": "^5.0.5",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "eslint": "^4.8.0",
@@ -68,10 +67,6 @@
     "redux-logger": "^3.0.6"
   },
   "jest": {
-    "moduleDirectories": [
-      "src",
-      "node_modules"
-    ],
     "preset": "react-native",
     "setupFiles": [
       "<rootDir>/tests/setup.js"

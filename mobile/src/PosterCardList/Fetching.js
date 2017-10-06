@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Spinner, Text } from 'native-base';
 
-import { colors } from 'settings';
+import { colors } from 'app/settings';
 import styles from './styles';
 
 const Fetching = () =>

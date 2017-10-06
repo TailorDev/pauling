@@ -2,7 +2,7 @@
 import type {
   Action as PostersAction,
   State as PostersState,
-} from 'reducers/posters';
+} from 'app/reducers/posters';
 
 export type Action = {|
   ...PostersAction,
@@ -10,6 +10,7 @@ export type Action = {|
 
 export type State = {|
   posters: PostersState,
+  navigation: Navigation,
 |};
 
 // Taken from: https://github.com/fbsamples/f8app

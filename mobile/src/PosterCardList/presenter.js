@@ -3,10 +3,10 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import { Text } from 'native-base';
 
-import PosterCard from 'PosterCard';
+import PosterCard from 'app/PosterCard';
 import Empty from './Empty';
 import Fetching from './Fetching';
-import type { Navigation, Poster } from 'types';
+import type { Navigation, Poster } from 'app/types';
 
 type Props = {|
   isFetchingPosterData: boolean,

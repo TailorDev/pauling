@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Root } from "native-base";
 
-import Pauling from '../src';
+import Pauling from 'app';
 
 
 jest.mock('react-native-fetch-blob', () => ({

@@ -3,10 +3,10 @@ import React from 'react';
 // $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
-import AppScreen from 'App';
-import PosterScreen from 'Poster';
-import QRScanScreen from 'QRScan';
-import type { Dispatch, Navigation } from 'types';
+import AppScreen from 'app/App';
+import PosterScreen from 'app/Poster';
+import QRScanScreen from 'app/QRScan';
+import type { Dispatch, Navigation } from 'app/types';
 
 export const BaseAppNavigator = StackNavigator({
   App: { screen: AppScreen },
@@ -16,14 +16,14 @@ export const BaseAppNavigator = StackNavigator({
 
 type Props = {|
   dispatch: Dispatch,
-  nav: Navigation,
+  navigationState: Navigation,
 |};
 
 const AppNavigator = (props: Props) =>
   <BaseAppNavigator
     navigation={addNavigationHelpers({
       dispatch: props.dispatch,
-      state: props.nav,
+      state: props.navigationState,
     })}
   />;
 

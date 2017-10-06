@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import { Container, Content } from 'native-base';
 
-import ActionMenu from 'ActionMenu';
-import PosterCardList from 'PosterCardList';
+import ActionMenu from 'app/ActionMenu';
+import PosterCardList from 'app/PosterCardList';
 import styles from './styles';
-import type { Navigation, NavigationOptions } from 'types';
+import type { Navigation, NavigationOptions } from 'app/types';
 
 type Props = {|
   navigation: Navigation,

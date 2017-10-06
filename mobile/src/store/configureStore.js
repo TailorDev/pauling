@@ -5,7 +5,7 @@ import { AsyncStorage } from 'react-native';
 import Reactotron from 'reactotron-react-native';
 import thunk from 'redux-thunk';
 
-import rootReducer from 'reducers';
+import rootReducer from 'app/reducers';
 
 const middlewares = [thunk];
 const createPaulingStore = __DEV__ ? Reactotron.createStore : createStore;

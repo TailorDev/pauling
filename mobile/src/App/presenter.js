@@ -11,25 +11,12 @@ type Props = {|
   navigation: Navigation,
 |};
 
-type State = {|
-  active: boolean,
-|};
-
 class App extends Component {
   props: Props;
-  state: State;
 
   static navigationOptions = (): NavigationOptions => ({
     title: 'Your Pauling collection',
   });
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      active: false,
-    };
-  }
 
   render() {
     return (

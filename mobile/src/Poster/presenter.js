@@ -5,14 +5,9 @@ import { Text } from 'native-base';
 import Pdf from 'react-native-pdf';
 
 import styles from './styles';
-import type {
-  Navigation,
-  NavigationOptions,
-  Poster as PosterType,
-} from 'app/types';
+import type { Navigation, NavigationOptions } from 'app/types';
 
 type Props = {|
-  ...PosterType,
   navigation: Navigation,
 |};
 
@@ -36,13 +31,12 @@ class Poster extends Component {
     };
   }
 
-  onPDFLoaded = () => {
+  onPdfLoaded = () => {
     this.setState({ loading: false });
   };
 
   render() {
-    const { params } = this.props.navigation.state;
-    const PdfUri = { uri: params.download_url, cache: true };
+    const { params: poster } = this.props.navigation.state;
 
     return (
       <View style={styles.Poster}>
@@ -55,26 +49,29 @@ class Poster extends Component {
         ) : null}
 
         <Pdf
-          source={PdfUri}
-          onLoadComplete={this.onPDFLoaded}
+          onLoadComplete={this.onPdfLoaded}
           style={styles.Pdf}
+          source={{
+            uri: poster.download_url,
+            cache: true,
+          }}
         />
 
-        <ScrollView style={styles.Infos}>
-          <Text style={styles.Title}>
-            {params.title}
-          </Text>
-          <Text style={styles.Authors}>
-            {params.authors}
-          </Text>
-          <Text style={styles.Abstract}>
-            {params.abstract}
-          </Text>
-          <Text style={styles.SavedAt}>
-            Saved: {params.saved_at}
-          </Text>
-        </ScrollView>
-      </View>
+      <ScrollView style={styles.Infos}>
+        <Text style={styles.Title}>
+          {poster.title}
+        </Text>
+        <Text style={styles.Authors}>
+          {poster.authors}
+        </Text>
+        <Text style={styles.Abstract}>
+          {poster.abstract}
+        </Text>
+        <Text style={styles.SavedAt}>
+          Saved on {poster.saved_at}
+        </Text>
+      </ScrollView>
+    </View>
     );
   }
 }

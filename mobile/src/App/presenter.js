@@ -7,17 +7,15 @@ import PosterCardList from '../PosterCardList';
 import type { Navigation, NavigationOptions } from '../types';
 import styles from './styles';
 
-
 type Props = {
-  navigation: Navigation
-}
+  navigation: Navigation,
+};
 
 type State = {
-  active: boolean
-}
+  active: boolean,
+};
 
 class App extends Component {
-
   props: Props;
   state: State;
 
@@ -29,7 +27,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      active: false
+      active: false,
     };
   }
 
@@ -39,7 +37,7 @@ class App extends Component {
         <Content>
           <PosterCardList navigation={this.props.navigation} />
         </Content>
-        <ActionMenu navigation={this.props.navigation}/>
+        <ActionMenu navigation={this.props.navigation} />
       </Container>
     );
   }

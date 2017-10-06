@@ -2,7 +2,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../settings';
 
-
 export default StyleSheet.create({
   QRScan: {
     flex: 1,
@@ -28,5 +27,5 @@ export default StyleSheet.create({
   FetchingMessage: {
     textAlign: 'center',
     color: colors.textAltPrimaryColor,
-  }
+  },
 });

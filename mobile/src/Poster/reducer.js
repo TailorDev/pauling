@@ -4,7 +4,7 @@ import type { Poster } from '../types';
 // State
 type State = {
   posters: Array<Poster>,
-}
+};
 
 const initialState: State = {
   posters: [],
@@ -19,7 +19,10 @@ export function addPoster(poster: Poster) {
 }
 
 // Reducer
-export default function reducer(state: Object = initialState, action: Object = {}) {
+export default function reducer(
+  state: Object = initialState,
+  action: Object = {}
+) {
   switch (action.type) {
     case ADD_POSTER:
       return {

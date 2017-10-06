@@ -7,7 +7,6 @@ import AppScreen from '../App';
 import PosterScreen from '../Poster';
 import QRScanScreen from '../QRScan';
 
-
 export const BaseAppNavigator = StackNavigator({
   App: { screen: AppScreen },
   Poster: { screen: PosterScreen },
@@ -21,12 +20,10 @@ type Props = {
 
 const AppNavigator = (props: Props) =>
   <BaseAppNavigator
-    navigation={
-      addNavigationHelpers({
-        dispatch: props.dispatch,
-        state: props.nav,
-      })
-    }
+    navigation={addNavigationHelpers({
+      dispatch: props.dispatch,
+      state: props.nav,
+    })}
   />;
 
 export default AppNavigator;

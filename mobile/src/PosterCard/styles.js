@@ -2,7 +2,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../settings';
 
-
 export default StyleSheet.create({
   PosterCard: {
     flex: 1,
@@ -12,10 +11,10 @@ export default StyleSheet.create({
     shadowColor: colors.cardShadowColor,
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowRadius: 2,
-    shadowOpacity: 0.2
+    shadowOpacity: 0.2,
   },
   PosterThumbnail: {
     height: 200,
@@ -39,5 +38,5 @@ export default StyleSheet.create({
     paddingLeft: 10,
     color: colors.textSecondaryColor,
     fontSize: 9,
-  }
+  },
 });

@@ -7,22 +7,20 @@ import { Text } from 'native-base';
 import styles from './styles';
 import type { Navigation, Poster } from '../types';
 
-
 type Props = {
   ...Poster,
   navigation: Navigation,
 };
 
 class PosterCard extends Component {
-
   props: Props;
 
   onPress = () => {
     const { navigate } = this.props.navigation;
-    const currentPoster = {...this.props};
+    const currentPoster = { ...this.props };
 
     navigate('Poster', currentPoster);
-  }
+  };
 
   render() {
     const props = this.props;

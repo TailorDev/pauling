@@ -15,7 +15,7 @@ export type Navigation = {
 
 export type NavigationOptions = {
   title: string,
-}
+};
 
 export type Poster = {
   id: string,
@@ -25,4 +25,4 @@ export type Poster = {
   authors: string,
   abstract: string,
   saved_at: string,
-}
+};

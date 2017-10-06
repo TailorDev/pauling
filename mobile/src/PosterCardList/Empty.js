@@ -5,17 +5,12 @@ import { Icon, Text } from 'native-base';
 
 import styles from './styles';
 
-
-const Empty = () => (
+const Empty = () =>
   <View style={styles.Empty}>
-    <Icon
-      name="md-qr-scanner"
-      style={styles.MessageIcon}
-    />
+    <Icon name="md-qr-scanner" style={styles.MessageIcon} />
     <Text style={styles.Message}>
       Scan a Pauling QR code to add a first poster to your collection
     </Text>
-  </View>
-);
+  </View>;
 
 export default Empty;

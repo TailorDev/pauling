@@ -9,14 +9,13 @@ import { colors, defaultApiServerUrl } from '../settings';
 import styles from './styles';
 import type { NavigationOptions } from '../types';
 
-
 type Props = {
   onValidPaulingQRCodeRead: Function,
 };
 
 type State = {
   hasReadValidQR: boolean,
-}
+};
 
 type BarCodeData = {
   data: string,
@@ -24,7 +23,6 @@ type BarCodeData = {
 };
 
 class QRScan extends Component {
-
   props: Props;
   state: State;
 
@@ -44,7 +42,8 @@ class QRScan extends Component {
     // Url segments
     const apiServerUrl = Config.API_SERVER_URL || defaultApiServerUrl;
     const endpoint = 'posters';
-    const uuidPattern = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
+    const uuidPattern =
+      '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
     const pattern = `https?://${apiServerUrl}/${endpoint}/${uuidPattern}`;
 
     // Build the regex
@@ -55,10 +54,9 @@ class QRScan extends Component {
   }
 
   onBarCodeRead = (data: BarCodeData) => {
-
     const paulingUrl = data.data;
 
-    if(this.isValidPaulingUrl(paulingUrl)) {
+    if (this.isValidPaulingUrl(paulingUrl)) {
       this.setState({ hasReadValidQR: true }, () => {
         this.props.onValidPaulingQRCodeRead(paulingUrl);
       });
@@ -66,10 +64,10 @@ class QRScan extends Component {
       Toast.show({
         text: 'Invalid QR code. Please try again.',
         position: 'bottom',
-        buttonText: 'Dismiss'
+        buttonText: 'Dismiss',
       });
     }
-  }
+  };
 
   render() {
     return (
@@ -81,9 +79,7 @@ class QRScan extends Component {
           barCodeTypes={['qr']}
         >
           <Spinner color={colors.primaryColor} />
-          <Text style={styles.Processing}>
-            Waiting for a Pauling QR code…
-          </Text>
+          <Text style={styles.Processing}>Waiting for a Pauling QR code…</Text>
         </Camera>
       </View>
     );

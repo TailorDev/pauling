@@ -2,7 +2,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../settings';
 
-
 export default StyleSheet.create({
   Empty: {
     flex: 1,

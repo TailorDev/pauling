@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 
 import rootReducer from './rootReducer';
 
-
 const middlewares = [thunk];
 const createPaulingStore = __DEV__ ? Reactotron.createStore : createStore;
 
@@ -19,10 +18,7 @@ if (__DEV__) {
 export default function configureStore() {
   const store = createPaulingStore(
     rootReducer,
-    compose(
-      applyMiddleware(...middlewares),
-      autoRehydrate()
-    )
+    compose(applyMiddleware(...middlewares), autoRehydrate())
   );
 
   persistStore(store, { storage: AsyncStorage });

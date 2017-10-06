@@ -6,14 +6,12 @@ import { Spinner, Text } from 'native-base';
 import { colors } from '../settings';
 import styles from './styles';
 
-
-const Fetching = () => (
+const Fetching = () =>
   <View style={styles.Fetching}>
     <Text style={styles.FetchingMessage}>
       Collecting poster from Pauling database…
     </Text>
     <Spinner color={colors.textAltPrimaryColor} />
-  </View>
-);
+  </View>;
 
 export default Fetching;

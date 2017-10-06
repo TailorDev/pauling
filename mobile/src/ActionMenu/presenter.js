@@ -6,17 +6,15 @@ import type { Navigation } from '../types';
 import { colors } from '../settings';
 import styles from './styles';
 
-
 type Props = {
   navigation: Navigation,
-}
+};
 
 type State = {
   active: boolean,
-}
+};
 
 class ActionMenu extends Component {
-
   props: Props;
   state: State;
 
@@ -24,19 +22,19 @@ class ActionMenu extends Component {
     super(props);
 
     this.state = {
-      active: false
+      active: false,
     };
   }
 
   onMenuPress = () => {
-    this.setState({ active: !this.state.active })
-  }
+    this.setState({ active: !this.state.active });
+  };
 
   onScanIconPress = () => {
     this.setState({ active: false }, () => {
       this.props.navigation.navigate('QRScan');
     });
-  }
+  };
 
   render() {
     return (
@@ -47,13 +45,9 @@ class ActionMenu extends Component {
         position="bottomRight"
         onPress={this.onMenuPress}
       >
-        <Icon
-          name="ios-add"
-          ios="ios-add"
-          android="md-add"
-        />
+        <Icon name="ios-add" ios="ios-add" android="md-add" />
         <Button
-          style={{backgroundColor: colors.secondaryColor}}
+          style={{ backgroundColor: colors.secondaryColor }}
           onPress={this.onScanIconPress}
         >
           <Icon

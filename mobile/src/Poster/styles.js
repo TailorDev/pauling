@@ -2,7 +2,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../settings';
 
-
 export default StyleSheet.create({
   Poster: {
     flex: 1,
@@ -42,5 +41,5 @@ export default StyleSheet.create({
     paddingBottom: 15,
     color: colors.textSecondaryColor,
     fontSize: 9,
-  }
+  },
 });

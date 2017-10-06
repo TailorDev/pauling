@@ -9,9 +9,8 @@ import styles from './styles';
 import type {
   Navigation,
   NavigationOptions,
-  Poster as PosterType
+  Poster as PosterType,
 } from '../types';
-
 
 type Props = {
   ...PosterType,
@@ -20,15 +19,14 @@ type Props = {
 
 type State = {
   loading: boolean,
-}
+};
 
 class Poster extends Component {
-
   props: Props;
-  state : State;
+  state: State;
   pdf: any;
 
-  static navigationOptions = ({navigation}): NavigationOptions => ({
+  static navigationOptions = ({ navigation }): NavigationOptions => ({
     title: navigation.state.params.title,
   });
 
@@ -36,31 +34,30 @@ class Poster extends Component {
     super(props);
 
     this.state = {
-      loading: true
+      loading: true,
     };
     this.pdf = null;
   }
 
   onPDFLoaded = () => {
-    this.setState({loading: false})
-  }
+    this.setState({ loading: false });
+  };
 
   render() {
     const { params } = this.props.navigation.state;
-    const PdfUri = {uri: params.download_url, cache: true};
+    const PdfUri = { uri: params.download_url, cache: true };
 
     return (
       <View style={styles.Poster}>
-        {
-          this.state.loading ?
-            <View>
-              <Text style={styles.Loading}>
-                Loading your poster
-              </Text>
-            </View> : null
-        }
+        {this.state.loading
+          ? <View>
+              <Text style={styles.Loading}>Loading your poster</Text>
+            </View>
+          : null}
         <Pdf
-          ref={(pdf)=>{this.pdf = pdf;}}
+          ref={pdf => {
+            this.pdf = pdf;
+          }}
           source={PdfUri}
           onLoadComplete={this.onPDFLoaded}
           style={styles.Pdf}

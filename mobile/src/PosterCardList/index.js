@@ -5,10 +5,11 @@ import PosterCardList from './presenter';
 import type { State } from 'app/types';
 
 const mapStateToProps = (state: State) => {
-  const { posters, isFetchingPosterData } = state.posters;
+  const { errored, loading, posters } = state.posters;
 
   return {
-    isFetchingPosterData,
+    errored,
+    loading,
     posters,
   };
 };

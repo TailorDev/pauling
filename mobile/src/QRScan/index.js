@@ -5,11 +5,7 @@ import { NavigationActions } from 'react-navigation';
 
 import QRScan from './presenter';
 import { fetchPosterData } from 'app/reducers/posters';
-import type { Dispatch, State } from 'app/types';
-
-const mapStateToProps = (state: State) => {
-  return {};
-}
+import type { Dispatch } from 'app/types';
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
@@ -20,4 +16,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QRScan);
+export default connect(null, mapDispatchToProps)(QRScan);

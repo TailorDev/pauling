@@ -7,7 +7,7 @@ import styles from './styles';
 import type { Navigation, Poster } from 'app/types';
 
 type Props = {|
-  ...Poster,
+  poster: Poster,
   navigation: Navigation,
 |};
 
@@ -15,20 +15,17 @@ class PosterCard extends Component {
   props: Props;
 
   onPress = () => {
-    const { navigate } = this.props.navigation;
-    const currentPoster = { ...this.props };
-
-    navigate('Poster', currentPoster);
-  };
+    this.props.navigation.navigate('Poster', this.props.poster);
+  }
 
   render() {
-    const props = this.props;
+    const { poster } = this.props;
 
     return (
       <TouchableOpacity onPress={this.onPress}>
         <View style={styles.PosterCard}>
           <Image
-            source={{ uri: props.thumbnail_url }}
+            source={{ uri: poster.thumbnail_url }}
             style={styles.PosterThumbnail}
           />
           <View style={styles.PosterInfos}>
@@ -36,16 +33,16 @@ class PosterCard extends Component {
               style={styles.PosterTitle}
               numberOfLines={6}
             >
-              {props.title}
+              {poster.title}
             </Text>
             <Text
               style={styles.PosterAuthors}
               numberOfLines={2}
             >
-              {props.authors}
+              {poster.authors}
             </Text>
             <Text style={styles.PosterSavedAt}>
-              Saved on {props.saved_at}
+              Saved on {poster.saved_at}
             </Text>
           </View>
         </View>

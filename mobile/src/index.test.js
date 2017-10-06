@@ -4,16 +4,6 @@ import { Root } from 'native-base';
 
 import Pauling from 'app';
 
-jest.mock('react-native-fetch-blob', () => ({
-  DocumentDir: {},
-}));
-
-jest.mock('react-native-camera', () => ({
-  constants: {
-    Aspect: {},
-  },
-}));
-
 jest.mock('react-native-splash-screen', () => ({
   hide: jest.fn(),
 }));

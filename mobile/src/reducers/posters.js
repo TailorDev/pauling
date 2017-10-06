@@ -27,7 +27,7 @@ type AddPosterAction = {|
   poster: Poster,
 |};
 
-const addPoster = (poster: Poster): AddPosterAction => {
+export const addPoster = (poster: Poster): AddPosterAction => {
   return { type: LOAD_POSTER, poster };
 };
 

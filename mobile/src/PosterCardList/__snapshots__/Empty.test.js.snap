@@ -26,8 +26,6 @@ exports[`Empty renders correctly 1`] = `
       Object {
         "color": "#333",
         "fontSize": 20,
-        "paddingLeft": 20,
-        "paddingRight": 20,
         "paddingTop": 50,
         "textAlign": "center",
       }
@@ -40,8 +38,6 @@ exports[`Empty renders correctly 1`] = `
       Object {
         "color": "#777",
         "fontSize": 18,
-        "paddingLeft": 20,
-        "paddingRight": 20,
         "paddingTop": 50,
         "textAlign": "center",
       }

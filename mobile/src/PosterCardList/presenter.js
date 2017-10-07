@@ -3,9 +3,9 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { Toast } from 'native-base';
 
+import LoadingMessage from 'app/LoadingMessage';
 import PosterCard from 'app/PosterCard';
 import Empty from './Empty';
-import Fetching from './Fetching';
 import type { Poster } from 'app/types';
 import type { State as NavigationState } from 'app/reducers/navigation';
 
@@ -42,7 +42,12 @@ class PosterCardList extends React.Component {
     const isFetching = loading && !errored;
 
     if (isFetching) {
-      return <Fetching />;
+      return (
+        <LoadingMessage>
+          Fetching the poster from Pauling, this should not take too long (in
+          theory).
+        </LoadingMessage>
+      );
     }
 
     return (

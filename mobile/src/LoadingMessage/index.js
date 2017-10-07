@@ -1,3 +1,4 @@
+/* @flow */
 import React from 'react';
 import { View } from 'react-native';
 import { Spinner, Text } from 'native-base';
@@ -5,13 +6,16 @@ import { Spinner, Text } from 'native-base';
 import { colors } from 'app/settings';
 import styles from './styles';
 
-const Fetching = () =>
-  <View style={styles.Fetching}>
-    <Text style={styles.FetchingMessage}>
-      Fetching the poster from Pauling, this should not take too long (in
-      theory).
+type Props = {|
+  children?: string,
+|};
+
+const LoadingMessage = ({ children }: Props) =>
+  <View style={styles.LoadingMessage}>
+    <Text style={styles.Text}>
+      {children}
     </Text>
     <Spinner color={colors.textSecondaryColor} />
   </View>;
 
-export default Fetching;
+export default LoadingMessage;

@@ -1,21 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Fetching renders correctly 1`] = `
+exports[`LoadingMessage renders correctly 1`] = `
 <Component
-  style={Object {}}
+  style={
+    Object {
+      "marginTop": 50,
+      "padding": 20,
+    }
+  }
 >
   <Styled(Text)
     style={
       Object {
         "color": "#777",
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 50,
         "textAlign": "center",
       }
     }
   >
-    Fetching the poster from Pauling, this should not take too long (in theory).
+    Some content to explain why it is loading.
   </Styled(Text)>
   <Styled(Spinner)
     color="#777"

@@ -18,6 +18,7 @@ class App extends Component {
 
   static navigationOptions = (): NavigationOptions => ({
     header: null,
+    title: '',
   });
 
   render() {

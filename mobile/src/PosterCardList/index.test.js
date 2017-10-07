@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 
 import ConnectedPosterCardList from 'app/PosterCardList';
 import PosterCardList from 'app/PosterCardList/presenter';
-import Fetching from 'app/PosterCardList/Fetching';
+import LoadingMessage from 'app/LoadingMessage';
 import {
   addPoster,
   fetchPosterFailed,
@@ -30,7 +30,7 @@ describe('PosterCardList', () => {
 
   it('renders correctly', () => {
     const wrapper = render();
-    expect(wrapper.find(View)).toHaveLength(1);
+    expect(wrapper.find(FlatList)).toHaveLength(1);
   });
 
   it('renders a FlatList', () => {
@@ -49,12 +49,12 @@ describe('PosterCardList', () => {
     expect(wrapper.find(FlatList)).toHaveProp('data', [poster]);
   });
 
-  it('displays a Fetching component while fetching a poster', () => {
+  it('displays a LoadingMessage component while fetching a poster', () => {
     const store = configureStore();
     store.dispatch(fetchPosterStarted());
 
     const wrapper = render({ store });
-    expect(wrapper.find(Fetching)).toHaveLength(1);
+    expect(wrapper.find(LoadingMessage)).toHaveLength(1);
   });
 
   it('shows a Toast when an error has occured', () => {

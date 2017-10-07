@@ -77,8 +77,7 @@ class Poster extends Component {
                   Saved on {poster.saved_at}
                 </Text>
               </ScrollView>
-            </Content>
-          }
+            </Content>}
         </Content>
 
         <Footer>

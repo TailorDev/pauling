@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import { Body, Card, CardItem, Text } from 'native-base';
 
 import styles from './styles';
@@ -35,7 +35,7 @@ class PosterCard extends Component {
           <CardItem cardBody>
             <Image
               source={{ uri: poster.thumbnail_url }}
-              style={{ height: 150, width: null, flex: 1 }}
+              style={styles.Image}
             />
           </CardItem>
           <CardItem footer>

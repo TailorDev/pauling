@@ -23,6 +23,7 @@ export type ThunkAction = (dispatch: Dispatch, getState: GetState) => any;
 export type PromiseAction = Promise<Action>;
 
 export type NavigationOptions = {
+  header?: null | any,
   title: string,
 };
 

@@ -43,9 +43,10 @@ class QRScan extends Component {
   }
 
   isValidPaulingUrl(url: string): boolean {
-    return new RegExp(`https?://${Config.API_SERVER_URL}/posters/${RE_UUID}`)
-      .test(url);
-    }
+    return new RegExp(
+      `https?://${Config.API_SERVER_URL}/posters/${RE_UUID}`
+    ).test(url);
+  }
 
   onBarCodeRead = (data: BarCodeData) => {
     const url = data.data;
@@ -64,25 +65,23 @@ class QRScan extends Component {
   render() {
     return (
       <View style={styles.QRScan}>
-        {this.state.mounted ?
-          <Camera
-            style={styles.Preview}
-            aspect={Camera.constants.Aspect.fill}
-            onBarCodeRead={this.onBarCodeRead}
-            barCodeTypes={['qr']}
-          >
-            <Spinner color={colors.primaryColor} />
+        {this.state.mounted
+          ? <Camera
+              style={styles.Preview}
+              aspect={Camera.constants.Aspect.fill}
+              onBarCodeRead={this.onBarCodeRead}
+              barCodeTypes={['qr']}
+            >
+              <Spinner color={colors.primaryColor} />
 
-            <Text style={styles.Processing}>
-              {'Scan a Pauling QR code to add it'.toUpperCase()}
-            </Text>
-          </Camera>
-          :
-          <LoadingMessage>
-            We are kindly asking your camera to wake up. It is usually fast.
-          </LoadingMessage>
-        }
-        </View>
+              <Text style={styles.Processing}>
+                {'Scan a Pauling QR code to add it'.toUpperCase()}
+              </Text>
+            </Camera>
+          : <LoadingMessage>
+              We are kindly asking your camera to wake up. It is usually fast.
+            </LoadingMessage>}
+      </View>
     );
   }
 }

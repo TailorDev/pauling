@@ -6,5 +6,5 @@ export default StyleSheet.create({
     height: 150,
     flex: 1,
     width: null,
-  }
+  },
 });

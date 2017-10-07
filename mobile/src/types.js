@@ -35,3 +35,8 @@ export type Poster = {|
   abstract: string,
   saved_at: string,
 |};
+
+export type BarCodeData = {|
+  data: string,
+  type: string,
+|};

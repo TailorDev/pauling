@@ -1,3 +1,6 @@
+/* @flow */
+import type { BarCodeData } from 'app/types';
+
 export const createFakePoster = () => {
   return {
     abstract: 'some abstract',
@@ -12,3 +15,10 @@ export const createFakePoster = () => {
     title: 'The Value Proposition of Libraries in Research Information Management'
   };
 };
+
+export const createFakeBarCodeData = (
+  data: string = 'some-data'
+): BarCodeData => ({
+  data,
+  type: 'some-type',
+});

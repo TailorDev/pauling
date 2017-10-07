@@ -1,6 +1,6 @@
 /* @flow */
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { Toast } from 'native-base';
 
 import PosterCard from 'app/PosterCard';
@@ -41,17 +41,17 @@ class PosterCardList extends React.Component {
 
     const isFetching = loading && !errored;
 
+    if (isFetching) {
+      return <Fetching />;
+    }
+
     return (
-      <View>
-        {isFetching
-          ? <Fetching />
-          : <FlatList
-              data={posters}
-              keyExtractor={item => item.id}
-              renderItem={this.renderItem}
-              ListEmptyComponent={Empty}
-            />}
-      </View>
+      <FlatList
+        data={posters}
+        keyExtractor={item => item.id}
+        renderItem={this.renderItem}
+        ListEmptyComponent={Empty}
+      />
     );
   }
 }

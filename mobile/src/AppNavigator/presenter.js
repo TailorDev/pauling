@@ -11,7 +11,8 @@ import {
 import AppScreen from 'app/App';
 import PosterScreen from 'app/Poster';
 import QRScanScreen from 'app/QRScan';
-import type { Dispatch, Navigation } from 'app/types';
+import type { Dispatch } from 'app/types';
+import type { State as NavigationState } from 'app/reducers/navigation';
 
 export const BaseAppNavigator = StackNavigator({
   App: { screen: AppScreen },
@@ -21,7 +22,7 @@ export const BaseAppNavigator = StackNavigator({
 
 type Props = {|
   dispatch: Dispatch,
-  navigationState: Navigation,
+  navigationState: NavigationState,
 |};
 
 class AppNavigator extends React.Component {

@@ -3,6 +3,7 @@ import type {
   Action as PostersAction,
   State as PostersState,
 } from 'app/reducers/posters';
+import type { State as NavigationState } from 'app/reducers/navigation';
 
 export type Action = {|
   ...PostersAction,
@@ -10,7 +11,7 @@ export type Action = {|
 
 export type State = {|
   posters: PostersState,
-  navigation: Navigation,
+  navigation: NavigationState,
 |};
 
 // Taken from: https://github.com/fbsamples/f8app
@@ -20,14 +21,6 @@ export type Dispatch = (
 export type GetState = () => State;
 export type ThunkAction = (dispatch: Dispatch, getState: GetState) => any;
 export type PromiseAction = Promise<Action>;
-
-export type Navigation = {
-  navigate: Function,
-  state: {
-    index: number,
-    params: Object,
-  },
-};
 
 export type NavigationOptions = {
   title: string,
@@ -41,4 +34,9 @@ export type Poster = {|
   authors: string,
   abstract: string,
   saved_at: string,
+|};
+
+export type BarCodeData = {|
+  data: string,
+  type: string,
 |};

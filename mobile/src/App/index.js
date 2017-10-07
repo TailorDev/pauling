@@ -5,10 +5,11 @@ import { Container, Content } from 'native-base';
 import ActionMenu from 'app/ActionMenu';
 import PosterCardList from 'app/PosterCardList';
 import styles from './styles';
-import type { Navigation, NavigationOptions } from 'app/types';
+import type { NavigationOptions } from 'app/types';
+import type { State as NavigationState } from 'app/reducers/navigation';
 
 type Props = {|
-  navigation: Navigation,
+  navigation: NavigationState,
 |};
 
 class App extends Component {

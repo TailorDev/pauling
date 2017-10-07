@@ -6,27 +6,33 @@ import { Toast } from 'native-base';
 import PosterCard from 'app/PosterCard';
 import Empty from './Empty';
 import Fetching from './Fetching';
-import type { Navigation, Poster } from 'app/types';
+import type { Poster } from 'app/types';
+import type { State as NavigationState } from 'app/reducers/navigation';
 
 type Props = {|
   errored: boolean,
   loading: boolean,
-  navigation: Navigation,
+  navigation: NavigationState,
   posters: Array<Poster>,
+  toastComponent: typeof Toast,
 |};
 
 class PosterCardList extends React.Component {
   props: Props;
+
+  static defaultProps = {
+    toastComponent: Toast,
+  };
 
   renderItem = (item: { item: Poster }) => {
     return <PosterCard poster={item.item} navigation={this.props.navigation} />;
   };
 
   render() {
-    const { errored, loading, posters } = this.props;
+    const { errored, loading, posters, toastComponent } = this.props;
 
     if (errored) {
-      Toast.show({
+      toastComponent.show({
         text: 'Failed to load the poster. Please try again later.',
         position: 'bottom',
         buttonText: 'Dismiss',

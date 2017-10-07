@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fetching renders correctly 1`] = `
+<Component
+  style={Object {}}
+>
+  <Styled(Text)
+    style={
+      Object {
+        "color": "#777",
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 50,
+        "textAlign": "center",
+      }
+    }
+  >
+    Fetching the poster from Pauling, this should not take too long (in theory).
+  </Styled(Text)>
+  <Styled(Spinner)
+    color="#777"
+  />
+</Component>
+`;

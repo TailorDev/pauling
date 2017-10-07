@@ -26,9 +26,9 @@ export default class Pauling extends Component {
 
     this.state = {
       loading: props.store ? false : true,
-      store: props.store ? props.store : configureStore(
-        () => this.setState({ loading: false })
-      ),
+      store: props.store
+        ? props.store
+        : configureStore(() => this.setState({ loading: false })),
     };
   }
 

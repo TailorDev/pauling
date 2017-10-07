@@ -12,8 +12,9 @@
     "prepare:patch": "npm version patch -m ':rocket: Prepare %s release'",
     "prettier": "prettier --write --single-quote --trailing-comma es5 --parser flow 'src/**/*.js'",
     "start": "better-npm-run start",
-    "tethered-mode": "adb reverse tcp:9090 tcp:9090",
     "test": "jest --forceExit",
+    "test-ci": "yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "tethered-mode": "adb reverse tcp:9090 tcp:9090",
     "version": "./scripts/npm-version-ios"
   },
   "betterScripts": {
@@ -31,37 +32,39 @@
     }
   },
   "dependencies": {
-    "native-base": "^2.3.2",
+    "native-base": "2.3.2",
     "react": "16.0.0-alpha.12",
     "react-native": "0.47.1",
-    "react-native-camera": "^0.10.0",
-    "react-native-config": "^0.6.0",
-    "react-native-fetch-blob": "^0.10.8",
-    "react-native-pdf": "^1.2.8",
-    "react-native-splash-screen": "^3.0.0",
-    "react-navigation": "^1.0.0-beta.11",
-    "react-redux": "^5.0.5",
-    "redux": "^3.7.2",
-    "redux-persist": "^4.9.1",
-    "redux-thunk": "^2.2.0"
+    "react-native-camera": "0.10.0",
+    "react-native-config": "0.6.0",
+    "react-native-fetch-blob": "0.10.8",
+    "react-native-pdf": "1.2.8",
+    "react-native-splash-screen": "3.0.0",
+    "react-navigation": "1.0.0-beta.11",
+    "react-redux": "5.0.5",
+    "redux": "3.7.2",
+    "redux-persist": "4.9.1",
+    "redux-thunk": "2.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "babel-jest": "20.0.3",
+    "babel-jest": "^20.0.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-react-native": "2.1.0",
+    "babel-preset-react-native": "^2.1.0",
     "better-npm-run": "^0.1.0",
+    "coveralls": "^3.0.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "eslint": "^4.8.0",
     "eslint-plugin-jest": "^21.2.0",
     "eslint-plugin-react": "^7.1.0",
-    "flow-bin": "0.49.1",
+    "fetch-mock": "^5.12.2",
+    "flow-bin": "^0.49.1",
     "jest": "^21.2.1",
     "jest-enzyme": "^4.0.0",
     "prettier": "^1.5.3",
-    "react-dom": "16.0.0-alpha.12",
-    "react-test-renderer": "16.0.0-alpha.12",
+    "react-dom": "^16.0.0-alpha.12",
+    "react-test-renderer": "^16.0.0-alpha.12",
     "reactotron-react-native": "^1.12.3",
     "reactotron-redux": "^1.12.2",
     "redux-logger": "^3.0.6",
@@ -72,6 +75,7 @@
     "setupTestFrameworkScriptFile": "<rootDir>/tests/setup.js",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation|native-base|@shoutem)"
-    ]
+    ],
+    "verbose": false
   }
 }

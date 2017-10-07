@@ -28,7 +28,7 @@ export default StyleSheet.create({
     paddingRight: 20,
     paddingLeft: 20,
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 22,
     color: colors.textPrimaryColor,
   },
   Message: {

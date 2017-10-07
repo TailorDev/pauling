@@ -7,15 +7,10 @@ import Config from 'react-native-config';
 
 import { colors } from 'app/settings';
 import styles from './styles';
-import type { NavigationOptions } from 'app/types';
+import type { BarCodeData, NavigationOptions } from 'app/types';
 
 type Props = {|
   onQRCodeRead: Function,
-|};
-
-type BarCodeData = {|
-  data: string,
-  type: string,
 |};
 
 class QRScan extends Component {

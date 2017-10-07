@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native';
 import PosterCard from 'app/PosterCard';
 import { addPoster } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
-import { createFakePoster } from 'tests/helper';
+import { createFakePoster } from 'tests/helpers';
 
 describe(__filename, () => {
   const render = params => {

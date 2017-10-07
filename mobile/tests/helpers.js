@@ -6,7 +6,7 @@ export const createFakePoster = () => {
     download_url: 'https://ndownloader.figshare.com/files/9011278',
     id: 'a33a749e-d281-4cd9-a05b-8dc0cc07ece2',
     presented_at: 'some conference',
-    saved_at: Date.now(),
+    saved_at: '2017-10-01T11:06:56.185248',
     source_url: 'http://source.example.org',
     thumbnail_url: 'http://thumbnail.example.org',
     title: 'The Value Proposition of Libraries in Research Information Management'

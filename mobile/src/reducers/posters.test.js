@@ -4,7 +4,7 @@ import reducer, {
   initialState,
 } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
-import { createFakePoster } from 'tests/helper';
+import { createFakePoster } from 'tests/helpers';
 
 describe(__filename, () => {
   describe('reducer', () => {

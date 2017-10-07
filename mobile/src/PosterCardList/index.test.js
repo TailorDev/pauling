@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { FlatList, View } from 'react-native';
 
+import PosterCard from 'app/PosterCard';
 import ConnectedPosterCardList from 'app/PosterCardList';
 import PosterCardList from 'app/PosterCardList/presenter';
 import Fetching from 'app/PosterCardList/Fetching';
@@ -11,7 +12,7 @@ import {
   fetchPosterStarted,
 } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
-import { createFakePoster } from 'tests/helper';
+import { createFakePoster } from 'tests/helpers';
 
 describe(__filename, () => {
   const render = (
@@ -67,5 +68,22 @@ describe(__filename, () => {
 
     render({ store, toastComponent });
     sinon.assert.callCount(toastComponent.show, 1);
+  });
+
+  it('renders PosterCard items', () => {
+    const store = configureStore();
+
+    store.dispatch(addPoster(createFakePoster()));
+
+    const wrapper = render({ store });
+    const posters = wrapper.find(FlatList).prop('data');
+    const renderItem = wrapper.find(FlatList).prop('renderItem');
+
+    // TODO: there must be a better way to test this.
+    expect(
+      renderItem({
+        item: posters[0],
+      })
+    ).toMatchSnapshot();
   });
 });

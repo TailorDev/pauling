@@ -8,7 +8,7 @@ import Poster from 'app/Poster';
 import styles from 'app/Poster/styles';
 import { addPoster } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
-import { createFakePoster } from 'tests/helper';
+import { createFakePoster } from 'tests/helpers';
 
 describe(__filename, () => {
   const getNavigation = params => ({

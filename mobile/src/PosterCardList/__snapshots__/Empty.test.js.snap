@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/Users/william/projects/tailordev/pauling/mobile/src/PosterCardList/Empty.test.js renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <Styled(Icon)
+    name="md-qr-scanner"
+    style={
+      Object {
+        "color": "#777",
+        "fontSize": 80,
+        "paddingTop": 50,
+      }
+    }
+  />
+  <Styled(Text)
+    style={
+      Object {
+        "color": "#333",
+        "fontSize": 24,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 50,
+        "textAlign": "center",
+      }
+    }
+  >
+    Hi! I am Pauling, nice to meet you.
+  </Styled(Text)>
+  <Styled(Text)
+    style={
+      Object {
+        "color": "#777",
+        "fontSize": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 50,
+        "textAlign": "center",
+      }
+    }
+  >
+    You can add a poster to your collection by scanning a Pauling QR code. Use the button below to open your camera and follow the instructions.
+  </Styled(Text)>
+</Component>
+`;

@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { FlatList, View } from 'react-native';
 
-import PosterCard from 'app/PosterCard';
 import ConnectedPosterCardList from 'app/PosterCardList';
 import PosterCardList from 'app/PosterCardList/presenter';
 import Fetching from 'app/PosterCardList/Fetching';

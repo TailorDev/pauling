@@ -29,11 +29,11 @@ jobs:
       - run:
           name: lint code
           working_directory: ~/pauling/mobile
-          command: npm run lint
+          command: yarn lint
       - run:
           name: static type check
           working_directory: ~/pauling/mobile
-          command: npm run flow
+          command: yarn flow
 
   test_mobile:
     working_directory: ~/pauling
@@ -46,7 +46,7 @@ jobs:
       - run:
           name: test app
           working_directory: ~/pauling/mobile
-          command: npm run test
+          command: yarn test --coverage
 
   build_api:
     working_directory: ~/pauling

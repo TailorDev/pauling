@@ -46,7 +46,7 @@ jobs:
       - run:
           name: test app
           working_directory: ~/pauling/mobile
-          command: yarn test --coverage
+          command: yarn test-ci
 
   build_api:
     working_directory: ~/pauling

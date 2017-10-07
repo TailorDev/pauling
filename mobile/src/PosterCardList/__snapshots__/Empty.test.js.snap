@@ -25,9 +25,7 @@ exports[`Empty renders correctly 1`] = `
     style={
       Object {
         "color": "#333",
-        "fontSize": 22,
-        "paddingLeft": 20,
-        "paddingRight": 20,
+        "fontSize": 20,
         "paddingTop": 50,
         "textAlign": "center",
       }
@@ -39,9 +37,7 @@ exports[`Empty renders correctly 1`] = `
     style={
       Object {
         "color": "#777",
-        "fontSize": 20,
-        "paddingLeft": 20,
-        "paddingRight": 20,
+        "fontSize": 18,
         "paddingTop": 50,
         "textAlign": "center",
       }

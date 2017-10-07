@@ -7,6 +7,7 @@ import {
   Content,
   Footer,
   FooterTab,
+  H2,
   Text,
 } from 'native-base';
 import Pdf from 'react-native-pdf';
@@ -47,8 +48,8 @@ class Poster extends Component {
     const { activeTab } = this.state;
 
     return (
-      <Container>
-        <Content style={styles.Poster}>
+      <Container style={styles.Poster}>
+        <Content>
           <Pdf
             style={[
               styles.Pdf,
@@ -61,20 +62,22 @@ class Poster extends Component {
           />
 
           {activeTab === TAB_INFO &&
-            <ScrollView style={styles.Infos}>
-              <Text style={styles.Title}>
-                {poster.title}
-              </Text>
-              <Text style={styles.Authors}>
-                {poster.authors}
-              </Text>
-              <Text style={styles.Abstract}>
-                {poster.abstract}
-              </Text>
-              <Text style={styles.SavedAt}>
-                Saved on {poster.saved_at}
-              </Text>
-            </ScrollView>}
+            <Content padder>
+              <ScrollView>
+                <H2 style={styles.Title}>
+                  {poster.title}
+                </H2>
+                <Text note style={styles.Authors}>
+                  {poster.authors}
+                </Text>
+                <Text style={styles.Abstract}>
+                  {poster.abstract}
+                </Text>
+                <Text style={styles.SavedAt}>
+                  Saved on {poster.saved_at}
+                </Text>
+              </ScrollView>
+            </Content>}
         </Content>
 
         <Footer>

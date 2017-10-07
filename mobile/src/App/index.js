@@ -1,5 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import { Container, Content } from 'native-base';
 
 import ActionMenu from 'app/ActionMenu';
@@ -16,16 +17,19 @@ class App extends Component {
   props: Props;
 
   static navigationOptions = (): NavigationOptions => ({
-    title: 'Your Pauling collection',
+    header: null,
+    title: '',
   });
 
   render() {
     return (
       <Container style={styles.App}>
-        <Content>
+        <Content padder>
           <PosterCardList navigation={this.props.navigation} />
         </Content>
-        <ActionMenu navigation={this.props.navigation} />
+        <View>
+          <ActionMenu navigation={this.props.navigation} />
+        </View>
       </Container>
     );
   }

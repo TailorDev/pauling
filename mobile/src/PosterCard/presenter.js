@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
-import { Text } from 'native-base';
+import { Image, TouchableOpacity } from 'react-native';
+import { Body, Card, CardItem, Text } from 'native-base';
 
 import styles from './styles';
 import type { Poster } from 'app/types';
@@ -24,23 +24,28 @@ class PosterCard extends Component {
 
     return (
       <TouchableOpacity onPress={this.onPress}>
-        <View style={styles.PosterCard}>
-          <Image
-            source={{ uri: poster.thumbnail_url }}
-            style={styles.PosterThumbnail}
-          />
-          <View style={styles.PosterInfos}>
-            <Text style={styles.PosterTitle} numberOfLines={6}>
-              {poster.title}
-            </Text>
-            <Text style={styles.PosterAuthors} numberOfLines={2}>
-              {poster.authors}
-            </Text>
-            <Text style={styles.PosterSavedAt}>
-              Saved on {poster.saved_at}
-            </Text>
-          </View>
-        </View>
+        <Card>
+          <CardItem header>
+            <Body>
+              <Text numberOfLines={2}>
+                {poster.title}
+              </Text>
+            </Body>
+          </CardItem>
+          <CardItem cardBody>
+            <Image
+              source={{ uri: poster.thumbnail_url }}
+              style={styles.Image}
+            />
+          </CardItem>
+          <CardItem footer>
+            <Body>
+              <Text note numberOfLines={2}>
+                {poster.authors}
+              </Text>
+            </Body>
+          </CardItem>
+        </Card>
       </TouchableOpacity>
     );
   }

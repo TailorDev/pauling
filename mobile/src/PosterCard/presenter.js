@@ -4,11 +4,12 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { Text } from 'native-base';
 
 import styles from './styles';
-import type { Navigation, Poster } from 'app/types';
+import type { Poster } from 'app/types';
+import type { State as NavigationState } from 'app/reducers/navigation';
 
 type Props = {|
   poster: Poster,
-  navigation: Navigation,
+  navigation: NavigationState,
 |};
 
 class PosterCard extends Component {

@@ -12,7 +12,7 @@ export type State = {|
   posters: Array<Poster>,
 |};
 
-const initialState: State = {
+export const initialState: State = {
   errored: false,
   loading: false,
   posters: [],
@@ -51,7 +51,7 @@ export const fetchPosterData = (paulingPosterUrl: string): ThunkAction => {
   return (dispatch: Dispatch) => {
     dispatch(fetchPosterStarted());
 
-    RNFetchBlob.fetch('GET', paulingPosterUrl, {
+    return RNFetchBlob.fetch('GET', paulingPosterUrl, {
       Accept: 'application/json',
     })
       .then(response => response.json())

@@ -5,12 +5,10 @@ import { Root } from 'native-base';
 import Pauling from 'app';
 import configureStore from 'app/store/configureStore';
 
-jest.mock('react-native-splash-screen', () => ({
-  hide: jest.fn(),
-}));
-
-it('renders correctly', () => {
-  const store = configureStore();
-  const wrapper = shallow(<Pauling store={store} />);
-  expect(wrapper.find(Root)).toHaveLength(1);
+describe(__filename, () => {
+  it('renders correctly', () => {
+    const store = configureStore();
+    const wrapper = shallow(<Pauling store={store} />);
+    expect(wrapper.find(Root)).toHaveLength(1);
+  });
 });

@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { Icon, Fab } from 'native-base';
 
 import styles from './styles';
-import type { Navigation } from 'app/types';
+import type { State as NavigationState } from 'app/reducers/navigation';
 
 type Props = {|
-  navigation: Navigation,
+  navigation: NavigationState,
 |};
 
 class ActionMenu extends Component {

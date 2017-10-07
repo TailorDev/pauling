@@ -8,7 +8,7 @@ import configureStore from 'app/store/configureStore';
 import { createFakePoster } from 'tests/helper';
 
 describe(__filename, () => {
-  const render = (params) => {
+  const render = params => {
     const store = configureStore();
 
     store.dispatch(addPoster(createFakePoster()));

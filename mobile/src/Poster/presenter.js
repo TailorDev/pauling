@@ -12,10 +12,11 @@ import {
 import Pdf from 'react-native-pdf';
 
 import styles from './styles';
-import type { Navigation, NavigationOptions } from 'app/types';
+import type { NavigationOptions } from 'app/types';
+import type { State as NavigationState } from 'app/reducers/navigation';
 
 type Props = {|
-  navigation: Navigation,
+  navigation: NavigationState,
 |};
 
 type State = {|

@@ -1,7 +1,13 @@
 /* @flow */
 import { BaseAppNavigator } from 'app/AppNavigator/presenter';
 
-type State = Object;
+export type State = {
+  navigate: Function,
+  state: {
+    index: number,
+    params: Object,
+  },
+};
 type Action = Object;
 
 const goHome = BaseAppNavigator.router.getActionForPathAndParams('App');

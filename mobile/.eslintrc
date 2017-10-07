@@ -17,9 +17,10 @@
         "no-console": 1,
     },
     "globals": {
+        "__DEV__": false,
+        "fetchMock": true,
         "global": false,
         "Promise": false,
-        "__DEV__": false,
         "sinon": true
     }
 }

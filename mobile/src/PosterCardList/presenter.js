@@ -6,12 +6,13 @@ import { Toast } from 'native-base';
 import PosterCard from 'app/PosterCard';
 import Empty from './Empty';
 import Fetching from './Fetching';
-import type { Navigation, Poster } from 'app/types';
+import type { Poster } from 'app/types';
+import type { State as NavigationState } from 'app/reducers/navigation';
 
 type Props = {|
   errored: boolean,
   loading: boolean,
-  navigation: Navigation,
+  navigation: NavigationState,
   posters: Array<Poster>,
   toastComponent: typeof Toast,
 |};
@@ -24,12 +25,7 @@ class PosterCardList extends React.Component {
   };
 
   renderItem = (item: { item: Poster }) => {
-    return (
-      <PosterCard
-        poster={item.item}
-        navigation={this.props.navigation}
-      />
-    );
+    return <PosterCard poster={item.item} navigation={this.props.navigation} />;
   };
 
   render() {

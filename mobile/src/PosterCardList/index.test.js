@@ -14,11 +14,9 @@ import configureStore from 'app/store/configureStore';
 import { createFakePoster } from 'tests/helper';
 
 describe(__filename, () => {
-  const render = ({
-    store = configureStore(),
-    navigation = sinon.stub(),
-    ...params,
-  } = {}) => {
+  const render = (
+    { store = configureStore(), navigation = sinon.stub(), ...params } = {}
+  ) => {
     const allProps = {
       store,
       navigation,
@@ -67,7 +65,7 @@ describe(__filename, () => {
 
     store.dispatch(fetchPosterFailed());
 
-    const wrapper = render({ store, toastComponent });
+    render({ store, toastComponent });
     sinon.assert.callCount(toastComponent.show, 1);
   });
 });

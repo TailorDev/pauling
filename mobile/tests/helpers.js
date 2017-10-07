@@ -20,5 +20,5 @@ export const createFakeBarCodeData = (
   data: string = 'some-data'
 ): BarCodeData => ({
   data,
-  type: 'some-type',
+  type: 'qr',
 });

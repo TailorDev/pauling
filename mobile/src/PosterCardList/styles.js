@@ -28,7 +28,7 @@ export default StyleSheet.create({
     paddingRight: 20,
     paddingLeft: 20,
     textAlign: 'center',
-    fontSize: 22,
+    fontSize: 20,
     color: colors.textPrimaryColor,
   },
   Message: {
@@ -36,7 +36,7 @@ export default StyleSheet.create({
     paddingRight: 20,
     paddingLeft: 20,
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 18,
     color: colors.textSecondaryColor,
   },
 });

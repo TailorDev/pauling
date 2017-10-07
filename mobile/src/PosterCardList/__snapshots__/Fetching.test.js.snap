@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/Users/william/projects/tailordev/pauling/mobile/src/PosterCardList/Fetching.test.js renders correctly 1`] = `
+exports[`Fetching renders correctly 1`] = `
 <Component
   style={Object {}}
 >

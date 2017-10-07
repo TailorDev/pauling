@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Empty from 'app/PosterCardList/Empty';
 
-describe(__filename, () => {
+describe('Empty', () => {
   it('renders correctly', () => {
     const wrapper = shallow(<Empty />);
     expect(wrapper).toMatchSnapshot();

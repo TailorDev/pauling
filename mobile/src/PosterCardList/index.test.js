@@ -13,7 +13,7 @@ import {
 import configureStore from 'app/store/configureStore';
 import { createFakePoster } from 'tests/helpers';
 
-describe(__filename, () => {
+describe('PosterCardList', () => {
   const render = (
     { store = configureStore(), navigation = sinon.stub(), ...params } = {}
   ) => {

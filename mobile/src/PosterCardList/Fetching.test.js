@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Fetching from 'app/PosterCardList/Fetching';
 
-describe(__filename, () => {
+describe('Fetching', () => {
   it('renders correctly', () => {
     const wrapper = shallow(<Fetching />);
     expect(wrapper).toMatchSnapshot();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/Users/william/projects/tailordev/pauling/mobile/src/PosterCardList/index.test.js renders PosterCard items 1`] = `
+exports[`PosterCardList renders PosterCard items 1`] = `
 <PosterCard
   navigation={[Function]}
   poster={

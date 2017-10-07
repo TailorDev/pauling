@@ -35,7 +35,7 @@ type FetchPosterStartedAction = {|
   type: typeof FETCH_POSTER_STARTED,
 |};
 
-const fetchPosterStarted = (): FetchPosterStartedAction => ({
+export const fetchPosterStarted = (): FetchPosterStartedAction => ({
   type: FETCH_POSTER_STARTED,
 });
 
@@ -43,7 +43,7 @@ type FetchPosterFailedAction = {|
   type: typeof FETCH_POSTER_FAILED,
 |};
 
-const fetchPosterFailed = (): FetchPosterFailedAction => ({
+export const fetchPosterFailed = (): FetchPosterFailedAction => ({
   type: FETCH_POSTER_FAILED,
 });
 

@@ -13,20 +13,30 @@ type Props = {|
   loading: boolean,
   navigation: Navigation,
   posters: Array<Poster>,
+  toastComponent: typeof Toast,
 |};
 
 class PosterCardList extends React.Component {
   props: Props;
 
+  static defaultProps = {
+    toastComponent: Toast,
+  };
+
   renderItem = (item: { item: Poster }) => {
-    return <PosterCard poster={item.item} navigation={this.props.navigation} />;
+    return (
+      <PosterCard
+        poster={item.item}
+        navigation={this.props.navigation}
+      />
+    );
   };
 
   render() {
-    const { errored, loading, posters } = this.props;
+    const { errored, loading, posters, toastComponent } = this.props;
 
     if (errored) {
-      Toast.show({
+      toastComponent.show({
         text: 'Failed to load the poster. Please try again later.',
         position: 'bottom',
         buttonText: 'Dismiss',

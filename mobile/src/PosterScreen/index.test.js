@@ -4,8 +4,8 @@ import Pdf from 'react-native-pdf';
 import { ScrollView } from 'react-native';
 import { Button } from 'native-base';
 
-import Poster from 'app/Poster';
-import styles from 'app/Poster/styles';
+import PosterScreen from 'app/PosterScreen';
+import styles from 'app/PosterScreen/styles';
 import { addPoster } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
 import { createFakePoster } from 'tests/helpers';
@@ -21,7 +21,7 @@ describe(__filename, () => {
     store.dispatch(addPoster(createFakePoster()));
     const poster = store.getState().posters.posters[0];
 
-    return shallow(<Poster navigation={getNavigation(poster)} />);
+    return shallow(<PosterScreen navigation={getNavigation(poster)} />);
   };
 
   it('renders correctly', () => {

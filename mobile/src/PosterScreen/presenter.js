@@ -27,7 +27,7 @@ type State = {|
 const TAB_PDF: 'TAB_PDF' = 'TAB_PDF';
 const TAB_INFO: 'TAB_INFO' = 'TAB_INFO';
 
-class Poster extends Component {
+class PosterScreen extends Component {
   props: Props;
   state: State;
 
@@ -103,4 +103,4 @@ class Poster extends Component {
   }
 }
 
-export default Poster;
+export default PosterScreen;

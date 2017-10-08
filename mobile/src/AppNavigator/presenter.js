@@ -9,7 +9,7 @@ import {
 } from 'react-navigation';
 
 import AppScreen from 'app/AppScreen';
-import PosterScreen from 'app/Poster';
+import PosterScreen from 'app/PosterScreen';
 import QRScanScreen from 'app/QRScan';
 import type { Dispatch } from 'app/types';
 import type { State as NavigationState } from 'app/reducers/navigation';

@@ -8,7 +8,7 @@ import {
   // $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
 } from 'react-navigation';
 
-import AppScreen from 'app/App';
+import AppScreen from 'app/AppScreen';
 import PosterScreen from 'app/Poster';
 import QRScanScreen from 'app/QRScan';
 import type { Dispatch } from 'app/types';

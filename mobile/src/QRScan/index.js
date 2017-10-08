@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 
 import QRScan from './presenter';
-import { fetchPosterData } from 'app/reducers/posters';
+import { fetchPoster } from 'app/reducers/posters';
 import type { Dispatch } from 'app/types';
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     onQRCodeRead: paulingUrl => {
       dispatch(NavigationActions.back());
-      dispatch(fetchPosterData(paulingUrl));
+      dispatch(fetchPoster(paulingUrl));
     },
   };
 };

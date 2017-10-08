@@ -47,39 +47,35 @@ export const fetchPosterFailed = (): FetchPosterFailedAction => ({
   type: FETCH_POSTER_FAILED,
 });
 
-export const fetchPosterData = (paulingPosterUrl: string): ThunkAction => {
-  return (dispatch: Dispatch) => {
+export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
+  return async (dispatch: Dispatch) => {
     dispatch(fetchPosterStarted());
 
-    return RNFetchBlob.fetch('GET', paulingPosterUrl, {
-      Accept: 'application/json',
-    })
-      .then(response => response.json())
-      .then(jsonData => {
-        const poster = {
-          ...jsonData.poster,
-          saved_at: new Date().toLocaleString(),
-        };
-
-        dispatch(addPoster(poster));
-        Reactotron.log({ message: 'addPoster', poster });
-
-        dispatch(
-          NavigationActions.navigate({
-            routeName: 'Poster',
-            params: poster,
-          })
-        );
-      })
-      .catch((errorMessage, statusCode) => {
-        dispatch(fetchPosterFailed());
-
-        Reactotron.error({
-          message: 'fetchPosterFailed',
-          errorMessage,
-          statusCode,
-        });
+    try {
+      const response = await RNFetchBlob.fetch('GET', paulingPosterURL, {
+        Accept: 'application/json',
       });
+      const jsonData = await response.json();
+      const poster = {
+        ...jsonData.poster,
+        saved_at: new Date().toLocaleString(),
+      };
+
+      dispatch(addPoster(poster));
+      Reactotron.log({ message: 'addPoster', poster });
+
+      dispatch(NavigationActions.navigate({
+        routeName: 'Poster',
+        params: poster,
+      }));
+    } catch (error) {
+      dispatch(fetchPosterFailed());
+
+      Reactotron.error({
+        message: 'fetchPosterFailed',
+        error,
+      });
+    }
   };
 };
 

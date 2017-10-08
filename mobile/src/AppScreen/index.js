@@ -13,7 +13,7 @@ type Props = {|
   navigation: NavigationState,
 |};
 
-class App extends Component {
+class AppScreen extends Component {
   props: Props;
 
   static navigationOptions = (): NavigationOptions => ({
@@ -23,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container style={styles.App}>
+      <Container style={styles.AppScreen}>
         <Content padder>
           <PosterCardList navigation={this.props.navigation} />
         </Content>
@@ -35,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default AppScreen;

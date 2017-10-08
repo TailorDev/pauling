@@ -1,5 +1,5 @@
 import reducer, {
-  fetchPosterData,
+  fetchPoster,
   fetchPosterStarted,
   initialState,
 } from 'app/reducers/posters';
@@ -20,7 +20,7 @@ describe(__filename, () => {
     });
   });
 
-  describe('fetchPosterData', () => {
+  describe('fetchPoster', () => {
     it('calls the API to add a poster', async () => {
       const store = configureStore();
       const url = 'http://example.org/poster';
@@ -35,7 +35,7 @@ describe(__filename, () => {
         }
       );
 
-      await store.dispatch(fetchPosterData(url));
+      await store.dispatch(fetchPoster(url));
 
       const { errored, loading, posters } = store.getState().posters;
       expect(errored).toEqual(false);
@@ -49,7 +49,7 @@ describe(__filename, () => {
 
       fetchMock.get(url, 404);
 
-      await store.dispatch(fetchPosterData(url));
+      await store.dispatch(fetchPoster(url));
 
       const { errored, loading, posters } = store.getState().posters;
       expect(errored).toEqual(true);

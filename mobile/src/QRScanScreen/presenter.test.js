@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import QRScan from './presenter';
+import QRScanScreen from './presenter';
 
 describe(__filename, () => {
   it('validates Pauling URLs', () => {
-    const wrapper = shallow(<QRScan onBarCodeRead={jest.fn()} />);
+    const wrapper = shallow(<QRScanScreen onBarCodeRead={jest.fn()} />);
 
     const instance = wrapper.instance();
     expect(instance.isValidPaulingUrl('')).toEqual(false);

@@ -1,10 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text } from 'native-base';
 import { shallow } from 'enzyme';
 
 import configureStore from 'app/store/configureStore';
-import ConnectedQRScan from 'app/QRScan';
-import QRScan from 'app/QRScan/presenter';
+import ConnectedQRScanScreen from 'app/QRScanScreen';
+import QRScanScreen from 'app/QRScanScreen/presenter';
 import { createFakeBarCodeData } from 'tests/helpers';
 
 describe(__filename, () => {
@@ -14,12 +14,20 @@ describe(__filename, () => {
       ...params,
     };
 
-    return shallow(<ConnectedQRScan {...allProps} />).find(QRScan).shallow();
+    return shallow(<ConnectedQRScanScreen {...allProps} />)
+      .find(QRScanScreen)
+      .shallow();
   };
 
   it('renders correctly', () => {
     const wrapper = render();
-    expect(wrapper.find(View)).toHaveLength(1);
+    expect(wrapper.find(Text)).toHaveLength(1);
+    expect(wrapper.state('mounted')).toEqual(false);
+  });
+
+  it('indicates that it has been mounted', () => {
+    const wrapper = render({ runAfterInteractions: fn => fn() });
+    expect(wrapper.state('mounted')).toEqual(true);
   });
 
   it('calls on valid QR code scanned', () => {

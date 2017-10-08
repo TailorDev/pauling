@@ -64,10 +64,12 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
       dispatch(addPoster(poster));
       Reactotron.log({ message: 'addPoster', poster });
 
-      dispatch(NavigationActions.navigate({
-        routeName: 'Poster',
-        params: poster,
-      }));
+      dispatch(
+        NavigationActions.navigate({
+          routeName: 'Poster',
+          params: poster,
+        })
+      );
     } catch (error) {
       dispatch(fetchPosterFailed());
 

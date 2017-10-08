@@ -10,7 +10,7 @@ import {
 
 import AppScreen from 'app/AppScreen';
 import PosterScreen from 'app/PosterScreen';
-import QRScanScreen from 'app/QRScan';
+import QRScanScreen from 'app/QRScanScreen';
 import type { Dispatch } from 'app/types';
 import type { State as NavigationState } from 'app/reducers/navigation';
 

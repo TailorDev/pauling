@@ -5,13 +5,13 @@ import { Spinner, Text, Toast } from 'native-base';
 import Camera from 'react-native-camera';
 import Config from 'react-native-config';
 
-import LoadingMessage from 'app/LoadingMessage';
 import { colors } from 'app/settings';
 import styles from './styles';
 import type { BarCodeData, NavigationOptions } from 'app/types';
 
 type Props = {|
   onQRCodeRead: Function,
+  runAfterInteractions: Function,
 |};
 
 type State = {|
@@ -20,13 +20,17 @@ type State = {|
 
 const RE_UUID = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
 
-class QRScan extends Component {
+class QRScanScreen extends Component {
   props: Props;
   state: State;
 
+  static defaultProps = {
+    runAfterInteractions: InteractionManager.runAfterInteractions,
+  }
+
   static navigationOptions = (): NavigationOptions => ({
     title: 'New poster',
-  });
+  })
 
   constructor(props: Props) {
     super(props);
@@ -36,8 +40,8 @@ class QRScan extends Component {
     };
   }
 
-  componentDidMount() {
-    InteractionManager.runAfterInteractions(() => {
+  componentWillMount() {
+    this.props.runAfterInteractions(() => {
       this.setState({ mounted: true });
     });
   }
@@ -62,9 +66,17 @@ class QRScan extends Component {
     }
   };
 
+  renderProcessing() {
+    return (
+      <Text style={styles.Processing}>
+        {'Scan a Pauling QR code to add it'.toUpperCase()}
+      </Text>
+    );
+  }
+
   render() {
     return (
-      <View style={styles.QRScan}>
+      <View style={styles.QRScanScreen}>
         {this.state.mounted
           ? <Camera
               style={styles.Preview}
@@ -74,16 +86,14 @@ class QRScan extends Component {
             >
               <Spinner color={colors.primaryColor} />
 
-              <Text style={styles.Processing}>
-                {'Scan a Pauling QR code to add it'.toUpperCase()}
-              </Text>
+              {this.renderProcessing()}
             </Camera>
-          : <LoadingMessage>
-              We are kindly asking your camera to wake up. It is usually fast.
-            </LoadingMessage>}
+          : <View style={[styles.Preview, styles.PreviewNotMounted]}>
+              {this.renderProcessing()}
+            </View>}
       </View>
     );
   }
 }
 
-export default QRScan;
+export default QRScanScreen;

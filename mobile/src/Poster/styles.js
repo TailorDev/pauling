@@ -10,7 +10,7 @@ export default StyleSheet.create({
   Pdf: {
     flex: 1,
     // Remove offset due to the navigation bar and footer menu.
-    height: Dimensions.get('window').height - 120,
+    height: Dimensions.get('window').height - 135,
   },
   FooterButton: {
     backgroundColor: colors.secondaryColor,

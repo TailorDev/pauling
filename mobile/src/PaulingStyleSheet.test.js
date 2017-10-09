@@ -27,7 +27,7 @@ describe(__filename, () => {
           ios: {
             color: '#ios',
           },
-       },
+        },
       });
       expect(styles).toEqual({
         Component: {

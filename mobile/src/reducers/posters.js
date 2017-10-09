@@ -4,7 +4,12 @@ import { NavigationActions } from 'react-navigation';
 import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
 
-import type { Dispatch, Poster, ThunkAction } from 'app/types';
+import type {
+  Dispatch,
+  Poster,
+  State as AppState,
+  ThunkAction,
+} from 'app/types';
 
 export type State = {|
   errored: boolean,
@@ -92,7 +97,7 @@ export default function reducer(state: State = initialState, action: Action) {
       return {
         ...state,
         loading: false,
-        posters: state.posters.concat([action.poster]),
+        posters: [...new Set(state.posters.concat([action.poster]))],
       };
 
     case FETCH_POSTER_STARTED:

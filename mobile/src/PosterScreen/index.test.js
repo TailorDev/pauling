@@ -19,7 +19,7 @@ describe(__filename, () => {
     const store = configureStore();
 
     store.dispatch(addPoster(createFakePoster()));
-    const poster = store.getState().posters.posters[0];
+    const poster = store.getState().posters.posters;
 
     return shallow(<PosterScreen navigation={getNavigation(poster)} />);
   };

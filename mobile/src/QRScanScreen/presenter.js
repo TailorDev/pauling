@@ -26,11 +26,11 @@ class QRScanScreen extends Component {
 
   static defaultProps = {
     runAfterInteractions: InteractionManager.runAfterInteractions,
-  }
+  };
 
   static navigationOptions = (): NavigationOptions => ({
     title: 'New poster',
-  })
+  });
 
   constructor(props: Props) {
     super(props);
@@ -67,30 +67,37 @@ class QRScanScreen extends Component {
   };
 
   renderProcessing() {
+    const text = 'Scan a Pauling QR code to add it'.toUpperCase();
+
     return (
       <Text style={styles.Processing}>
-        {'Scan a Pauling QR code to add it'.toUpperCase()}
+        {text}
       </Text>
     );
   }
 
   render() {
+    if (this.state.mounted) {
+      return (
+        <View style={styles.QRScanScreen}>
+          <Camera
+            style={styles.Preview}
+            aspect={Camera.constants.Aspect.fill}
+            onBarCodeRead={this.onBarCodeRead}
+            barCodeTypes={['qr']}
+          >
+            <Spinner color={colors.primaryColor} />
+            {this.renderProcessing()}
+          </Camera>
+        </View>
+      );
+    }
+
     return (
       <View style={styles.QRScanScreen}>
-        {this.state.mounted
-          ? <Camera
-              style={styles.Preview}
-              aspect={Camera.constants.Aspect.fill}
-              onBarCodeRead={this.onBarCodeRead}
-              barCodeTypes={['qr']}
-            >
-              <Spinner color={colors.primaryColor} />
-
-              {this.renderProcessing()}
-            </Camera>
-          : <View style={[styles.Preview, styles.PreviewNotMounted]}>
-              {this.renderProcessing()}
-            </View>}
+        <View style={[styles.Preview, styles.PreviewNotMounted]}>
+          {this.renderProcessing()}
+        </View>
       </View>
     );
   }

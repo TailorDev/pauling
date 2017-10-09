@@ -41,7 +41,9 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Pauling needs access to your camera to scan QR codes</string>
+	<string>$(PRODUCT_NAME) needs to access your camera to scan QR codes.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>$(PRODUCT_NAME) needs to access your camera to scan QR codes.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UIAppFonts</key>

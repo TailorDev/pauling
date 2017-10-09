@@ -18,7 +18,7 @@ class AppScreen extends Component {
 
   static navigationOptions = (): NavigationOptions => ({
     header: null,
-    title: '',
+    title: null,
   });
 
   render() {

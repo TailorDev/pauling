@@ -25,4 +25,12 @@ describe(__filename, () => {
       )
     ).toEqual(false);
   });
+
+  it('displays a title in navigation bar', () => {
+    const options = QRScanScreen.navigationOptions();
+
+    expect(options).toEqual({
+      title: 'New poster',
+    });
+  });
 });

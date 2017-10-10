@@ -1,4 +1,5 @@
 import reducer, {
+  loadPoster,
   fetchPoster,
   fetchPosterStarted,
   initialState,
@@ -17,6 +18,12 @@ describe(__filename, () => {
       const state = reducer(undefined, fetchPosterStarted());
       const newState = reducer(state, { type: 'UNRELATED' });
       expect(newState).toEqual(state);
+    });
+
+    it('keeps the unicity of the list of posters', () => {
+      const state = reducer(undefined, loadPoster(createFakePoster()));
+      const newState = reducer(state, loadPoster(createFakePoster()));
+      expect(newState.posters).toHaveLength(1);
     });
   });
 

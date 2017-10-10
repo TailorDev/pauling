@@ -6,7 +6,7 @@ import ConnectedPosterCardList from 'app/PosterCardList';
 import PosterCardList from 'app/PosterCardList/presenter';
 import LoadingMessage from 'app/LoadingMessage';
 import {
-  addPoster,
+  loadPoster,
   fetchPosterFailed,
   fetchPosterStarted,
 } from 'app/reducers/posters';
@@ -43,7 +43,7 @@ describe('PosterCardList', () => {
     const store = configureStore();
     const poster = createFakePoster();
 
-    store.dispatch(addPoster(poster));
+    store.dispatch(loadPoster(poster));
 
     const wrapper = render({ store });
     expect(wrapper.find(FlatList)).toHaveProp('data', [poster]);
@@ -72,7 +72,7 @@ describe('PosterCardList', () => {
   it('renders PosterCard items', () => {
     const store = configureStore();
 
-    store.dispatch(addPoster(createFakePoster()));
+    store.dispatch(loadPoster(createFakePoster()));
 
     const wrapper = render({ store });
     const posters = wrapper.find(FlatList).prop('data');

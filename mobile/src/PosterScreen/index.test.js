@@ -6,7 +6,7 @@ import { Button } from 'native-base';
 
 import PosterScreen from 'app/PosterScreen';
 import styles from 'app/PosterScreen/styles';
-import { addPoster } from 'app/reducers/posters';
+import { loadPoster } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
 import { createFakePoster } from 'tests/helpers';
 
@@ -18,7 +18,7 @@ describe(__filename, () => {
   const render = () => {
     const store = configureStore();
 
-    store.dispatch(addPoster(createFakePoster()));
+    store.dispatch(loadPoster(createFakePoster()));
     const poster = store.getState().posters.posters;
 
     return shallow(<PosterScreen navigation={getNavigation(poster)} />);

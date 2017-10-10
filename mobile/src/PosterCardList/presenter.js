@@ -24,8 +24,8 @@ class PosterCardList extends React.Component {
     toastComponent: Toast,
   };
 
-  renderItem = (item: { item: Poster }) => {
-    return <PosterCard poster={item.item} navigation={this.props.navigation} />;
+  renderItem = ({ item }: { item: Poster }) => {
+    return <PosterCard poster={item} navigation={this.props.navigation} />;
   };
 
   render() {

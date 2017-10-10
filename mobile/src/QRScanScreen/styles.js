@@ -1,6 +1,5 @@
 /* @flow */
-import { StyleSheet } from 'react-native';
-
+import StyleSheet from 'app/PaulingStyleSheet';
 import { colors } from 'app/settings';
 
 export default StyleSheet.create({
@@ -15,13 +14,27 @@ export default StyleSheet.create({
   PreviewNotMounted: {
     backgroundColor: 'black',
   },
-  Processing: {
+  Footer: {
     flex: 0,
+    justifyContent: 'center',
+    height: 50,
+    padding: 10,
     width: '100%',
-    padding: 20,
+    android: {
+      backgroundColor: colors.secondaryColor,
+    },
+    ios: {
+      backgroundColor: colors.secondaryColorIOS,
+    },
+  },
+  FooterText: {
     fontSize: 11,
     textAlign: 'center',
-    color: colors.textAltPrimaryColor,
-    backgroundColor: colors.secondaryColor,
+    android: {
+      color: colors.textAltPrimaryColor,
+    },
+    ios: {
+      color: colors.textAltPrimaryColorIOS,
+    },
   },
 });

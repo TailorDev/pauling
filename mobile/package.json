@@ -5,6 +5,7 @@
   "scripts": {
     "android": "better-npm-run android && better-npm-run start --port 8081",
     "android-shake": "adb shell input keyevent 82",
+    "coverage": "yarn run test --coverage",
     "flow": "flow",
     "ios": "better-npm-run ios && better-npm-run start --port 8082",
     "lint": "eslint .",
@@ -32,6 +33,7 @@
     }
   },
   "dependencies": {
+    "common-tags": "1.4.0",
     "native-base": "2.3.2",
     "react": "16.0.0-alpha.12",
     "react-native": "0.47.1",

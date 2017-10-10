@@ -30,13 +30,18 @@ afterEach(() => {
 });
 
 jest.mock('react-native-camera', () => {
-  const FakeComponent = () => null;
+  const FakeCamera = () => null;
 
-  FakeComponent.constants = {
+  FakeCamera.constants = {
     Aspect: {},
+    BarCodeType: {
+      qr: 'qr',
+    },
   };
 
-  return FakeComponent;
+  FakeCamera.checkDeviceAuthorizationStatus = () => Promise.resolve(true);
+
+  return FakeCamera;
 });
 
 jest.mock('react-native-config', () => {

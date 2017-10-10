@@ -6,7 +6,7 @@ import { Button } from 'native-base';
 
 import PosterScreen from 'app/PosterScreen';
 import styles from 'app/PosterScreen/styles';
-import { addPoster } from 'app/reducers/posters';
+import { loadPoster } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
 import { createFakePoster } from 'tests/helpers';
 
@@ -15,11 +15,15 @@ describe(__filename, () => {
     state: { params },
   });
 
-  const render = () => {
+  const getPoster = () => {
     const store = configureStore();
+    store.dispatch(loadPoster(createFakePoster()));
 
-    store.dispatch(addPoster(createFakePoster()));
-    const poster = store.getState().posters.posters[0];
+    return store.getState().posters.posters;
+  };
+
+  const render = () => {
+    const poster = getPoster();
 
     return shallow(<PosterScreen navigation={getNavigation(poster)} />);
   };
@@ -54,5 +58,23 @@ describe(__filename, () => {
       { display: 'none' },
     ]);
     expect(wrapper.find(ScrollView)).toHaveLength(1);
+
+    // PDF can be selected by pressing the first button in footer.
+    wrapper.find(Button).at(0).simulate('press');
+    expect(wrapper.find(Pdf)).toHaveLength(1);
+    expect(wrapper.find(Pdf)).toHaveProp('style', [
+      styles.Pdf,
+      { display: 'flex' },
+    ]);
+  });
+
+  it('displays the poster title in navigation bar', () => {
+    const poster = getPoster();
+    const navigation = getNavigation(poster);
+    const options = PosterScreen.navigationOptions({ navigation });
+
+    expect(options).toEqual({
+      title: poster.title,
+    });
   });
 });

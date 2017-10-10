@@ -22,7 +22,14 @@ export default function configureStore(onComplete: Function) {
     compose(applyMiddleware(...middlewares), autoRehydrate())
   );
 
-  persistStore(store, { storage: AsyncStorage }, onComplete);
+  persistStore(
+    store,
+    {
+      blacklist: ['navigation'],
+      storage: AsyncStorage,
+    },
+    onComplete
+  );
 
   return store;
 }

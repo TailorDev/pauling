@@ -22,12 +22,12 @@ const LOAD_POSTER: 'LOAD_POSTER' = 'LOAD_POSTER';
 const FETCH_POSTER_STARTED: 'FETCH_POSTER_STARTED' = 'FETCH_POSTER_STARTED';
 const FETCH_POSTER_FAILED: 'FETCH_POSTER_FAILED' = 'FETCH_POSTER_FAILED';
 
-type AddPosterAction = {|
+type LoadPosterAction = {|
   type: typeof LOAD_POSTER,
   poster: Poster,
 |};
 
-export const addPoster = (poster: Poster): AddPosterAction => {
+export const loadPoster = (poster: Poster): LoadPosterAction => {
   return { type: LOAD_POSTER, poster };
 };
 
@@ -61,8 +61,8 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
         saved_at: new Date().toLocaleString(),
       };
 
-      dispatch(addPoster(poster));
-      Reactotron.log({ message: 'addPoster', poster });
+      dispatch(loadPoster(poster));
+      Reactotron.log({ message: 'loadPoster', poster });
 
       dispatch(
         NavigationActions.navigate({
@@ -82,18 +82,26 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
 };
 
 export type Action =
-  | AddPosterAction
+  | LoadPosterAction
   | FetchPosterStartedAction
   | FetchPosterFailedAction;
 
 export default function reducer(state: State = initialState, action: Action) {
   switch (action.type) {
-    case LOAD_POSTER:
+    case LOAD_POSTER: {
+      const poster = action.poster;
+
+      let posters = state.posters;
+      if (!posters.find(p => p.id === poster.id)) {
+        posters = posters.concat([action.poster]);
+      }
+
       return {
         ...state,
         loading: false,
-        posters: state.posters.concat([action.poster]),
+        posters,
       };
+    }
 
     case FETCH_POSTER_STARTED:
       return {

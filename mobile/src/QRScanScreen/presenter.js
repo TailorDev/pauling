@@ -1,20 +1,23 @@
 /* @flow */
 import React, { Component } from 'react';
-import { InteractionManager, View } from 'react-native';
+import { InteractionManager, Platform, View } from 'react-native';
 import { Spinner, Text, Toast } from 'native-base';
 import Camera from 'react-native-camera';
 import Config from 'react-native-config';
+import { oneLine } from 'common-tags';
 
 import { colors } from 'app/settings';
 import styles from './styles';
 import type { BarCodeData, NavigationOptions } from 'app/types';
 
 type Props = {|
+  loading: boolean,
   onQRCodeRead: Function,
   runAfterInteractions: Function,
 |};
 
 type State = {|
+  authorized: boolean | null,
   mounted: boolean,
 |};
 
@@ -36,14 +39,33 @@ class QRScanScreen extends Component {
     super(props);
 
     this.state = {
+      authorized: Platform.OS === 'android' ? true : null,
       mounted: false,
     };
   }
 
-  componentWillMount() {
-    this.props.runAfterInteractions(() => {
+  // $FlowFixMe: let this method be asynchronous.
+  async componentDidMount() {
+    if (Platform.OS === 'ios') {
+      let authorized;
+      try {
+        authorized = await Camera.checkDeviceAuthorizationStatus();
+      } catch (e) {
+        authorized = false;
+      }
+
+      this.setState({ authorized });
+    }
+
+    if (Platform.OS === 'android') {
+      // Android takes ages to start the camera and it blocks the rendering of
+      // this screen. To prevent that, we delay the camera opening.
+      this.props.runAfterInteractions(() => {
+        this.setState({ mounted: true });
+      });
+    } else {
       this.setState({ mounted: true });
-    });
+    }
   }
 
   isValidPaulingUrl(url: string): boolean {
@@ -53,6 +75,10 @@ class QRScanScreen extends Component {
   }
 
   onBarCodeRead = (data: BarCodeData) => {
+    if (this.props.loading) {
+      return;
+    }
+
     const url = data.data;
 
     if (this.isValidPaulingUrl(url)) {
@@ -66,28 +92,44 @@ class QRScanScreen extends Component {
     }
   };
 
-  renderProcessing() {
-    const text = 'Scan a Pauling QR code to add it'.toUpperCase();
+  renderFooter() {
+    if (this.state.authorized === null) {
+      return <Text />;
+    }
+
+    let text;
+    if (this.state.authorized) {
+      text = 'Scan a Pauling QR code to download it!';
+    } else {
+      text = oneLine`You must give Pauling access to the camera and
+          microphone. Go to Settings > Pauling.`;
+    }
+
+    if (Platform.OS === 'android') {
+      text = text.toUpperCase();
+    }
 
     return (
-      <Text style={styles.Processing}>
-        {text}
-      </Text>
+      <View style={styles.Footer}>
+        <Text style={styles.FooterText}>
+          {text}
+        </Text>
+      </View>
     );
   }
 
   render() {
-    if (this.state.mounted) {
+    if (this.state.mounted && this.state.authorized) {
       return (
         <View style={styles.QRScanScreen}>
           <Camera
             style={styles.Preview}
             aspect={Camera.constants.Aspect.fill}
             onBarCodeRead={this.onBarCodeRead}
-            barCodeTypes={['qr']}
+            barCodeTypes={[Camera.constants.BarCodeType.qr]}
           >
             <Spinner color={colors.primaryColor} />
-            {this.renderProcessing()}
+            {this.renderFooter()}
           </Camera>
         </View>
       );
@@ -96,7 +138,7 @@ class QRScanScreen extends Component {
     return (
       <View style={styles.QRScanScreen}>
         <View style={[styles.Preview, styles.PreviewNotMounted]}>
-          {this.renderProcessing()}
+          {this.renderFooter()}
         </View>
       </View>
     );

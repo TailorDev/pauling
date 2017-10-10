@@ -5,15 +5,23 @@ import { NavigationActions } from 'react-navigation';
 
 import QRScanScreen from './presenter';
 import { fetchPoster } from 'app/reducers/posters';
-import type { Dispatch } from 'app/types';
+import type { Dispatch, State } from 'app/types';
+
+const mapStateToProps = (state: State) => {
+  const { loading } = state.posters;
+
+  return {
+    loading,
+  };
+};
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     onQRCodeRead: paulingUrl => {
-      dispatch(NavigationActions.back());
       dispatch(fetchPoster(paulingUrl));
+      dispatch(NavigationActions.back());
     },
   };
 };
 
-export default connect(null, mapDispatchToProps)(QRScanScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(QRScanScreen);

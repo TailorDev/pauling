@@ -1,6 +1,7 @@
 /* @flow */
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
 
+import StyleSheet from 'app/PaulingStyleSheet';
 import { colors } from 'app/settings';
 
 export default StyleSheet.create({
@@ -13,7 +14,10 @@ export default StyleSheet.create({
     height: Dimensions.get('window').height - 135,
   },
   FooterButton: {
-    backgroundColor: colors.secondaryColor,
+    borderRadius: null,
+    android: {
+      backgroundColor: colors.secondaryColor,
+    },
   },
   Title: {
     textAlign: 'center',

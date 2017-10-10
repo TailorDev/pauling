@@ -7,7 +7,6 @@ import RNFetchBlob from 'react-native-fetch-blob';
 import type {
   Dispatch,
   Poster,
-  State as AppState,
   ThunkAction,
 } from 'app/types';
 

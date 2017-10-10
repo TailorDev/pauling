@@ -5,6 +5,7 @@
   "scripts": {
     "android": "better-npm-run android && better-npm-run start --port 8081",
     "android-shake": "adb shell input keyevent 82",
+    "coverage": "yarn run test --coverage",
     "flow": "flow",
     "ios": "better-npm-run ios && better-npm-run start --port 8082",
     "lint": "eslint .",

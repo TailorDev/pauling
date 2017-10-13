@@ -3,9 +3,13 @@
 import { NavigationActions } from 'react-navigation';
 import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
-import { REHYDRATE } from 'redux-persist/constants';
+import { REHYDRATE as REDUX_REHYDRATE } from 'redux-persist/constants';
 
-import type { Dispatch, Poster, ThunkAction } from 'app/types';
+import type { Dispatch, Poster, RehydrateAction, ThunkAction } from 'app/types';
+
+// This is unfortunately needed because flow does not deal with constants and
+// redux-persist did not add flow type for this constant.
+export const REHYDRATE: 'REHYDRATE' = REDUX_REHYDRATE;
 
 export type State = {|
   errored: boolean,
@@ -100,16 +104,21 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
 export type Action =
   | LoadPosterAction
   | FetchPosterStartedAction
-  | FetchPosterFailedAction;
+  | FetchPosterFailedAction
+  | RehydrateAction;
 
 export default function reducer(state: State = initialState, action: Action) {
   switch (action.type) {
-    case REHYDRATE:
+    case REHYDRATE: {
+      const incoming = action.payload.posters || {};
+
       return {
         ...state,
+        ...incoming,
         errored: false,
         loading: false,
       };
+    }
 
     case LOAD_POSTER: {
       const poster = action.poster;
@@ -141,6 +150,7 @@ export default function reducer(state: State = initialState, action: Action) {
       };
 
     default:
+      (action: empty);
       return state;
   }
 }

@@ -33,7 +33,7 @@ describe(__filename, () => {
       const state = reducer(undefined, fetchPosterStarted());
       expect(state.loading).toEqual(true);
 
-      const newState = reducer(state, { type: REHYDRATE });
+      const newState = reducer(state, { type: REHYDRATE, payload: {} });
       expect(newState.loading).toEqual(false);
     });
 
@@ -41,8 +41,21 @@ describe(__filename, () => {
       const state = reducer(undefined, fetchPosterFailed());
       expect(state.errored).toEqual(true);
 
-      const newState = reducer(state, { type: REHYDRATE });
+      const newState = reducer(state, { type: REHYDRATE, payload: {} });
       expect(newState.errored).toEqual(false);
+    });
+
+    it('does not reset the posters on REHYDRATE', () => {
+      const state = reducer(undefined, loadPoster(createFakePoster()));
+      expect(state.posters).toHaveLength(1);
+
+      const newState = reducer(undefined, {
+        type: REHYDRATE,
+        payload: {
+          posters: state,
+        },
+      });
+      expect(newState).toEqual(state);
     });
   });
 

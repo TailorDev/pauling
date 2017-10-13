@@ -27,6 +27,11 @@ export type NavigationOptions = {
   title: string | null,
 };
 
+export type RehydrateAction = {|
+  type: 'REHYDRATE',
+  payload: State,
+|};
+
 export type Poster = {|
   id: string,
   title: string,

@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
-import org.wonday.pdf.RCTPdfView;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -27,12 +26,11 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new SplashScreenReactPackage(),
-            new RCTCameraPackage(),
-            new RNFetchBlobPackage(),
-            new RCTPdfView(),
-            new ReactNativeConfigPackage()
+        new MainReactPackage(),
+        new SplashScreenReactPackage(),
+        new RCTCameraPackage(),
+        new RNFetchBlobPackage(),
+        new ReactNativeConfigPackage()
       );
     }
   };

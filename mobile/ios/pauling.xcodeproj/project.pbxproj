@@ -32,7 +32,6 @@
 		4D1E177942114727BFCF368E /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63ECE976784E4D8696926948 /* Zocial.ttf */; };
 		54C080FC2FF94CEB8E56CD2D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53E40D6DEE2446DB84AA17EE /* SimpleLineIcons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		63019C6034784942A2AFE42B /* libRCTPdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 359DA4BC8AFF4975A8062ADE /* libRCTPdf.a */; };
 		7671462314B24FDA820A2EF5 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C37AD1DD664803ACB30C0E /* libRCTCamera.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		90184C3E735D4D938B7154C3 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EDE5BADC909473B95D9F19D /* Octicons.ttf */; };
@@ -140,13 +139,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
 			remoteInfo = ReactNativeConfig;
-		};
-		272028C71F7A90690031BD03 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D24EE116EAF64F3A9AEDBB63 /* RCTPdf.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 20D8E03F1C8E946C00039823;
-			remoteInfo = RCTPdf;
 		};
 		272028DE1F7A90690031BD03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -314,7 +306,6 @@
 		1D52005109CC4E6887093779 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		1EDE5BADC909473B95D9F19D /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		268ECE80B5FB45D9B9AC04C9 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
-		359DA4BC8AFF4975A8062ADE /* libRCTPdf.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTPdf.a; sourceTree = "<group>"; };
 		3E0C2806EBF049BC864D4171 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		3F83DD18A37A49CB93A113BB /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
 		4317C3F14E844F1B8DF35923 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
@@ -330,7 +321,6 @@
 		A71D0AE41AAD4CA692FAF7FA /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		AA663FAF8CBC435BA225A7EB /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		B9CE30A3697A4A11BC706EEA /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		D24EE116EAF64F3A9AEDBB63 /* RCTPdf.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTPdf.xcodeproj; path = "../node_modules/react-native-pdf/ios/RCTPdf.xcodeproj"; sourceTree = "<group>"; };
 		D85B4A0B9D394B84B2A09701 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		DC68A9B735344DE8A28987C1 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		FDEE5CEC73B545E9A937151E /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
@@ -362,7 +352,6 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				CACCD3DD789C4A7C9B2285DE /* libReactNativeConfig.a in Frameworks */,
 				4C4953A58125410290B0202E /* libRNFetchBlob.a in Frameworks */,
-				63019C6034784942A2AFE42B /* libRCTPdf.a in Frameworks */,
 				34F9788C5C2246D68B991845 /* libSplashScreen.a in Frameworks */,
 				7671462314B24FDA820A2EF5 /* libRCTCamera.a in Frameworks */,
 			);
@@ -501,7 +490,6 @@
 			children = (
 				3E0C2806EBF049BC864D4171 /* libReactNativeConfig.a */,
 				7EA6E2D4A6BF4D2EB55ABC51 /* libRNFetchBlob.a */,
-				359DA4BC8AFF4975A8062ADE /* libRCTPdf.a */,
 				A71D0AE41AAD4CA692FAF7FA /* libSplashScreen.a */,
 				55C37AD1DD664803ACB30C0E /* libRCTCamera.a */,
 			);
@@ -512,14 +500,6 @@
 			isa = PBXGroup;
 			children = (
 				27493FE61F46DCB40005F301 /* libRCTCamera.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		27493FDF1F46DCB30005F301 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				272028C81F7A90690031BD03 /* libRCTPdf.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -566,7 +546,6 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				8EE4A262EB1347DF89FC24DA /* ReactNativeConfig.xcodeproj */,
 				3F83DD18A37A49CB93A113BB /* RNFetchBlob.xcodeproj */,
-				D24EE116EAF64F3A9AEDBB63 /* RCTPdf.xcodeproj */,
 				1D52005109CC4E6887093779 /* SplashScreen.xcodeproj */,
 				1A3E430840ED4AA48BB2B1D2 /* RCTCamera.xcodeproj */,
 			);
@@ -722,10 +701,6 @@
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
 				},
 				{
-					ProductGroup = 27493FDF1F46DCB30005F301 /* Products */;
-					ProjectRef = D24EE116EAF64F3A9AEDBB63 /* RCTPdf.xcodeproj */;
-				},
-				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
 					ProjectRef = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
 				},
@@ -856,13 +831,6 @@
 			fileType = archive.ar;
 			path = libReactNativeConfig.a;
 			remoteRef = 271BEBBA1F38A39D0042AAC1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		272028C81F7A90690031BD03 /* libRCTPdf.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTPdf.a;
-			remoteRef = 272028C71F7A90690031BD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		272028DF1F7A90690031BD03 /* libRNFetchBlob.a */ = {
@@ -1095,7 +1063,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
@@ -1128,7 +1095,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
@@ -1164,7 +1130,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
@@ -1192,7 +1157,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);

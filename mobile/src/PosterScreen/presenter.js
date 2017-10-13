@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View, WebView } from 'react-native';
 import {
   Button,
   Container,
@@ -10,7 +10,6 @@ import {
   H2,
   Text,
 } from 'native-base';
-import Pdf from 'react-native-pdf';
 
 import styles from './styles';
 import type { NavigationOptions } from 'app/types';
@@ -50,34 +49,31 @@ class PosterScreen extends Component {
     return (
       <Container style={styles.Poster}>
         <Content>
-          <Pdf
+          <View
             style={[
               styles.Pdf,
               { display: activeTab === TAB_PDF ? 'flex' : 'none' },
             ]}
-            source={{
-              uri: poster.download_url,
-              cache: true,
-            }}
-          />
+            testID="Pdf"
+          >
+            <WebView source={{ uri: poster.cached_file }} />
+          </View>
 
           {activeTab === TAB_INFO &&
-            <Content padder>
-              <ScrollView>
-                <H2 style={styles.Title}>
-                  {poster.title}
-                </H2>
-                <Text note style={styles.Authors}>
-                  {poster.authors}
-                </Text>
-                <Text style={styles.Abstract}>
-                  {poster.abstract}
-                </Text>
-                <Text style={styles.SavedAt}>
-                  Saved on {poster.saved_at}
-                </Text>
-              </ScrollView>
-            </Content>}
+            <ScrollView style={styles.Info}>
+              <H2 style={styles.Title}>
+                {poster.title}
+              </H2>
+              <Text note style={styles.Authors}>
+                {poster.authors}
+              </Text>
+              <Text style={styles.Abstract}>
+                {poster.abstract}
+              </Text>
+              <Text style={styles.SavedAt}>
+                Saved on {poster.saved_at}
+              </Text>
+            </ScrollView>}
         </Content>
 
         <Footer>

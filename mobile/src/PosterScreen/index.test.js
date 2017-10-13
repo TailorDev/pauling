@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Pdf from 'react-native-pdf';
 import { ScrollView } from 'react-native';
 import { Button } from 'native-base';
 
@@ -11,6 +10,9 @@ import configureStore from 'app/store/configureStore';
 import { createFakePoster } from 'tests/helpers';
 
 describe(__filename, () => {
+  // See: https://github.com/facebook/react-native/issues/12440;
+  jest.mock('WebView', () => 'WebView');
+
   const getNavigation = params => ({
     state: { params },
   });
@@ -30,9 +32,9 @@ describe(__filename, () => {
 
   it('renders correctly', () => {
     const wrapper = render();
-    expect(wrapper.find(Pdf)).toHaveLength(1);
+    expect(wrapper.find({ testID: 'Pdf' })).toHaveLength(1);
     // Pdf component is "visible".
-    expect(wrapper.find(Pdf)).toHaveProp('style', [
+    expect(wrapper.find({ testID: 'Pdf' })).toHaveProp('style', [
       styles.Pdf,
       { display: 'flex' },
     ]);
@@ -52,8 +54,8 @@ describe(__filename, () => {
 
     // Pdf does not disappear so that we don't have to load it entirely again
     // when it is re-selected.
-    expect(wrapper.find(Pdf)).toHaveLength(1);
-    expect(wrapper.find(Pdf)).toHaveProp('style', [
+    expect(wrapper.find({ testID: 'Pdf' })).toHaveLength(1);
+    expect(wrapper.find({ testID: 'Pdf' })).toHaveProp('style', [
       styles.Pdf,
       { display: 'none' },
     ]);
@@ -61,8 +63,8 @@ describe(__filename, () => {
 
     // PDF can be selected by pressing the first button in footer.
     wrapper.find(Button).at(0).simulate('press');
-    expect(wrapper.find(Pdf)).toHaveLength(1);
-    expect(wrapper.find(Pdf)).toHaveProp('style', [
+    expect(wrapper.find({ testID: 'Pdf' })).toHaveLength(1);
+    expect(wrapper.find({ testID: 'Pdf' })).toHaveProp('style', [
       styles.Pdf,
       { display: 'flex' },
     ]);

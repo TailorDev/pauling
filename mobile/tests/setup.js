@@ -50,14 +50,22 @@ jest.mock('react-native-config', () => {
   };
 });
 
-jest.mock('react-native-fetch-blob', () => ({
+const mockRNFetchBlob = {
+  config: () => mockRNFetchBlob,
   DocumentDir: {},
   // Make the RNFetchBlob API compatible with `fetch`.
   fetch: (method, url, options) => global.fetch(url, {
     method,
     ...options,
   }),
-}));
+  fs: {
+    dirs: {
+      CacheDir: '/path/to/cache/dir',
+    },
+  },
+};
+
+jest.mock('react-native-fetch-blob', () => mockRNFetchBlob);
 
 jest.mock('react-native-splash-screen', () => ({
   hide: jest.fn(),

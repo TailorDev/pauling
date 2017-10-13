@@ -31,26 +31,33 @@ describe(__filename, () => {
     it('calls the API to add a poster', async () => {
       const store = configureStore();
       const url = 'http://example.org/poster';
+      const poster = createFakePoster();
 
       fetchMock.get(
         url,
         {
-          poster: createFakePoster(),
+          poster,
         },
         {
           header: { Accept: 'application/json' },
         }
       );
+      fetchMock.get(poster.download_url, 'cached-file-name');
 
       await store.dispatch(fetchPoster(url));
 
       const { errored, loading, posters } = store.getState().posters;
+
       expect(errored).toEqual(false);
       expect(loading).toEqual(false);
       expect(posters).toHaveLength(1);
+      expect(posters[0]).toHaveProperty(
+        'cached_file',
+        `/path/to/cache/dir/${poster.id}.pdf`
+      );
     });
 
-    it('calls the API to add a poster', async () => {
+    it('indicates an error when returns a 404', async () => {
       const store = configureStore();
       const url = 'http://example.org/poster';
 
@@ -59,6 +66,7 @@ describe(__filename, () => {
       await store.dispatch(fetchPoster(url));
 
       const { errored, loading, posters } = store.getState().posters;
+
       expect(errored).toEqual(true);
       expect(loading).toEqual(false);
       expect(posters).toHaveLength(0);

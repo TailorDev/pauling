@@ -1,7 +1,10 @@
+import { REHYDRATE } from 'redux-persist/constants';
+
 import reducer, {
   loadPoster,
   fetchPoster,
   fetchPosterStarted,
+  fetchPosterFailed,
   initialState,
 } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
@@ -24,6 +27,22 @@ describe(__filename, () => {
       const state = reducer(undefined, loadPoster(createFakePoster()));
       const newState = reducer(state, loadPoster(createFakePoster()));
       expect(newState.posters).toHaveLength(1);
+    });
+
+    it('resets the loading attribute on REHYDRATE', () => {
+      const state = reducer(undefined, fetchPosterStarted());
+      expect(state.loading).toEqual(true);
+
+      const newState = reducer(state, { type: REHYDRATE });
+      expect(newState.loading).toEqual(false);
+    });
+
+    it('resets the errored attribute on REHYDRATE', () => {
+      const state = reducer(undefined, fetchPosterFailed());
+      expect(state.errored).toEqual(true);
+
+      const newState = reducer(state, { type: REHYDRATE });
+      expect(newState.errored).toEqual(false);
     });
   });
 

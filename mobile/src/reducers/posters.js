@@ -3,6 +3,7 @@
 import { NavigationActions } from 'react-navigation';
 import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
+import { REHYDRATE } from 'redux-persist/constants';
 
 import type { Dispatch, Poster, ThunkAction } from 'app/types';
 
@@ -103,6 +104,13 @@ export type Action =
 
 export default function reducer(state: State = initialState, action: Action) {
   switch (action.type) {
+    case REHYDRATE:
+      return {
+        ...state,
+        errored: false,
+        loading: false,
+      };
+
     case LOAD_POSTER: {
       const poster = action.poster;
 

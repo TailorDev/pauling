@@ -3,6 +3,7 @@
 import { NavigationActions } from 'react-navigation';
 import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
+import { REHYDRATE } from 'redux-persist/constants';
 
 import type { Dispatch, Poster, ThunkAction } from 'app/types';
 
@@ -56,12 +57,27 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
         Accept: 'application/json',
       });
       const jsonData = await response.json();
+      const { id, download_url } = jsonData.poster;
+
+      let ext = download_url.split('.').pop();
+      if (!['jpg', 'png', 'pdf'].includes(ext)) {
+        ext = 'pdf';
+      }
+
+      const cachedFilename = `${RNFetchBlob.fs.dirs.CacheDir}/${id}.${ext}`;
+      await RNFetchBlob.config({ path: cachedFilename }).fetch(
+        'GET',
+        download_url
+      );
+
       const poster = {
         ...jsonData.poster,
         saved_at: new Date().toLocaleString(),
+        cached_file: cachedFilename,
       };
 
       dispatch(loadPoster(poster));
+
       Reactotron.log({ message: 'loadPoster', poster });
 
       dispatch(
@@ -88,6 +104,13 @@ export type Action =
 
 export default function reducer(state: State = initialState, action: Action) {
   switch (action.type) {
+    case REHYDRATE:
+      return {
+        ...state,
+        errored: false,
+        loading: false,
+      };
+
     case LOAD_POSTER: {
       const poster = action.poster;
 

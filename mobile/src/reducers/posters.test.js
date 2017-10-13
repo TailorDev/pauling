@@ -1,7 +1,10 @@
+import { REHYDRATE } from 'redux-persist/constants';
+
 import reducer, {
   loadPoster,
   fetchPoster,
   fetchPosterStarted,
+  fetchPosterFailed,
   initialState,
 } from 'app/reducers/posters';
 import configureStore from 'app/store/configureStore';
@@ -25,32 +28,55 @@ describe(__filename, () => {
       const newState = reducer(state, loadPoster(createFakePoster()));
       expect(newState.posters).toHaveLength(1);
     });
+
+    it('resets the loading attribute on REHYDRATE', () => {
+      const state = reducer(undefined, fetchPosterStarted());
+      expect(state.loading).toEqual(true);
+
+      const newState = reducer(state, { type: REHYDRATE });
+      expect(newState.loading).toEqual(false);
+    });
+
+    it('resets the errored attribute on REHYDRATE', () => {
+      const state = reducer(undefined, fetchPosterFailed());
+      expect(state.errored).toEqual(true);
+
+      const newState = reducer(state, { type: REHYDRATE });
+      expect(newState.errored).toEqual(false);
+    });
   });
 
   describe('fetchPoster', () => {
     it('calls the API to add a poster', async () => {
       const store = configureStore();
       const url = 'http://example.org/poster';
+      const poster = createFakePoster();
 
       fetchMock.get(
         url,
         {
-          poster: createFakePoster(),
+          poster,
         },
         {
           header: { Accept: 'application/json' },
         }
       );
+      fetchMock.get(poster.download_url, 'cached-file-name');
 
       await store.dispatch(fetchPoster(url));
 
       const { errored, loading, posters } = store.getState().posters;
+
       expect(errored).toEqual(false);
       expect(loading).toEqual(false);
       expect(posters).toHaveLength(1);
+      expect(posters[0]).toHaveProperty(
+        'cached_file',
+        `/path/to/cache/dir/${poster.id}.pdf`
+      );
     });
 
-    it('calls the API to add a poster', async () => {
+    it('indicates an error when returns a 404', async () => {
       const store = configureStore();
       const url = 'http://example.org/poster';
 
@@ -59,6 +85,7 @@ describe(__filename, () => {
       await store.dispatch(fetchPoster(url));
 
       const { errored, loading, posters } = store.getState().posters;
+
       expect(errored).toEqual(true);
       expect(loading).toEqual(false);
       expect(posters).toHaveLength(0);

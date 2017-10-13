@@ -1,5 +1,5 @@
 /* @flow */
-import { Dimensions } from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 
 import StyleSheet from 'app/PaulingStyleSheet';
 import { colors } from 'app/settings';
@@ -11,7 +11,11 @@ export default StyleSheet.create({
   Pdf: {
     flex: 1,
     // Remove offset due to the navigation bar and footer menu.
-    height: Dimensions.get('window').height - 135,
+    height:
+      Dimensions.get('window').height - (Platform.OS === 'ios' ? 120 : 135),
+  },
+  Info: {
+    padding: 10,
   },
   FooterButton: {
     borderRadius: null,

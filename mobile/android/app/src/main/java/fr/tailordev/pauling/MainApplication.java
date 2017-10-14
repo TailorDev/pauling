@@ -3,6 +3,7 @@ package fr.tailordev.pauling;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.wonday.pdf.RCTPdfView;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
+            new RCTPdfView(),
         new SplashScreenReactPackage(),
         new RCTCameraPackage(),
         new RNFetchBlobPackage(),

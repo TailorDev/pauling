@@ -1142,6 +1142,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.tailordev.pauling;
 				PRODUCT_NAME = pauling;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1169,6 +1170,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.tailordev.pauling;
 				PRODUCT_NAME = pauling;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

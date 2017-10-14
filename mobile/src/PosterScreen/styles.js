@@ -5,7 +5,7 @@ import StyleSheet from 'app/PaulingStyleSheet';
 import { colors } from 'app/settings';
 
 export default StyleSheet.create({
-  Poster: {
+  PosterScreen: {
     backgroundColor: colors.cardBackgroundColor,
   },
   Poster: {

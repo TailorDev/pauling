@@ -48,7 +48,7 @@ class PosterScreen extends Component {
     const { activeTab } = this.state;
 
     return (
-      <Container style={styles.Poster}>
+      <Container style={styles.PosterScreen}>
         <Content>
           <View
             style={[

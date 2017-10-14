@@ -57,7 +57,7 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
     dispatch(fetchPosterStarted());
 
     try {
-      const response = await RNFetchBlob.fetch('GET', paulingPosterURL, {
+      let response = await RNFetchBlob.fetch('GET', paulingPosterURL, {
         Accept: 'application/json',
       });
       const jsonData = await response.json();
@@ -68,16 +68,15 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
         ext = 'pdf';
       }
 
-      const cachedFilename = `${RNFetchBlob.fs.dirs.CacheDir}/${id}.${ext}`;
-      await RNFetchBlob.config({ path: cachedFilename }).fetch(
-        'GET',
-        download_url
-      );
+      response = await RNFetchBlob.config({
+        path: `${RNFetchBlob.fs.dirs.DocumentDir}/${id}.${ext}`,
+      }).fetch('GET', download_url);
 
       const poster = {
         ...jsonData.poster,
         saved_at: new Date().toLocaleString(),
-        cached_file: cachedFilename,
+        cached_file: response.path(),
+        file_type: ext,
       };
 
       dispatch(loadPoster(poster));

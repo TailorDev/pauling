@@ -74,7 +74,8 @@ describe(__filename, () => {
           header: { Accept: 'application/json' },
         }
       );
-      fetchMock.get(poster.download_url, 'cached-file-name');
+
+      fetchMock.get(poster.download_url, 200);
 
       await store.dispatch(fetchPoster(url));
 
@@ -85,8 +86,9 @@ describe(__filename, () => {
       expect(posters).toHaveLength(1);
       expect(posters[0]).toHaveProperty(
         'cached_file',
-        `/path/to/cache/dir/${poster.id}.pdf`
+        `/path/to/document/dir/${poster.id}.pdf`
       );
+      expect(posters[0]).toHaveProperty('file_type', 'pdf');
     });
 
     it('indicates an error when returns a 404', async () => {

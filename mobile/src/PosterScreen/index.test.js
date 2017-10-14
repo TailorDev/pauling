@@ -32,10 +32,10 @@ describe(__filename, () => {
 
   it('renders correctly', () => {
     const wrapper = render();
-    expect(wrapper.find({ testID: 'Pdf' })).toHaveLength(1);
-    // Pdf component is "visible".
-    expect(wrapper.find({ testID: 'Pdf' })).toHaveProp('style', [
-      styles.Pdf,
+    expect(wrapper.find({ testID: 'Poster' })).toHaveLength(1);
+    // Poster component is "visible".
+    expect(wrapper.find({ testID: 'Poster' })).toHaveProp('style', [
+      styles.Poster,
       { display: 'flex' },
     ]);
     expect(wrapper.find(ScrollView)).toHaveLength(0);
@@ -52,20 +52,20 @@ describe(__filename, () => {
     expect(wrapper.find(Button).at(0)).toHaveProp('active', false);
     expect(wrapper.find(Button).at(1)).toHaveProp('active', true);
 
-    // Pdf does not disappear so that we don't have to load it entirely again
-    // when it is re-selected.
-    expect(wrapper.find({ testID: 'Pdf' })).toHaveLength(1);
-    expect(wrapper.find({ testID: 'Pdf' })).toHaveProp('style', [
-      styles.Pdf,
+    // Poster does not disappear so that we don't have to load it entirely
+    // again when it is re-selected.
+    expect(wrapper.find({ testID: 'Poster' })).toHaveLength(1);
+    expect(wrapper.find({ testID: 'Poster' })).toHaveProp('style', [
+      styles.Poster,
       { display: 'none' },
     ]);
     expect(wrapper.find(ScrollView)).toHaveLength(1);
 
-    // PDF can be selected by pressing the first button in footer.
+    // Poster can be selected by pressing the first button in footer.
     wrapper.find(Button).at(0).simulate('press');
-    expect(wrapper.find({ testID: 'Pdf' })).toHaveLength(1);
-    expect(wrapper.find({ testID: 'Pdf' })).toHaveProp('style', [
-      styles.Pdf,
+    expect(wrapper.find({ testID: 'Poster' })).toHaveLength(1);
+    expect(wrapper.find({ testID: 'Poster' })).toHaveProp('style', [
+      styles.Poster,
       { display: 'flex' },
     ]);
   });

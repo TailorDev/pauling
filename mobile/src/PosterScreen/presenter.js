@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
-import { ScrollView, View, WebView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import {
   Button,
   Container,
@@ -11,6 +11,7 @@ import {
   Text,
 } from 'native-base';
 
+import FileViewer from 'app/FileViewer';
 import styles from './styles';
 import type { NavigationOptions } from 'app/types';
 import type { State as NavigationState } from 'app/reducers/navigation';
@@ -20,10 +21,10 @@ type Props = {|
 |};
 
 type State = {|
-  activeTab: typeof TAB_PDF | typeof TAB_INFO,
+  activeTab: typeof TAB_POSTER | typeof TAB_INFO,
 |};
 
-const TAB_PDF: 'TAB_PDF' = 'TAB_PDF';
+const TAB_POSTER: 'TAB_POSTER' = 'TAB_POSTER';
 const TAB_INFO: 'TAB_INFO' = 'TAB_INFO';
 
 class PosterScreen extends Component {
@@ -38,7 +39,7 @@ class PosterScreen extends Component {
     super(props);
 
     this.state = {
-      activeTab: TAB_PDF,
+      activeTab: TAB_POSTER,
     };
   }
 
@@ -51,12 +52,12 @@ class PosterScreen extends Component {
         <Content>
           <View
             style={[
-              styles.Pdf,
-              { display: activeTab === TAB_PDF ? 'flex' : 'none' },
+              styles.Poster,
+              { display: activeTab === TAB_POSTER ? 'flex' : 'none' },
             ]}
-            testID="Pdf"
+            testID="Poster"
           >
-            <WebView source={{ uri: poster.cached_file }} />
+            <FileViewer fileType={poster.file_type} path={poster.cached_file} />
           </View>
 
           {activeTab === TAB_INFO &&
@@ -79,9 +80,9 @@ class PosterScreen extends Component {
         <Footer>
           <FooterTab>
             <Button
-              active={activeTab === TAB_PDF}
+              active={activeTab === TAB_POSTER}
               style={styles.FooterButton}
-              onPress={() => this.setState({ activeTab: TAB_PDF })}
+              onPress={() => this.setState({ activeTab: TAB_POSTER })}
             >
               <Text>Poster</Text>
             </Button>

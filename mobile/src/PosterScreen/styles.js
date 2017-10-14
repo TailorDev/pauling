@@ -8,7 +8,7 @@ export default StyleSheet.create({
   Poster: {
     backgroundColor: colors.cardBackgroundColor,
   },
-  Pdf: {
+  Poster: {
     flex: 1,
     // Remove offset due to the navigation bar and footer menu.
     height:

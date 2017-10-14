@@ -61,6 +61,7 @@ const mockRNFetchBlob = {
   fs: {
     dirs: {
       CacheDir: '/path/to/cache/dir',
+      DocumentDir: '/path/to/document/dir',
     },
   },
 };

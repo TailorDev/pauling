@@ -11,4 +11,13 @@ describe(__filename, () => {
     expect(wrapper.find(PosterCardList)).toHaveLength(1);
     expect(wrapper.find(ActionMenu)).toHaveLength(1);
   });
+
+  it('disables the navigation bar', () => {
+    const options = AppScreen.navigationOptions();
+
+    expect(options).toEqual({
+      header: null,
+      title: null,
+    });
+  });
 });

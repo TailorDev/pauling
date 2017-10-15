@@ -73,6 +73,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "coveragePathIgnorePatterns": [
+      "src/ReactotronConfig.js"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>/tests/setup.js",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation|native-base|@shoutem)"

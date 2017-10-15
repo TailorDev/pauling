@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import QRScanScreen from './presenter';
+import styles from './styles';
 
 describe(__filename, () => {
   it('validates Pauling URLs', () => {
@@ -31,6 +32,7 @@ describe(__filename, () => {
 
     expect(options).toEqual({
       title: 'New poster',
+      headerStyle: styles.Header,
     });
   });
 });

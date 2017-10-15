@@ -21,7 +21,7 @@ describe(__filename, () => {
     const store = configureStore();
     store.dispatch(loadPoster(createFakePoster()));
 
-    return store.getState().posters.posters;
+    return store.getState().posters.posters[0];
   };
 
   const render = () => {
@@ -77,6 +77,7 @@ describe(__filename, () => {
 
     expect(options).toEqual({
       title: poster.title,
+      headerStyle: styles.Header,
     });
   });
 });

@@ -1,18 +1,32 @@
 /* @flow */
-import { Platform, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 
 import StyleSheet from 'app/PaulingStyleSheet';
 import { colors } from 'app/settings';
 
 export default StyleSheet.create({
+  Header: {
+    paddingTop: 0,
+    android: {
+      height: 56,
+    },
+    ios: {
+      height: 44,
+    },
+  },
   PosterScreen: {
     backgroundColor: colors.cardBackgroundColor,
   },
   Poster: {
     flex: 1,
-    // Remove offset due to the navigation bar and footer menu.
-    height:
-      Dimensions.get('window').height - (Platform.OS === 'ios' ? 120 : 135),
+    android: {
+      // Remove offset due to the navigation bar and footer menu.
+      height: Dimensions.get('window').height - 135,
+    },
+    ios: {
+      // Remove offset due to the navigation bar and footer menu.
+      height: Dimensions.get('window').height - 120,
+    },
   },
   Info: {
     padding: 10,

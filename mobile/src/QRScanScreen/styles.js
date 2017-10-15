@@ -3,6 +3,15 @@ import StyleSheet from 'app/PaulingStyleSheet';
 import { colors } from 'app/settings';
 
 export default StyleSheet.create({
+  Header: {
+    paddingTop: 0,
+    android: {
+      height: 56,
+    },
+    ios: {
+      height: 44,
+    },
+  },
   QRScanScreen: {
     flex: 1,
   },
@@ -16,8 +25,8 @@ export default StyleSheet.create({
   },
   Footer: {
     flex: 0,
-    justifyContent: 'center',
     height: 50,
+    justifyContent: 'center',
     padding: 10,
     width: '100%',
     android: {

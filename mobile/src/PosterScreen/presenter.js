@@ -33,6 +33,7 @@ class PosterScreen extends Component {
 
   static navigationOptions = ({ navigation }): NavigationOptions => ({
     title: navigation.state.params.title,
+    headerStyle: styles.Header,
   });
 
   constructor(props: Props) {

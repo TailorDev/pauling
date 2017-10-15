@@ -33,6 +33,7 @@ class QRScanScreen extends Component {
 
   static navigationOptions = (): NavigationOptions => ({
     title: 'New poster',
+    headerStyle: styles.Header,
   });
 
   constructor(props: Props) {

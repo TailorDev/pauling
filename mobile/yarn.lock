@@ -4342,7 +4342,7 @@ react-native-fetch-blob@0.10.8:
     prop-types "^15.5.10"
     react-timer-mixin "^0.13.3"
 
-react-native-pdf@^1.3.5:
+react-native-pdf@1.3.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-1.3.5.tgz#cea1d7a71abe974de91ae39ef689db2185c3c07f"
   dependencies:

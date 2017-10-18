@@ -40,7 +40,7 @@ mail.init_app(app)
 # converters
 FlaskUUID(app)
 # SSL redirection
-if environ.get('FORCE_SSL') is True:
+if environ.get('FORCE_SSL', False) == 'True':
     SSLify(app, permanent=True)
 
 

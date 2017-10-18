@@ -55,13 +55,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}-{{ checksum "api/requirements.txt" }}
       - run:
           name: make bootstrap
           working_directory: ~/pauling/api
           command: make bootstrap
       - save_cache:
-          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}-{{ checksum "api/requirements.txt" }}
           paths:
             - ~/pauling/api/venv
 
@@ -83,7 +83,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}
+          key: api-deps-{{ .Branch }}-{{ checksum "api/requirements-dev.txt" }}-{{ checksum "api/requirements.txt" }}
       - run:
           name: make test-ci
           working_directory: ~/pauling/api

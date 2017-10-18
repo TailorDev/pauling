@@ -7,6 +7,7 @@ from flask import (Flask, flash, jsonify, redirect, render_template, request,
 from flask_heroku import Heroku
 from flask_migrate import Migrate
 from flask_uuid import FlaskUUID
+from flask_sslify import SSLify
 
 from database import db
 from emails import mail, send_admin_info
@@ -38,6 +39,9 @@ migrate = Migrate(app, db)
 mail.init_app(app)
 # converters
 FlaskUUID(app)
+# SSL redirection
+if environ.get('FORCE_SSL') is True:
+    SSLify(app, permanent=True)
 
 
 @app.route('/', methods=['GET', 'POST'])

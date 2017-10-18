@@ -1,6 +1,7 @@
 import os
+import lxml.etree as ET
 from io import BytesIO
-from qrcode.image.svg import ET
+
 
 import qrcode
 import qrcode.image.svg

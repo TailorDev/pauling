@@ -1,6 +1,7 @@
 .poster-form {
     @extend .column;
     @extend .is-two-thirds;
+    margin: 0 auto;
 
     label,
     input,

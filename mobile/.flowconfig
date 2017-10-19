@@ -13,7 +13,6 @@
 .*/node_modules/react-native-tab-view/.*
 .*/node_modules/react-native-simple-markdown/.*
 .*/node_modules/simple-markdown/.*
-.*/node_modules/flow-coverage-report/.*
 
 ; Ignore duplicate module providers
 ; For RN Apps installed via npm, "Libraries" folder is inside

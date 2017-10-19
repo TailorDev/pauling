@@ -8,7 +8,7 @@ type Props = {|
   path: string,
 |};
 
-const FileViewer = (props: Props) => {
+const PosterViewer = (props: Props) => {
   switch (props.fileType) {
     case 'png':
     case 'jpg':
@@ -24,4 +24,4 @@ const FileViewer = (props: Props) => {
   }
 };
 
-export default FileViewer;
+export default PosterViewer;

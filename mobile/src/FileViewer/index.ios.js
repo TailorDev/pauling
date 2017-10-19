@@ -7,6 +7,8 @@ type Props = {|
   path: string,
 |};
 
-const FileViewer = (props: Props) => <WebView source={{ uri: props.path }} />;
+const FileViewer = (props: Props) => {
+  return <WebView bounces={false} source={{ uri: props.path }} />;
+};
 
 export default FileViewer;

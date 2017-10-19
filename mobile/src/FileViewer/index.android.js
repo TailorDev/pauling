@@ -1,7 +1,7 @@
 /* @flow */
 import React from 'react';
-import { Image } from 'react-native';
 import Pdf from 'react-native-pdf';
+import PhotoView from 'react-native-photo-view';
 
 type Props = {|
   fileType?: string,
@@ -13,7 +13,7 @@ const FileViewer = (props: Props) => {
     case 'png':
     case 'jpg':
       return (
-        <Image style={{ flex: 1 }} source={{ uri: `file://${props.path}` }} />
+        <PhotoView style={{ flex: 1 }} source={{ uri: `file://${props.path}` }} />
       );
 
     default:

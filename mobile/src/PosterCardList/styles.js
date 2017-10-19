@@ -4,6 +4,9 @@ import { StyleSheet } from 'react-native';
 import { colors } from 'app/settings';
 
 export default StyleSheet.create({
+  List: {
+    padding: 10,
+  },
   Empty: {
     flex: 1,
     flexDirection: 'column',

@@ -10,8 +10,10 @@ import {
   H2,
   Text,
 } from 'native-base';
+// $FlowFixMe react-native-simple-markdown is explicitly ignored (see .flowconfig)
+import Markdown from 'react-native-simple-markdown';
 
-import FileViewer from 'app/FileViewer';
+import PosterViewer from 'app/PosterViewer';
 import styles from './styles';
 import type { NavigationOptions } from 'app/types';
 import type { State as NavigationState } from 'app/reducers/navigation';
@@ -58,7 +60,10 @@ class PosterScreen extends Component {
             ]}
             testID="Poster"
           >
-            <FileViewer fileType={poster.file_type} path={poster.cached_file} />
+            <PosterViewer
+              fileType={poster.file_type}
+              path={poster.cached_file}
+            />
           </View>
 
           {activeTab === TAB_INFO &&
@@ -69,9 +74,9 @@ class PosterScreen extends Component {
               <Text note style={styles.Authors}>
                 {poster.authors}
               </Text>
-              <Text style={styles.Abstract}>
+              <Markdown style={styles.Abstract}>
                 {poster.abstract}
-              </Text>
+              </Markdown>
               <Text style={styles.SavedAt}>
                 Saved on {poster.saved_at}
               </Text>

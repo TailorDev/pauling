@@ -1,7 +1,6 @@
 /* @flow */
 // $FlowFixMe: react-navigation module is explicitly ignored (see .flowconfig)
 import { NavigationActions } from 'react-navigation';
-import Reactotron from 'reactotron-react-native';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { REHYDRATE as REDUX_REHYDRATE } from 'redux-persist/constants';
 
@@ -82,8 +81,6 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
 
       dispatch(loadPoster(poster));
 
-      Reactotron.log({ message: 'loadPoster', poster });
-
       dispatch(
         NavigationActions.navigate({
           routeName: 'Poster',
@@ -93,7 +90,8 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
     } catch (error) {
       dispatch(fetchPosterFailed());
 
-      Reactotron.error({
+      // eslint-disable-next-line
+      console.error({
         message: 'fetchPosterFailed',
         error,
       });

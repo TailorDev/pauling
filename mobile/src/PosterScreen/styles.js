@@ -19,13 +19,13 @@ export default StyleSheet.create({
   },
   Poster: {
     flex: 1,
+    marginTop: 0,
     android: {
       // Remove offset due to the navigation bar and footer menu.
       height: Dimensions.get('window').height - 135,
     },
     ios: {
-      // Remove offset due to the navigation bar and footer menu.
-      height: Dimensions.get('window').height - 120,
+      height: Dimensions.get('window').height - 88,
     },
   },
   Info: {

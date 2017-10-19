@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { WebView } from 'react-native';
 
-import FileViewer from './index.ios';
+import PosterViewer from './index.ios';
 
 describe(__filename, () => {
   // See: https://github.com/facebook/react-native/issues/12440
@@ -10,7 +10,7 @@ describe(__filename, () => {
 
   it('renders correctly', () => {
     const path = '/path/to/file/to/view';
-    const wrapper = shallow(<FileViewer path={path} />);
+    const wrapper = shallow(<PosterViewer path={path} />);
 
     expect(wrapper.find(WebView)).toHaveLength(1);
     expect(wrapper.find(WebView)).toHaveProp('source', {

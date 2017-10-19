@@ -71,3 +71,6 @@ jest.mock('react-native-fetch-blob', () => mockRNFetchBlob);
 jest.mock('react-native-splash-screen', () => ({
   hide: jest.fn(),
 }));
+
+// TODO: remove this once react-native-wkwebview-reborn supports RN > 0.47
+jest.mock('react-native-wkwebview-reborn', () => 'WKWebView');

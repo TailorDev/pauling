@@ -8,6 +8,7 @@ import rootReducer from 'app/reducers';
 
 const middlewares = [thunk];
 
+// istanbul ignore next
 if (__DEV__) {
   const { logger } = require('redux-logger'); // eslint-disable-line
 

@@ -10,6 +10,8 @@ import {
   H2,
   Text,
 } from 'native-base';
+// $FlowFixMe react-native-simple-markdown is explicitly ignored (see .flowconfig)
+import Markdown from 'react-native-simple-markdown';
 
 import FileViewer from 'app/FileViewer';
 import styles from './styles';
@@ -69,9 +71,9 @@ class PosterScreen extends Component {
               <Text note style={styles.Authors}>
                 {poster.authors}
               </Text>
-              <Text style={styles.Abstract}>
+              <Markdown style={styles.Abstract}>
                 {poster.abstract}
-              </Text>
+              </Markdown>
               <Text style={styles.SavedAt}>
                 Saved on {poster.saved_at}
               </Text>

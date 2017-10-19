@@ -90,6 +90,7 @@ export const fetchPoster = (paulingPosterURL: string): ThunkAction => {
     } catch (error) {
       dispatch(fetchPosterFailed());
 
+      // eslint-disable-next-line
       console.error({
         message: 'fetchPosterFailed',
         error,

@@ -13,7 +13,10 @@ const FileViewer = (props: Props) => {
     case 'png':
     case 'jpg':
       return (
-        <PhotoView style={{ flex: 1 }} source={{ uri: `file://${props.path}` }} />
+        <PhotoView
+          style={{ flex: 1 }}
+          source={{ uri: `file://${props.path}` }}
+        />
       );
 
     default:

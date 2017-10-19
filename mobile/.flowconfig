@@ -11,6 +11,8 @@
 .*/node_modules/mitt/.*
 .*/node_modules/react-navigation/.*
 .*/node_modules/react-native-tab-view/.*
+.*/node_modules/react-native-simple-markdown/.*
+.*/node_modules/simple-markdown/.*
 
 ; Ignore duplicate module providers
 ; For RN Apps installed via npm, "Libraries" folder is inside

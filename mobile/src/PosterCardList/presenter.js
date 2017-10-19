@@ -9,6 +9,8 @@ import Empty from './Empty';
 import type { Poster } from 'app/types';
 import type { State as NavigationState } from 'app/reducers/navigation';
 
+import styles from './styles';
+
 type Props = {|
   errored: boolean,
   loading: boolean,
@@ -52,6 +54,7 @@ class PosterCardList extends React.Component {
 
     return (
       <FlatList
+        style={styles.List}
         data={posters}
         keyExtractor={item => item.id}
         renderItem={this.renderItem}

@@ -24,7 +24,7 @@ class AppScreen extends Component {
   render() {
     return (
       <Container style={styles.AppScreen}>
-        <Content padder>
+        <Content>
           <PosterCardList navigation={this.props.navigation} />
         </Content>
         <View>

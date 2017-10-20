@@ -5,7 +5,6 @@ Pauling
 |---------|---------|-----|
 | [![CircleCI](https://circleci.com/gh/TailorDev/pauling/tree/master.svg?style=svg&circle-token=9df05dcadb0db10e2a6385385cbb62e1500a0e9f)](https://circleci.com/gh/TailorDev/pauling/tree/master) | [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59a965b8c5290b0001524019&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/59a965b8c5290b0001524019/build/latest?branch=master) | [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59a96b15b0d15500017f75fd&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/59a96b15b0d15500017f75fd/build/latest?branch=master)
 
-
 Pauling is an open-source solution to get a better experience with scientific
 posters. Authors share their poster _via_ the Pauling web application and
 receive a QR code that should be added next to the poster during the session.
@@ -14,6 +13,10 @@ and all its information on their mobile phone! This application has been built
 during a "Le lab" session:
 
 * https://tailordev.fr/blog/2017/10/04/le-lab-6-pauling-poster-sharing-mobile-app/
+
+<p align="center">
+   <a href="https://play.google.com/store/apps/details?id=fr.tailordev.pauling"><img width="200" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"></a>
+</p>
 
 
 ## Installation

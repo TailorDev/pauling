@@ -1,6 +1,6 @@
 {
   "name": "pauling",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "MIT",
   "scripts": {
     "android": "better-npm-run android && better-npm-run start --port 8081",

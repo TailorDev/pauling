@@ -9,15 +9,16 @@ type Props = {|
 |};
 
 const PosterViewer = (props: Props) => {
-  return (
-    <WKWebView
-      source={{
-        uri: props.path,
-        file: props.path,
-        allowingReadAccessToURL: RNFetchBlob.fs.dirs.DocumentDir,
-      }}
-    />
-  );
+  let source = { uri: props.path };
+  if (!props.path.startsWith('http')) {
+    source = {
+      ...source,
+      file: props.path,
+      allowingReadAccessToURL: RNFetchBlob.fs.dirs.DocumentDir,
+    };
+  }
+
+  return <WKWebView source={source} />;
 };
 
 export default PosterViewer;

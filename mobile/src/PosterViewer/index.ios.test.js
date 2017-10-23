@@ -17,4 +17,12 @@ describe(__filename, () => {
       allowingReadAccessToURL: RNFetchBlob.fs.dirs.DocumentDir,
     });
   });
+
+  it('configures a URI source for HTTP paths', () => {
+    const path = 'https://example.org/poster.pdf';
+    const wrapper = shallow(<PosterViewer path={path} />);
+
+    expect(wrapper.find(WKWebView)).toHaveLength(1);
+    expect(wrapper.find(WKWebView)).toHaveProp('source', { uri: path });
+  });
 });
